@@ -1,0 +1,79 @@
+{
+    "en": {
+        "spanish": "Spanish",
+        "english": "English",
+        "japanese": "Japanese",
+    
+        "credit": "Credits",
+
+        "aboutHeader": "About Me -Patch",
+        "aboutIntro1": "Hello and welcome to my AMAZING! portfolio. My name is Sebastian Rodriguez Medina, but I prefer to go by my pen name Patch. I am a student at the University of Puerto Rico Bayamon with about " ,
+        "aboutIntro2": "years of experience in Computer Science, in which I began studying in high school.",
+        "aboutCenter": "I am committed to continuously learning and honing my skills in my spare time, as I am determined to learn as much as possible from every experience. Every experience matters is what I believe my motto would be as it has helped greatly in my field. I especially worked on passion projects that proved to be great sources of knowledge and insights on the development process on software development.",
+        "aboutEnd": "Feel free to explore the projects I have worked on to get an idea of what they are and what they do. If you would like to contact me there are links on top of the page, do not hesitate to do so.",
+
+        "projTutorial": "Click on an image to inspect the proyect!",
+        
+        "projTitleBGM": "BGM-App (Background Music Application)",
+        "projDetailsHeader": "Full Project Description",
+        "projDetailsBGM": "Our project, named InnovateHub, is a comprehensive platform designed to foster creativity and collaboration among students, educators, and industry professionals. The aim of InnovateHub is to provide a space where users can connect, share ideas, and work together on innovative projects that address real-world challenges. The platform offers a range of features, including project organization tools, communication channels, and resources for skills development. Through InnovateHub, users can create project teams, participate in hackathons, and access educational resources to enhance their knowledge and expertise. The platform also facilitates mentorship opportunities, allowing industry experts to guide and support the next generation of innovators. One of the key highlights of InnovateHub is its virtual workspace, where team members can collaborate in real time, share documents, and track project progress. Additionally, the platform hosts networking events, workshops, and competitions to encourage creativity and skill-building. Overall, InnovateHub is a dynamic ecosystem that empowers individuals to unleash their creativity, learn new skills, and make a positive impact on society through innovative projects. Join us on InnovateHub and be part of a vibrant community that thrives on creativity and collaboration.",
+        
+
+
+        "projCreditsHeader": "Credits",
+        "projCredits1BGM": "Designer and Manager: Patch\n",
+        "projCredits2BGM": "Programmer: Patch\n",
+        "projCredits3BGM": "User Interface Designer: Patch\n",
+        "projCredits4BGM": "\n",
+        "projSourceCode": "Source Code: ",
+
+        "resume": "Resume",
+        "email": "Email"
+    },
+
+    "es": {
+        "spanish": "Español",
+        "english": "Inglés",
+        "japanese": "Japonés",
+
+        "credit": "Créditos",
+
+        "aboutHeader": "Sobre mí -Patch",
+
+
+
+        "projTitleBGM": "BGM-App (Aplicación de Música)",
+        "projDetailsHeader": "???",
+        "projDetailsBGM": "???",
+
+
+
+        "resume": "Resume",
+        "email": "Correo Electrónico"
+    },
+
+    "ja": {
+        "spanish": "スペイン語",
+        "english": "英語",
+        "japanese": "日本語",
+
+        "credit": "???",
+
+        "aboutHeader": "僕のこと -パッチ",
+        "aboutIntro1": "ハローアンドようこそ僕のポートフォリオへ。僕のフールーネームはSebastian(セバスチャン) Rodriguez(ロドリゲス) Medina(メディナ)だけどPatch(パッチ)と呼んでいい。僕のコンピュータサイエンスの経験歴は現在僕の母校プエルトリコ・バヤモン大学4年それと高校生時代ながらを勉強したから加えて",
+        "aboutIntro2": "年ぐらい。",
+        "aboutCenter": "",
+        "aboutEnd": "自由にプロジェクトをチェックしてくればそのプロジェクトのイデアが見えるそしてそのプロジェクトの何が出来ると出来るごともわかるかもしれない。コンタクトをしたいならば上にリンクボタンはある。そしてまぎれもなく感謝するぜぇ！",
+        
+
+
+        "projTitleBGM": "???",
+        "projDetailsHeader": "???",
+        "projDetailsBGM": "???",
+
+
+
+        "resume": "履歴書",
+        "email": "メール"
+    }
+}
