@@ -25,16 +25,6 @@ const LanguageSelect = (props: any) => {
         }
     }, [])
 
-    // const LanugageSelector = (langCode, icon, langJson) => {
-    //     // <DropdownItem 
-    //     //         key="es"
-    //     //         startContent={<PuertoRicoFlag/>}
-    //     //         >
-    //     //             {languages[language].spanish}
-    //     // </DropdownItem>
-    // }
-
-
     return (
         <>
         <Dropdown>

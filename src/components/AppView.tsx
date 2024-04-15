@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
-// import { Button } from '@nextui-org/react';
-import LanguageSelect from './LanguageSelect'
 import WindView from './WindView';
-import { Card, CardBody, Image } from '@nextui-org/react';
-import ParticlesView from './ParticlesView';
 import UINavbar from './UINavbar';
 import AboutMeModal from './AboutMeModal';
 
@@ -18,7 +13,7 @@ const AppView = () => {
     
     const [openModal, setOpenModal] = useState<boolean>(true);
     const [language, setLanguage] = useState<string>(navigator.language);
-    const [darkMode, setDarkMode] = useState<boolean>(true);
+    const [darkMode, setDarkMode] = useState<boolean>(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     function getTranslatedText(key: string): string {
         const languageTranslations: LanguageTranslations | undefined = data[language];
@@ -37,12 +32,11 @@ const AppView = () => {
         <div className="relative " style={{
             // background: 'linear-gradient(to left, #2e026d, #15162c)',
             height: '100vh',
-            // background: 'linear-gradient(to bottom, #5500ff, #8800ff, #bb00ff, #ee00ff)',
+            // background: 'linear-gradient(0, rgba(242,201,207,1) 0%, rgba(229,107,111,1) 20%, rgba(216,108,111,1) 40%, rgba(199,122,167,1) 60%, rgba(230,126,164,1) 80%, rgba(242,201,207,1) 100%)',
             // background: 'linear-gradient(to bottom, #000033, #000066, #000099, #0000cc, #0000ff)',
             // background:  'linear-gradient(to bottom, #000000, #00162a, #004f70, #013a8c, #02011b)',
         }}>
             <div className="flex items-center justify-end w-full" style={{
-                // backgroundColor: 'red',
                 paddingTop: '30px',
                 paddingRight: '50px'
             }}>
@@ -52,20 +46,6 @@ const AppView = () => {
                 paddingRight: '50px'
             }}>
             </div>
-            <header className="App-header">
-                {/* <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                Learn React
-                </a> */}
-            </header>
             <WindView language={language} getTranslatedText={getTranslatedText}/>
         </div>
         </>

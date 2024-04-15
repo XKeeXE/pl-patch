@@ -2,49 +2,73 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import ProjectCardView from './ProjectCardView';
 
-import languages from '../assets/languages.json';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
+import UnityView from './demo/unity/UnityView';
+import BGMApp from './demo/bgmApp/BGMApp';
 
 const WindView = (props: any) => {
     const { getTranslatedText } = props;
-
-    // const swiperMargins = '20px';
-
-    interface projectSlide {
+    
+    interface slide {
         translator: string,
+        demoAvailable: boolean,
+        icon: string,
         name: string,
-        details: string,
-        credits1: string,
-        credits2: string,
-        credits3: string,
-        credits4: string,
+        images: image[],
+        video: string,
+        demoComponent: JSX.Element,
         sourceCode: string,
     }
 
-    const projectSlides: projectSlide[] = [{
-        translator: getTranslatedText,
-        name: getTranslatedText('projTitleBGM'),
-        details: getTranslatedText('projDetailsBGM'),
-        credits1: getTranslatedText('projCredits1BGM'),
-        credits2: getTranslatedText('projCredits2BGM'),
-        credits3: getTranslatedText('projCredits3BGM'),
-        credits4: getTranslatedText('projCredits4BGM'),
-        sourceCode: 'https://github.com/XKeeXE/bgm-app'
+    interface image {
+        url: string,
+        title: string,
+    }
+    
+    const imagesBGM: image[] = [{
+            url: 'Imgs/BGMApp/Awake.png',
+            title: 'Awake',
         },
         {
-        translator: getTranslatedText,
-        name: getTranslatedText(''),
-        details: getTranslatedText(''),
-        credits1: getTranslatedText(''),
-        credits2: getTranslatedText(''),
-        credits3: getTranslatedText(''),
-        credits4: getTranslatedText(''),
-        sourceCode: 'https://localhost:3000'
-        }
-    ];
+            url: 'Imgs/BGMApp/Layout.png',
+            title: 'Layout',
+        },
+        {
+            url: 'Imgs/BGMApp/List&Search.png',
+            title: 'List&Search',
+        },
+        {
+            url: 'Imgs/BGMApp/Results&Queue.png',
+            title: 'Results&Queue',
+        },
+        {
+            url: 'Imgs/BGMApp/ModalView.png',
+            title: 'ModalView',
+        },
+        {
+            url: 'Imgs/BGMApp/ModalViewClose.png',
+            title: 'ModalViewClose',
+        },
+        {
+            url: 'Imgs/BGMApp/Navbar.png',
+            title: 'Navbar',
+        },
+    ]
 
+    const slides: slide[] = [
+        {
+            translator: getTranslatedText,
+            demoAvailable: true,
+            icon: 'Icons/Oni.png',
+            name: 'BGM',
+            images: imagesBGM,
+            video: '',
+            demoComponent: <BGMApp/>,
+            sourceCode: 'https://github.com/XKeeXE/bgm-app'
+        },
+    ];
+    
     return (
         <>
         <Swiper
@@ -52,28 +76,25 @@ const WindView = (props: any) => {
             modules={[Navigation]}
             spaceBetween={100}
             loop={true}
-            // enabled={}
             style={{
                 // marginTop: swiperMargins,
                 // marginLeft: swiperMargins,
                 // marginRight: swiperMargins,
                 // overflow: 
             }}
-            // slidesPerView={3}
-            // onSlideChange={() => console.log('slide change')}
         >
-            {projectSlides.map(project => (
-                <SwiperSlide>
-                <ProjectCardView 
-                    getTranslatedText={project.translator} 
-                    projectName={project.name} 
-                    projectDetails={project.details} 
-                    projectCredits1={project.credits1}
-                    projectCredits2={project.credits2}
-                    projectCredits3={project.credits3}
-                    projectCredits4={project.credits4}
-                    sourceCode={project.sourceCode}
-                    />
+            {slides.map(project => (
+                <SwiperSlide key={project.name}>
+                    <ProjectCardView 
+                        getTranslatedText={project.translator} 
+                        demoAvailable={project.demoAvailable}
+                        icon={project.icon}
+                        name={project.name} 
+                        images={project.images}
+                        video={project.video}
+                        demoComponent={project.demoComponent}
+                        sourceCode={project.sourceCode}
+                        />
                 </SwiperSlide>
             ))}
         </Swiper>

@@ -10,7 +10,6 @@ const AboutMeModal = (props: any) => {
 
     return (
       <>
-        {/* <Button onPress={onOpen}>Open Modal</Button> */}
         <Modal isOpen={openModal} onOpenChange={setOpenModal} >
           <ModalContent>
             {() => (
