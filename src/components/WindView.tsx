@@ -1,23 +1,25 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination, Virtual } from 'swiper/modules';
 import ProjectCardView from './ProjectCardView';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import UnityView from './demo/unity/UnityView';
-import BGMApp from './demo/bgmApp/BGMApp';
+import 'swiper/css/pagination';
+import BGMApp from './demo/BGMApp';
+import UnityView from './demo/UnityView';
+import { useState } from 'react';
 
 const WindView = (props: any) => {
-    const { getTranslatedText } = props;
+    const { darkMode, language, getTranslatedText } = props;
+
+    const [swiperRef, setSwiperRef] = useState<any>(null);
     
     interface slide {
-        translator: string,
-        demoAvailable: boolean,
         icon: string,
         name: string,
         images: image[],
         video: string,
-        demoComponent: JSX.Element,
+        demoComponent: JSX.Element | undefined,
         sourceCode: string,
     }
 
@@ -35,59 +37,104 @@ const WindView = (props: any) => {
             title: 'Layout',
         },
         {
-            url: 'Imgs/BGMApp/List&Search.png',
-            title: 'List&Search',
-        },
-        {
             url: 'Imgs/BGMApp/Results&Queue.png',
             title: 'Results&Queue',
-        },
-        {
-            url: 'Imgs/BGMApp/ModalView.png',
-            title: 'ModalView',
-        },
-        {
-            url: 'Imgs/BGMApp/ModalViewClose.png',
-            title: 'ModalViewClose',
         },
         {
             url: 'Imgs/BGMApp/Navbar.png',
             title: 'Navbar',
         },
+        {
+            url: 'Imgs/BGMApp/List&Search.png',
+            title: 'List&Search',
+        },
+        {
+            url: 'Imgs/BGMApp/ContextMenu.png',
+            title: 'ContextMenu',
+        }
+    ]
+
+    const imagesL2DWP: image[] = [{
+            url: 'Imgs/L2DWP/CharacterIdle.png',
+            title: 'CharacterIdle'
+        },
+        {
+            url: 'Imgs/L2DWP/CharacterTalk.png',
+            title: 'CharacterTalk',
+        },
+        {
+            url: 'Imgs/L2DWP/CharacterUI.png',
+            title: 'CharacterUI',
+        },
+        {
+            url: 'Imgs/L2DWP/NextCharacterIdle.png',
+            title: 'NextCharacterIdle',
+        },
+        {
+            url: 'Imgs/L2DWP/NextCharacterTalk.png',
+            title: 'NextCharacterTalk',
+        },
     ]
 
     const slides: slide[] = [
         {
-            translator: getTranslatedText,
-            demoAvailable: true,
             icon: 'Icons/Oni.png',
             name: 'BGM',
             images: imagesBGM,
-            video: '',
+            video: './Videos/BGM-APPDemoVid.mp4',
             demoComponent: <BGMApp/>,
             sourceCode: 'https://github.com/XKeeXE/bgm-app'
         },
+        {
+            icon: 'Icons/L2DWP.png',
+            name: 'L2DWP',
+            images: imagesL2DWP,
+            video: './Videos/L2DWPDemoVid.mp4',
+            demoComponent: <UnityView/>,
+            sourceCode: 'https://github.com/XKeeXE/Live2DWallpaper',
+        },
+        {
+            icon: 'Icons/L2DWP.png',
+            name: '',
+            images: [],
+            video: 't',
+            demoComponent: undefined,
+            sourceCode: '',
+        }
     ];
+
+
+    function SlideTo(index: number) {
+        swiperRef.slideTo(index, 0);
+    }
     
     return (
         <>
         <Swiper
-            navigation={true} 
-            modules={[Navigation]}
+            // navigation={true} 
+            // modules={[Navigation]}
+            // modules={[Virtual]}
+            onSwiper={setSwiperRef}
             spaceBetween={100}
             loop={true}
+            pagination={true} 
+            // modules={[Pagination]}
             style={{
+                // minWidth: '1000px',
                 // marginTop: swiperMargins,
                 // marginLeft: swiperMargins,
                 // marginRight: swiperMargins,
                 // overflow: 
             }}
         >
-            {slides.map(project => (
-                <SwiperSlide key={project.name}>
+            {slides.map((project, index) => (
+                <SwiperSlide key={project.name} virtualIndex={index}>
                     <ProjectCardView 
-                        getTranslatedText={project.translator} 
-                        demoAvailable={project.demoAvailable}
+                        getTranslatedText={getTranslatedText} 
+                        darkMode={darkMode}
+                        language={language}
+                        slides={slides}
+                        SlideTo={SlideTo}
                         icon={project.icon}
                         name={project.name} 
                         images={project.images}

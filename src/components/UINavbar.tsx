@@ -1,4 +1,4 @@
-import { Button, Link, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, Spacer } from "@nextui-org/react";
+import { Button, Link, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, Spacer, Switch } from "@nextui-org/react";
 import { Tooltip } from "@mui/material";
 import { useState } from "react";
 
@@ -12,7 +12,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 const UINavbar = (props: any) => {
-    const { language, setLanguage, darkMode, setDarkMode, setOpenModal, getTranslatedText } = props;
+    const { darkMode, setDarkMode, language, setLanguage, setOpenModal, getTranslatedText } = props;
 
     interface navBarEnd {
         name: string,
@@ -30,28 +30,48 @@ const UINavbar = (props: any) => {
         window.open(url);
     };
 
+    function NavbarOptions(): JSX.Element {
+        return (
+            <>
+            <LanguageSelect darkMode={darkMode} language={language} setLanguage={setLanguage} getTranslatedText={getTranslatedText}/>
+            <Button variant="light" size="sm" isIconOnly disableAnimation onClick={() => setDarkMode(!darkMode)}>
+                {darkMode ? <DarkModeIcon htmlColor="pink"/> : <BrightnessIcon htmlColor='pink'/>}
+            </Button>
+            </>
+        )
+    }
+
     return (
         <Navbar // Displays buttons 
-        className="absolute bg-background/60"
         isBordered
-        position="sticky">
-        <NavbarContent className="sm:hidden" justify="start">
-            <LanguageSelect language={language} setLanguage={setLanguage} getTranslatedText={getTranslatedText}/>
-            {/* <Button variant="light" size="sm" isIconOnly disableAnimation onClick={() => setDarkMode(!darkMode)}>
-                {darkMode ? <DarkModeIcon htmlColor="white"/> : <BrightnessIcon htmlColor='white'/>}
-            </Button> */}
+        isBlurred={false}
+        classNames={{
+            base: ' border-b-2  ' + (darkMode ? 'bg-[#18181855] border-gray-200' : ' bg-[#F689A81c]'),
+        }}
+        >
+        <NavbarContent 
+        className="" 
+        justify="start">
+            <div className="hidden sm:flex gap-2">
+                {NavbarOptions()}
+
+            </div>
         </NavbarContent>
 
-        <NavbarContent className="sm:hidden pr-3 font-custom" justify="center">
+        <NavbarContent 
+        // className="sm:hidden pr-3 font-custom" 
+        justify="center">
             <NavbarBrand>
-                <Button variant="ghost" size="sm" as={Link} aria-label="github" onClick={() => setOpenModal(true)}>
+                <Button className="bg-gradient-to-b from-[#f2c9cf] to-[#e984a9] text-white border-2 border-gray-200 hover:border-gray-400" variant="flat" size="sm" aria-label="about" onClick={() => setOpenModal(true)}>
                     {getTranslatedText('aboutHeader')}
                 </Button>
             </NavbarBrand>
         </NavbarContent>
 
         <NavbarContent justify="end">
-            <NavbarItem className="flex gap-2">
+            <NavbarItem 
+            className="flex sm:gap1"
+            >
                 {navBarItemsEnd.map((item, index) => (
                     <Tooltip key={index} title={item.name}>
                         <Button key={index} variant="light" size="sm" isIconOnly disableAnimation onClick={() => {HandleLinkClick(item.url)}}>
@@ -59,8 +79,11 @@ const UINavbar = (props: any) => {
                         </Button>
                     </Tooltip>
                 ))}
+                <div className="sm:hidden flex flex-row-reverse">
+                    {NavbarOptions()}
+                </div>
             </NavbarItem>
-            <Link isExternal showAnchorIcon href={"https://github.com/XKeeXE/pl-patch"}>Source Code</Link>
+            <Link className="hidden sm:flex" isExternal showAnchorIcon href={"https://github.com/XKeeXE/pl-patch"}>Source Code</Link>
         </NavbarContent>
         </Navbar>
     );

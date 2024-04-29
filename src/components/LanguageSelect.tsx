@@ -1,11 +1,36 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
+
 import PuertoRicoFlag from './svgIconsFlags/PuertoRicoFlag';
 import UnitedStatesFlag from './svgIconsFlags/UnitedStatesFlag';
 import JapanFlag from './svgIconsFlags/JapanFlag';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const LanguageSelect = (props: any) => {
-    const { language, setLanguage, getTranslatedText } = props;
+    const { darkMode, language, setLanguage, getTranslatedText } = props;
+
+    interface language {
+        key: string,
+        lang: string,
+        icon: JSX.Element,
+    }
+
+    const languages: language[] = [
+        {
+        key: 'en',
+        lang: 'english',
+        icon: <UnitedStatesFlag/>
+        },
+        {
+        key: 'es',
+        lang: 'spanish',
+        icon: <PuertoRicoFlag/>
+        },
+        {
+        key: 'ja',
+        lang: 'japanese',
+        icon: <JapanFlag/>
+        },
+    ]
     
     const CheckLanguage = () => {
         switch(language) {
@@ -27,26 +52,22 @@ const LanguageSelect = (props: any) => {
 
     return (
         <>
-        <Dropdown>
+        <Dropdown radius="sm" classNames={{
+            base: "rounded-lg border-2 " + (darkMode ? "border-gray-200" : "border-gray-100"),
+            content: "p-0 border-small border-divider text-[#e984a9] " + (darkMode ? "bg-[#181818]" : "bg-[#fafafa]"),
+        }}>
             <DropdownTrigger>
-                <Button variant="light" size="sm" isIconOnly aria-label="language" disableAnimation>
+                <Button variant="light" size="sm" isIconOnly aria-label="language">
                     <CheckLanguage/>
                 </Button>
             </DropdownTrigger>
 
-            <DropdownMenu aria-label="language-menu" onAction={(key) => setLanguage(key)}>
-                <DropdownItem key="es" startContent={<PuertoRicoFlag/>}>
-                    {getTranslatedText('spanish')}
-                </DropdownItem>
-
-                <DropdownItem key="en" startContent={<UnitedStatesFlag/>}>
-                    {getTranslatedText('english')}
-                </DropdownItem>
-
-                <DropdownItem key="ja" startContent={<JapanFlag/>}>
-                    {getTranslatedText('japanese')}
-                </DropdownItem>
-
+            <DropdownMenu variant="flat" aria-label="language-menu" onAction={(key) => setLanguage(key)}>
+                {languages.map(language => (
+                    <DropdownItem key={language.key} startContent={language.icon}>
+                        {getTranslatedText(language.lang)}
+                    </DropdownItem>
+                ))}
             </DropdownMenu>
         </Dropdown>
         </>
