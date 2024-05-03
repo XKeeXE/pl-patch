@@ -4,3 +4,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    /* --swiper-navigation-size: 100px !important; */
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    /* height: '200px' !important; */
+    /* color: red !important; */
+    
+}
+
+/* .swiper-pagination-bullet {
+    width: 20px !important;
+    height: 20px !important;
+    line-height: 20px !important;
+    background:  rgb(233, 132, 169) !important;
+}
+
+.swiper-pagination-bullet:hover {
+    width: 22px !important;
+    height: 22px !important;
+} */
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+  /* .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  } */
+  

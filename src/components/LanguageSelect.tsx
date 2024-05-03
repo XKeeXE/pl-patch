@@ -1,11 +1,12 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
 
-import PuertoRicoFlag from './svgIconsFlags/PuertoRicoFlag';
-import UnitedStatesFlag from './svgIconsFlags/UnitedStatesFlag';
-import JapanFlag from './svgIconsFlags/JapanFlag';
+import PuertoRicoFlag from './svgIcons/PuertoRicoFlag';
+import UnitedStatesFlag from './svgIcons/UnitedStatesFlag';
+import JapanFlag from './svgIcons/JapanFlag';
 import { useEffect, useState } from "react";
+import { TranslatedText } from "../Types/types";
 
-const LanguageSelect = (props: any) => {
+const LanguageSelect = (props: {darkMode: boolean, language: string, setLanguage: React.Dispatch<React.SetStateAction<string>>, getTranslatedText: TranslatedText}) => {
     const { darkMode, language, setLanguage, getTranslatedText } = props;
 
     interface language {
@@ -62,7 +63,7 @@ const LanguageSelect = (props: any) => {
                 </Button>
             </DropdownTrigger>
 
-            <DropdownMenu variant="flat" aria-label="language-menu" onAction={(key) => setLanguage(key)}>
+            <DropdownMenu variant="flat" aria-label="language-menu" onAction={(key) => setLanguage(key.toString())}>
                 {languages.map(language => (
                     <DropdownItem key={language.key} startContent={language.icon}>
                         {getTranslatedText(language.lang)}

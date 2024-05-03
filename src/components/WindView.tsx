@@ -1,32 +1,29 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Virtual } from 'swiper/modules';
 import ProjectCardView from './ProjectCardView';
+import { useState } from 'react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Pagination, Navigation, Mousewheel, HashNavigation } from 'swiper/modules';
+
+import { slide, image, TranslatedText } from '../Types/types';
+
 import BGMApp from './demo/BGMApp';
 import UnityView from './demo/UnityView';
-import { useState } from 'react';
+import OnigiriIcon from './svgIcons/OnigiriIcon';
 
-const WindView = (props: any) => {
+const WindView = (props: {darkMode: boolean, language: string, getTranslatedText: TranslatedText}) => {
     const { darkMode, language, getTranslatedText } = props;
 
     const [swiperRef, setSwiperRef] = useState<any>(null);
-    
-    interface slide {
-        icon: string,
-        name: string,
-        images: image[],
-        video: string,
-        demoComponent: JSX.Element | undefined,
-        sourceCode: string,
-    }
 
-    interface image {
-        url: string,
-        title: string,
-    }
+    const pagination = {
+        clickable: true,
+        renderBullet: function (index: number, className: string) {
+          return '<span class="' + className + '">' + '</span>';
+        },
+      };
     
     const imagesBGM: image[] = [{
             url: 'Imgs/BGMApp/Awake.png',
@@ -76,10 +73,27 @@ const WindView = (props: any) => {
         },
     ]
 
-    const slides: slide[] = [
+    const imagesPCVR: image[] = [{
+            url: 'Imgs/PCVR/Slash.png',
+            title: 'Slash',
+        },
         {
+            url: 'Imgs/PCVR/VRPov.png',
+            title: 'VRPov'
+        },
+        {
+            url: 'Imgs/PCVR/Zipline.png',
+            title: 'Zipline',
+        },
+        {
+            url: 'Imgs/PCVR/2D.png',
+            title: '2D',
+        },
+]
+
+    const slides: slide[] = [{
             icon: 'Icons/Oni.png',
-            name: 'BGM',
+            name: 'BGMApp',
             images: imagesBGM,
             video: './Videos/BGM-APPDemoVid.mp4',
             demoComponent: <BGMApp/>,
@@ -94,9 +108,9 @@ const WindView = (props: any) => {
             sourceCode: 'https://github.com/XKeeXE/Live2DWallpaper',
         },
         {
-            icon: 'Icons/L2DWP.png',
-            name: '',
-            images: [],
+            icon: 'Icons/PCVR.png',
+            name: 'PCVR',
+            images: imagesPCVR,
             video: 't',
             demoComponent: undefined,
             sourceCode: '',
@@ -104,46 +118,80 @@ const WindView = (props: any) => {
     ];
 
 
-    function SlideTo(index: number) {
-        swiperRef.slideTo(index, 0);
-    }
+    // function SlideTo(index: number) {
+    //     console.log(index);
+    //     swiperRef.slideTo(index, 0);
+    // }
     
     return (
         <>
-        <Swiper
-            // navigation={true} 
+        {/* <Swiper
+            navigation={true}
             // modules={[Navigation]}
             // modules={[Virtual]}
             onSwiper={setSwiperRef}
             spaceBetween={100}
             loop={true}
-            pagination={true} 
-            // modules={[Pagination]}
-            style={{
-                // minWidth: '1000px',
-                // marginTop: swiperMargins,
-                // marginLeft: swiperMargins,
-                // marginRight: swiperMargins,
-                // overflow: 
-            }}
+            draggable={false}
+            // virtual
+            // enabled={false}
+            modules={[Pagination, Navigation]}
+            pagination={pagination}
         >
             {slides.map((project, index) => (
                 <SwiperSlide key={project.name} virtualIndex={index}>
-                    <ProjectCardView 
+                    <ProjectCardView
                         getTranslatedText={getTranslatedText} 
                         darkMode={darkMode}
                         language={language}
                         slides={slides}
-                        SlideTo={SlideTo}
-                        icon={project.icon}
-                        name={project.name} 
-                        images={project.images}
-                        video={project.video}
-                        demoComponent={project.demoComponent}
-                        sourceCode={project.sourceCode}
+                        // SlideTo={SlideTo}
+                        currentSlide={slides[index]}
                         />
                 </SwiperSlide>
             ))}
+        </Swiper> */}
+        <Swiper
+            className='max-h-[96.8vh]'
+            modules={[Mousewheel, HashNavigation, Pagination]}
+            direction='vertical'
+            hashNavigation={{
+                watchState: true,
+            }}
+            mousewheel={true}
+            pagination={{
+                clickable: true,
+                dynamicBullets: true,
+            }}
+            >
+            <SwiperSlide data-hash="home">
+                <div className='flex justify-center h-full'>
+                    <p className='self-center'>home</p>
+                </div>
+            </SwiperSlide>
+            <SwiperSlide data-hash="projects" >
+                <div className='flex justify-center h-full'>
+                    <p className='self-center'>{getTranslatedText('projectList')}</p>
+                </div>
+            </SwiperSlide>
+            {slides.map((project, index) => (
+                <SwiperSlide data-hash={project.name} key={project.name} virtualIndex={index}>
+                    <div className='flex justify-center h-full'>
+                        <ProjectCardView
+                            getTranslatedText={getTranslatedText} 
+                            darkMode={darkMode}
+                            language={language}
+                            slides={slides}
+                            currentSlide={slides[index]}
+                            />
+                    </div>
+                </SwiperSlide>
+            ))}
+            <SwiperSlide data-hash="contacts">
+                <div className='flex justify-center h-full'>
+                    <p className='self-center'>contacts</p>
+                </div>
+            </SwiperSlide>
         </Swiper>
         </>
     );

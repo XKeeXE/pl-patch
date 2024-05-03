@@ -1,8 +1,8 @@
 import { Button, Link, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
-import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
+import { TranslatedText } from "../Types/types";
 
-const AboutMeModal = (props: any) => {
+const AboutMeModal = (props: {darkMode: boolean, openModal: boolean, setOpenModal: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText}) => {
     const { darkMode, openModal, setOpenModal, getTranslatedText } = props;
     
     const currentYear = new Date().getFullYear();

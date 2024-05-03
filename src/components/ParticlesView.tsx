@@ -3,7 +3,7 @@ import { loadSlim } from "@tsparticles/slim";
 import type { ISourceOptions } from "@tsparticles/engine";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 
-const ParticlesView = (props: any) => {
+const ParticlesView = (props: {darkMode: boolean}) => {
     const { darkMode } = props; 
     const [ init, setInit ] = useState(false);
 
