@@ -10,12 +10,12 @@ const ProjectCardViewOld = (props: {darkMode: boolean, language: string, getTran
 	const { darkMode, language, getTranslatedText, slides, currentSlide } = props;
 
     const [demoAvailable, setDemoAvailable] = useState<boolean>(false);
-    const [iconVisible, setIconVisible] = useState<boolean>(true);
+    const [logoVisible, setLogoVisible] = useState<boolean>(true);
 
     const currentTitle = useRef<string>('');
 
     const title = getTranslatedText('title' + currentSlide.name);
-	const [project, setProject] = useState<string>(currentSlide.icon);
+	const [project, setProject] = useState<string>(currentSlide.logo);
     const [textTutorial, setTextTutorial] = useState<string>(getTranslatedText('tutorial'));
     
     useEffect(() => {
@@ -61,7 +61,7 @@ const ProjectCardViewOld = (props: {darkMode: boolean, language: string, getTran
                         <>
                         <Card key={image.title} className="bg-transparent justify-center" isPressable shadow="none" onPress={() => {
                             setProject(image.url); 
-                            setIconVisible(false);
+                            setLogoVisible(false);
                             currentTitle.current = image.title;
                             setTextTutorial(getTranslatedText('title' + image.title + currentSlide.name) + ": " + getTranslatedText('desc' + image.title + currentSlide.name));
                         }}>
@@ -92,13 +92,13 @@ const ProjectCardViewOld = (props: {darkMode: boolean, language: string, getTran
                         <Button 
                         className={"absolute top-0 z-10 right-0 border-2 " + (darkMode ? "border-gray-200" : "")} 
                         radius="full" variant="light" size="sm" isIconOnly aria-label="clear" onClick={() => {
-                            setProject(currentSlide.icon);
-                            setIconVisible(true)
+                            setProject(currentSlide.logo);
+                            setLogoVisible(true)
                             currentTitle.current = '';
                             setTextTutorial(getTranslatedText('tutorial'));
                         }}><CloseIcon htmlColor={darkMode ? 'gray' : 'gray'}/>
                         </Button>
-                        {iconVisible ? <img src={currentSlide.icon} alt={currentSlide.icon} 
+                        {logoVisible ? <img src={currentSlide.logo} alt={currentSlide.logo} 
                         className={"absolute object-cover rounded-full overflow-y-hidden border-2 bg-gradient-to-t from-[#f2c9cf] to-[#e984a9] " + 
                         (darkMode ? "border-gray-200" : "")}/> : <></>}
                         {ViewController()}
@@ -112,11 +112,11 @@ const ProjectCardViewOld = (props: {darkMode: boolean, language: string, getTran
                         }}/>
                         <div className="flex flex-row gap-4">
                             <Button className="bg-gradient-to-bl from-[#f2c9cf] to-[#e984a9] text-white border-2 border-gray-200 hover:border-gray-400" 
-                            variant="flat" radius="sm" size="md" aria-label="demo" isDisabled={!demoAvailable} onClick={() => {setProject('demo'); setIconVisible(false)}}>
+                            variant="flat" radius="sm" size="md" aria-label="demo" isDisabled={!demoAvailable} onClick={() => {setProject('demo'); setLogoVisible(false)}}>
                                 {getTranslatedText('demo')}
                             </Button>
                             <Button className="bg-gradient-to-br from-[#f2c9cf] to-[#e984a9] text-white border-2 border-gray-200 hover:border-gray-400" 
-                            variant="flat" radius="sm" size="md" aria-label="demo" onClick={() => {setProject(currentSlide.video); setIconVisible(false)}}>
+                            variant="flat" radius="sm" size="md" aria-label="demo" onClick={() => {setProject(currentSlide.video); setLogoVisible(false)}}>
                                 {getTranslatedText('video')}
                             </Button>
                         </div>
@@ -131,7 +131,7 @@ const ProjectCardViewOld = (props: {darkMode: boolean, language: string, getTran
                         <div className={"grid-cols-2 grid bg-transparent justify-items-center items-center"} >
                             {slides.map((slide: slide) => (
                                 <div className="relative w-[190px] aspect-square">
-                                    <Image className={"object-cover p-1" + (slide.name === currentSlide.name ? " " : "")} src={slide.icon}/>
+                                    <Image className={"object-cover p-1" + (slide.name === currentSlide.name ? " " : "")} src={slide.logo}/>
                                 </div>
                             ))}
                         </div>

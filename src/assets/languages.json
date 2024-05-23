@@ -8,21 +8,39 @@
         "home": "Home",
         "contacts":"Contacts",
 
-        "aboutHeader": "About Me -Patch",
+        "greetings": "Greetings!",
+        "introName": "My name is",
+        "introPenname": "I also go by the pen name",
+        
+        "aboutHeader": "About Me",
         "aboutIntro1": "Hello and welcome to my AMAZING! portfolio. My name is Sebastian Rodriguez Medina, but I prefer to go by my pen name Patch. I am a student at the University of Puerto Rico Bayamon with about " ,
         "aboutIntro2": "years of experience in Computer Science, in which I began studying in high school. ",
         "aboutCenter": "I am committed to continuously learning and honing my skills in my spare time, as I am determined to learn as much as possible from every experience. I have worked on passion projects that have proved to be great sources of knowledge and insights on the development process on software development.",
         "aboutEnd": "Explore the projects I have worked on at the pace you desire. If you would like to contact me, feel free to do so ",
         "aboutHyperlink": "here",
         "aboutPoint": ".",
+ 
+        "skillsIntro": "Technical Skills:",
         
         "projectList": "EXPLORE THE IMPRESSIVE PROJECTS THAT I WORKED ON",
         
         "viewPage": "View Page",
+        
+        "resume": "Resume",
+        "email": "Email",
+        "sourceCode": "Source Code",
 
         "titleBGMApp": "BGM-APP (Background Music Application)",
-        "detailsBGMApp": "Local Music Track Player. Plays tracks from a directory that holds 2900+ downloaded tracks. The UI features intuitive buttons strategically designed to efficiently manage the state of the player, providing seamless control and ease of navigation."
+        "summaryBGMApp": "Desktop Music Player",
+        "detailsBGMApp": "Plays tracks from a directory that holds 2900+ downloaded tracks. The UI features intuitive buttons strategically designed to efficiently manage the state of the player, providing seamless control and ease of navigation.",
 
+        "titleL2DWP": "L2DWP (Live 2D Wallpaper)",
+        "summaryL2DWP": "Interactive Live 2D Wallpaper",
+        "detailsL2DWP": "I am committed to continuously learning and honing my skills in my spare time, as I am determined to learn as much as possible from every experience. I have worked on passion projects that have proved to be great sources of knowledge and insights on the development process on software developmentI am committed to continuously learning and honing my skills in my spare time, as I am determined to learn as much as possible from every experience. I have worked on passion projects that have proved to be great sources of knowledge and insights on the development process on software development",
+
+        "titlePCVR": "PCVR (Project Coop Virtual Reality)",
+        "summaryPCVR": "Asymmetrical VR Coop Game",
+        "detailsPCVR": "blah blah blah"
     },
 
     "es": {
@@ -44,6 +62,10 @@
         "spanish": "スペイン語",
         "english": "英語",
         "japanese": "日本語",
+
+        "greetings": "ようこそいらっしゃいませ！",
+        "introName": "僕のフルネームは",
+        "introPenname": " ",
 
         "aboutHeader": "僕のこと -パッチ",
         "aboutIntro1": "ヾ(≧∇≦*)ゝ　ハローアンドようこそいらっしゃいました僕のポートフォリオへ。僕のフルネームはSebastian(セバスチャン) Rodriguez(ロドリゲス) Medina(メディナ)ですが、Patch(パッチ)と呼んでいただいてもいいです。現在、僕は母校であるプエルトリコ・バヤモン大学の4年生で、コンピュータサイエンスの経験を積んでいます。また、高校生時代にも勉強をしており、合わせて約",

@@ -1,9 +1,9 @@
 const UnityView = () => {
     return (
         <iframe
-            className="w-full aspect-video overflow-y-hidden"
+            className=" overflow-y-hidden"
             title={'L2DWP'}
-            src={'./L2DWP/index.html'}
+            src={process.env.PUBLIC_URL + '/' + 'L2DWP/index.html'}
         />
     )
 }

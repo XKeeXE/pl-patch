@@ -5,21 +5,21 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Link } from "react-router-dom";
 
-const ProjectCardView = (props: {darkMode: boolean, language: string, getTranslatedText: TranslatedText, slides: slide[], currentSlide: slide}) => {
-	const { darkMode, language, getTranslatedText, slides, currentSlide } = props;
+const ProjectCardView = (props: {darkMode: boolean, language: string, getTranslatedText: TranslatedText, currentSlide: slide}) => {
+	const { darkMode, language, getTranslatedText, currentSlide } = props;
     
     return (
-        <Card className="w-[40%] h-[100%]">
+        <Card className="w-[40vw] self-center" shadow="none">
             <CardHeader className="justify-center">
-                <div className="flex flex-col items-center">
-                    <p className="font-title text-4xl">{getTranslatedText('title' + currentSlide.name)}</p>
-                    <p>{getTranslatedText('summary' + currentSlide.name)}</p>
-                    <Image src={currentSlide.icon}/>
+                <div className="flex flex-col items-center gap-2">
+                    <p className="font-title text-2xl">{getTranslatedText('title' + currentSlide.name)}</p>
+                    <p className="font-text text-sm">{getTranslatedText('summary' + currentSlide.name).toUpperCase()}</p>
+                    <Image className="w-[50%]" src={currentSlide.logo}/>
                 </div>
             </CardHeader>
-            <CardBody className="flex flex-col gap-3">
-                <p className="self-center">{getTranslatedText('details' + currentSlide.name)}</p>
-                <div className="w-[60%] self-center">
+            <CardBody className="flex flex-col gap-3 items-center">
+                <p className="font-text">{getTranslatedText('details' + currentSlide.name)}</p>
+                <div className="w-[60%]">
                     <Swiper
                         loop
                         allowTouchMove={false}
@@ -45,15 +45,14 @@ const ProjectCardView = (props: {darkMode: boolean, language: string, getTransla
                     </Swiper>
                 </div>
             </CardBody>
-            <CardFooter className="justify-center border-t-2">
-                <Link to={'/' + currentSlide.name}>
-                    <Button variant="ghost" radius="sm" size="md" aria-label="demo">
-                            <p>{getTranslatedText('viewPage')}</p>
-                    </Button>
+            <CardFooter className="border-t-2 flex justify-center">
+                <Link to={'/projects/' + currentSlide.name}>
+                    <button className="border-2 p-2 rounded-lg">
+                        <p>{getTranslatedText('viewPage')}</p>
+                    </button>
                 </Link>
             </CardFooter>
         </Card>
-
     )
 }
 
