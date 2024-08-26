@@ -17,8 +17,8 @@ import PuertoRicoFlag from "./svgIcons/PuertoRicoFlag";
 import JapanFlag from "./svgIcons/JapanFlag";
 
 const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: React.Dispatch<React.SetStateAction<string>>, 
-    getTranslatedText: TranslatedText, slides: slide[]}) => {
-    const { language, isHomePage, setLanguage, getTranslatedText, slides } = props;
+    getTranslatedText: TranslatedText, slides: slide[], currentColor: any}) => {
+    const { language, isHomePage, setLanguage, getTranslatedText, slides, currentColor } = props;
 
     interface language {
         key: string,
@@ -99,7 +99,7 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
     }
 
     const handleClickOutside = (e: any) => {
-        console.log('clicked');
+        // console.log('clicked');
         // if (showProjectDropdown) {
         //     setShowProjectDropdown(false);
         // }
@@ -147,6 +147,10 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
 
     useEffect(() => {
         document.documentElement.className = darkMode ? 'dark' : 'light';
+        if (isHomePage) {
+            document.documentElement.style.setProperty('--swiper-pagination-color', darkMode ? "#f0f0f0" : "#0f0f0f");
+            currentColor.current = darkMode ? "#f0f0f0" : "#0f0f0f";
+        }
     }, [darkMode])
 
     useEffect(() => {

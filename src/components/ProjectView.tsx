@@ -16,9 +16,12 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import LinksCard from './LinksCard';
 import UIButton from './UIButton';
 import ProjectDemoView from './ProjectDemoView';
+import { Card, CardBody, CardHeader } from '@nextui-org/react';
 
-const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[]}) => {
-    const { setIsHomePage, getTranslatedText, slides } = props;
+const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[], currentColor: any}) => {
+    const { setIsHomePage, getTranslatedText, slides, currentColor } = props;
+
+    const OnProjectEnter = new CustomEvent('OnProjectEnter', {});
 
     const { projectName } = useParams();
     const project = useMemo(() => {
@@ -52,6 +55,8 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
         if (project === undefined) { 
             return <ErrorView setIsHomePage={setIsHomePage} getTranslatedText={getTranslatedText}/>
         }
+        currentColor.current = project?.color;
+        window.dispatchEvent(OnProjectEnter);
         return (
             <Swiper
             className='max-h-[95.5vh]'
@@ -65,6 +70,26 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
             }}
             >
                 <SwiperSlide>
+                    <div className='flex justify-center h-full'>
+                        <Card className="self-center sm:w-[100vw] md:w-[80vw] lg:w-[60vw] xl:w-[35vw] bg-[#f0f0f0] dark:bg-[#181919]/40" shadow="none" style={{
+                        }}>
+                            <CardHeader className="flex flex-col justify-center gap-1">
+                                <Header headerText={project.name}/>
+                                <span className={`text-sm md:text-lg font-text bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{getTranslatedText(`title${project.name}`)}</span>
+                                <span className="font-text text-xs">{getTranslatedText(`summary${project.name}`).toUpperCase()}</span>
+                            </CardHeader>
+                            <CardBody className="flex flex-col gap-2 items-center">
+                                <div className="flex flex-col gap-4 justify-start font-text text-xs md:text-sm">
+                                    <span>{getTranslatedText(`extraDetails${project.name}1`)}</span>
+                                    <span>{getTranslatedText(`extraDetails${project.name}2`)}</span>
+                                    <span>{getTranslatedText(`extraDetails${project.name}3`)}</span>
+                                    <span>{getTranslatedText(`extraDetails${project.name}4`)}</span>
+                                </div>
+                            </CardBody>
+                        </Card>
+                    </div>
+                </SwiperSlide>
+                {/* <SwiperSlide>
                     <Slide>
                         <div className='flex flex-col items-center'>
                         <Header headerText={project.name}/>
@@ -75,14 +100,14 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
                             <span>{getTranslatedText(`details${project.name}2`)}</span>
                         </div>
                     </Slide>
-                </SwiperSlide>
+                </SwiperSlide> */}
 
-                <SwiperSlide>
+                {/* <SwiperSlide>
                     <Slide>
                         <Header headerText={getTranslatedText('demoHeader')}/>
                         <ProjectDemoView getTranslatedText={getTranslatedText} project={project}/>
                     </Slide>
-                </SwiperSlide>
+                </SwiperSlide> */}
 
                 <SwiperSlide>
                     <Slide>

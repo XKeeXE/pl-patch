@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import WindView from './WindView';
 import UINavbar from './UINavbar';
 
 import { image, LanguageTranslations, slide } from '../Types/types';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate   } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation   } from "react-router-dom";
 import LanguageSelect from './LanguageSelect';
+import WallpaperIcon from '@mui/icons-material/Wallpaper';
+import PetsIcon from '@mui/icons-material/Pets';
+import ViewInArIcon from '@mui/icons-material/ViewInAr';
+import LibraryMusic from '@mui/icons-material/LibraryMusicOutlined';
 import ProjectView from './ProjectView';
 import BGMApp from './demo/BGMApp';
 import L2DWP from './demo/L2DWP';
@@ -20,6 +24,8 @@ const AppView = () => {
 
     const navigate = useNavigate();
 
+    const currentColor = useRef<string>('');
+
     function getTranslatedText(key: string): string {
         const languageTranslations: LanguageTranslations | undefined = data[language];
         
@@ -29,6 +35,24 @@ const AppView = () => {
           return 'Language not found';
         }
     }
+
+    // No Direct File System Access: You cannot read files from the file system directly in a React app running in the browser. You can only access files that are served by your web server.
+    // function GetScreenshots(project: string, title: string): image[] {
+        
+    // }
+
+    useEffect(() => {
+        const OnProjectEnter = (e: any) => {
+            document.documentElement.style.setProperty('--swiper-button-color', currentColor.current);
+            document.documentElement.style.setProperty('--swiper-pagination-color', currentColor.current);
+        }
+
+        window.addEventListener('OnProjectEnter', OnProjectEnter);
+
+        return () => {
+            window.removeEventListener('OnProjectEnter', OnProjectEnter);
+            };
+    }, []);
 
     const imagesBGM: image[] = [{
             url: 'Imgs/BGMApp/View.jpg',
@@ -110,11 +134,29 @@ const AppView = () => {
         },
     ]
 
+    const imagesNEKOMATA: image[] = [{
+            url: 'Imgs/NEKOMATA/Tutorial.png',
+            title: 'Tutorial',
+        },
+        {
+            url: 'Imgs/NEKOMATA/BossFight.png',
+            title: 'BossFight',
+        },
+        {
+            url: 'Imgs/NEKOMATA/MinionFIght.png',
+            title: 'MinionFight',
+        },
+        {
+            url: 'Imgs/NEKOMATA/PlagueRatBoss.png',
+            title: 'PlagueRatBoss',
+        }
+    ]
+
     const slides: slide[] = [
         {
             color: '#7a0a9c',
             gradient: 'from-[#8208de] from-0% to-[#6d0c6e] to-100%',
-            icon: <OnigiriIcon />,
+            icon: <LibraryMusic/>,
             logo: 'Icons/Oni.png',
             name: 'BGMAPP',
             images: imagesBGM,
@@ -126,7 +168,7 @@ const AppView = () => {
         {
             color: '#1e65c9',
             gradient: 'from-[#373ba6] from-0% via-[#0290f2] via-50% to-[#373ba6] to-100%',
-            icon: <OnigiriIcon />,
+            icon: <WallpaperIcon />,
             logo: 'Icons/L2DWP.png',
             name: 'L2DWP',
             images: imagesL2DWP,
@@ -162,7 +204,7 @@ const AppView = () => {
         {
             color: '#0030e7',
             gradient: 'from-[#0009ff] from-0% to-[#006ae7] to-40%',
-            icon: <OnigiriIcon />,
+            icon: <ViewInArIcon />,
             logo: 'Icons/PCVR.png',
             name: 'PCVR',
             images: imagesPCVR,
@@ -174,10 +216,10 @@ const AppView = () => {
         {
             color: '#5e9cff',
             gradient: 'from-[#9181ff] from-10% to-[#00d6ff] to-90%',
-            icon: <OnigiriIcon />,
+            icon: <PetsIcon />,
             logo: '',
             name: 'NEKOMATA',
-            images: imagesPCVR,
+            images: imagesNEKOMATA,
             video: 't',
             demoComponent: undefined,
             downloadLink: '',
@@ -187,10 +229,10 @@ const AppView = () => {
 
     return (
         <NextUIProvider navigate={navigate}>
-            <UINavbar language={language} setLanguage={setLanguage} isHomePage={isHomePage} getTranslatedText={getTranslatedText} slides={slides}/> 
+            <UINavbar language={language} setLanguage={setLanguage} isHomePage={isHomePage} getTranslatedText={getTranslatedText} slides={slides} currentColor={currentColor}/> 
             <Routes>
                 <Route path='/' element={<WindView setIsHomePage={setIsHomePage} language={language} getTranslatedText={getTranslatedText} slides={slides}/>}/>
-                <Route path='/projects/:projectName' element={<ProjectView setIsHomePage={setIsHomePage} getTranslatedText={getTranslatedText} slides={slides}/>}/>
+                <Route path='/projects/:projectName' element={<ProjectView setIsHomePage={setIsHomePage} getTranslatedText={getTranslatedText} slides={slides} currentColor={currentColor}/>}/>
                 <Route path='*' element={<ErrorView setIsHomePage={setIsHomePage} getTranslatedText={getTranslatedText} />}/>
             </Routes>
         </NextUIProvider>
