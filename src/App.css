@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    /* --swiper-navigation-size: 100px !important; */
+@font-face {
+    font-family: 'Renogare';
+    src: url('/src/assets/Renogare-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .swiper-button-prev,
@@ -14,31 +16,12 @@
     /* height: '200px' !important; */
     /* color: red !important; */
     /* padding: 100px !important;
-    padding-top: 0 !important; */
+    padding-top: 0px !important; 
+    padding-bottom: 0px !important; */
 }
-
-/* .swiper-pagination-bullet {
-    width: 20px !important;
-    height: 20px !important;
-    line-height: 20px !important;
-    background:  rgb(233, 132, 169) !important;
-}
-
-.swiper-pagination-bullet:hover {
-    width: 22px !important;
-    height: 22px !important;
-} */
 
 .swiper {
     width: 100%;
     height: 100%;
 }
-
-
-  /* .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  } */
   

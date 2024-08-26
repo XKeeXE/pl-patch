@@ -12,20 +12,16 @@ import ContactPageIcon from '@mui/icons-material/ContactPage';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { Button, Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
 import LinksCard from './LinksCard';
+import ProjectList from './ProjectList';
+import { useEffect } from 'react';
 
-const WindView = (props: {darkMode: boolean, language: string, showMenuDropdown: boolean, showProjectDropdown: boolean, setLanguage: React.Dispatch<React.SetStateAction<string>>, 
-    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>, setShowMenuDropdown: React.Dispatch<React.SetStateAction<boolean>>, 
-    setShowProjectDropdown: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[]}) => {
-        const { darkMode, language, showMenuDropdown, showProjectDropdown, setDarkMode, setLanguage, setShowMenuDropdown, setShowProjectDropdown, getTranslatedText, slides } = props;
+const WindView = (props: {language: string, setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[]}) => {
+    const { language, setIsHomePage, getTranslatedText, slides } = props;
 
-    const pagination = {
-        clickable: true,
-        renderBullet: function (index: number, className: string) {
-          return '<span class="' + className + '">' + '</span>';
-        },
-    };
+    const currentYear = new Date().getFullYear();
+
+    const gradient = ' bg-clip-text text-transparent bg-gradient-to-br from-[#0089fe] from-0% to-[#15c31e] to-100%'
 
     const contactsItems: link[] = [
         {text: getTranslatedText('resume'), url: '/Resume Patch.pdf', icon: <ContactPageIcon />},
@@ -35,17 +31,74 @@ const WindView = (props: {darkMode: boolean, language: string, showMenuDropdown:
         {text: 'Source Code', url: 'https://github.com/XKeeXE/pl-patch', icon: <GitHubIcon/>}
     ];
 
+    useEffect(() => {
+        setIsHomePage(true);
+    }, [])
+
+    const Home = () => {
+        return (
+            <div className='flex flex-col justify-center items-center h-full'>
+                <div className='font-text'>
+                    <span className={`text-4xl font-title `}>{getTranslatedText('greetings')}</span>
+                    <div className={'flex flex-row gap-1 items-center'}>
+                        <span className={language === 'ja' ? 'pt-3' : 'text-base md:text-xl'}>{getTranslatedText('introName')}</span>
+                        {language === 'ja' ? 
+                        <>
+                            <ruby className='text-xl font-bold'>Sebastian<rt>セバスチャン</rt></ruby>
+                            <ruby className='text-xl font-bold'>Rodriguez<rt>ロドリゲス</rt></ruby>
+                            <ruby className='text-xl font-bold'>Medina<rt>メディナ</rt></ruby>
+                            <span className='pt-3'>ですが</span>
+                        </>
+                        : <span className={`text-sm md:text-xl font-bold font-title ${gradient}`}>Sebastian Rodriguez Medina</span>}
+                    </div>
+                    <div className='flex flex-row gap-1 items-center'>
+                        {language === 'ja' ? <></> : <span className='pt-1 text-base md:text-xl'>{getTranslatedText('introPenname')}</span>}
+                        {language === 'ja' ? 
+                        <>
+                            <ruby className='text-xl font-bold'>Patch<rt>パッチ</rt></ruby>
+                            <span className='pt-2'>と呼んでいただいてもいいです</span>
+                        </>
+                        : <span className={`text-2xl font-bold font-title ${gradient}`}>Patch</span>}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    const AboutMe = () => {
+        return (
+            <div className='flex flex-col h-full font-text gap-4 justify-center md:items-center '>
+                <div className='flex flex-row gap-4 sm:justify-between md:w-[60vw] lg:w-[35vw]'>
+                    <div className='flex flex-col gap-2 '>
+                        <span className={`font-title text-4xl self-center `}>{getTranslatedText('aboutHeader')}</span>
+                        <div className='flex flex-col gap-1 text-sm md:text-base '>
+                            <span>{getTranslatedText('aboutIntro')}</span>
+                            <span>{`${getTranslatedText('aboutExp1')} ${(currentYear - 2017)} ${getTranslatedText('aboutExp2')}`}</span>
+                            <span>{getTranslatedText('aboutEnd')}</span>
+                        </div>
+                    </div>
+                </div>
+                <div className='flex flex-col gap-2 text-xs border-2 p-2 rounded-lg md:w-[60vw] lg:w-[35vw] border-[#f0f0f0] dark:border-[#0f0f0f] '>
+                    <span className='font-bold'>{getTranslatedText('skillsIntro')}</span>
+                    <span>
+                    Blender, C#, C++, CSS, Discord.py, Docker, Electron, 
+                    FFmpeg, Fabric API, GDScript, GitHub, Godot 4, HTML, 
+                    Java, JavaScript, jQuery, LavaPlayer, MongoDB, Next.js, 
+                    Node.js, Oracle, PHP, Python, Rabbit MQ, React, Ruby, 
+                    Scrum, SQL, Apache Spark, T-SQL, Tauri, Technical Writing, 
+                    Trello, UE5, Unity, Vite, XML.
+                    </span>
+                </div>
+            </div>
+        )
+    }
+
     return (
-        <>
-        <UINavbar darkMode={darkMode} language={language} showMenuDropdown={showMenuDropdown} 
-        showProjectDropdown={showProjectDropdown} setDarkMode={setDarkMode} setLanguage={setLanguage} 
-        setShowMenuDropdown={setShowMenuDropdown} setShowProjectDropdown={setShowProjectDropdown} 
-        getTranslatedText={getTranslatedText} slides={slides}/>
         <Swiper
-            className='max-h-[95.5vh]'
-            onClick={() => {setShowMenuDropdown(false); setShowProjectDropdown(false)}}
+            className='max-h-[92.8vh] lg:max-h-[94vh] xl:max-h-[95.5vh] '
             modules={[Mousewheel, HashNavigation, Pagination]}
             direction='vertical'
+            spaceBetween={50}
             hashNavigation={{
                 watchState: true,
             }}
@@ -56,103 +109,43 @@ const WindView = (props: {darkMode: boolean, language: string, showMenuDropdown:
             }}
             >
             <SwiperSlide data-hash="home">
-                <div className='flex flex-col justify-center items-center h-full'>
-                    <div className='font-text'>
-                        <p className='text-4xl font-bold'>{getTranslatedText('greetings')}</p>
-                        <div className='flex flex-row gap-1 items-center'>
-                            <p className={language === 'ja' ? 'pt-3' : ''}>{getTranslatedText('introName')}</p>
-                            {language === 'ja' ? 
-                            <>
-                                <ruby className='text-xl font-bold'>Sebastian<rt>セバスチャン</rt></ruby>
-                                <ruby className='text-xl font-bold'>Rodriguez<rt>ロドリゲス</rt></ruby>
-                                <ruby className='text-xl font-bold'>Medina<rt>メディナ</rt></ruby>
-                                <p className='pt-3'>ですが</p>
-                            </>
-                            : <p className='text-xl font-bold'>Sebastian Rodriguez Medina</p>}
-                        </div>
-                        <div className='flex flex-row gap-1 items-center'>
-                            {language === 'ja' ? <></> : <p className='pt-1'>{getTranslatedText('introPenname')}</p>}
-                            {language === 'ja' ? 
-                            <>
-                                <ruby className='text-xl font-bold'>Patch<rt>パッチ</rt></ruby>
-                                <p className='pt-2'>と呼んでいただいてもいいです</p>
-                            </>
-                            : <p className='text-2xl font-bold'>Patch</p>}
-                        </div>
-                    </div>
-                </div>
+                <Home/>
             </SwiperSlide>
             <SwiperSlide data-hash="about">
-                <div className='flex justify-center items-center h-full font-text'>
-                    <Card>
-                        <CardHeader className='flex justify-center font-text text-2xl font-bold'>
-                            <p>{getTranslatedText('aboutHeader')}</p>
-                        </CardHeader>
-                        <CardBody>
-                            <div className='flex flex-col items-center'>
-                                <div>
-                                    <p>{getTranslatedText('aboutIntro1')}</p>
-                                </div>
-                                <p className='border-2 w-full'>Here goes the skills viewer</p>
-                            </div>
-                        </CardBody>
-                        <CardFooter>
-                            <div className='flex flex-row gap-1 text-xs'>
-                                <p>{getTranslatedText('skillsIntro')}</p>
-                                Blender, C#, C++, CSS, Discord.py, Docker, Electron, 
-                                FFmpeg, Fabric API, GDScript, GitHub, Godot 4, HTML, 
-                                Java, JavaScript, jQuery, LavaPlayer, MongoDB, Next.js, 
-                                Node.js, Oracle, PHP, Python, Rabbit MQ, React, Ruby, 
-                                Scrum, SQL, Apache Spark, T-SQL, Tauri, Technical Writing, 
-                                Trello, UE5, Unity, Vite, XML.
-                            </div>
-                        </CardFooter>
-                    </Card>
-                </div>
+                <AboutMe/>
             </SwiperSlide>
             <SwiperSlide data-hash="projects" >
-                <div className='flex justify-center h-full'>
-                    <p className='self-center'>{getTranslatedText('projectList')}</p>
-                </div>
+                <ProjectList getTranslatedText={getTranslatedText} slides={slides} gradient={gradient}/>
             </SwiperSlide>
-            {slides.map((project, index) => (
-                <SwiperSlide data-hash={project.name} key={project.name} virtualIndex={index}>
-                    <div className='flex justify-center h-full'>
-                        <ProjectCardView
-                            getTranslatedText={getTranslatedText} 
-                            darkMode={darkMode}
-                            language={language}
-                            currentSlide={slides[index]}
-                            />
-                    </div>
+            {slides.map(project => (
+                <SwiperSlide data-hash={project.name} key={project.name}>
+                    <ProjectCardView
+                        getTranslatedText={getTranslatedText} 
+                        slide={true}
+                        color={project.color}
+                        gradient={project.gradient}
+                        name={project.name}
+                        logo={project.logo}
+                        images={project.images}
+                        />
                 </SwiperSlide>
             ))}
-            <SwiperSlide data-hash="portofolio">
-                <div className='flex justify-center h-full'>
-                    <Card className="w-[40vw] self-center " shadow="none">
-                        <CardHeader className="justify-center">
-                            <div className="flex flex-col items-center gap-1">
-                                <p className="font-title text-2xl">{"website"}</p>
-                                <p className="font-text text-sm">{"test"}</p>
-                            </div>
-                        </CardHeader>
-                        <CardBody className="flex flex-col gap-3 items-center">
-                            <p className="font-text">{"test"}</p>
-                        </CardBody>
-                        <CardFooter className="border-t-2 flex justify-center">
-                            <button className="border-2 p-2 rounded-lg">
-                                <p>{getTranslatedText('sourceCode')}</p>
-                            </button>
-                        </CardFooter>
-                    </Card>
-                </div>
+            <SwiperSlide data-hash="portfolio">
+                <ProjectCardView
+                    getTranslatedText={getTranslatedText} 
+                    slide={false}
+                    color={'#2E8B57'}
+                    gradient={gradient}
+                    name={"PORTFOLIO"}
+                    logo={undefined}
+                    images={undefined}
+                    />
             </SwiperSlide>
 
             <SwiperSlide data-hash="contacts">
-                <LinksCard headerText={getTranslatedText('contacts')} linkItems={contactsItems}/>
+                <LinksCard headerText={getTranslatedText('contacts')} color={` border-[#f0f0f0] dark:border-[#0f0f0f] `} gradient={undefined} linkItems={contactsItems}/>
             </SwiperSlide>
         </Swiper>
-        </>
     );
 }
 

@@ -54,7 +54,7 @@ const LanguageSelect = (props: {darkMode: boolean, language: string, setLanguage
     return (
         <Dropdown radius="sm" classNames={{
             base: "rounded-lg border-2 " + (darkMode ? "border-gray-200" : "border-gray-100"),
-            content: "p-0 border-small border-divider text-[#e984a9] " + (darkMode ? "bg-[#181818]" : "bg-[#fafafa]"),
+            content: "p-0 border-small border-divider " + (darkMode ? "bg-[#181818]" : "bg-[#fafafa]"),
         }}>
             <DropdownTrigger>
                 <Button variant="light" size="sm" isIconOnly aria-label="language">

@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        title: ['Mochiy Pop One'],
+        title: ['Renogare'],
         text: ['IBM Plex Sans JP'],
       },
     },

@@ -13,34 +13,113 @@
         "introPenname": "I also go by the pen name",
         
         "aboutHeader": "About Me",
-        "aboutIntro1": "Hello and welcome to my AMAZING! portfolio. My name is Sebastian Rodriguez Medina, but I prefer to go by my pen name Patch. I am a student at the University of Puerto Rico Bayamon with about " ,
-        "aboutIntro2": "years of experience in Computer Science, in which I began studying in high school. ",
-        "aboutCenter": "I am committed to continuously learning and honing my skills in my spare time, as I am determined to learn as much as possible from every experience. I have worked on passion projects that have proved to be great sources of knowledge and insights on the development process on software development.",
-        "aboutEnd": "Explore the projects I have worked on at the pace you desire. If you would like to contact me, feel free to do so ",
-        "aboutHyperlink": "here",
-        "aboutPoint": ".",
+        "aboutIntro": "I am a dedicated student currently enrolled at the University of Puerto Rico Bayamon, with a specialization in Computer Science.",
+        "aboutExp1": "With a foundation established since high school, I have approximately",
+        "aboutExp2": "years of experience in this field.",
+        "aboutEnd": "I am committed to continuously learning and honing my skills in my spare time, as I am determined to learn as much as possible from every experience. Through engaging in a variety of passion projects, I have gained invaluable experience and insight on the development process of software development.",
  
         "skillsIntro": "Technical Skills:",
         
-        "projectList": "EXPLORE THE IMPRESSIVE PROJECTS THAT I WORKED ON",
+        "projectListOld": "EXPLORE THE IMPRESSIVE PROJECTS THAT I WORKED ON",
+        "projectList": "Awesome Projects",
+        "summaryProjectList": "I made",
+
         
         "viewPage": "View Page",
+
+        "demoHeader": "Demo",
+        "videoHeader": "Preview",
+        "linksHeader": "Links",
         
         "resume": "Resume",
         "email": "Email",
         "sourceCode": "Source Code",
 
-        "titleBGMApp": "BGM-APP (Background Music Application)",
-        "summaryBGMApp": "Desktop Music Player",
-        "detailsBGMApp": "Plays tracks from a directory that holds 2900+ downloaded tracks. The UI features intuitive buttons strategically designed to efficiently manage the state of the player, providing seamless control and ease of navigation.",
+        "titleBGMAPP": "Background Music Application",
+        "miniSummaryBGMAPP": "Track Player",
+        "summaryBGMAPP": "Desktop Track Player",
+        "detailsBGMAPP1": "Track player made using Electron and Vite, offers the functionality to play music tracks sourced from either a local directory containing downloaded tracks or directly from online sources.",
+        "detailsBGMAPP2": "The track player is thoughtfully crafted with an intuitive user interface that has been strategically placed to effectively control and manage the player's state. These design elements contribute to a seamless user experience, allowing for effortless control and smooth navigation throughout the application.",
+        "detailsBGMAPP3": "",
 
-        "titleL2DWP": "L2DWP (Live 2D Wallpaper)",
+        "titleViewBGMAPP": "Listen to music without distractions",
+        "descViewBGMAPP": "BGMAPP allows the use of local music tracks by allowing the user to insert their own music track via any format the music track comes in.",
+        "titleShuffleBGMAPP": "Never listen to the same old music again",
+        "descShuffleBGMAPP": "BGMAPP is not whole without a shuffle functionally, which brings the essential of a music player to the application to randomize the music tracks.",
+        "titleInputSearchBGMAPP": "Big library? No problem",
+        "descInputSearchBGMAPP": "BGMAPP comes equipped with the functionality to search for any music track whenever the user wants to listen to their favorite tracks.",
+        "titleContextMenuBGMAPP": "Play music at your own pace",
+        "descContextMenuBGMAPP": "BGMAPP uses a context menu that allows the user to queue music track whichever way they prefer.",
+
+        "titleL2DWP": "Live 2D Wallpaper",
+        "miniSummaryL2DWP": "Live Wallpaper",
         "summaryL2DWP": "Interactive Live 2D Wallpaper",
-        "detailsL2DWP": "I am committed to continuously learning and honing my skills in my spare time, as I am determined to learn as much as possible from every experience. I have worked on passion projects that have proved to be great sources of knowledge and insights on the development process on software developmentI am committed to continuously learning and honing my skills in my spare time, as I am determined to learn as much as possible from every experience. I have worked on passion projects that have proved to be great sources of knowledge and insights on the development process on software development",
+        "detailsL2DWP1": "Interactable Live2D wallpaper made in Unity, which can contain various Live2D characters to interact with.",
+        "detailsL2DWP2": "The game functions as a wallpaper that allow users to interact with these characters by clicking on them, triggering various emotions and voice lines. While primarily designed for use as an Android wallpaper, it is also compatible with desktops and WebGL platforms. Additionally, the Android version supports plugins that enable the utilization of native Android functions.",
+        "detailsL2DWP3": "All footage included on this page was taken from the desktop build.",
 
-        "titlePCVR": "PCVR (Project Coop Virtual Reality)",
+        "titlePCVR": "Project Coop Virtual Reality",
+        "miniSummaryPCVR": "VR Coop Game",
         "summaryPCVR": "Asymmetrical VR Coop Game",
-        "detailsPCVR": "blah blah blah"
+        "detailsPCVR1": "An asymmetrical VR coop platformer made in Unity, where the VR player is in charge of hand actions and the PC player is in charge of platforming.",
+        "detailsPCVR2": "The game features both local and online game modes. The latter of which is designed with a server-authoritative architecture using standard industry practices and features, such as client-side prediction for VR hand movement and projectile lag compensation, along with relay and lobbies for easy matchmaking.",
+        "detailsPCVR3": "All footage included on this page was taken from real online gameplay.",
+
+        "titleSlashPCVR": "Transcend realities regardless of your physical distance",
+        "descSlashPCVR": "PCVR can be played locally or online, giving you the ability to choose to play with someone on the same machine or with someone far away over the internet.",
+        "title2DPCVR": "Coordination is the key to success",
+        "desc2DPCVR": "",
+        "titleZiplinePCVR": "Find your way across various different stages",
+        "descZiplinePCVR": "PCVR contains various stages with obstacles especially designed for PC and VR cooperation.",
+        "titleVRPovPCVR": "Different perspectives, shared body",
+        "descVRPovPCVR": "PCVR combines the ability to platform by allowing the PC player to control the movement of the character, and enabling the VR player to have full precision control over the virtual 3D space with the XR controllers.",
+
+        "titleONIGIRI": "Demon Slasher",
+        "miniSummaryONIGIRI": "Souls-like Game",
+        "summaryONIGIRI": "Unity 3D Souls-like Game",
+        "detailsONIGIRI1": "A Souls-like singleplayer game made in Unity, where the player must defeat enemies by parrying and dodging.",
+        "detailsONIGIRI2": "The game features the ability to roll and parry, which is essential to the core gameplay of the game. To be available to attack, the player must parry the incoming attack of the enemy if it’s a close-range attack, else the player must dodge the projectile if it’s a long-range attack which if dodged at the correct timing the player is rewarded.",
+        "detailsONIGIRI3": "All footage included on this page was taken from real gameplay.",
+
+        "titleBossONIGIRI": "Defeat the almighty Gashadokuro",
+        "descBossONIGIRI": "",
+        "titleBossEntranceONIGIRI": "Explore a fantasy environment with various eye-catching features",
+        "descBossEntranceONIGIRI": "ONIGIRI’s world is crafted with the utmost details as possible to display a proper fantasy world.",
+        "titleBossParryONIGIRI": "Let nothing stand in your way",
+        "descBossParryONIGIRI": "ONIGIRI combat mechanics revolve around executing precise parries of the enemy's attacks within a specific frame window to counter-hit the opponent to inflict damage.",
+        "titleMageONIGIRI": "Dodge your way out of trouble",
+        "descMageONIGIRI": "",
+        "titleUnblockableONIGIRI": "Waiting is the demon’s trump card",
+        "descUnblockableONIGIRI": "ONIGIRI contains enemies with distinct attack patterns, necessitating a thoughtful and calculated approach from the player to overcome the obstacles.",
+
+        "titleBURROUGHS": "BURROUGHS",
+        "miniSummaryBURROUGHS": "WebRTC Player",
+        "SummaryBURROUGHS": "Unity 3D Game",
+        "detailsBURROUGHS1": "b1lah blah blah",
+        "detailsBURROUGHS2": "blah blah blah",
+        "detailsBURROUGHS3": "blah blah blah",
+
+
+        "titleNEKOMATA": "Rewinder Cat",
+        "miniSummaryNEKOMATA": "BulletHell Game",
+        "summaryNEKOMATA": "Bullet Hell Game",
+        "detailsNEKOMATA1": "A boss rush bullet hell made in Unreal Engine 5, where the player must destroy enemies by shooting projectiles while also dodging the projectiles of the enemies.",
+        "detailsNEKOMATA2": "The game focuses on a rewind ability that enables the player to dodge projectiles that are normally not avoidable. However, activating the rewind will affect the player with a consequence depending on the type of cheese the enemy boss contains.",
+        "detailsNEKOMATA3": "All footage included on this page was taken from real gameplay.",
+
+        
+        "titlePORTFOLIO": "PORTFOLIO",
+        "miniSummaryPORTFOLIO": "React Website",
+        "summaryPORTFOLIO": "React Website",
+        "detailsPORTFOLIO1": "A website made entirely on React using Typescript and Tailwind CSS, displays all the projects that I worked on and that are ready to show.",
+        "detailsPORTFOLIO2": "Using UI theory, I made sure the UI elements are neatly placed and convey as much needed information as possible with little to no interruptions.",
+        "detailsPORTFOLIO3": "Thank you for taking the time to visit my portfolio. Your interest in my work and the opportunity to showcase my skills and projects is very much appreciated.",
+
+        "demoAvailable": "Try Demo",
+        "demoError": "No Demo Available",
+
+        "error": "The page you are looking for does not seem to exist. Please check the URL or navigate to the homepage."
+        
     },
 
     "es": {
@@ -48,7 +127,7 @@
         "english": "Inglés",
         "japanese": "Japonés",
 
-        "aboutHeader": "Sobre mí -Patch",
+        "aboutHeader": "Sobre mí",
 
 
         "titleBGM": "BGM-App (Aplicación de Música)",
@@ -67,15 +146,11 @@
         "introName": "僕のフルネームは",
         "introPenname": " ",
 
-        "aboutHeader": "僕のこと -パッチ",
-        "aboutIntro1": "ヾ(≧∇≦*)ゝ　ハローアンドようこそいらっしゃいました僕のポートフォリオへ。僕のフルネームはSebastian(セバスチャン) Rodriguez(ロドリゲス) Medina(メディナ)ですが、Patch(パッチ)と呼んでいただいてもいいです。現在、僕は母校であるプエルトリコ・バヤモン大学の4年生で、コンピュータサイエンスの経験を積んでいます。また、高校生時代にも勉強をしており、合わせて約",
-        "aboutIntro2": "年ほどの経験があります。<(￣︶￣)>",
-        "aboutCenter": "",
-        "aboutEnd": "自由にプロジェクトをご確認いただければ、そのプロジェクトのアイデアが見えてきたり、プロジェクトの出来るごともわかるかもしれません。もしコンタクトをご希望でしたら、",
-        "aboutHyperlink": "ここ",
-        "aboutPoint": "に出来ます。お読みいただき、ありがとうございました！＼（＾∀＾）メ（＾∀＾）ノ",
-
-
+        "aboutHeader": "僕のこと",
+        "aboutIntro": "",
+        "aboutExp1": "",
+        "aboutExp2": "",
+        "aboutEnd": "",
 
 
         "resume": "履歴書",

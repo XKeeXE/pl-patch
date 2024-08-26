@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useParams } from 'react-router-dom';
 import { link, slide, TranslatedText } from '../Types/types';
-import { Button, Card, CardBody, CardFooter, CardHeader, Image, Link, Spinner, Textarea } from '@nextui-org/react';
 import ErrorView from './ErrorView';
 
 import 'swiper/css';
@@ -13,48 +12,52 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 import { Pagination, Mousewheel, EffectCoverflow, Navigation } from 'swiper/modules';
 import UINavbar from './UINavbar';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import LinksCard from './LinksCard';
+import UIButton from './UIButton';
+import ProjectDemoView from './ProjectDemoView';
 
-const ProjectView = (props: {darkMode: boolean, language: string, showMenuDropdown: boolean, showProjectDropdown: boolean, setLanguage: React.Dispatch<React.SetStateAction<string>>, 
-    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>, setShowMenuDropdown: React.Dispatch<React.SetStateAction<boolean>>, 
-    setShowProjectDropdown: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[]}) => {
-    const { darkMode, language, showMenuDropdown, showProjectDropdown, setDarkMode, setLanguage, setShowMenuDropdown, setShowProjectDropdown, getTranslatedText, slides } = props;
-    const videoRef = useRef<any>(null);
+const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[]}) => {
+    const { setIsHomePage, getTranslatedText, slides } = props;
 
     const { projectName } = useParams();
-    const project = slides.find(project => project.name === projectName);
-
-    function DemoComponent(currentProject: slide): JSX.Element {
-        if (currentProject.demoComponent !== undefined) {
-            return currentProject.demoComponent;
-        }
-        return <p>NoDemo</p>
-    }
-
-    const projectLinks: link[] = [
-        {text: 'Download', url: '', icon: <QuestionMarkIcon/>},
-        {text: 'GitHub', url: project?.sourceCode as string, icon: <QuestionMarkIcon/>}
-    ];
+    const project = useMemo(() => {
+        return slides.find(project => project.name === projectName);
+    }, [projectName])
 
     useEffect(() => {
-        videoRef.current.src = process.env.PUBLIC_URL + '/' + project?.video;
-    }, [projectName])
+        setIsHomePage(false);
+    }, [])
+
+    const projectLinks: link[] = [
+        {text: 'Download', url: project?.downloadLink as string, icon: <QuestionMarkIcon/>},
+        {text: 'Source Code', url: project?.sourceCode as string, icon: <QuestionMarkIcon/>}
+    ];
+
+    const Header = (props: any) => {
+        const { headerText } = props;
+        return <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${project?.gradient}`}>{headerText}</span>
+    }
+
+    const Slide = (props: any) => {
+        const { children } = props;
+        return (
+            <div className='flex flex-col gap-4 justify-center items-center h-full'>
+                { children }
+            </div>
+        )
+    }
 
     const ViewPage = (): JSX.Element => {
         if (project === undefined) { 
-            return <ErrorView/>
+            return <ErrorView setIsHomePage={setIsHomePage} getTranslatedText={getTranslatedText}/>
         }
         return (
-            <>
-            <UINavbar darkMode={darkMode} language={language} showMenuDropdown={showMenuDropdown} showProjectDropdown={showProjectDropdown} 
-            setDarkMode={setDarkMode} setLanguage={setLanguage} setShowMenuDropdown={setShowMenuDropdown} setShowProjectDropdown={setShowProjectDropdown} 
-            getTranslatedText={getTranslatedText} slides={slides}/>
             <Swiper
             className='max-h-[95.5vh]'
-            onClick={() => {setShowMenuDropdown(false); setShowProjectDropdown(false)}}
             modules={[Mousewheel, Pagination]}
             direction='vertical'
+            spaceBetween={10}
             mousewheel={true}
             pagination={{
                 clickable: true,
@@ -62,67 +65,69 @@ const ProjectView = (props: {darkMode: boolean, language: string, showMenuDropdo
             }}
             >
                 <SwiperSlide>
-                    <p>{project.name}</p>
+                    <Slide>
+                        <div className='flex flex-col items-center'>
+                        <Header headerText={project.name}/>
+                            <span className={`text-sm md:text-lg font-text bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{getTranslatedText(`title${project.name}`)}</span>
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <span>{getTranslatedText(`details${project.name}1`)}</span>
+                            <span>{getTranslatedText(`details${project.name}2`)}</span>
+                        </div>
+                    </Slide>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className='flex justify-center'>
-                        {/* {DemoComponent(project)} */}
-                        <p>Demo</p>
+                    <Slide>
+                        <Header headerText={getTranslatedText('demoHeader')}/>
+                        <ProjectDemoView getTranslatedText={getTranslatedText} project={project}/>
+                    </Slide>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <Slide>
+                        <Header headerText={getTranslatedText('videoHeader')}/>
+                        <video tabIndex={-1} controls className='md:w-[80vw] xl:w-[50vw] rounded-lg' src={`${process.env.PUBLIC_URL}/${project?.video}`}><source type="video/mp4"/></video>
+                    </Slide>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <div className=' flex flex-col h-full'>
+                        <Swiper
+                            className=' '
+                            loop
+                            grabCursor
+                            slidesPerView={1}
+                            coverflowEffect={{
+                                rotate: 90,
+                                depth: 0,
+                                modifier: 1,
+                            }}
+                            navigation={true}
+                            modules={[EffectCoverflow, Navigation]}
+                        >
+                            {project.images.map(image => (
+                                <SwiperSlide key={image.title}>
+                                    <Slide>
+                                        <img
+                                        className="object-cover w-[80vw] lg:w-[70vw] xl:w-[40vw] rounded-lg" 
+                                        alt={image.title}
+                                        src={`${process.env.PUBLIC_URL}/${image.url}`}
+                                        />
+                                        <span className={`font-title text-sm sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center lg:w-[80vw] xl:w-[40vw] bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{getTranslatedText(`title${image.title + project.name}`).toUpperCase()}</span>
+                                        <span className='border-2 w-[90vw] text-sm md:text-base lg:text-lg min-h-[10%] rounded-lg p-2 bg-[#E7E6E6] dark:bg-[#181919] md:w-[90vw] lg:w-[70vw] xl:w-[40vw]' style={{borderColor: project.color}}>{getTranslatedText(`desc${image.title + project.name}`)}</span>
+                                    </Slide>
+                                </SwiperSlide>
+                            ))}
+
+                        </Swiper>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <video controls ref={videoRef}><source type="video/mp4"/></video>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <Swiper
-                        className='max-w-[80vw] '
-                        // effect={'coverflow'}
-                        loop
-                        grabCursor
-                        slidesPerView={1}
-                        coverflowEffect={{
-                            rotate: 90,
-                            // stretch: -500,
-                            depth: 0,
-                            modifier: 1,
-                            // slideShadows: true,
-                        }}
-                        navigation={true}
-                        modules={[EffectCoverflow, Navigation]}
-                    >
-                        {project.images.map(image => (
-                            <SwiperSlide>
-                                <Card className='pt-10 bg-transparent' shadow='none'>
-                                    <div className='flex justify-center'>
-                                        <Image
-                                        className="object-cover max-w-[45vw] self-center" 
-                                        // shadow="sm"
-                                        radius="lg"
-                                        alt={image.title}
-                                        src={process.env.PUBLIC_URL + '/' + image.url}
-                                        />
-                                    </div>
-                                    <CardFooter className=''>
-                                        <div className='flex flex-col items-center  w-full'>
-                                            <p>{getTranslatedText('title' + image.title + project.name)}</p>
-                                            <Textarea className='w-[50%]' isReadOnly value={getTranslatedText('desc' + image.title + project.name)}/>
-                                        </div>
-                                    </CardFooter>
-                                </Card>
-                            </SwiperSlide>
-                        ))}
-
-                    </Swiper>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <LinksCard headerText={"Links"} linkItems={projectLinks}/>
+                    <LinksCard headerText={getTranslatedText('linksHeader')} linkItems={projectLinks} color={project.color} gradient={project.gradient}/>
                 </SwiperSlide>
             </Swiper>
-            </>
         )
     }
 

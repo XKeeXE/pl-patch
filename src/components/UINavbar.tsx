@@ -1,4 +1,4 @@
-import { Button, Dropdown, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, } from "@nextui-org/react";
+import { Link as linkRouter, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Navbar, NavbarContent, NavbarItem } from "@nextui-org/react";
 
 import LanguageSelect from "./LanguageSelect";
 
@@ -8,82 +8,195 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-import { RouteToLink, slide, TranslatedText } from "../Types/types";
+import { slide, TranslatedText } from "../Types/types";
 
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import UIDropdown from "./UIDropdown";
+import UnitedStatesFlag from "./svgIcons/UnitedStatesFlag";
+import PuertoRicoFlag from "./svgIcons/PuertoRicoFlag";
+import JapanFlag from "./svgIcons/JapanFlag";
 
-const UINavbar = (props: {darkMode: boolean, language: string, showMenuDropdown: boolean, showProjectDropdown: boolean, setLanguage: React.Dispatch<React.SetStateAction<string>>, 
-    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>, setShowMenuDropdown: React.Dispatch<React.SetStateAction<boolean>>, 
-    setShowProjectDropdown: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[]}) => {
-    const { darkMode, language, showMenuDropdown, showProjectDropdown, setDarkMode, setLanguage, setShowMenuDropdown, setShowProjectDropdown, getTranslatedText, slides } = props;
+const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: React.Dispatch<React.SetStateAction<string>>, 
+    getTranslatedText: TranslatedText, slides: slide[]}) => {
+    const { language, isHomePage, setLanguage, getTranslatedText, slides } = props;
 
-    const [isHomePage, setIsHomePage] = useState<boolean>(true);
-    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+    interface language {
+        key: string,
+        lang: string,
+        icon: JSX.Element,
+    }
+
+    const wrapper = useRef<HTMLDivElement>(null);
     const [hash, setHash] = useState<string>(window.location.hash);
-
-    const clickedItem = useRef<string>('');
+    const [darkMode, setDarkMode] = useState<boolean>(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const [showProjectDropdown, setShowProjectDropdown] = useState<boolean>(false);
+    const [showLangDropdown, setShowLangDropdown] = useState<boolean>(false);
+    const [showMenuDropdown, setShowMenuDropdown] = useState<boolean>(false);
 
     const hashHome = ['home', 'about'];
-    const hashProjects = slides.map(item => item.name);
-    hashProjects.push('projects', 'portofolio');
+    const hashProjects = slides.map(item => item.name); // To mark active when viewing the project cards
+    hashProjects.push('projects', 'portfolio');
     const hashContacts = ['contacts'];
 
-    // const settingsItem: JSX.Element[] = [
-            // <LanguageSelect darkMode={darkMode} language={language} setLanguage={setLanguage} getTranslatedText={getTranslatedText}/>,
-            // <Button variant="light" size="sm" isIconOnly disableAnimation onClick={() => setDarkMode(!darkMode)}>
-            //     {darkMode ? <DarkModeIcon/> : <BrightnessIcon/>}
-            // </Button>
-    //     ];
+    const languages: language[] = [
+        {
+        key: 'en',
+        lang: 'english',
+        icon: <UnitedStatesFlag/>
+        },
+        {
+        key: 'es',
+        lang: 'spanish',
+        icon: <PuertoRicoFlag/>
+        },
+        {
+        key: 'ja',
+        lang: 'japanese',
+        icon: <JapanFlag/>
+        },
+    ]
+    
+    const CheckLanguage = () => {
+        switch(language) {
+            case 'es': return <PuertoRicoFlag/>;
+            case 'en': return <UnitedStatesFlag/>;
+            case 'ja': return <JapanFlag/>;
+            default: return <UnitedStatesFlag/>;
+        };
+    }
+    
+    // const MarkActive = (items: string[]): boolean => {
+    //     return hash === '#' + items.find(item => (`#${item}`) === hash) ? true : false
+    // }
 
-    function MarkActive(items: string[]): boolean {
-        return hash === '#' + items.find(item => ('#' + item) === hash) ? true : false
+    const MarkActive = (items: string[]): boolean => {
+        if (items.find(hashes => hashes === hash.substring(1)) === undefined) { // Get #about => about
+            return false;
+        }
+        return true;
     }
     
     const NavbarStatus = (item: string): JSX.Element => {
         if (isHomePage) {
             return (
-            <a href={'#' + item} className="text-black font-text pt-[2px]" 
-                onClick={() => {
-                    setShowMenuDropdown(false); 
-                    setShowProjectDropdown(false)}}>
-                        {getTranslatedText(item)}
+            <a href={`/#${item}`} className={"font-text pt-[2px] select-none"} onClick={() => {
+                setShowMenuDropdown(false); 
+                setShowProjectDropdown(false);
+                setShowLangDropdown(false); 
+                }}>
+                    {getTranslatedText(item)}
             </a>)
         }
         return (
-            <Link to={"/#" + item} className="text-black font-text pt-[2px]" 
-                onClick={() => {
-                    setShowMenuDropdown(false); 
-                    setShowProjectDropdown(false); 
-                    clickedItem.current = item}}>
-                        {getTranslatedText(item)}
+            <Link to={`/#${item}`} className={"font-text pt-[2px] select-none"} onClick={() => {
+                setHash(`#${item}`);
+                setShowMenuDropdown(false); 
+                setShowProjectDropdown(false);
+                setShowLangDropdown(false);
+                }}>
+                    {getTranslatedText(item)}
             </Link>)
     }
 
-    useEffect(() => {
-        setIsHomePage(window.location.pathname === '/')
-    }, [])
+    const handleClickOutside = (e: any) => {
+        console.log('clicked');
+        // if (showProjectDropdown) {
+        //     setShowProjectDropdown(false);
+        // }
+        // if (wrapperRef.current && wrapperRef.current.contains(e.target)) {
+        //     console.log('clicked somewhere where no buttons exist');
+        //     // return;
+        // }
+        // if (wrapper.current && !wrapper.current.contains(e.target) || e.target.tagName !== 'BUTTON') {
+        //     console.log('clicked Outside');
+
+        // }
+
+        // if (e.target.tagName === 'BUTTON') {
+        //     console.log('clicked')
+        // }
+        // setShowMenuDropdown(false); 
+        // setShowProjectDropdown(false)
+        // console.log('tst');
+        
+    };
 
     useEffect(() => {
+        if (hashProjects.find(project => project === window.location.pathname.substring(10)) !== undefined) { // Check if undefined project path: ex. /projects/BGMAPP !== undefined
+            setHash('#projects');
+        } 
+
+        // switch(language) {
+        //     case 'es': return;
+        //     case 'en': return;
+        //     case 'ja': return;
+        //     default: setLanguage('en');
+        // }
+
         const handleHashChange = () => {
             setHash(window.location.hash);
         };
-    
+
         window.addEventListener('hashchange', handleHashChange);
-    
+        document.addEventListener('click', handleClickOutside);
         return () => {
-          window.removeEventListener('hashchange', handleHashChange);
+            window.removeEventListener('hashchange', handleHashChange);
+            document.removeEventListener('click', handleClickOutside);
         };
-    }, [hash]);
+    }, []);
+
+    useEffect(() => {
+        document.documentElement.className = darkMode ? 'dark' : 'light';
+    }, [darkMode])
+
+    useEffect(() => {
+        setShowMenuDropdown(false); 
+        setShowProjectDropdown(false);
+        setShowLangDropdown(false);
+    }, [hash])
+
+    const UIDropdown = (props: any) => {
+        const { children, showDropdown, setShowDropdown, activeIcon, mainIcon } = props;
+    
+        return (
+            <div className="relative">
+                <button onClick={() => setShowDropdown(!showDropdown)}>
+                    {showDropdown ? activeIcon : mainIcon}
+                </button>
+                {showDropdown && (
+                    <div ref={wrapper} className={"absolute flex flex-col left-0 top-[32px] rounded-lg border-2 bg-[#ffffff] border-[#f0f0f0] dark:bg-[#000000] dark:border-[#0f0f0f]"}>
+                        { children }
+                    </div>
+                )}
+            </div>
+        )
+    }
+
+    // const settingsItem = [
+    //     <button className={"rounded-lg p-1 hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => setDarkMode(!darkMode)}>
+    //         {darkMode ? <DarkModeIcon htmlColor={darkMode ? "white" : "black"}/> : <BrightnessIcon htmlColor={darkMode ? "white" : "black"}/>}
+    //     </button>
+    //     <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={CheckLanguage()} activeIcon={CheckLanguage()}>
+    //         {languages.map(language => (
+    //             <button className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
+    //                 setShowLangDropdown(false); 
+    //                 setLanguage(language.key);
+    //                 }}>
+    //                 <div className={"flex flex-row p-[2px] gap-1 font-text " + (language.key === 'ja' ? ' w-[130px] ' : '') }>
+    //                     {language.icon}
+    //                     <span>{getTranslatedText(language.lang)}</span>
+    //                 </div>
+    //             </button>
+    //         ))}
+    //     </UIDropdown>
+    //     // <LanguageSelect darkMode={darkMode} language={language} setLanguage={setLanguage} getTranslatedText={getTranslatedText}/>,
+    // ];
 
     return (
         <Navbar // Displays buttons 
         isBordered
         height={2}
         position="sticky"
-        isMenuOpen={isMenuOpen}
-        onMenuOpenChange={setIsMenuOpen}
         isBlurred={false}
         classNames={{
             item: [
@@ -96,46 +209,50 @@ const UINavbar = (props: {darkMode: boolean, language: string, showMenuDropdown:
                 // "data-[active=true]:after:rounded-[2px]",
                 // "data-[active=true]:after:bg-primary",
             ]
-            // base: ' border-b-2  ' + (darkMode ? 'bg-[#181818ee] border-gray-200' : ' bg-[#F689A81c]'),
         }}
         >
-            <NavbarContent className="" justify="start">
-                <UIDropdown darkMode={darkMode} showDropdown={showMenuDropdown} setShowDropdown={setShowMenuDropdown} mainIcon={<MenuIcon/>} activeIcon={<MenuIcon/>}>
-                    <ul>
-                        <li>
-                        <Button variant="light" size="sm" isIconOnly disableAnimation onClick={() => setDarkMode(!darkMode)}>
-                            {darkMode ? <DarkModeIcon/> : <BrightnessIcon/>}
-                        </Button>
-                        </li>
-                        <li>
-                            <LanguageSelect darkMode={darkMode} language={language} setLanguage={setLanguage} getTranslatedText={getTranslatedText}/>
-                        </li>
-                    </ul>
+            <NavbarContent justify="start">
+                <UIDropdown showDropdown={showMenuDropdown} setShowDropdown={setShowMenuDropdown} mainIcon={<MenuIcon/>} activeIcon={<MenuIcon/>}>
+                    <button className={"rounded-lg p-1 hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => setDarkMode(!darkMode)}>
+                        {darkMode ? <DarkModeIcon htmlColor={darkMode ? "white" : "black"}/> : <BrightnessIcon htmlColor={darkMode ? "white" : "black"}/>}
+                    </button>
+                    {/* <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={CheckLanguage()} activeIcon={CheckLanguage()}>
+                        {languages.map(language => (
+                            <button className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
+                                setShowLangDropdown(false); 
+                                setLanguage(language.key);
+                                }}>
+                                <div className={"flex flex-row p-[2px] gap-1 font-text " + (language.key === 'ja' ? ' w-[130px] ' : '') }>
+                                    {language.icon}
+                                    <span>{getTranslatedText(language.lang)}</span>
+                                </div>
+                            </button>
+                        ))}
+                    </UIDropdown> */}
                 </UIDropdown>
                 <NavbarItem isActive={MarkActive(hashHome)}>
                     {NavbarStatus('home')}
                 </NavbarItem>
             </NavbarContent>
 
-            <NavbarContent 
-            justify="center">
+            <NavbarContent justify="center">
                 <NavbarItem className="flex flex-row gap-1" isActive={MarkActive(hashProjects)}>
                     {NavbarStatus('projects')}
-                    <UIDropdown darkMode={darkMode} showDropdown={showProjectDropdown} setShowDropdown={setShowProjectDropdown} mainIcon={<ArrowDropDownIcon/>} activeIcon={<ArrowDropUpIcon/>}>
-                        <ul>
-                            {slides.map(project => (
-                                <li>
-                                    <Link to={"/projects/" + project.name} >
-                                        <button className="w-full p-1 rounded-lg hover:bg-[#353535a2] " onClick={() => {setShowMenuDropdown(false); setShowProjectDropdown(false);}}>
-                                            <div className="flex flex-row p-[2px] gap-1 text-white">
-                                                {project.icon}
-                                                {project.name}
-                                            </div>
-                                        </button>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
+                    <UIDropdown showDropdown={showProjectDropdown} setShowDropdown={setShowProjectDropdown} mainIcon={<ArrowDropDownIcon/>} activeIcon={<ArrowDropUpIcon/>}>
+                        {slides.map(project => (
+                            <Link key={project.name} to={`/projects/${project.name}`}>
+                                <button className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
+                                    setHash(`#${project.name}`);
+                                    setShowMenuDropdown(false);
+                                    setShowProjectDropdown(false);
+                                    }}>
+                                    <div className={"flex flex-row p-[2px] gap-1 font-title " }>
+                                        {project.icon}
+                                        <span className={`bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{project.name}</span>
+                                    </div>
+                                </button>
+                            </Link>
+                        ))}
                     </UIDropdown>
                 </NavbarItem>
             </NavbarContent>
