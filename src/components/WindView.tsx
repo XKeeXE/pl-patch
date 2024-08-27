@@ -24,7 +24,7 @@ const WindView = (props: {language: string, setIsHomePage: React.Dispatch<React.
     const gradient = ' bg-clip-text text-transparent bg-gradient-to-br from-[#0089fe] from-0% to-[#15c31e] to-100%'
 
     const contactsItems: link[] = [
-        {text: getTranslatedText('resume'), url: '/Resume Patch.pdf', icon: <ContactPageIcon />},
+        {text: getTranslatedText('resume'), url: '/ResumePatch.pdf', icon: <ContactPageIcon />},
         {text: getTranslatedText('email'), url: 'mailto:patch.rodriguez.medina@gmail.com', icon: <EmailIcon />},
         {text: 'LinkedIn', url: 'https://www.linkedin.com/in/lnpatchrodriguezmedina/', icon: <LinkedInIcon/>},
         {text: 'GitHub', url: 'https://github.com/XKeeXE', icon: <GitHubIcon/>},

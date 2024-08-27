@@ -18,7 +18,7 @@ import UIButton from './UIButton';
 import ProjectDemoView from './ProjectDemoView';
 import { Card, CardBody, CardHeader } from '@nextui-org/react';
 
-const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[], currentColor: any}) => {
+const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[], currentColor: React.MutableRefObject<string>}) => {
     const { setIsHomePage, getTranslatedText, slides, currentColor } = props;
 
     const OnProjectEnter = new CustomEvent('OnProjectEnter', {});
@@ -89,18 +89,6 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
                         </Card>
                     </div>
                 </SwiperSlide>
-                {/* <SwiperSlide>
-                    <Slide>
-                        <div className='flex flex-col items-center'>
-                        <Header headerText={project.name}/>
-                            <span className={`text-sm md:text-lg font-text bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{getTranslatedText(`title${project.name}`)}</span>
-                        </div>
-                        <div className='flex flex-col gap-2'>
-                            <span>{getTranslatedText(`details${project.name}1`)}</span>
-                            <span>{getTranslatedText(`details${project.name}2`)}</span>
-                        </div>
-                    </Slide>
-                </SwiperSlide> */}
 
                 {/* <SwiperSlide>
                     <Slide>

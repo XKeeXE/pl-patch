@@ -17,7 +17,7 @@ import PuertoRicoFlag from "./svgIcons/PuertoRicoFlag";
 import JapanFlag from "./svgIcons/JapanFlag";
 
 const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: React.Dispatch<React.SetStateAction<string>>, 
-    getTranslatedText: TranslatedText, slides: slide[], currentColor: any}) => {
+    getTranslatedText: TranslatedText, slides: slide[], currentColor: React.MutableRefObject<string>}) => {
     const { language, isHomePage, setLanguage, getTranslatedText, slides, currentColor } = props;
 
     interface language {
@@ -64,10 +64,6 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
             default: return <UnitedStatesFlag/>;
         };
     }
-    
-    // const MarkActive = (items: string[]): boolean => {
-    //     return hash === '#' + items.find(item => (`#${item}`) === hash) ? true : false
-    // }
 
     const MarkActive = (items: string[]): boolean => {
         if (items.find(hashes => hashes === hash.substring(1)) === undefined) { // Get #about => about

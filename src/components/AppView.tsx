@@ -85,10 +85,6 @@ const AppView = () => {
             title: 'CharacterUI',
         },
         {
-            url: 'Imgs/L2DWP/NextCharacterIdle.png',
-            title: 'NextCharacterIdle',
-        },
-        {
             url: 'Imgs/L2DWP/NextCharacterTalk.png',
             title: 'NextCharacterTalk',
         },

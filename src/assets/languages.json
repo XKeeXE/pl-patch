@@ -68,6 +68,15 @@
         "extraDetailsL2DWP3": "While the primary focus of the Interactable Live2D Wallpaper is to serve as a lively backdrop for Android devices, it is also designed to be compatible with desktop environments and WebGL platforms. This cross-platform functionality ensures that users can enjoy the interactive wallpaper on a variety of devices, maintaining a consistent experience regardless of the platform.",
         "extraDetailsL2DWP4": " ",
 
+        "titleCharacterIdleL2DWP": "Don’t ever feel alone",
+        "descCharacterIdleL2DWP": "Can be integrated as an Android wallpaper that can be used as a customized live wallpaper.",
+        "titleCharacterTalkL2DWP": "Interaction is key",
+        "descCharacterTalkL2DWP": "Interacting with the Live2D character will activate various interactions such as movement and voice lines.",
+        "titleCharacterUIL2DWP": "Minimalist UI functionality",
+        "descCharacterUIL2DWP": "L2DWP contains UI functionality that can be configured to interact with the android classes using Android Studio in Unity.",
+        "titleNextCharacterTalkL2DWP": "Personalize your experience",
+        "descNextCharacterTalkL2DWP": "With the L2DWP any character that supports Live2D can be inserted into the wallpaper.",
+
         "titlePCVR": "Project Coop Virtual Reality",
         "miniSummaryPCVR": "VR Coop Game",
         "summaryPCVR": "Asymmetrical VR Coop Game",
@@ -143,9 +152,9 @@
         "titlePORTFOLIO": "PORTFOLIO",
         "miniSummaryPORTFOLIO": "React Website",
         "summaryPORTFOLIO": "React Website",
-        "detailsPORTFOLIO1": "A website made entirely on React using Typescript and Tailwind CSS, displays various projects that I worked on and that I believe are ready to be shown.",
-        "detailsPORTFOLIO2": "Using UI theory, I made sure the UI elements are neatly placed and convey as much needed information as possible with little to no interruptions.",
-        "detailsPORTFOLIO3": "Thank you for taking the time to visit my portfolio. Your interest in my work and the opportunity to showcase my skills and projects is very much appreciated.",
+        "detailsPORTFOLIO1": "Portfolio website created entirely using React, Typescript, and Tailwind CSS. The site serves as a showcase of various projects that I have passionately developed, presenting a significant milestone in my journey as a developer. I selected these projects to highlight my skills and creativity, ensuring that they are polished and ready for presentation.",
+        "detailsPORTFOLIO2": "Using the principles of UI theory, every UI elements is thoughtfully placed to ensure the most minimum information required to be understandable and a layout that not only is pleasing but also enhances usability. No spectrum leaves untouched as the core of the portfolio are the projects, which every project specifically highlights their functionality, design, and objective. ",
+        "detailsPORTFOLIO3": "Thank you very much for taking the time to explore my portfolio. Your interest in my work means a great deal to me, as I am excited to share my skills and projects.",
 
         "demoAvailable": "Try Demo",
         "demoError": "No Demo Available",

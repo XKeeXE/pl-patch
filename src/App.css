@@ -13,7 +13,7 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-    color: var(--swiper-button-color, #0de22a) !important;
+    color: var(--swiper-button-color, #ffffff) !important;
     /* height: '200px' !important; */
     /* color: red !important; */
     /* padding: 100px !important;
