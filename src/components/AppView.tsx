@@ -143,7 +143,7 @@ const AppView = () => {
             title: 'BossFight',
         },
         {
-            url: 'Imgs/NEKOMATA/MinionFIght.png',
+            url: 'Imgs/NEKOMATA/MinionFight.png',
             title: 'MinionFight',
         },
         {
