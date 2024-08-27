@@ -25,6 +25,8 @@ const AppView = () => {
     const navigate = useNavigate();
 
     const currentColor = useRef<string>('');
+    const slideChanged = useRef<boolean>(false);
+
 
     function getTranslatedText(key: string): string {
         const languageTranslations: LanguageTranslations | undefined = data[language];
@@ -41,16 +43,29 @@ const AppView = () => {
         
     // }
 
+    // Only activate once when first entering
     useEffect(() => {
+        // console.log("everywhere")
         const OnProjectEnter = (e: any) => {
             document.documentElement.style.setProperty('--swiper-button-color', currentColor.current);
             document.documentElement.style.setProperty('--swiper-pagination-color', currentColor.current);
         }
 
+        const OnKeyDown = (e: any) => {
+            console.log('Key pressed:', e.key);
+            if (slideChanged.current) {
+
+            }
+            // You can add your logic here based on the key pressed
+          };
+
         window.addEventListener('OnProjectEnter', OnProjectEnter);
+        window.addEventListener("keydown", OnKeyDown);
 
         return () => {
             window.removeEventListener('OnProjectEnter', OnProjectEnter);
+            window.removeEventListener('OnKeyDown', OnKeyDown);
+
             };
     }, []);
 

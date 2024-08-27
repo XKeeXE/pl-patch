@@ -28,7 +28,9 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
         return slides.find(project => project.name === projectName);
     }, [projectName])
 
+    // Activates only when starting in the project and when moving from home --> projects (If switching from project to another project will not activate)
     useEffect(() => {
+        // console.log("Im on project view");
         setIsHomePage(false);
     }, [])
 

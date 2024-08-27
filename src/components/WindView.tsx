@@ -31,7 +31,9 @@ const WindView = (props: {language: string, setIsHomePage: React.Dispatch<React.
         {text: 'Source Code', url: 'https://github.com/XKeeXE/pl-patch', icon: <GitHubIcon/>}
     ];
 
+    // Activate only when starting in the homepage and when moving from projects --> home
     useEffect(() => {
+        // console.log("home")
         setIsHomePage(true);
         const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.style.setProperty('--swiper-pagination-color', darkMode ? "#f0f0f0" : "#0f0f0f");
