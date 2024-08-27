@@ -15,6 +15,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinksCard from './LinksCard';
 import ProjectList from './ProjectList';
 import { useEffect } from 'react';
+import CustomSwiper from './CustomSwiper';
 
 const WindView = (props: {language: string, setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[]}) => {
     const { language, setIsHomePage, getTranslatedText, slides } = props;
@@ -200,22 +201,20 @@ const WindView = (props: {language: string, setIsHomePage: React.Dispatch<React.
     //     }}
     //     />
     //   );
+    const swiperProps = {
+        spaceBetween: 50,
+        hashNavigation: {
+            watchState: true,
+        }
+    }
 
     return (
-        <Swiper
-            className='max-h-[92.8vh] lg:max-h-[94vh] xl:max-h-[95.5vh] '
-            modules={[Mousewheel, HashNavigation, Pagination]}
-            direction='vertical'
-            spaceBetween={50}
-            hashNavigation={{
-                watchState: true,
-            }}
-            mousewheel={true}
-            pagination={{
-                clickable: true,
-                dynamicBullets: true,
-            }}
-            >
+        <CustomSwiper className={'max-h-[92.8vh] lg:max-h-[94vh] xl:max-h-[95.5vh]'} swiperProps={{
+            spaceBetween: 50,
+            hashNavigation: {
+                watchState:true
+            },
+        }}>
             <SwiperSlide data-hash="home">
                 <Home/>
             </SwiperSlide>
@@ -253,7 +252,7 @@ const WindView = (props: {language: string, setIsHomePage: React.Dispatch<React.
             <SwiperSlide data-hash="contacts">
                 <LinksCard headerText={getTranslatedText('contacts')} color={` border-[#f0f0f0] dark:border-[#0f0f0f] `} gradient={undefined} linkItems={contactsItems}/>
             </SwiperSlide>
-        </Swiper>
+        </CustomSwiper>
     );
 }
 

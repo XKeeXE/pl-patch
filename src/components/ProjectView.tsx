@@ -17,6 +17,7 @@ import LinksCard from './LinksCard';
 import UIButton from './UIButton';
 import ProjectDemoView from './ProjectDemoView';
 import { Card, CardBody, CardHeader } from '@nextui-org/react';
+import CustomSwiper from './CustomSwiper';
 
 const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[], currentColor: React.MutableRefObject<string>}) => {
     const { setIsHomePage, getTranslatedText, slides, currentColor } = props;
@@ -60,17 +61,9 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
         currentColor.current = project?.color;
         window.dispatchEvent(OnProjectEnter);
         return (
-            <Swiper
-            className='max-h-[95.5vh]'
-            modules={[Mousewheel, Pagination]}
-            direction='vertical'
-            spaceBetween={10}
-            mousewheel={true}
-            pagination={{
-                clickable: true,
-                dynamicBullets: true,
-            }}
-            >
+            <CustomSwiper className={'max-h-[95.5vh]'} swiperProps={{
+                spaceBetween: 10,
+            }}>
                 <SwiperSlide>
                     <div className='flex justify-center h-full'>
                         <Card className="self-center sm:w-[100vw] md:w-[80vw] lg:w-[60vw] xl:w-[35vw] bg-[#f0f0f0] dark:bg-[#181919]/40" shadow="none" style={{
@@ -142,7 +135,8 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
                 <SwiperSlide>
                     <LinksCard headerText={getTranslatedText('linksHeader')} linkItems={projectLinks} color={project.color} gradient={project.gradient}/>
                 </SwiperSlide>
-            </Swiper>
+            </CustomSwiper>
+            
         )
     }
 
