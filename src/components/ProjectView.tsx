@@ -12,12 +12,13 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 import { Pagination, Mousewheel, EffectCoverflow, Navigation } from 'swiper/modules';
 import UINavbar from './UINavbar';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { memo, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import LinksCard from './LinksCard';
 import UIButton from './UIButton';
 import ProjectDemoView from './ProjectDemoView';
 import { Card, CardBody, CardHeader } from '@nextui-org/react';
 import CustomSwiper from './CustomSwiper';
+import React from 'react';
 
 const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[], currentColor: React.MutableRefObject<string>}) => {
     const { setIsHomePage, getTranslatedText, slides, currentColor } = props;
@@ -40,12 +41,12 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
         {text: 'Source Code', url: project?.sourceCode as string, icon: <QuestionMarkIcon/>}
     ];
 
-    const Header = (props: any) => {
+    const Header = (props: {headerText: string}) => {
         const { headerText } = props;
         return <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${project?.gradient}`}>{headerText}</span>
     }
 
-    const Slide = (props: any) => {
+    const Slide = (props: {children: ReactNode}) => {
         const { children } = props;
         return (
             <div className='flex flex-col gap-4 justify-center items-center h-full'>
@@ -53,6 +54,16 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
             </div>
         )
     }
+
+    const Video = memo(function Video(props: {projectVideo: string}) {
+        const { projectVideo } = props;
+        console.log('video rerendered');
+        return (
+            <video tabIndex={-1} controls className='md:w-[80vw] xl:w-[50vw] rounded-lg' src={`${process.env.PUBLIC_URL}/${projectVideo}`}><source type="video/mp4"/></video>
+            // <video tabIndex={-1} controls className='md:w-[80vw] xl:w-[50vw] rounded-lg' src={``}><source type="video/mp4"/></video>
+
+        );
+    });
 
     const ViewPage = (): JSX.Element => {
         if (project === undefined) { 
@@ -62,6 +73,7 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
         window.dispatchEvent(OnProjectEnter);
         return (
             <CustomSwiper className={'max-h-[95.5vh]'} swiperProps={{
+                modules: [Mousewheel, Pagination],
                 spaceBetween: 10,
             }}>
                 <SwiperSlide>
@@ -95,7 +107,7 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
                 <SwiperSlide>
                     <Slide>
                         <Header headerText={getTranslatedText('videoHeader')}/>
-                        <video tabIndex={-1} controls className='md:w-[80vw] xl:w-[50vw] rounded-lg' src={`${process.env.PUBLIC_URL}/${project?.video}`}><source type="video/mp4"/></video>
+                        <Video projectVideo={project.video}/>
                     </Slide>
                 </SwiperSlide>
 

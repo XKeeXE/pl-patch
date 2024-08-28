@@ -1,74 +1,10 @@
-import { useEffect, useRef } from 'react';
-import { Mousewheel, Pagination } from 'swiper/modules';
-import { Swiper } from 'swiper/react';
+import { ReactNode, useEffect} from 'react';
+import { Swiper, SwiperProps, useSwiper } from 'swiper/react';
 
-const CustomSwiper = (props: {children: any; className: any,swiperProps: any}) => {
+const CustomSwiper = (props: {children: ReactNode; className: string, swiperProps: React.PropsWithChildren<SwiperProps>}) => {
     const {children, className, swiperProps} = props;
-
-    const slideChanging = useRef<boolean>(false);
-
-    useEffect(() => {
-        const validKeys: string[] = ['w', 's', 'ArrowUp', 'ArrowDown'];
-       
-        const OnKeyDown = (e: KeyboardEvent) => {
-            // console.log('Key pressed:', e.key);
-            if (!validKeys.includes(e.key)) {
-                return;
-            }
-            if (slideChanging.current) {
-                return;
-            }
-            slideChanging.current = true;
-            console.log('test');
-            if (e.key == 'w' || e.key == 'ArrowUp') {
-                
-            } else { // The pressed key was down
-
-            }
-        };
-
-        window.addEventListener("keydown", OnKeyDown);
-
-        return () => {
-            window.removeEventListener('keydown', OnKeyDown);
-            };
-    }, [])
-
-    // home
-    // className='max-h-[92.8vh] lg:max-h-[94vh] xl:max-h-[95.5vh] '
-    //         modules={[Mousewheel, HashNavigation, Pagination]}
-    //         direction='vertical'
-    //         spaceBetween={50}
-    //         hashNavigation={{
-    //             watchState: true,
-    //         }}
-    //         mousewheel={true}
-    //         pagination={{
-    //             clickable: true,
-    //             dynamicBullets: true,
-    //         }}
-
-    // Project
-    // className='max-h-[95.5vh]'
-    //         modules={[Mousewheel, Pagination]}
-    //         direction='vertical'
-    //         spaceBetween={10}
-    //         mousewheel={true}
-    //         pagination={{
-    //             clickable: true,
-    //             dynamicBullets: true,
-    //         }}
-    //         >
     return (
         <Swiper className={className} {...swiperProps}
-            onSlideChange={(e: any) => {
-                
-            }}
-            onSlideChangeTransitionEnd={(e: any) => {
-                // console.log('ended');
-                slideChanging.current = false;
-            }}
-            modules={[Mousewheel, Pagination]}
             direction='vertical'
             mousewheel={true}
             pagination={{
@@ -77,8 +13,36 @@ const CustomSwiper = (props: {children: any; className: any,swiperProps: any}) =
             }}
             >
             { children }
+            <KeyboardControl />
         </Swiper>
     );
+}
+
+const KeyboardControl = () => {
+    const swiper = useSwiper();
+
+    useEffect(() => {
+        const validKeys: string[] = ['w', 's', 'ArrowUp', 'ArrowDown'];
+    
+        const OnKeyDown = (e: KeyboardEvent) => {
+            if (!validKeys.includes(e.key)) {
+                return;
+            }
+            if (e.key == 'w' || e.key == 'ArrowUp') {
+                swiper.slidePrev();
+            } else { // Down key was pressed
+                swiper.slideNext();
+            }
+        };
+
+        window.addEventListener("keydown", OnKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', OnKeyDown);
+            };
+    }, [swiper])
+
+    return null;
 }
 
 export default CustomSwiper;

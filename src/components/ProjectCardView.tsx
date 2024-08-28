@@ -24,7 +24,6 @@ const ProjectCardView = (props: {getTranslatedText: TranslatedText, slide: boole
                 <CardHeader className="flex flex-col justify-center gap-1">
                     <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${gradient}`}>{name.toUpperCase()}</span>
                     <span className="font-text text-xs">{getTranslatedText(`summary${name}`).toUpperCase()}</span>
-                    {/* {logo && (<img className="w-[10%] md:w-[20%] border-2" src={logo} alt={`${name}'s logo`}/>)} */}
                 </CardHeader>
                 <CardBody className="flex flex-col gap-2 items-center">
                     <div className="flex flex-col gap-4 justify-start font-text text-xs md:text-sm">

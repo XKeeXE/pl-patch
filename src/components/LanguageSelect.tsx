@@ -15,21 +15,20 @@ const LanguageSelect = (props: {darkMode: boolean, language: string, setLanguage
         icon: JSX.Element,
     }
 
-    const languages: language[] = [
-        {
-        key: 'en',
-        lang: 'english',
-        icon: <UnitedStatesFlag/>
+    const languages: language[] = [{
+            key: 'en',
+            lang: 'english',
+            icon: <UnitedStatesFlag/>
         },
         {
-        key: 'es',
-        lang: 'spanish',
-        icon: <PuertoRicoFlag/>
+            key: 'es',
+            lang: 'spanish',
+            icon: <PuertoRicoFlag/>
         },
         {
-        key: 'ja',
-        lang: 'japanese',
-        icon: <JapanFlag/>
+            key: 'ja',
+            lang: 'japanese',
+            icon: <JapanFlag/>
         },
     ]
     
@@ -62,7 +61,11 @@ const LanguageSelect = (props: {darkMode: boolean, language: string, setLanguage
                 </Button>
             </DropdownTrigger>
 
-            <DropdownMenu variant="flat" aria-label="language-menu" onAction={(key) => setLanguage(key.toString())}>
+            <DropdownMenu variant="flat" aria-label="language-menu" 
+            onAction={(key) => {
+                localStorage.setItem('Language', key.toString());
+                setLanguage(key.toString());
+                }}>
                 {languages.map(language => (
                     <DropdownItem key={language.key} startContent={language.icon}>
                         {getTranslatedText(language.lang)}

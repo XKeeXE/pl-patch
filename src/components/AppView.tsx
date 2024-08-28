@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { createContext, useEffect, useRef, useState } from 'react';
 import WindView from './WindView';
 import UINavbar from './UINavbar';
 
@@ -17,6 +17,21 @@ import OnigiriIcon from './svgIcons/OnigiriIcon';
 import { NextUIProvider } from '@nextui-org/react';
 
 const data: { [key: string]: LanguageTranslations } = require('../assets/languages.json');
+
+function GetCurrentLanguage() {
+    if (localStorage.getItem('Language')) { // get saved language
+        return localStorage.getItem('Language');
+    }
+    switch(navigator.language) { // To check website usable languages
+        case 'es': return;
+        case 'en': return;
+        case 'ja': return;
+    }
+    return 'en' // return english if unusable language detected
+}
+
+// const LanguageContext = createContext(GetCurrentLanguage());
+
 
 const AppView = () => {
     const [language, setLanguage] = useState<string>('en');
@@ -225,14 +240,16 @@ const AppView = () => {
     ];
 
     return (
-        <NextUIProvider navigate={navigate}>
-            <UINavbar language={language} setLanguage={setLanguage} isHomePage={isHomePage} getTranslatedText={getTranslatedText} slides={slides} currentColor={currentColor}/> 
-            <Routes>
-                <Route path='/' element={<WindView setIsHomePage={setIsHomePage} language={language} getTranslatedText={getTranslatedText} slides={slides}/>}/>
-                <Route path='/projects/:projectName' element={<ProjectView setIsHomePage={setIsHomePage} getTranslatedText={getTranslatedText} slides={slides} currentColor={currentColor}/>}/>
-                <Route path='*' element={<ErrorView setIsHomePage={setIsHomePage} getTranslatedText={getTranslatedText} />}/>
-            </Routes>
-        </NextUIProvider>
+        // <LanguageContext.Provider value={{language}}>
+            <NextUIProvider navigate={navigate}>
+                <UINavbar language={language} setLanguage={setLanguage} isHomePage={isHomePage} getTranslatedText={getTranslatedText} slides={slides} currentColor={currentColor}/> 
+                <Routes>
+                    <Route path='/' element={<WindView setIsHomePage={setIsHomePage} language={language} getTranslatedText={getTranslatedText} slides={slides}/>}/>
+                    <Route path='/projects/:projectName' element={<ProjectView setIsHomePage={setIsHomePage} getTranslatedText={getTranslatedText} slides={slides} currentColor={currentColor}/>}/>
+                    <Route path='*' element={<ErrorView setIsHomePage={setIsHomePage} getTranslatedText={getTranslatedText} />}/>
+                </Routes>
+            </NextUIProvider>
+        // </LanguageContext.Provider>
     )
 }
 

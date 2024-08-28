@@ -1,4 +1,4 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { SwiperSlide } from 'swiper/react';
 import ProjectCardView from './ProjectCardView';
 
 import 'swiper/css';
@@ -7,7 +7,6 @@ import 'swiper/css/pagination';
 import { Pagination, Mousewheel, HashNavigation } from 'swiper/modules';
 
 import { slide, TranslatedText, link } from '../Types/types';
-import UINavbar from './UINavbar';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
@@ -201,18 +200,13 @@ const WindView = (props: {language: string, setIsHomePage: React.Dispatch<React.
     //     }}
     //     />
     //   );
-    const swiperProps = {
-        spaceBetween: 50,
-        hashNavigation: {
-            watchState: true,
-        }
-    }
 
     return (
         <CustomSwiper className={'max-h-[92.8vh] lg:max-h-[94vh] xl:max-h-[95.5vh]'} swiperProps={{
+            modules: [Mousewheel, HashNavigation, Pagination],
             spaceBetween: 50,
             hashNavigation: {
-                watchState:true
+                watchState: true
             },
         }}>
             <SwiperSlide data-hash="home">

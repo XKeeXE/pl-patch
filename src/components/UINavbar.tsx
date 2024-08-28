@@ -28,7 +28,14 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
 
     const wrapper = useRef<HTMLDivElement>(null);
     const [hash, setHash] = useState<string>(window.location.hash);
-    const [darkMode, setDarkMode] = useState<boolean>(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    // const [darkMode, setDarkMode] = useState<boolean>(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const [darkMode, setDarkMode] = useState<boolean>(() => {
+        const savedDarkMode = localStorage.getItem('DarkMode');
+        if (savedDarkMode == null) {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        return savedDarkMode ? JSON.parse(savedDarkMode) : false;
+    });
     const [showProjectDropdown, setShowProjectDropdown] = useState<boolean>(false);
     const [showLangDropdown, setShowLangDropdown] = useState<boolean>(false);
     const [showMenuDropdown, setShowMenuDropdown] = useState<boolean>(false);
@@ -117,10 +124,14 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
         
     };
 
+    // Activates on every page once
     useEffect(() => {
         if (hashProjects.find(project => project === window.location.pathname.substring(10)) !== undefined) { // Check if undefined project path: ex. /projects/BGMAPP !== undefined
             setHash('#projects');
         } 
+        // if (localStorage.getItem('DarkMode') != null) {
+        //     setDarkMode(JSON.parse(localStorage.getItem('DarkMode') as string));
+        // }
 
         // switch(language) {
         //     case 'es': return;
@@ -213,12 +224,16 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
         >
             <NavbarContent justify="start">
                 <UIDropdown showDropdown={showMenuDropdown} setShowDropdown={setShowMenuDropdown} mainIcon={<MenuIcon/>} activeIcon={<MenuIcon/>}>
-                    <button className={"rounded-lg p-1 hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => setDarkMode(!darkMode)}>
+                    <button className={"rounded-lg p-1 hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} 
+                    onClick={() => {
+                        setDarkMode(!darkMode);
+                        localStorage.setItem('DarkMode', JSON.stringify(!darkMode));
+                        }}>
                         {darkMode ? <DarkModeIcon htmlColor={darkMode ? "white" : "black"}/> : <BrightnessIcon htmlColor={darkMode ? "white" : "black"}/>}
                     </button>
-                    {/* <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={CheckLanguage()} activeIcon={CheckLanguage()}>
+                    <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={CheckLanguage()} activeIcon={CheckLanguage()}>
                         {languages.map(language => (
-                            <button className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
+                            <button key={language.key} className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
                                 setShowLangDropdown(false); 
                                 setLanguage(language.key);
                                 }}>
@@ -228,7 +243,7 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
                                 </div>
                             </button>
                         ))}
-                    </UIDropdown> */}
+                    </UIDropdown>
                 </UIDropdown>
                 <NavbarItem isActive={MarkActive(hashHome)}>
                     {NavbarStatus('home')}

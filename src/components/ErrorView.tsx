@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const ErrorView = (props: {setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText,}) => {
     const { setIsHomePage, getTranslatedText } = props;
 
+    // Activates when the error page is entered
     useEffect(() => {
         setIsHomePage(false);
     }, [])
