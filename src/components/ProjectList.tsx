@@ -3,10 +3,14 @@ import { slide, TranslatedText } from "../Types/types";
 import { Link } from "react-router-dom";
 
 import WebIcon from '@mui/icons-material/Web';
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { SlidesContext } from "./AppView";
 
-const ProjectList = (props: {getTranslatedText: TranslatedText, slides: slide[], gradient: string}) => {
-    const {getTranslatedText, slides, gradient } = props;
+const gradient = ' bg-clip-text text-transparent bg-gradient-to-br from-[#0089fe] from-0% to-[#15c31e] to-100%'
+
+const ProjectList = () => {
+
+    const { getTranslatedText, slides } = useContext(SlidesContext)
 
     const gridSize = Math.ceil(Math.sqrt(slides.length+1));
     const remainingSlots = Math.abs((slides.length+1) - gridSize * gridSize);
@@ -42,6 +46,10 @@ const ProjectList = (props: {getTranslatedText: TranslatedText, slides: slide[],
                 )}      
             </button>
         )
+    }
+
+    const GetCorrespondingPortfolio = () => {
+
     }
 
     return (

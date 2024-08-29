@@ -13,11 +13,14 @@ import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinksCard from './LinksCard';
 import ProjectList from './ProjectList';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import CustomSwiper from './CustomSwiper';
+import { SlidesContext } from './AppView';
 
-const WindView = (props: {language: string, setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[]}) => {
-    const { language, setIsHomePage, getTranslatedText, slides } = props;
+const WindView = (props: {language: string, setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>}) => {
+    const { language, setIsHomePage } = props;
+
+    const {getTranslatedText, slides} = useContext(SlidesContext)
 
     const currentYear = new Date().getFullYear();
 
@@ -216,7 +219,7 @@ const WindView = (props: {language: string, setIsHomePage: React.Dispatch<React.
                 <AboutMe/>
             </SwiperSlide>
             <SwiperSlide data-hash="projects" >
-                <ProjectList getTranslatedText={getTranslatedText} slides={slides} gradient={gradient}/>
+                <ProjectList />
             </SwiperSlide>
             {slides.map(project => (
                 <SwiperSlide data-hash={project.name} key={project.name}>

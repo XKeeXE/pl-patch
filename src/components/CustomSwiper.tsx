@@ -3,8 +3,14 @@ import { Swiper, SwiperProps, useSwiper } from 'swiper/react';
 
 const CustomSwiper = (props: {children: ReactNode; className: string, swiperProps: React.PropsWithChildren<SwiperProps>}) => {
     const {children, className, swiperProps} = props;
+
+    const OnSlideChanged = new CustomEvent('OnSlideChanged', {});
+
     return (
         <Swiper className={className} {...swiperProps}
+            onSlideChange={() => {
+                document.dispatchEvent(OnSlideChanged);
+            }}
             direction='vertical'
             mousewheel={true}
             pagination={{

@@ -12,16 +12,19 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 import { Pagination, Mousewheel, EffectCoverflow, Navigation } from 'swiper/modules';
 import UINavbar from './UINavbar';
-import { memo, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { memo, ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import LinksCard from './LinksCard';
 import UIButton from './UIButton';
 import ProjectDemoView from './ProjectDemoView';
 import { Card, CardBody, CardHeader } from '@nextui-org/react';
 import CustomSwiper from './CustomSwiper';
 import React from 'react';
+import { SlidesContext } from './AppView';
 
-const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, getTranslatedText: TranslatedText, slides: slide[], currentColor: React.MutableRefObject<string>}) => {
-    const { setIsHomePage, getTranslatedText, slides, currentColor } = props;
+const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, currentColor: React.MutableRefObject<string>}) => {
+    const { setIsHomePage,currentColor } = props;
+
+    const { getTranslatedText, slides } = useContext(SlidesContext);
 
     const OnProjectEnter = new CustomEvent('OnProjectEnter', {});
 
@@ -55,7 +58,7 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
         )
     }
 
-    const Video = memo(function Video(props: {projectVideo: string}) {
+    const Video = (props: {projectVideo: string}): JSX.Element => {
         const { projectVideo } = props;
         console.log('video rerendered');
         return (
@@ -63,11 +66,11 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
             // <video tabIndex={-1} controls className='md:w-[80vw] xl:w-[50vw] rounded-lg' src={``}><source type="video/mp4"/></video>
 
         );
-    });
+    };
 
     const ViewPage = (): JSX.Element => {
         if (project === undefined) { 
-            return <ErrorView setIsHomePage={setIsHomePage} getTranslatedText={getTranslatedText}/>
+            return <ErrorView setIsHomePage={setIsHomePage}/>
         }
         currentColor.current = project?.color;
         window.dispatchEvent(OnProjectEnter);

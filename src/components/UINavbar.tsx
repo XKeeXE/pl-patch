@@ -11,14 +11,17 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { slide, TranslatedText } from "../Types/types";
 
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import UnitedStatesFlag from "./svgIcons/UnitedStatesFlag";
 import PuertoRicoFlag from "./svgIcons/PuertoRicoFlag";
 import JapanFlag from "./svgIcons/JapanFlag";
+import { SlidesContext } from "./AppView";
 
-const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: React.Dispatch<React.SetStateAction<string>>, 
-    getTranslatedText: TranslatedText, slides: slide[], currentColor: React.MutableRefObject<string>}) => {
-    const { language, isHomePage, setLanguage, getTranslatedText, slides, currentColor } = props;
+const UINavbar = (props: {isHomePage: boolean, language: string, setLanguage: React.Dispatch<React.SetStateAction<string>>, 
+    currentColor: React.MutableRefObject<string>}) => {
+    const { isHomePage, language, setLanguage, currentColor } = props;
+
+    const { getTranslatedText, slides } = useContext(SlidesContext);
 
     interface language {
         key: string,
@@ -28,7 +31,6 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
 
     const wrapper = useRef<HTMLDivElement>(null);
     const [hash, setHash] = useState<string>(window.location.hash);
-    // const [darkMode, setDarkMode] = useState<boolean>(window.matchMedia('(prefers-color-scheme: dark)').matches);
     const [darkMode, setDarkMode] = useState<boolean>(() => {
         const savedDarkMode = localStorage.getItem('DarkMode');
         if (savedDarkMode == null) {
@@ -45,21 +47,24 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
     hashProjects.push('projects', 'portfolio');
     const hashContacts = ['contacts'];
 
-    const languages: language[] = [
-        {
-        key: 'en',
-        lang: 'english',
-        icon: <UnitedStatesFlag/>
+    // const GetHashes = (): string[] => {
+        
+    // }
+
+    const languages: language[] = [{
+            key: 'en',
+            lang: 'english',
+            icon: <UnitedStatesFlag/>
         },
         {
-        key: 'es',
-        lang: 'spanish',
-        icon: <PuertoRicoFlag/>
+            key: 'es',
+            lang: 'spanish',
+            icon: <PuertoRicoFlag/>
         },
         {
-        key: 'ja',
-        lang: 'japanese',
-        icon: <JapanFlag/>
+            key: 'ja',
+            lang: 'japanese',
+            icon: <JapanFlag/>
         },
     ]
     
@@ -128,26 +133,25 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
     useEffect(() => {
         if (hashProjects.find(project => project === window.location.pathname.substring(10)) !== undefined) { // Check if undefined project path: ex. /projects/BGMAPP !== undefined
             setHash('#projects');
-        } 
-        // if (localStorage.getItem('DarkMode') != null) {
-        //     setDarkMode(JSON.parse(localStorage.getItem('DarkMode') as string));
-        // }
-
-        // switch(language) {
-        //     case 'es': return;
-        //     case 'en': return;
-        //     case 'ja': return;
-        //     default: setLanguage('en');
-        // }
+        }
 
         const handleHashChange = () => {
             setHash(window.location.hash);
         };
 
+        const OnSlideChanged = () => {
+            setShowMenuDropdown(false); 
+            setShowProjectDropdown(false);
+            setShowLangDropdown(false);
+        };
+
         window.addEventListener('hashchange', handleHashChange);
+        document.addEventListener('OnSlideChanged', OnSlideChanged)
         document.addEventListener('click', handleClickOutside);
         return () => {
             window.removeEventListener('hashchange', handleHashChange);
+            document.removeEventListener('OnSlideChanged', OnSlideChanged)
+
             document.removeEventListener('click', handleClickOutside);
         };
     }, []);
@@ -160,10 +164,9 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
         }
     }, [darkMode])
 
+
     useEffect(() => {
-        setShowMenuDropdown(false); 
-        setShowProjectDropdown(false);
-        setShowLangDropdown(false);
+
     }, [hash])
 
     const UIDropdown = (props: any) => {
@@ -234,6 +237,7 @@ const UINavbar = (props: {language: string, isHomePage: boolean, setLanguage: Re
                     <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={CheckLanguage()} activeIcon={CheckLanguage()}>
                         {languages.map(language => (
                             <button key={language.key} className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
+                                localStorage.setItem('Language', language.key);
                                 setShowLangDropdown(false); 
                                 setLanguage(language.key);
                                 }}>
