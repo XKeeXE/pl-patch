@@ -4,7 +4,6 @@ import UINavbar from './UINavbar';
 
 import { image, LanguageTranslations, slide } from '../Types/types';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation   } from "react-router-dom";
-import LanguageSelect from './LanguageSelect';
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import PetsIcon from '@mui/icons-material/Pets';
 import ViewInArIcon from '@mui/icons-material/ViewInAr';
@@ -14,7 +13,7 @@ import BGMApp from './demo/BGMApp';
 import L2DWP from './demo/L2DWP';
 import ErrorView from './ErrorView';
 import { NextUIProvider } from '@nextui-org/react';
-import SVGAssets from './SvgAssets';
+import SvgAssets from './SvgAssets';
 
 const data: { [key: string]: LanguageTranslations } = require('../assets/languages.json');
 
@@ -22,12 +21,10 @@ function GetCurrentLanguage(): string {
     if (localStorage.getItem('Language')) { // get saved language
         return localStorage.getItem('Language') as string;
     }
-    switch(navigator.language) { // To check website usable languages
-        case 'es': return 'es';
-        case 'en': return 'en';
-        case 'ja': return 'ja';
-        default: return 'en';
+    if (navigator.language != 'es' || 'en' || 'ja') { // To check website usable languages
+        return 'en';
     }
+    return navigator.language;
 }
 
 const imagesBGM: image[] = [{
@@ -135,7 +132,7 @@ const slides: slide[] = [
     video: 'Videos/BGM-APPDemoVid.mp4',
     demoComponent: <BGMApp />,
     links: [{
-        title: 'SourceCode',
+        text: 'SourceCode',
         url: 'https://github.com/XKeeXE/bgm-app'
     }]
 },
@@ -149,21 +146,21 @@ const slides: slide[] = [
     video: 'Videos/L2DWPDemoVid.mp4',
     demoComponent: <L2DWP/>,
     links: [{
-        title: 'SourceCode',
+        text: 'SourceCode',
         url: 'https://github.com/XKeeXE/Live2DWallpaper'
     }]
 },
 {
     color: '#d33636',
     gradient: 'from-[#d53030] from-0% via-[#cb3b3b] via-50% to-[#910a0a] to-100%',
-    icon: <SVGAssets key={'Onigiri'} />,
+    icon: <SvgAssets icon='onigiri' />,
     logo: '',
     name: 'ONIGIRI',
     images: imagesONIGIRI,
     video: 't',
     demoComponent: undefined,
     links: [{
-        title: 'Download',
+        text: 'Download',
         url: ''
     }]
 },
@@ -191,7 +188,7 @@ const slides: slide[] = [
     video: 't',
     demoComponent: undefined,
     links: [{
-        title: '',
+        text: '',
         url: ''
     }]
 },
@@ -205,12 +202,20 @@ const slides: slide[] = [
     video: 't',
     demoComponent: undefined,
     links: [{
-        title: '',
+        text: 'Itch.io',
+        url: 'https://sneorino.itch.io/nekomata'
+    },
+    {
+        text: 'Download',
         url: ''
     }]
 }];
 
-export const SlidesContext = createContext({getTranslatedText: (langKey: string) => langKey, slides: slides});
+export const SlidesContext = createContext({
+    isHomePage: true,
+    getTranslatedText: (langKey: string) => langKey, 
+    slides: slides
+});
 
 const AppView = () => {
     const [language, setLanguage] = useState<string>(GetCurrentLanguage() as string);
@@ -250,7 +255,7 @@ const AppView = () => {
     }, []);
 
     return (
-        <SlidesContext.Provider value={{getTranslatedText, slides}}>
+        <SlidesContext.Provider value={{isHomePage, getTranslatedText, slides}}>
             {/* <PageContext.Provider value={}}> */}
                 <NextUIProvider navigate={navigate}>
                     <UINavbar language={language} setLanguage={setLanguage} isHomePage={isHomePage} currentColor={currentColor}/> 

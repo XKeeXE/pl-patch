@@ -1,11 +1,16 @@
 import { link } from "../Types/types";
 import UIButton from "./UIButton";
 
-const LinksCard = (props: { headerText: string, color: string, gradient: string | undefined, linkItems: link[]}) => {
+const LinksCard = (props: { 
+    headerText: string, 
+    color: string, 
+    gradient: string | undefined, 
+    linkItems: link[]
+}) => {
     const { headerText, color, gradient, linkItems } = props;
 
     function CheckGradient(): string {
-        if (gradient !== undefined) {
+        if (gradient) {
             return (`bg-clip-text text-transparent bg-gradient-to-b ${gradient}`);
         }
         return '';

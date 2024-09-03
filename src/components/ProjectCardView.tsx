@@ -6,7 +6,14 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Link } from "react-router-dom";
 import UIButton from "./UIButton";
 
-const ProjectCardView = (props: {getTranslatedText: TranslatedText, slide: boolean, color: string, gradient: string, name: string, logo: string | undefined, images: image[] | undefined}) => {
+const ProjectCardView = (props: {
+    getTranslatedText: TranslatedText, 
+    slide: boolean, 
+    color: string, 
+    gradient: string, 
+    name: string, logo?: string, 
+    images?: image[]}
+) => {
 	const { getTranslatedText, slide, color, gradient, name, logo, images, } = props;
 
     const CheckValidText = (text: string): JSX.Element => {

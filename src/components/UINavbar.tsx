@@ -1,33 +1,27 @@
 import { Link as linkRouter, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Navbar, NavbarContent, NavbarItem } from "@nextui-org/react";
 
-import LanguageSelect from "./LanguageSelect";
-
 import BrightnessIcon from '@mui/icons-material/Brightness7';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import MenuIcon from '@mui/icons-material/Menu';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-import { slide, TranslatedText } from "../Types/types";
+import { svg, language } from "../Types/types";
 
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
-import UnitedStatesFlag from "./svgIcons/UnitedStatesFlag";
-import PuertoRicoFlag from "./svgIcons/PuertoRicoFlag";
-import JapanFlag from "./svgIcons/JapanFlag";
 import { SlidesContext } from "./AppView";
+import SvgAssets from "./SvgAssets";
 
-const UINavbar = (props: {isHomePage: boolean, language: string, setLanguage: React.Dispatch<React.SetStateAction<string>>, 
-    currentColor: React.MutableRefObject<string>}) => {
+const UINavbar = (props: {
+    isHomePage: boolean, 
+    language: string, 
+    setLanguage: React.Dispatch<React.SetStateAction<string>>, 
+    currentColor: React.MutableRefObject<string>
+}) => {
     const { isHomePage, language, setLanguage, currentColor } = props;
 
     const { getTranslatedText, slides } = useContext(SlidesContext);
-
-    interface language {
-        key: string,
-        lang: string,
-        icon: JSX.Element,
-    }
 
     const wrapper = useRef<HTMLDivElement>(null);
     const [hash, setHash] = useState<string>(window.location.hash);
@@ -47,35 +41,19 @@ const UINavbar = (props: {isHomePage: boolean, language: string, setLanguage: Re
     hashProjects.push('projects', 'portfolio');
     const hashContacts = ['contacts'];
 
-    // const GetHashes = (): string[] => {
-        
-    // }
-
     const languages: language[] = [{
             key: 'en',
             lang: 'english',
-            icon: <UnitedStatesFlag/>
         },
         {
             key: 'es',
-            lang: 'spanish',
-            icon: <PuertoRicoFlag/>
+            lang: 'spanish'
         },
         {
             key: 'ja',
-            lang: 'japanese',
-            icon: <JapanFlag/>
+            lang: 'japanese'
         },
     ]
-    
-    const CheckLanguage = () => {
-        switch(language) {
-            case 'es': return <PuertoRicoFlag/>;
-            case 'en': return <UnitedStatesFlag/>;
-            case 'ja': return <JapanFlag/>;
-            default: return <UnitedStatesFlag/>;
-        };
-    }
 
     const MarkActive = (items: string[]): boolean => {
         if (items.find(hashes => hashes === hash.substring(1)) === undefined) { // Get #about => about
@@ -169,7 +147,13 @@ const UINavbar = (props: {isHomePage: boolean, language: string, setLanguage: Re
 
     }, [hash])
 
-    const UIDropdown = (props: any) => {
+    const UIDropdown = (props: { 
+        children: React.ReactNode, 
+        showDropdown: boolean, 
+        setShowDropdown: React.Dispatch<React.SetStateAction<boolean>>,
+        activeIcon: JSX.Element, 
+        mainIcon: JSX.Element
+    }) => {
         const { children, showDropdown, setShowDropdown, activeIcon, mainIcon } = props;
     
         return (
@@ -234,7 +218,7 @@ const UINavbar = (props: {isHomePage: boolean, language: string, setLanguage: Re
                         }}>
                         {darkMode ? <DarkModeIcon htmlColor={darkMode ? "white" : "black"}/> : <BrightnessIcon htmlColor={darkMode ? "white" : "black"}/>}
                     </button>
-                    <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={CheckLanguage()} activeIcon={CheckLanguage()}>
+                    <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={<SvgAssets icon={language as svg}/>} activeIcon={<SvgAssets icon={language as svg}/>}>
                         {languages.map(language => (
                             <button key={language.key} className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
                                 localStorage.setItem('Language', language.key);
@@ -242,7 +226,7 @@ const UINavbar = (props: {isHomePage: boolean, language: string, setLanguage: Re
                                 setLanguage(language.key);
                                 }}>
                                 <div className={"flex flex-row p-[2px] gap-1 font-text " + (language.key === 'ja' ? ' w-[130px] ' : '') }>
-                                    {language.icon}
+                                    <SvgAssets icon={language.key as svg}/>
                                     <span>{getTranslatedText(language.lang)}</span>
                                 </div>
                             </button>

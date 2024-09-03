@@ -21,8 +21,11 @@ import CustomSwiper from './CustomSwiper';
 import React from 'react';
 import { SlidesContext } from './AppView';
 
-const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, currentColor: React.MutableRefObject<string>}) => {
-    const { setIsHomePage,currentColor } = props;
+const ProjectView = (props: { 
+    setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, 
+    currentColor: React.MutableRefObject<string>
+}) => {
+    const { setIsHomePage, currentColor } = props;
 
     const { getTranslatedText, slides } = useContext(SlidesContext);
 
@@ -38,11 +41,6 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
         // console.log("Im on project view");
         setIsHomePage(false);
     }, [])
-
-    const projectLinks: link[] = [
-        {text: 'Download', url: project?.downloadLink as string, icon: <QuestionMarkIcon/>},
-        {text: 'Source Code', url: project?.sourceCode as string, icon: <QuestionMarkIcon/>}
-    ];
 
     const Header = (props: {headerText: string}) => {
         const { headerText } = props;
@@ -148,7 +146,7 @@ const ProjectView = (props: { setIsHomePage: React.Dispatch<React.SetStateAction
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <LinksCard headerText={getTranslatedText('linksHeader')} linkItems={projectLinks} color={project.color} gradient={project.gradient}/>
+                    <LinksCard headerText={getTranslatedText('linksHeader')} linkItems={project.links} color={project.color} gradient={project.gradient}/>
                 </SwiperSlide>
             </CustomSwiper>
             

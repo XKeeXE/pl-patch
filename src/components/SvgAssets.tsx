@@ -71,19 +71,16 @@ const UnitedStatesFlag = () => {
     );
 }
 
-const SVGAssets = (props: {key: svg}) => {
-    const { key } = props;
+const SvgAssets = (props: {icon: svg}): JSX.Element => {
+    const { icon } = props;
 
-    const GetIcon = (): JSX.Element => {
-        switch (key) {
-            case 'US': return <UnitedStatesFlag/>
-            case 'PR': return <PuertoRicoFlag/>
-            case 'JA': return <JapanFlag/>
-            case 'Onigiri': return <OnigiriIcon/>
-            case 'PCVR': return <PCVRIcon/>
-        }
+    switch (icon) {
+        case 'en': return <UnitedStatesFlag/>
+        case 'es': return <PuertoRicoFlag/>
+        case 'ja': return <JapanFlag/>
+        case 'onigiri': return <OnigiriIcon/>
+        case 'pcvr': return <PCVRIcon/>
     }
-    return (<GetIcon/>)
 }
 
-export default SVGAssets;
+export default SvgAssets;
