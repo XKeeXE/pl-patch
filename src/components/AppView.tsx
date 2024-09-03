@@ -13,8 +13,8 @@ import ProjectView from './ProjectView';
 import BGMApp from './demo/BGMApp';
 import L2DWP from './demo/L2DWP';
 import ErrorView from './ErrorView';
-import OnigiriIcon from './svgIcons/OnigiriIcon';
 import { NextUIProvider } from '@nextui-org/react';
+import SVGAssets from './SvgAssets';
 
 const data: { [key: string]: LanguageTranslations } = require('../assets/languages.json');
 
@@ -134,8 +134,10 @@ const slides: slide[] = [
     images: imagesBGM,
     video: 'Videos/BGM-APPDemoVid.mp4',
     demoComponent: <BGMApp />,
-    downloadLink: '',
-    sourceCode: 'https://github.com/XKeeXE/bgm-app',
+    links: [{
+        title: 'SourceCode',
+        url: 'https://github.com/XKeeXE/bgm-app'
+    }]
 },
 {
     color: '#1e65c9',
@@ -146,20 +148,24 @@ const slides: slide[] = [
     images: imagesL2DWP,
     video: 'Videos/L2DWPDemoVid.mp4',
     demoComponent: <L2DWP/>,
-    downloadLink: '',
-    sourceCode: 'https://github.com/XKeeXE/Live2DWallpaper',
+    links: [{
+        title: 'SourceCode',
+        url: 'https://github.com/XKeeXE/Live2DWallpaper'
+    }]
 },
 {
     color: '#d33636',
     gradient: 'from-[#d53030] from-0% via-[#cb3b3b] via-50% to-[#910a0a] to-100%',
-    icon: <OnigiriIcon />,
+    icon: <SVGAssets key={'Onigiri'} />,
     logo: '',
     name: 'ONIGIRI',
     images: imagesONIGIRI,
     video: 't',
     demoComponent: undefined,
-    downloadLink: '',
-    sourceCode: ''
+    links: [{
+        title: 'Download',
+        url: ''
+    }]
 },
 // {
 //     color: '',
@@ -170,8 +176,10 @@ const slides: slide[] = [
 //     images: imagesPCVR,
 //     video: 't',
 //     demoComponent: undefined,
-//     downloadLink: '',
-//     sourceCode: '',
+//     links: [{
+//     title: '',
+//     url: ''
+// }]
 // },
 {
     color: '#0030e7',
@@ -182,8 +190,10 @@ const slides: slide[] = [
     images: imagesPCVR,
     video: 't',
     demoComponent: undefined,
-    downloadLink: '',
-    sourceCode: '',
+    links: [{
+        title: '',
+        url: ''
+    }]
 },
 {
     color: '#5e9cff',
@@ -194,8 +204,10 @@ const slides: slide[] = [
     images: imagesNEKOMATA,
     video: 't',
     demoComponent: undefined,
-    downloadLink: '',
-    sourceCode: '',
+    links: [{
+        title: '',
+        url: ''
+    }]
 }];
 
 export const SlidesContext = createContext({getTranslatedText: (langKey: string) => langKey, slides: slides});

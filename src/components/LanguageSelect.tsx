@@ -1,10 +1,7 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
-
-import PuertoRicoFlag from './svgIcons/PuertoRicoFlag';
-import UnitedStatesFlag from './svgIcons/UnitedStatesFlag';
-import JapanFlag from './svgIcons/JapanFlag';
 import { useEffect, useState } from "react";
 import { TranslatedText } from "../Types/types";
+import SVGAssets from "./SvgAssets";
 
 const LanguageSelect = (props: {darkMode: boolean, language: string, setLanguage: React.Dispatch<React.SetStateAction<string>>, getTranslatedText: TranslatedText}) => {
     const { darkMode, language, setLanguage, getTranslatedText } = props;
@@ -18,26 +15,26 @@ const LanguageSelect = (props: {darkMode: boolean, language: string, setLanguage
     const languages: language[] = [{
             key: 'en',
             lang: 'english',
-            icon: <UnitedStatesFlag/>
+            icon: <SVGAssets key={'US'}/>
         },
         {
             key: 'es',
             lang: 'spanish',
-            icon: <PuertoRicoFlag/>
+            icon: <SVGAssets key={'PR'}/>
         },
         {
             key: 'ja',
             lang: 'japanese',
-            icon: <JapanFlag/>
+            icon: <SVGAssets key={'JA'}/>
         },
     ]
     
     const CheckLanguage = () => {
         switch(language) {
-            case 'es': return <PuertoRicoFlag/>;
-            case 'en': return <UnitedStatesFlag/>;
-            case 'ja': return <JapanFlag/>;
-            default: return <UnitedStatesFlag/>;
+            case 'es': return <SVGAssets key={'PR'}/>;
+            case 'en': return <SVGAssets key={'US'}/>;
+            case 'ja': return <SVGAssets key={'JA'}/>;
+            default: return <SVGAssets key={'US'}/>;
         };
     }
 

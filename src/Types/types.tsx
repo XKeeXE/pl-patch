@@ -15,8 +15,10 @@ export type slide = {
     images: image[],
     video: string,
     demoComponent: JSX.Element | undefined,
-    downloadLink: string,
-    sourceCode: string,
+    links: {
+        title: string,
+        url: string
+    }[]
 }
 
 export type image = {
@@ -29,3 +31,5 @@ export type link = {
     url: string,
     icon: JSX.Element
 }
+
+export type svg = 'Onigiri' | 'PCVR' | 'PR' | 'US' | 'JA'
