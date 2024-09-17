@@ -8,8 +8,6 @@ import ProjectList from "./ProjectList";
 const ErrorView = (props: {setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>}) => {
     const { setIsHomePage } = props;
 
-    const { getTranslatedText, slides} = useContext(SlidesContext);
-
     // Activates when the error page is entered
     useEffect(() => {
         setIsHomePage(false);

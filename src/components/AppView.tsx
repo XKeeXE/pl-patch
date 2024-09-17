@@ -3,7 +3,7 @@ import WindView from './WindView';
 import UINavbar from './UINavbar';
 
 import { image, LanguageTranslations, slide } from '../Types/types';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation   } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import PetsIcon from '@mui/icons-material/Pets';
 import ViewInArIcon from '@mui/icons-material/ViewInAr';
@@ -132,7 +132,7 @@ const slides: slide[] = [
     video: 'Videos/BGM-APPDemoVid.mp4',
     demoComponent: <BGMApp />,
     links: [{
-        text: 'SourceCode',
+        text: 'Github',
         url: 'https://github.com/XKeeXE/bgm-app'
     }]
 },
@@ -146,7 +146,7 @@ const slides: slide[] = [
     video: 'Videos/L2DWPDemoVid.mp4',
     demoComponent: <L2DWP/>,
     links: [{
-        text: 'SourceCode',
+        text: 'Github',
         url: 'https://github.com/XKeeXE/Live2DWallpaper'
     }]
 },
@@ -202,7 +202,7 @@ const slides: slide[] = [
     video: 't',
     demoComponent: undefined,
     links: [{
-        text: 'Itch.io',
+        text: 'Website',
         url: 'https://sneorino.itch.io/nekomata'
     },
     {
@@ -256,16 +256,14 @@ const AppView = () => {
 
     return (
         <SlidesContext.Provider value={{isHomePage, getTranslatedText, slides}}>
-            {/* <PageContext.Provider value={}}> */}
-                <NextUIProvider navigate={navigate}>
-                    <UINavbar language={language} setLanguage={setLanguage} isHomePage={isHomePage} currentColor={currentColor}/> 
-                    <Routes>
-                        <Route path='/' element={<WindView language={language} setIsHomePage={setIsHomePage} />}/>
-                        <Route path='/projects/:projectName' element={<ProjectView setIsHomePage={setIsHomePage} currentColor={currentColor}/>}/>
-                        <Route path='*' element={<ErrorView setIsHomePage={setIsHomePage} />}/>
-                    </Routes>
-                </NextUIProvider>
-            {/* <PageContext.Provider/> */}
+            <NextUIProvider navigate={navigate}>
+                <UINavbar language={language} setLanguage={setLanguage} isHomePage={isHomePage} currentColor={currentColor}/> 
+                <Routes>
+                    <Route path='/' element={<WindView language={language} setIsHomePage={setIsHomePage} />}/>
+                    <Route path='/projects/:projectName' element={<ProjectView setIsHomePage={setIsHomePage} currentColor={currentColor}/>}/>
+                    <Route path='*' element={<ErrorView setIsHomePage={setIsHomePage} />}/>
+                </Routes>
+            </NextUIProvider>
         </SlidesContext.Provider>
     )
 }

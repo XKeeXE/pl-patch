@@ -13,6 +13,22 @@ const ProjectList = () => {
     const gridSize = Math.ceil(Math.sqrt(slides.length+1));
     const remainingSlots = Math.abs((slides.length+1) - gridSize * gridSize);
 
+    const ShowPortfolio = (): JSX.Element => {
+        const name = "PORTFOLIO"
+        if (isHomePage) {
+            return (
+                <a tabIndex={-1} href="#portfolio">
+                    <ProjectButton dashed={false} icon={<WebIcon/>} name={name} gradient={gradient}/>
+                </a>
+            )
+        }
+        return (
+            <Link tabIndex={-1} to={`/#home`}>
+                <ProjectButton dashed={false} icon={<WebIcon/>} name={name} gradient={gradient}/>
+            </Link>
+        )
+    }
+
     const AddGhosts = (): JSX.Element => {
         let ghosts = []; // Array of empty projects
         for (let i = 0; i < remainingSlots; i++) {
@@ -57,17 +73,15 @@ const ProjectList = () => {
             <div className="flex flex-col gap-1 items-center">
                 <span className={'text-2xl md:text-4xl font-title'}>{isHomePage ? getTranslatedText('projectList') : getTranslatedText('errorList')}</span>
             </div>
-            <div className={`grid self-center gap-4 grid-cols-2 md:grid-cols-3 ${gridSize} `} style={{
-                // gridTemplateColumns: `repeat(${gridSize}, 1fr)`
+            <div className={`grid self-center gap-4 `} style={{
+                gridTemplateColumns: `repeat(${gridSize}, 1fr)`
             }}>
                 {slides.map(project => (
                     <Link tabIndex={-1} key={project.name} to={`/projects/${project.name}`}>
                         <ProjectButton dashed={false} icon={project.icon} name={project.name} gradient={project.gradient}/>
                     </Link>
                 ))}
-                <a tabIndex={-1} href="#portfolio">
-                    <ProjectButton dashed={false} icon={<WebIcon/>} name={"PORTFOLIO"} gradient={gradient}/>
-                </a>
+                {ShowPortfolio()}
                 {AddGhosts()}
             </div>
         </div>
