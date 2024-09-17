@@ -134,7 +134,12 @@ const slides: slide[] = [
     links: [{
         text: 'Github',
         url: 'https://github.com/XKeeXE/bgm-app'
-    }]
+    },
+    {
+        text: 'Download',
+        url: ''
+    }
+    ]
 },
 {
     color: '#1e65c9',

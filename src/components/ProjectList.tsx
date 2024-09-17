@@ -81,8 +81,8 @@ const ProjectList = () => {
                         <ProjectButton dashed={false} icon={project.icon} name={project.name} gradient={project.gradient}/>
                     </Link>
                 ))}
-                {ShowPortfolio()}
-                {AddGhosts()}
+                <ShowPortfolio/>
+                <AddGhosts/>
             </div>
         </div>
         )

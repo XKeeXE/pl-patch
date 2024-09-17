@@ -14,15 +14,9 @@ const ErrorView = (props: {setIsHomePage: React.Dispatch<React.SetStateAction<bo
     }, [])
 
     return (
-        // <div className="flex flex-col justify-center items-center h-[95vh] gap-4">
-        //     <span>{getTranslatedText('error')}</span>
-        //     {/* <Link to={"/#home"} className=""> TODO PROJECT LIST
-        //         <UIButton card={true}>
-        //             <span>{getTranslatedText('home')}</span>
-        //         </UIButton>
-        //     </Link> */}
-        // </div>)
-        <ProjectList/>)
+        <div className="h-[95vh]">
+            <ProjectList/>
+        </div>)
 }
 
 export default ErrorView;
