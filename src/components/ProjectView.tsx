@@ -96,6 +96,23 @@ const ProjectView = (props: {
                             </CardBody>
                         </Card>
                     </div>
+                    {/* <div className='grid grid-cols-2 gap-2 justify-center h-full'>
+                        <Card className=''>
+                            <CardHeader>
+                                test
+                            </CardHeader>
+                        </Card>
+                        <Card className=' row-span-2'>
+                            <CardHeader>
+                                Summary
+                            </CardHeader>
+                        </Card>
+                        <Card>
+                            <CardHeader>
+                                Why
+                            </CardHeader>
+                        </Card>
+                    </div> */}
                 </SwiperSlide>
 
                 {/* <SwiperSlide>

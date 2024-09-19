@@ -14,7 +14,12 @@ function App() {
 
     return (
         <>
-        {/* <ParticlesView darkMode={darkMode}/> */}
+        <ParticlesView/>
+        {/* <section>
+            <div className='air air1'/>
+            <div className='air air2'/>
+            <div className='air air3'/>
+        </section> */}
         <Router>
             <AppView />
         </Router>

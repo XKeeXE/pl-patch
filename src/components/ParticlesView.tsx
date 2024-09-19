@@ -3,87 +3,191 @@ import { loadSlim } from "@tsparticles/slim";
 import type { ISourceOptions } from "@tsparticles/engine";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 
-const ParticlesView = (props: {darkMode: boolean}) => {
-    const { darkMode } = props; 
+const ParticlesView = () => {
+     
     const [ init, setInit ] = useState(false);
 
+    // const options: ISourceOptions = {
+    //     key: "images",
+    //     name: "Images",
+    //     background: {
+    //         color: darkMode ? '#181818' : '#ffffff',
+    //     },
+    //         particles: {
+    //         color: {
+    //             value: "#ffffff",
+    //         },
+    //         move: {
+    //             enable: true,
+    //             speed: 2,
+    //             direction: 'bottom',
+    //         },
+    //         number: {
+    //             density: {
+    //                 enable: true,
+    //             },
+    //             value: 80,
+    //         },
+    //         opacity: {
+    //             value: 1,
+    //         },
+    //         rotate: {
+    //             animation: {
+    //                 enable: true,
+    //                 speed: 5,
+    //                 sync: false,
+    //             },
+    //             direction: "random",
+    //             value: {
+    //                 min: 0,
+    //                 max: 360,
+    //             },
+    //         },
+    //         shape: {
+    //             type: "image",
+    //             options: {
+    //                 image: [
+    //                     {
+    //                         name: "sakura1",
+    //                     },
+    //                     {
+    //                         name: "sakura2",
+    //                     },
+    //                     {
+    //                         name: "sakura3",
+    //                     },
+    //                 ],
+    //             },
+    //         },
+    //         size: {
+    //             value: 16,
+    //         },
+    //     },
+    //     preload: [
+    //         {
+    //             src: "sakura1.png",
+    //             name: "sakura1",
+    //             width: 32,
+    //             height: 32,
+    //         },
+    //         {
+    //             src: "sakura2.png",
+    //             name: "sakura2",
+    //             width: 32,
+    //             height: 32,
+    //         },
+    //         {
+    //             src: "sakura3.png",
+    //             name: "sakura3",
+    //             width: 32,
+    //             height: 32,
+    //         },
+    //     ],
+    // };
+
     const options: ISourceOptions = {
-        key: "images",
-        name: "Images",
-        background: {
-            color: darkMode ? '#181818' : '#ffffff',
+        fullScreen: {
+            enable: true,
+            zIndex: 1,
         },
-            particles: {
+        particles: {
+            number: {
+                value: 100,
+                density: {
+                    enable: true,
+                    
+                },
+            },
             color: {
                 value: "#ffffff",
+            },
+            shape: {
+                type: "circle",
+                close: true,
+            },
+            stroke: {
+                width: 0,
+                color: "#000000",
+            },
+            opacity: {
+                value: 0.5,
+                animation: {
+                    enable: false,
+                    speed: 1,
+                    sync: false,
+                },
+            },
+            size: {
+                value: 3,
+                animation: {
+                    enable: false,
+                    speed: 40,
+                    sync: false,
+                },
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#ffffff",
+                opacity: 0.4,
+                width: 1,
             },
             move: {
                 enable: true,
                 speed: 2,
-                direction: 'bottom',
-            },
-            number: {
-                density: {
-                    enable: true,
+                direction: "none",
+                random: false,
+                straight: false,
+                attract: {
+                    enable: false,
+                    rotate: {
+                        x: 600,
+                        y: 1200
+                    },
                 },
-                value: 80,
-            },
-            opacity: {
-                value: 1,
-            },
-            rotate: {
-                animation: {
-                    enable: true,
-                    speed: 5,
-                    sync: false,
-                },
-                direction: "random",
-                value: {
-                    min: 0,
-                    max: 360,
-                },
-            },
-            shape: {
-                type: "image",
-                options: {
-                    image: [
-                        {
-                            name: "sakura1",
-                        },
-                        {
-                            name: "sakura2",
-                        },
-                        {
-                            name: "sakura3",
-                        },
-                    ],
-                },
-            },
-            size: {
-                value: 16,
             },
         },
-        preload: [
-            {
-                src: "sakura1.png",
-                name: "sakura1",
-                width: 32,
-                height: 32,
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onHover: {
+                    enable: true,
+                    mode: "repulse",
+                },
+                onClick: {
+                    enable: true,
+                    mode: "push",
+                },
+                
             },
-            {
-                src: "sakura2.png",
-                name: "sakura2",
-                width: 32,
-                height: 32,
+            modes: {
+                grab: {
+                    distance: 400,
+                    line_linked: {
+                        opacity: 1,
+                    },
+                },
+                bubble: {
+                    distance: 400,
+                    size: 40,
+                    duration: 2,
+                    opacity: 8,
+                    speed: 3,
+                },
+                repulse: {
+                    distance: 200,
+                    duration: 0.4,
+                },
+                push: {
+                    particles_nb: 4,
+                },
+                remove: {
+                    particles_nb: 2,
+                },
             },
-            {
-                src: "sakura3.png",
-                name: "sakura3",
-                width: 32,
-                height: 32,
-            },
-        ],
-    };
+        },
+        retina_detect: true,
+    }
 
     useEffect(() => {
         initParticlesEngine(async (engine) => {

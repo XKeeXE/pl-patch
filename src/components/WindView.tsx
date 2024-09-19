@@ -109,6 +109,12 @@ const WindView = (props: {
         }}>
             <SwiperSlide data-hash="home">
                 <Home/>
+                {/* <section>
+                    <div className='air air1'/>
+                    <div className='air air2'/>
+                    <div className='air air3'/>
+                    
+                </section> */}
             </SwiperSlide>
             <SwiperSlide data-hash="about">
                 <AboutMe/>
