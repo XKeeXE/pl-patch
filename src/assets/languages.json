@@ -4,13 +4,14 @@
         "english": "English",
         "japanese": "Japanese",
 
-        "projects": "Projects",
         "home": "Home",
+        "projects": "Projects",
         "contacts":"Contacts",
 
         "greetings": "Greetings!",
         "introName": "My name is ",
         "introPenname": "I also go by the pen name ",
+        "endPenname": " ",
         
         "aboutHeader": "About Me",
         "aboutIntro": "I am a dedicated student currently enrolled at the University of Puerto Rico Bayamon, with a concentration in Computer Science.",
@@ -183,9 +184,15 @@
         "english": "英語",
         "japanese": "日本語",
 
+        "home": "ホーム",
+        "projects": "プロジェクト",
+        "contacts":"連絡",
+
         "greetings": "ようこそいらっしゃいませ！",
         "introName": "僕のフルネームは",
         "introPenname": " ",
+        "endPenname": "と呼んでいただいてもいいです",
+
 
         "aboutHeader": "僕のこと",
         "aboutIntro": "",

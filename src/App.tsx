@@ -14,7 +14,7 @@ function App() {
 
     return (
         <>
-        <ParticlesView/>
+        {/* <ParticlesView/> */}
         {/* <section>
             <div className='air air1'/>
             <div className='air air2'/>

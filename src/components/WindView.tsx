@@ -41,30 +41,29 @@ const WindView = (props: {
         document.documentElement.style.setProperty('--swiper-pagination-color', darkMode ? "#f0f0f0" : "#0f0f0f");
     }, [])
 
+    const GetJP = (props: {className: string, text: string, furigana: string}) => {
+        const { className, text, furigana } = props;
+        if (language === 'ja') {
+            return <ruby className={className}>{text}<rt>{furigana}</rt></ruby>
+        }
+        return <span className={className}>{text}</span>
+    } 
+
     const Home = () => {
         return (
             <div className='flex flex-col justify-center items-center h-full'>
                 <div className='font-text'>
-                    <span className={`text-4xl font-title `}>{getTranslatedText('greetings')}</span>
+                    <span className={`text-4xl font-title font-bold`}>{getTranslatedText('greetings')}</span>
                     <div className={'flex flex-row gap-1 items-center'}>
                         <span className={language === 'ja' ? 'pt-3' : 'text-base md:text-xl'}>{getTranslatedText('introName')}</span>
-                        {language === 'ja' ? 
-                        <>
-                            <ruby className='text-xl font-bold'>Sebastian<rt>セバスチャン</rt></ruby>
-                            <ruby className='text-xl font-bold'>Rodriguez<rt>ロドリゲス</rt></ruby>
-                            <ruby className='text-xl font-bold'>Medina<rt>メディナ</rt></ruby>
-                            <span className='pt-3'>ですが</span>
-                        </>
-                        : <span className={`text-sm md:text-xl font-bold font-title ${gradient}`}>Sebastian Rodriguez Medina</span>}
+                        <GetJP className='text-sm md:text-xl font-bold font-title' text='Sebastian' furigana='セバスチャン'/>
+                        <GetJP className='text-sm md:text-xl font-bold font-title' text='Rodriguez' furigana='ロドリゲス'/>
+                        <GetJP className='text-sm md:text-xl font-bold font-title' text='Medina' furigana='メディナ'/>
                     </div>
                     <div className='flex flex-row gap-1 items-center'>
-                        {language === 'ja' ? <></> : <span className='pt-1 text-base md:text-xl'>{getTranslatedText('introPenname')}</span>}
-                        {language === 'ja' ? 
-                        <>
-                            <ruby className='text-xl font-bold'>Patch<rt>パッチ</rt></ruby>
-                            <span className='pt-2'>と呼んでいただいてもいいです</span>
-                        </>
-                        : <span className={`text-2xl font-bold font-title ${gradient}`}>Patch</span>}
+                        <span className='pt-1 text-base md:text-xl'>{getTranslatedText('introPenname')}</span>
+                        <GetJP className={`text-2xl font-bold font-title`} text='Patch' furigana='パッチ'/>
+                        <span className='pt-5'>{getTranslatedText('endPenname')}</span>
                     </div>
                 </div>
             </div>
@@ -87,12 +86,11 @@ const WindView = (props: {
                 <div className='flex flex-col gap-2 text-xs border-2 p-2 rounded-lg md:w-[60vw] lg:w-[35vw] border-[#f0f0f0] dark:border-[#0f0f0f] '>
                     <span className='font-bold'>{getTranslatedText('skillsIntro')}</span>
                     <span>
-                    Blender, C#, C++, CSS, Discord.py, Docker, Electron, 
-                    FFmpeg, Fabric API, GDScript, GitHub, Godot 4, HTML, 
-                    Java, JavaScript, jQuery, LavaPlayer, MongoDB, Next.js, 
-                    Node.js, Oracle, PHP, Python, Rabbit MQ, React, Ruby, 
-                    Scrum, SQL, Apache Spark, T-SQL, Tauri, Technical Writing, 
-                    Trello, UE5, Unity, Vite, XML.
+                    Apache Spark, Blender, C, C#, C++, CSS, Discord.py, Docker, Electron, 
+                    FFmpeg, F#, GDScript, GitHub, Go, Godot 4, HTML, Java, JavaScript, 
+                    jQuery, LavaPlayer, MongoDB, Next.js, Node.js, Oracle, PHP, Python, 
+                    Rabbit MQ, React, Ruby, Scrum, SQL, SWI-Prolog, T-SQL, Tauri, 
+                    Technical Writing, Trello, UE5, Unity, Vite, XML.
                     </span>
                 </div>
             </div>
