@@ -30,7 +30,7 @@ const WindView = (props: {
         {text: getTranslatedText('email'), url: 'mailto:patch.rodriguez.medina@gmail.com'},
         {text: 'LinkedIn', url: 'https://www.linkedin.com/in/lnpatchrodriguezmedina/'},
         {text: 'GitHub', url: 'https://github.com/XKeeXE'},
-        {text: 'Source Code', url: 'https://github.com/XKeeXE/pl-patch'}
+        {text: getTranslatedText('sourceCode'), url: 'https://github.com/XKeeXE/pl-patch'}
     ];
 
     // Activates only when starting in the homepage and when moving from projects --> home
@@ -90,7 +90,7 @@ const WindView = (props: {
                     FFmpeg, F#, GDScript, GitHub, Go, Godot 4, HTML, Java, JavaScript, 
                     jQuery, LavaPlayer, MongoDB, Next.js, Node.js, Oracle, PHP, Python, 
                     Rabbit MQ, React, Ruby, Scrum, SQL, SWI-Prolog, T-SQL, Tauri, 
-                    Technical Writing, Trello, UE5, Unity, Vite, XML.
+                    Technical Writing, Trello, UE5, Unity, Vite, XML
                     </span>
                 </div>
             </div>

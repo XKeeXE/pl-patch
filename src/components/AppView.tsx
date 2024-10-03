@@ -216,6 +216,101 @@ const slides: slide[] = [
     }]
 }];
 
+// const slides: slide[] = [
+//     {
+//         color: '#7a0a9c',
+//         gradient: 'from-[#8208de] from-0% to-[#6d0c6e] to-100%',
+//         icon: <LibraryMusic/>,
+//         logo: 'Icons/Oni.png',
+//         name: 'BGMAPP',
+//         images: imagesBGM,
+//         video: 'Videos/BGM-APPDemoVid.mp4',
+//         demoComponent: <BGMApp />,
+//         links: [{
+//             text: 'Github',
+//             url: 'https://github.com/XKeeXE/bgm-app'
+//         },
+//         {
+//             text: getTranslatedText('download'),
+//             url: ''
+//         }
+//         ]
+//     },
+//     {
+//         color: '#1e65c9',
+//         gradient: 'from-[#373ba6] from-0% via-[#0290f2] via-50% to-[#373ba6] to-100%',
+//         icon: <WallpaperIcon />,
+//         logo: 'Icons/L2DWP.png',
+//         name: 'L2DWP',
+//         images: imagesL2DWP,
+//         video: 'Videos/L2DWPDemoVid.mp4',
+//         demoComponent: <L2DWP/>,
+//         links: [{
+//             text: 'Github',
+//             url: 'https://github.com/XKeeXE/Live2DWallpaper'
+//         }]
+//     },
+//     {
+//         color: '#d33636',
+//         gradient: 'from-[#d53030] from-0% via-[#cb3b3b] via-50% to-[#910a0a] to-100%',
+//         icon: <SvgAssets icon='onigiri' />,
+//         logo: '',
+//         name: 'ONIGIRI',
+//         images: imagesONIGIRI,
+//         video: 't',
+//         demoComponent: undefined,
+//         links: [{
+//             text: getTranslatedText('download'),
+//             url: ''
+//         }]
+//     },
+//     // {
+//     //     color: '',
+//     //     gradient: '',
+//     //     icon: <OnigiriIcon />,
+//     //     logo: '',
+//     //     name: 'BURROUGHS',
+//     //     images: imagesPCVR,
+//     //     video: 't',
+//     //     demoComponent: undefined,
+//     //     links: [{
+//     //     title: '',
+//     //     url: ''
+//     // }]
+//     // },
+//     {
+//         color: '#0030e7',
+//         gradient: 'from-[#0009ff] from-0% to-[#006ae7] to-40%',
+//         icon: <ViewInArIcon />,
+//         logo: 'Icons/PCVR.png',
+//         name: 'PCVR',
+//         images: imagesPCVR,
+//         video: 't',
+//         demoComponent: undefined,
+//         links: [{
+//             text: '',
+//             url: ''
+//         }]
+//     },
+//     {
+//         color: '#5e9cff',
+//         gradient: 'from-[#9181ff] from-10% to-[#00d6ff] to-90%',
+//         icon: <PetsIcon />,
+//         logo: '',
+//         name: 'NEKOMATA',
+//         images: imagesNEKOMATA,
+//         video: 't',
+//         demoComponent: undefined,
+//         links: [{
+//             text: getTranslatedText('website'),
+//             url: 'https://sneorino.itch.io/nekomata'
+//         },
+//         {
+//             text: getTranslatedText('download'),
+//             url: ''
+//         }]
+//     }];
+
 export const SlidesContext = createContext({
     isHomePage: true,
     getTranslatedText: (langKey: string) => langKey, 

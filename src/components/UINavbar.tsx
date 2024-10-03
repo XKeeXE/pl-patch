@@ -56,10 +56,7 @@ const UINavbar = (props: {
     ]
 
     const MarkActive = (items: string[]): boolean => {
-        if (items.find(hashes => hashes === hash.substring(1)) === undefined) { // Get #about => about
-            return false;
-        }
-        return true;
+        return items.find(hashes => hashes === hash.substring(1)) !== undefined // Get #about => about
     }
     
     const NavbarStatus = (item: string): JSX.Element => {
@@ -142,10 +139,9 @@ const UINavbar = (props: {
         }
     }, [darkMode])
 
+    // useEffect(() => {
 
-    useEffect(() => {
-
-    }, [hash])
+    // }, [hash])
 
     const UIDropdown = (props: { 
         children: React.ReactNode, 
@@ -157,8 +153,8 @@ const UINavbar = (props: {
         const { children, showDropdown, setShowDropdown, activeIcon, mainIcon } = props;
     
         return (
-            <div className="relative">
-                <button onClick={() => setShowDropdown(!showDropdown)}>
+            <div className="relative flex flex-col">
+                <button onMouseEnter={() => setShowDropdown(true)}>
                     {showDropdown ? activeIcon : mainIcon}
                 </button>
                 {showDropdown && (
@@ -218,7 +214,12 @@ const UINavbar = (props: {
                         }}>
                         {darkMode ? <DarkModeIcon htmlColor={darkMode ? "white" : "black"}/> : <BrightnessIcon htmlColor={darkMode ? "white" : "black"}/>}
                     </button>
-                    <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={<SvgAssets icon={language as svg}/>} activeIcon={<SvgAssets icon={language as svg}/>}>
+                    <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={<SvgAssets icon={language as svg}/>} 
+                        activeIcon={
+                        <div className="hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]">
+                            <SvgAssets icon={language as svg}/>
+                        </div>
+                        }>
                         {languages.map(language => (
                             <button key={language.key} className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
                                 localStorage.setItem('Language', language.key);
@@ -232,6 +233,7 @@ const UINavbar = (props: {
                             </button>
                         ))}
                     </UIDropdown>
+                    <div className="pb-1"/>
                 </UIDropdown>
                 <NavbarItem isActive={MarkActive(hashHome)}>
                     {NavbarStatus('home')}
