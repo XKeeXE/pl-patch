@@ -32,7 +32,7 @@ const ProjectList = (props: {errorView: boolean}) => {
 
     const AddGhosts = (): JSX.Element => {
         let ghosts = []; // Array of empty projects
-        for (let i = 0; i < remainingSlots; i++) {
+        for (let index = 0; index < remainingSlots; index++) {
             ghosts.push('')
         }
         return (

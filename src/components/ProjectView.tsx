@@ -67,10 +67,10 @@ const ProjectView = (props: {
     };
 
     const ViewPage = (): JSX.Element => {
-        if (project === undefined) { 
+        if (!project) { 
             return <ErrorView setIsHomePage={setIsHomePage}/>
         }
-        currentColor.current = project?.color;
+        currentColor.current = project.color;
         window.dispatchEvent(OnProjectEnter);
         return (
             <CustomSwiper className={'max-h-[95.5vh]'} swiperProps={{

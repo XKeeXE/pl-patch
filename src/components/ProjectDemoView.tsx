@@ -20,8 +20,7 @@ const ProjectDemoView = (props: {getTranslatedText: TranslatedText, project: sli
     }
     
     const DemoComponent = (): JSX.Element => {
-
-        if (project.demoComponent !== undefined) {
+        if (!project.demoComponent) {
             return <DemoButton text={getTranslatedText('demoAvailable')} dashed={false} onClick={onDemoClick}/>
         }
         return <DemoButton text={getTranslatedText('demoError')} dashed={true}/>
