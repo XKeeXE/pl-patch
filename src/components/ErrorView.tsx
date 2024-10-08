@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { SlidesContext } from "./AppView";
 import ProjectList from "./ProjectList";
 
+
 const ErrorView = (props: {setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>}) => {
     const { setIsHomePage } = props;
 
@@ -15,7 +16,7 @@ const ErrorView = (props: {setIsHomePage: React.Dispatch<React.SetStateAction<bo
 
     return (
         <div className="h-[95vh]">
-            <ProjectList/>
+            <ProjectList errorView={true}/>
         </div>)
 }
 

@@ -202,7 +202,6 @@
         "skillsIntro": "スキル一覧",
                 
         "projectList": "プロジェクト一覧",
-        "errorList": "プロジェクト一覧",
         "summaryProjectList": "　",
 
         "viewPage": "ページを見る",
@@ -258,7 +257,7 @@
         "descNextCharacterTalkL2DWP": "With the L2DWP any character that supports Live2D can be inserted into the wallpaper.",
 
         "titlePCVR": "シンビオマタ",
-        "miniSummaryPCVR": "VR Coop Game",
+        "miniSummaryPCVR": "協力プレイVRゲーム",
         "summaryPCVR": "Asymmetrical VR Coop Game",
         "detailsPCVR1": "An asymmetrical VR coop platformer made in Unity, where the VR player is in charge of hand actions and the PC player is in charge of platforming.",
         "detailsPCVR2": "The game features both local and online game modes. The latter of which is designed with a server-authoritative architecture using standard industry practices and features, such as client-side prediction for VR hand movement and projectile lag compensation, along with relay and lobbies for easy matchmaking.",
@@ -308,9 +307,9 @@
         "detailsBURROUGHS2": "blah blah blah",
         "detailsBURROUGHS3": "blah blah blah",
 
-        "titleNEKOMATA": "P.U.R.R (Programmable Unit for Rewinding Reality)",
-        "miniSummaryNEKOMATA": "BulletHell Game",
-        "summaryNEKOMATA": "Bullet Hell Game",
+        "titleNEKOMATA": "ネコマタ",
+        "miniSummaryNEKOMATA": "弾幕シューティング",
+        "summaryNEKOMATA": "弾幕シューティング",
         "detailsNEKOMATA1": "A boss rush single-player bullet hell game made in Unreal Engine 5, taking inspiration from the Touhou series, the player must destroy enemies by shooting while simultaneously dodging the enemy projectiles.",
         "detailsNEKOMATA2": "The game focuses on a rewind ability that enables the player to dodge projectiles that are normally not avoidable. However, activating the rewind will turn all active enemy projectiles into a stronger variant depending on the boss.",
         "detailsNEKOMATA3": "All footage included on this page was taken from real gameplay.",
@@ -330,8 +329,8 @@
         "descPlagueRatBossNEKOMATA": "In Nekomata the player has to think fast to react or be destroyed in a barrage of non-stopping bullets.",
         
         "titlePORTFOLIO": "PORTFOLIO",
-        "miniSummaryPORTFOLIO": "React Website",
-        "summaryPORTFOLIO": "React Website",
+        "miniSummaryPORTFOLIO": "React ウェブサイト",
+        "summaryPORTFOLIO": "React ウェブサイト",
         "detailsPORTFOLIO1": "Portfolio website created entirely using React, Typescript, and Tailwind CSS. The site serves as a showcase of various projects that I have passionately developed, presenting a significant milestone in my journey as a developer. I selected these projects to highlight my skills and creativity, ensuring that they are polished and ready for presentation.",
         "detailsPORTFOLIO2": "Using the principles of UI theory, every UI elements is thoughtfully placed to ensure the most minimum information required to be understandable and a layout that not only is pleasing but also enhances usability. No spectrum leaves untouched as the core of the portfolio are the projects, which every project specifically highlights their functionality, design, and objective. ",
         "detailsPORTFOLIO3": "Thank you very much for taking the time to explore my portfolio. Your interest in my work means a great deal to me, as I am excited to share my skills and projects.",

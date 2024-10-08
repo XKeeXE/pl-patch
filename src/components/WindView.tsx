@@ -118,7 +118,7 @@ const WindView = (props: {
                 <AboutMe/>
             </SwiperSlide>
             <SwiperSlide data-hash="projects" >
-                <ProjectList />
+                <ProjectList errorView={false}/>
             </SwiperSlide>
             {slides.map(project => (
                 <SwiperSlide data-hash={project.name} key={project.name}>

@@ -6,7 +6,8 @@ import { SlidesContext } from "./AppView";
 
 const gradient = ' bg-clip-text text-transparent bg-gradient-to-br from-[#0089fe] from-0% to-[#15c31e] to-100%'
 
-const ProjectList = () => {
+const ProjectList = (props: {errorView: boolean}) => {
+    const { errorView } = props;
 
     const { isHomePage, getTranslatedText, slides } = useContext(SlidesContext)
 
@@ -71,7 +72,8 @@ const ProjectList = () => {
     return (
         <div className='flex flex-col justify-center h-full gap-5 items-center'>
             <div className="flex flex-col gap-1 items-center">
-                <span className={'text-2xl md:text-4xl font-title'}>{isHomePage ? getTranslatedText('projectList') : getTranslatedText('errorList')}</span>
+                {errorView ? <span>{getTranslatedText('error')}</span> : <></>}
+                <span className={'text-2xl md:text-4xl font-title'}>{getTranslatedText('projectList')}</span>
             </div>
             <div className={`grid self-center gap-4 `} style={{
                 gridTemplateColumns: `repeat(${gridSize}, 1fr)`
