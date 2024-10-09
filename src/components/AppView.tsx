@@ -3,7 +3,7 @@ import WindView from './WindView';
 import UINavbar from './UINavbar';
 
 import { image, LanguageTranslations, slide } from '../Types/types';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import PetsIcon from '@mui/icons-material/Pets';
 import ViewInArIcon from '@mui/icons-material/ViewInAr';
@@ -21,7 +21,7 @@ function GetCurrentLanguage(): string {
     if (localStorage.getItem('Language')) { // get saved language
         return localStorage.getItem('Language') as string;
     }
-    if (navigator.language != 'es' || 'en' || 'ja') { // To check website usable languages
+    if (navigator.language !== 'es' || 'en' || 'ja') { // To check website usable languages
         return 'en';
     }
     return navigator.language;
@@ -132,7 +132,7 @@ const slides: slide[] = [
     video: 'Videos/BGM-APPDemoVid.mp4',
     demoComponent: <BGMApp />,
     links: [{
-        text: 'Github',
+        text: 'GitHub',
         url: 'https://github.com/XKeeXE/bgm-app'
     },
     {
@@ -151,7 +151,7 @@ const slides: slide[] = [
     video: 'Videos/L2DWPDemoVid.mp4',
     demoComponent: <L2DWP/>,
     links: [{
-        text: 'Github',
+        text: 'GitHub',
         url: 'https://github.com/XKeeXE/Live2DWallpaper'
     }]
 },
@@ -216,106 +216,21 @@ const slides: slide[] = [
     }]
 }];
 
-// const slides: slide[] = [
-//     {
-//         color: '#7a0a9c',
-//         gradient: 'from-[#8208de] from-0% to-[#6d0c6e] to-100%',
-//         icon: <LibraryMusic/>,
-//         logo: 'Icons/Oni.png',
-//         name: 'BGMAPP',
-//         images: imagesBGM,
-//         video: 'Videos/BGM-APPDemoVid.mp4',
-//         demoComponent: <BGMApp />,
-//         links: [{
-//             text: 'Github',
-//             url: 'https://github.com/XKeeXE/bgm-app'
-//         },
-//         {
-//             text: getTranslatedText('download'),
-//             url: ''
-//         }
-//         ]
-//     },
-//     {
-//         color: '#1e65c9',
-//         gradient: 'from-[#373ba6] from-0% via-[#0290f2] via-50% to-[#373ba6] to-100%',
-//         icon: <WallpaperIcon />,
-//         logo: 'Icons/L2DWP.png',
-//         name: 'L2DWP',
-//         images: imagesL2DWP,
-//         video: 'Videos/L2DWPDemoVid.mp4',
-//         demoComponent: <L2DWP/>,
-//         links: [{
-//             text: 'Github',
-//             url: 'https://github.com/XKeeXE/Live2DWallpaper'
-//         }]
-//     },
-//     {
-//         color: '#d33636',
-//         gradient: 'from-[#d53030] from-0% via-[#cb3b3b] via-50% to-[#910a0a] to-100%',
-//         icon: <SvgAssets icon='onigiri' />,
-//         logo: '',
-//         name: 'ONIGIRI',
-//         images: imagesONIGIRI,
-//         video: 't',
-//         demoComponent: undefined,
-//         links: [{
-//             text: getTranslatedText('download'),
-//             url: ''
-//         }]
-//     },
-//     // {
-//     //     color: '',
-//     //     gradient: '',
-//     //     icon: <OnigiriIcon />,
-//     //     logo: '',
-//     //     name: 'BURROUGHS',
-//     //     images: imagesPCVR,
-//     //     video: 't',
-//     //     demoComponent: undefined,
-//     //     links: [{
-//     //     title: '',
-//     //     url: ''
-//     // }]
-//     // },
-//     {
-//         color: '#0030e7',
-//         gradient: 'from-[#0009ff] from-0% to-[#006ae7] to-40%',
-//         icon: <ViewInArIcon />,
-//         logo: 'Icons/PCVR.png',
-//         name: 'PCVR',
-//         images: imagesPCVR,
-//         video: 't',
-//         demoComponent: undefined,
-//         links: [{
-//             text: '',
-//             url: ''
-//         }]
-//     },
-//     {
-//         color: '#5e9cff',
-//         gradient: 'from-[#9181ff] from-10% to-[#00d6ff] to-90%',
-//         icon: <PetsIcon />,
-//         logo: '',
-//         name: 'NEKOMATA',
-//         images: imagesNEKOMATA,
-//         video: 't',
-//         demoComponent: undefined,
-//         links: [{
-//             text: getTranslatedText('website'),
-//             url: 'https://sneorino.itch.io/nekomata'
-//         },
-//         {
-//             text: getTranslatedText('download'),
-//             url: ''
-//         }]
-//     }];
-
 export const SlidesContext = createContext({
     isHomePage: true,
     getTranslatedText: (langKey: string) => langKey, 
     slides: slides
 });
+
+// export const SlidesContext = createContext<{
+//     isHomePage: boolean,
+//     getTranslatedText: (langKey: string) => string,
+//     slides: slide[]
+// }>({
+//     isHomePage: true,
+//     getTranslatedText: () => {return '';},
+//     slides: []
+// });
 
 const AppView = () => {
     const [language, setLanguage] = useState<string>(GetCurrentLanguage() as string);
@@ -329,10 +244,9 @@ const AppView = () => {
         const languageTranslations: LanguageTranslations | undefined = data[language];
         
         if (languageTranslations) {
-          return languageTranslations[key] || 'Text not found';
-        } else {
-          return 'Language not found';
+            return languageTranslations[key] || 'Text not found';
         }
+        return 'Language not found';
     }
 
     // No Direct File System Access: You cannot read files from the file system directly in a React app running in the browser. You can only access files that are served by your web server.
@@ -347,8 +261,102 @@ const AppView = () => {
             document.documentElement.style.setProperty('--swiper-button-color', currentColor.current);
             document.documentElement.style.setProperty('--swiper-pagination-color', currentColor.current);
         }
-        
         window.addEventListener('OnProjectEnter', OnProjectEnter);
+
+        // slides.current = [
+        //     {
+        //         color: '#7a0a9c',
+        //         gradient: 'from-[#8208de] from-0% to-[#6d0c6e] to-100%',
+        //         icon: <LibraryMusic/>,
+        //         logo: 'Icons/Oni.png',
+        //         name: 'BGMAPP',
+        //         images: imagesBGM,
+        //         video: 'Videos/BGM-APPDemoVid.mp4',
+        //         demoComponent: <BGMApp />,
+        //         links: [{
+        //             text: 'GitHub',
+        //             url: 'https://github.com/XKeeXE/bgm-app'
+        //         },
+        //         {
+        //             text: getTranslatedText('download'),
+        //             url: ''
+        //         }
+        //         ]
+        //     },
+        //     {
+        //         color: '#1e65c9',
+        //         gradient: 'from-[#373ba6] from-0% via-[#0290f2] via-50% to-[#373ba6] to-100%',
+        //         icon: <WallpaperIcon />,
+        //         logo: 'Icons/L2DWP.png',
+        //         name: 'L2DWP',
+        //         images: imagesL2DWP,
+        //         video: 'Videos/L2DWPDemoVid.mp4',
+        //         demoComponent: <L2DWP/>,
+        //         links: [{
+        //             text: 'GitHub',
+        //             url: 'https://github.com/XKeeXE/Live2DWallpaper'
+        //         }]
+        //     },
+        //     {
+        //         color: '#d33636',
+        //         gradient: 'from-[#d53030] from-0% via-[#cb3b3b] via-50% to-[#910a0a] to-100%',
+        //         icon: <SvgAssets icon='onigiri' />,
+        //         logo: '',
+        //         name: 'ONIGIRI',
+        //         images: imagesONIGIRI,
+        //         video: 't',
+        //         demoComponent: undefined,
+        //         links: [{
+        //             text: getTranslatedText('download'),
+        //             url: ''
+        //         }]
+        //     },
+        //     // {
+        //     //     color: '',
+        //     //     gradient: '',
+        //     //     icon: <OnigiriIcon />,
+        //     //     logo: '',
+        //     //     name: 'BURROUGHS',
+        //     //     images: imagesPCVR,
+        //     //     video: 't',
+        //     //     demoComponent: undefined,
+        //     //     links: [{
+        //     //     title: '',
+        //     //     url: ''
+        //     // }]
+        //     // },
+        //     {
+        //         color: '#0030e7',
+        //         gradient: 'from-[#0009ff] from-0% to-[#006ae7] to-40%',
+        //         icon: <ViewInArIcon />,
+        //         logo: 'Icons/PCVR.png',
+        //         name: 'PCVR',
+        //         images: imagesPCVR,
+        //         video: 't',
+        //         demoComponent: undefined,
+        //         links: [{
+        //             text: '',
+        //             url: ''
+        //         }]
+        //     },
+        //     {
+        //         color: '#5e9cff',
+        //         gradient: 'from-[#9181ff] from-10% to-[#00d6ff] to-90%',
+        //         icon: <PetsIcon />,
+        //         logo: '',
+        //         name: 'NEKOMATA',
+        //         images: imagesNEKOMATA,
+        //         video: 't',
+        //         demoComponent: undefined,
+        //         links: [{
+        //             text: getTranslatedText('website'),
+        //             url: 'https://sneorino.itch.io/nekomata'
+        //         },
+        //         {
+        //             text: getTranslatedText('download'),
+        //             url: ''
+        //         }]
+        //     }];
 
         return () => {
             window.removeEventListener('OnProjectEnter', OnProjectEnter);

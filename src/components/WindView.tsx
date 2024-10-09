@@ -1,4 +1,4 @@
-import { SwiperSlide } from 'swiper/react';
+import { SwiperRef, SwiperSlide } from 'swiper/react';
 import ProjectCardView from './ProjectCardView';
 
 import 'swiper/css';
@@ -9,9 +9,11 @@ import { Pagination, Mousewheel, HashNavigation } from 'swiper/modules';
 import { link } from '../Types/types';
 import LinksCard from './LinksCard';
 import ProjectList from './ProjectList';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import CustomSwiper from './CustomSwiper';
 import { SlidesContext } from './AppView';
+
+const validKeys: string[] = ['w', 's', 'ArrowUp', 'ArrowDown'];
 
 const WindView = (props: {
     language: string, 
@@ -20,6 +22,8 @@ const WindView = (props: {
     const { language, setIsHomePage } = props;
 
     const {getTranslatedText, slides} = useContext(SlidesContext)
+
+    const swiper = useRef<SwiperRef>(null);
 
     const currentYear = new Date().getFullYear();
 
@@ -40,6 +44,18 @@ const WindView = (props: {
         const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.style.setProperty('--swiper-pagination-color', darkMode ? "#f0f0f0" : "#0f0f0f");
     }, [])
+
+    // Defines the available way to navigate through Swiper using keyboard keys
+    const OnKeyDown = (e: KeyboardEvent) => {
+        if (!validKeys.includes(e.key)) {
+            return;
+        }
+        if (e.key === 'w' || e.key === 'ArrowUp') {
+            swiper.current?.swiper.slidePrev();
+        } else { // Down key was pressed
+            swiper.current?.swiper.slideNext();
+        }
+    };
 
     const GetJP = (props: {className: string, text: string, furigana: string}) => {
         const { className, text, furigana } = props;
@@ -97,13 +113,13 @@ const WindView = (props: {
     }
 
     return (
-        <CustomSwiper className={'max-h-[92.8vh] lg:max-h-[94vh] xl:max-h-[95.5vh]'} swiperProps={{
+        <CustomSwiper className={'max-h-[92.8vh] lg:max-h-[94vh] xl:max-h-[95.5vh]'} swiper={swiper} swiperProps={{
             modules: [Mousewheel, HashNavigation, Pagination],
             spaceBetween: 50,
             hashNavigation: {
                 watchState: true
             },
-        }}>
+        }} OnKeyDown={OnKeyDown}>
             <SwiperSlide data-hash="home">
                 <Home/>
                 {/* <section>

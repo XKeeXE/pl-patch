@@ -214,6 +214,9 @@
         "email": "メール",
         "sourceCode": "ソースコード",
 
+        "download": "ダウンロード",
+        "website": "ウェブサイト",
+
         "titleBGMAPP": "Background Music Application",
         "miniSummaryBGMAPP": "音楽プレイヤー",
         "summaryBGMAPP": "Desktop Track Player",

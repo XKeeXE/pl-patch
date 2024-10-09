@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import WebIcon from '@mui/icons-material/Web';
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { SlidesContext } from "./AppView";
 
 const gradient = ' bg-clip-text text-transparent bg-gradient-to-br from-[#0089fe] from-0% to-[#15c31e] to-100%'

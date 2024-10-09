@@ -1,6 +1,5 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { useParams } from 'react-router-dom';
-import { link, slide, TranslatedText } from '../Types/types';
 import ErrorView from './ErrorView';
 
 import 'swiper/css';
@@ -8,18 +7,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
-
 import { Pagination, Mousewheel, EffectCoverflow, Navigation } from 'swiper/modules';
-import UINavbar from './UINavbar';
-import { memo, ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { ReactNode, useContext, useEffect, useMemo, useRef } from 'react';
 import LinksCard from './LinksCard';
-import UIButton from './UIButton';
-import ProjectDemoView from './ProjectDemoView';
 import { Card, CardBody, CardHeader } from '@nextui-org/react';
 import CustomSwiper from './CustomSwiper';
 import React from 'react';
 import { SlidesContext } from './AppView';
+
+const validKeys: string[] = ['w', 's', 'a', 'd', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
 
 const ProjectView = (props: { 
     setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, 
@@ -29,6 +25,9 @@ const ProjectView = (props: {
 
     const { getTranslatedText, slides } = useContext(SlidesContext);
 
+    const swiper = useRef<SwiperRef>(null);
+    const swiperImageRef = useRef<SwiperRef>(null);
+
     const OnProjectEnter = new CustomEvent('OnProjectEnter', {});
 
     const { projectName } = useParams();
@@ -36,11 +35,27 @@ const ProjectView = (props: {
         return slides.find(project => project.name === projectName);
     }, [projectName])
 
-    // Activates only when starting in the project and when moving from home --> projects (If switching from project to another project will not activate)
+    // Activates only when starting in the project or (home --> projects) (If switching from project to another project will not activate)
     useEffect(() => {
         // console.log("Im on project view");
         setIsHomePage(false);
     }, [])
+
+    // Defines the available way to navigate through Swiper using keyboard keys
+    const OnKeyDown = (e: KeyboardEvent) => {
+        if (!validKeys.includes(e.key)) {
+            return;
+        }
+        if (e.key === 'w' || e.key === 'ArrowUp') { // Move up in main swiper
+            swiper.current?.swiper.slidePrev();
+        } else if (e.key === 's' || e.key === 'ArrowDown') { // Move down in main swiper
+            swiper.current?.swiper.slideNext();
+        } else if (e.key === 'a' || e.key === 'ArrowLeft') { // Move to the left image in image swiper
+            swiperImageRef.current?.swiper.slidePrev();
+        } else { // Move to the right image in image swiper
+            swiperImageRef.current?.swiper.slideNext();
+        }
+    };
 
     const Header = (props: {headerText: string}) => {
         const { headerText } = props;
@@ -73,10 +88,10 @@ const ProjectView = (props: {
         currentColor.current = project.color;
         window.dispatchEvent(OnProjectEnter);
         return (
-            <CustomSwiper className={'max-h-[95.5vh]'} swiperProps={{
+            <CustomSwiper className={'max-h-[95.5vh]'} swiper={swiper} swiperProps={{
                 modules: [Mousewheel, Pagination],
                 spaceBetween: 10,
-            }}>
+            }} OnKeyDown={OnKeyDown}>
                 <SwiperSlide>
                     <div className='flex justify-center h-full'>
                         <Card className="self-center sm:w-[100vw] md:w-[80vw] lg:w-[60vw] xl:w-[35vw] bg-[#f0f0f0] dark:bg-[#181919]/40" shadow="none" style={{
@@ -132,9 +147,8 @@ const ProjectView = (props: {
                 <SwiperSlide>
                     <div className=' flex flex-col h-full'>
                         <Swiper
-                            className=' '
+                            ref={swiperImageRef}
                             loop
-                            grabCursor
                             slidesPerView={1}
                             coverflowEffect={{
                                 rotate: 90,
@@ -166,7 +180,6 @@ const ProjectView = (props: {
                     <LinksCard headerText={getTranslatedText('linksHeader')} linkItems={project.links} color={project.color} gradient={project.gradient}/>
                 </SwiperSlide>
             </CustomSwiper>
-            
         )
     }
 

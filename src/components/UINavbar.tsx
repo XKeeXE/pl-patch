@@ -1,4 +1,4 @@
-import { Link as linkRouter, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Navbar, NavbarContent, NavbarItem } from "@nextui-org/react";
+import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/react";
 
 import BrightnessIcon from '@mui/icons-material/Brightness7';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
@@ -148,26 +148,6 @@ const UINavbar = (props: {
         )
     }
 
-    // const settingsItem = [
-    //     <button className={"rounded-lg p-1 hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => setDarkMode(!darkMode)}>
-    //         {darkMode ? <DarkModeIcon htmlColor={darkMode ? "white" : "black"}/> : <BrightnessIcon htmlColor={darkMode ? "white" : "black"}/>}
-    //     </button>
-    //     <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={CheckLanguage()} activeIcon={CheckLanguage()}>
-    //         {languages.map(language => (
-    //             <button className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
-    //                 setShowLangDropdown(false); 
-    //                 setLanguage(language.key);
-    //                 }}>
-    //                 <div className={"flex flex-row p-[2px] gap-1 font-text " + (language.key === 'ja' ? ' w-[130px] ' : '') }>
-    //                     {language.icon}
-    //                     <span>{getTranslatedText(language.lang)}</span>
-    //                 </div>
-    //             </button>
-    //         ))}
-    //     </UIDropdown>
-    //     // <LanguageSelect darkMode={darkMode} language={language} setLanguage={setLanguage} getTranslatedText={getTranslatedText}/>,
-    // ];
-
     return (
         <Navbar // Displays buttons 
         isBordered
@@ -176,14 +156,7 @@ const UINavbar = (props: {
         isBlurred={false}
         classNames={{
             item: [
-                // "data-[active=true]:after:content-['']",
                 "data-[active=true]:after:text-bold",
-                // "data-[active=true]:after:bottom-0",
-                // "data-[active=true]:after:left-0",
-                // "data-[active=true]:after:right-0",
-                // "data-[active=true]:after:h-[2px]",
-                // "data-[active=true]:after:rounded-[2px]",
-                // "data-[active=true]:after:bg-primary",
             ]
         }}
         >
