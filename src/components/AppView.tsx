@@ -347,6 +347,7 @@ const AppView = () => {
             document.documentElement.style.setProperty('--swiper-button-color', currentColor.current);
             document.documentElement.style.setProperty('--swiper-pagination-color', currentColor.current);
         }
+        
         window.addEventListener('OnProjectEnter', OnProjectEnter);
 
         return () => {

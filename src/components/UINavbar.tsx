@@ -35,6 +35,7 @@ const UINavbar = (props: {
     const [showProjectDropdown, setShowProjectDropdown] = useState<boolean>(false);
     const [showLangDropdown, setShowLangDropdown] = useState<boolean>(false);
     const [showMenuDropdown, setShowMenuDropdown] = useState<boolean>(false);
+    const isHovering = useRef<boolean>(false);
 
     const hashHome = ['home', 'about'];
     const hashProjects = slides.map(item => item.name); // To mark active when viewing the project cards
@@ -55,6 +56,15 @@ const UINavbar = (props: {
         },
     ]
 
+    function closeAll() {
+        if (isHovering.current) {
+            return;
+        }
+        setShowMenuDropdown(false); 
+        setShowProjectDropdown(false);
+        setShowLangDropdown(false); 
+    }
+
     const MarkActive = (items: string[]): boolean => {
         return items.find(hashes => hashes === hash.substring(1)) !== undefined // Get #about => about
     }
@@ -63,9 +73,7 @@ const UINavbar = (props: {
         if (isHomePage) {
             return (
             <a href={`/#${item}`} className={"font-text pt-[2px] select-none"} onClick={() => {
-                setShowMenuDropdown(false); 
-                setShowProjectDropdown(false);
-                setShowLangDropdown(false); 
+                closeAll();
                 }}>
                     {getTranslatedText(item)}
             </a>)
@@ -73,36 +81,11 @@ const UINavbar = (props: {
         return (
             <Link to={`/#${item}`} className={"font-text pt-[2px] select-none"} onClick={() => {
                 setHash(`#${item}`);
-                setShowMenuDropdown(false); 
-                setShowProjectDropdown(false);
-                setShowLangDropdown(false);
                 }}>
                     {getTranslatedText(item)}
             </Link>)
     }
 
-    const handleClickOutside = (e: any) => {
-        // console.log('clicked');
-        // if (showProjectDropdown) {
-        //     setShowProjectDropdown(false);
-        // }
-        // if (wrapperRef.current && wrapperRef.current.contains(e.target)) {
-        //     console.log('clicked somewhere where no buttons exist');
-        //     // return;
-        // }
-        // if (wrapper.current && !wrapper.current.contains(e.target) || e.target.tagName !== 'BUTTON') {
-        //     console.log('clicked Outside');
-
-        // }
-
-        // if (e.target.tagName === 'BUTTON') {
-        //     console.log('clicked')
-        // }
-        // setShowMenuDropdown(false); 
-        // setShowProjectDropdown(false)
-        // console.log('tst');
-        
-    };
 
     // Activates on every page once
     useEffect(() => {
@@ -115,9 +98,12 @@ const UINavbar = (props: {
         };
 
         const OnSlideChanged = () => {
-            setShowMenuDropdown(false); 
-            setShowProjectDropdown(false);
-            setShowLangDropdown(false);
+            closeAll();
+        };
+
+        const handleClickOutside = () => {
+            // console.log('clicked outside');
+            closeAll();
         };
 
         window.addEventListener('hashchange', handleHashChange);
@@ -139,10 +125,6 @@ const UINavbar = (props: {
         }
     }, [darkMode])
 
-    // useEffect(() => {
-
-    // }, [hash])
-
     const UIDropdown = (props: { 
         children: React.ReactNode, 
         showDropdown: boolean, 
@@ -154,7 +136,7 @@ const UINavbar = (props: {
     
         return (
             <div className="relative flex flex-col">
-                <button onMouseEnter={() => setShowDropdown(true)}>
+                <button onMouseEnter={() => {setShowDropdown(true); isHovering.current = true}} onMouseLeave={() => isHovering.current = false}>
                     {showDropdown ? activeIcon : mainIcon}
                 </button>
                 {showDropdown && (
@@ -248,8 +230,6 @@ const UINavbar = (props: {
                             <Link key={project.name} to={`/projects/${project.name}`}>
                                 <button className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
                                     setHash(`#${project.name}`);
-                                    setShowMenuDropdown(false);
-                                    setShowProjectDropdown(false);
                                     }}>
                                     <div className={"flex flex-row p-[2px] gap-1 font-title " }>
                                         {project.icon}

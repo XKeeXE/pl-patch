@@ -51,7 +51,7 @@ const WindView = (props: {
 
     const Home = () => {
         return (
-            <div className='flex flex-col justify-center items-center h-full'>
+             <div className='flex flex-col justify-center items-center h-full'>
                 <div className='font-text'>
                     <span className={`text-4xl font-title font-bold`}>{getTranslatedText('greetings')}</span>
                     <div className={'flex flex-row gap-1 items-center'}>
@@ -71,17 +71,16 @@ const WindView = (props: {
     }
 
     const AboutMe = () => {
+        //<div className='flex flex-col h-full font-text gap-4 justify-center md:items-center '>
         return (
-            <div className='flex flex-col h-full font-text gap-4 justify-center md:items-center '>
-                <div className='flex flex-row gap-4 sm:justify-between md:w-[60vw] lg:w-[35vw]'>
-                    <div className='flex flex-col gap-2 '>
-                        <span className={`font-title text-4xl self-center `}>{getTranslatedText('aboutHeader')}</span>
+            <div className='flex flex-col h-full font-text gap-4 items-center justify-center '>
+                <div className='flex flex-col md:w-[60vw] lg:w-[35vw] gap-2'>
+                    <span className={`font-title text-4xl self-center`}>{getTranslatedText('aboutHeader')}</span>
                         <div className='flex flex-col gap-1 text-sm md:text-base '>
                             <span>{getTranslatedText('aboutIntro')}</span>
                             <span>{`${getTranslatedText('aboutExp1')} ${(currentYear - 2017)} ${getTranslatedText('aboutExp2')}`}</span>
                             <span>{getTranslatedText('aboutEnd')}</span>
                         </div>
-                    </div>
                 </div>
                 <div className='flex flex-col gap-2 text-xs border-2 p-2 rounded-lg md:w-[60vw] lg:w-[35vw] border-[#f0f0f0] dark:border-[#0f0f0f] '>
                     <span className='font-bold'>{getTranslatedText('skillsIntro')}</span>
