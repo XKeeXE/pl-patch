@@ -16,7 +16,7 @@
         "aboutHeader": "About Me",
         "about": "Dedicated Computer Science student at the University of Puerto Rico Bayamon, with approximately <years> years of experience. My journey began in high school, and I have actively participated in a video game research team, where we developed various games using different engines, which challenged us to learn new tools and adapt to diverse environments. Additionally, I have engaged in several passion projects that have provided me with invaluable insights and hands-on experience in the software development process. I am committed to continuous learning and skill enhancement in my spare time, striving to maximize every opportunity for growth.",
  
-        "skillsIntro": "Technical Skills",
+        "skills": "Technical Skills",
         
         "projectListOld": "EXPLORE THE IMPRESSIVE PROJECTS THAT I WORKED ON",
         "projectList": "Awesome Projects",
@@ -196,7 +196,7 @@
         "aboutExp2": "",
         "aboutEnd": "",
 
-        "skillsIntro": "スキル一覧",
+        "skills": "スキル一覧",
                 
         "projectList": "プロジェクト一覧",
         "summaryProjectList": "　",

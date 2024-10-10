@@ -37,7 +37,7 @@ const UINavbar = (props: {
     const [showMenuDropdown, setShowMenuDropdown] = useState<boolean>(false);
     const isHovering = useRef<boolean>(false);
 
-    const hashHome = ['home', 'about'];
+    const hashHome = ['home', 'about', 'skills'];
     const hashProjects = slides.map(item => item.name); // To mark active when viewing the project cards
     hashProjects.push('projects', 'portfolio');
     const hashContacts = ['contacts'];

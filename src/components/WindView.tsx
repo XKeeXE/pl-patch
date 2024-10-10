@@ -12,7 +12,6 @@ import ProjectList from './ProjectList';
 import { useContext, useEffect, useRef } from 'react';
 import CustomSwiper from './CustomSwiper';
 import { SlidesContext } from './AppView';
-import UIButton from './UIButton';
 
 const validKeys: string[] = ['w', 's', 'ArrowUp', 'ArrowDown'];
 
@@ -36,24 +35,28 @@ const WindView = (props: {
         { img: 'https://upload.wikimedia.org/wikipedia/commons/3/35/The_C_Programming_Language_logo.svg', link: { text: 'C', url: 'https://www.geeksforgeeks.org/c-programming-language/' } },
         { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d2/C_Sharp_Logo_2023.svg', link: { text: 'C#', url: 'https://learn.microsoft.com/en-us/dotnet/csharp/' } },
         { img: 'https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg', link: { text: 'C++', url: 'https://www.w3schools.com/cpp/cpp_intro.asp' } },
-        { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg', link: { text: 'CSS', url: 'https://www.w3.org/TR/CSS/#css' } },
+        { img: 'https://www.svgrepo.com/show/373535/css.svg', link: { text: 'CSS', url: 'https://www.w3.org/TR/CSS/#css' } },
         { img: 'https://wasimaster.gallerycdn.vsassets.io/extensions/wasimaster/discord-py-snippets/1.2.1/1604309045628/Microsoft.VisualStudio.Services.Icons.Default', link: { text: 'Discord.py', url: 'https://discordpy.readthedocs.io' } },
         { img: 'https://www.svgrepo.com/show/448221/docker.svg', link: { text: 'Docker', url: 'https://www.docker.com/' } },
         { img: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Electron_Software_Framework_Logo.svg', link: { text: 'Electron', url: 'https://www.electronjs.org/' } },
-        { img: './icons/ffmpeg.svg', link: { text: 'FFmpeg', url: 'https://ffmpeg.org/' } },
+        { img: './Icons/ffmpeg.svg', link: { text: 'FFmpeg', url: 'https://ffmpeg.org/' } },
+        { img: 'https://www.svgrepo.com/show/452202/figma.svg', link: { text: 'Figma', url: 'https://www.figma.com/' } },
         { img: 'https://upload.wikimedia.org/wikipedia/commons/6/66/F_Sharp_logo.svg', link: { text: 'F#', url: 'https://fsharp.org/' } },
         { img: 'https://www.svgrepo.com/show/439171/github.svg', link: { text: 'GitHub', url: 'https://github.com/' } },
         { img: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg', link: { text: 'Go', url: 'https://go.dev/' } },
         { img: 'https://www.svgrepo.com/show/373641/godot.svg', link: { text: 'Godot 4', url: 'https://godotengine.org/' } },
-        { img: 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg', link: { text: 'HTML', url: 'https://html.spec.whatwg.org/' } },
+        { img: 'https://www.svgrepo.com/show/452228/html-5.svg', link: { text: 'HTML', url: 'https://html.spec.whatwg.org/' } },
         { img: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg', link: { text: 'Java', url: 'https://www.oracle.com/java/' } },
         { img: 'https://www.svgrepo.com/show/349419/javascript.svg', link: { text: 'Javascript', url: 'https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript' } },
         { img: 'https://www.svgrepo.com/show/452242/jquery.svg', link: { text: 'jQuery', url: 'https://jquery.com/' } },
+        { img: '', link: { text: 'Kotlin', url: '' } },
         { img: 'https://upload.wikimedia.org/wikipedia/commons/7/73/Calligrakrita-base.svg', link: { text: 'Krita', url: 'https://krita.org/' } },
+        { img: 'https://www.svgrepo.com/show/354020/lua.svg', link: { text: 'Lua', url: 'https://www.lua.org/' } },
         { img: 'https://upload.wikimedia.org/wikipedia/en/5/5a/MongoDB_Fores-Green.svg', link: { text: 'MongoDB', url: 'https://www.mongodb.com/' } },
         { img: 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg', link: { text: 'Next.js', url: 'https://nextjs.org/' } },
         { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg', link: { text: 'Node.js', url: 'https://nodejs.org' } },
         { img: 'https://www.svgrepo.com/show/448245/oracle.svg', link: { text: 'Oracle', url: 'https://www.oracle.com/database/' } },
+        { img: 'https://alefragnani.gallerycdn.vsassets.io/extensions/alefragnani/pascal/9.0.0/1581635737477/Microsoft.VisualStudio.Services.Icons.Default', link: { text: 'Pascal', url: 'https://www.freepascal.org/' } },
         { img: 'https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg', link: { text: 'PHP', url: 'https://www.php.net/' } },
         { img: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg', link: { text: 'Python', url: 'https://www.python.org/' } },
         { img: 'https://www.svgrepo.com/show/354250/rabbitmq-icon.svg', link: { text: 'Rabbit MQ', url: 'https://www.rabbitmq.com/' } },
@@ -65,7 +68,7 @@ const WindView = (props: {
         { img: './Icons/tsql.svg', link: { text: 'T-SQL', url: 'https://learn.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver16' } },
         { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg', link: { text: 'TailwindCSS', url: 'https://tailwindcss.com/' } },
         { img: 'https://tauri-apps.gallerycdn.vsassets.io/extensions/tauri-apps/tauri-vscode/0.2.1/1666710948930/Microsoft.VisualStudio.Services.Icons.Default', link: { text: 'Tauri', url: 'https://tauri.app/' } },
-        { img: './Icons/writing.svg', link: { text: 'Technical Writing', url: 'https://www.indeed.com/career-advice/career-development/technical-writing' } },
+        // { img: './Icons/writing.svg', link: { text: 'Technical Writing', url: 'https://www.indeed.com/career-advice/career-development/technical-writing' } },
         { img: 'https://www.svgrepo.com/show/354463/trello.svg', link: { text: 'Trello', url: 'https://trello.com/' } },
         { img: 'https://www.svgrepo.com/show/349540/typescript.svg', link: { text: 'Typescript', url: 'https://www.typescriptlang.org/' } },
         { img: './Icons/unreal.svg', link: { text: 'UE5', url: 'https://www.unrealengine.com/' } },
@@ -137,39 +140,30 @@ const WindView = (props: {
             <div className='flex flex-col h-full font-text gap-4 items-center justify-center '>
                 <div className='flex flex-col md:w-[60vw] lg:w-[35vw] gap-2'>
                     <span className={`font-title text-4xl self-center`}>{getTranslatedText('aboutHeader')}</span>
-                        <div className='flex flex-col gap-1 text-sm md:text-base '>
-                            {/* <span>{getTranslatedText('aboutIntro')}</span> */}
-                            <p className='block'>{getTranslatedText('about', { years: currentYear - 2017})}</p>
-                            {/* <span>{getTranslatedText('aboutEnd')}</span> */}
-                        </div>
+                    <div className='flex flex-col gap-1 text-sm md:text-base '>
+                        {/* <span>{getTranslatedText('aboutIntro')}</span> */}
+                        <p className='block'>{getTranslatedText('about', { years: currentYear - 2017})}</p>
+                        {/* <span>{getTranslatedText('aboutEnd')}</span> */}
+                    </div>
                 </div>
-                {/* <div className='border-1 grid grid-cols-8'>
-                    {skills.map(skill => (
-                        <span className='border-1 p-2'>{skill.text}</span>
-                    ))}
-                    </div> */}
+            </div>
+        )
+    }
+
+    const Skills = () => {
+        return (
+            <div className='flex flex-col h-full font-title gap-4 items-center justify-center '>
+                <span className='font-title text-4xl'>{getTranslatedText('skills')}</span>
                 <div className='grid grid-cols-8 gap-2'>
                     {skills.map(skill => (
-                        <span className='inline-flex border-2 p-1 cursor-pointer rounded-lg text-xs items-center' onClick={() => {window.open(skill.link.url, '_blank');}}>
-                            <img src={skill.img} className='w-10 h-10 mx-1 '/>
+                        <span className='inline-flex border-2 p-1 cursor-pointer rounded-lg text-xs items-center border-[#f0f0f0] hover:bg-[#f2f2f2] dark:border-[#0f0f0f] dark:hover:bg-[#353535a2]' onClick={() => {window.open(skill.link.url, '_blank');}}>
+                            <img src={skill.img} className='w-5 h-5 xl:w-8 xl:h-8 mx-1 ' alt={skill.link.text}/>
                             {/* <span className='hidden lg:inline font-title' onClick={() => {
                                 window.open(skill.link.url, '_blank');
                             }}>{skill.link.text}</span> */}
                         </span>
-                        // <UIButton color={` border-[#f0f0f0] dark:border-[#0f0f0f] `} card={false} link={skill.url}>
-                        //     <span className='text-xs'>{skill.text}</span>
-                        // </UIButton>
                     ))}
                 </div>
-                {/* <div className='flex flex-col gap-2 text-xs border-2 p-2 rounded-lg md:w-[60vw] lg:w-[35vw] border-[#f0f0f0] dark:border-[#0f0f0f] '>
-                    <span className='font-bold'>{getTranslatedText('skillsIntro')}</span>
-                    <div className='grid grid-cols-8 gap-2'>
-                        {skills.map(skill => (
-                            <span className='border-2 p-1'>{skill.text}</span>
-                        ))}
-                    </div> */}
-                    {/* <span>
-                {/* </div> */}
             </div>
         )
     }
@@ -193,6 +187,9 @@ const WindView = (props: {
             </SwiperSlide>
             <SwiperSlide data-hash="about">
                 <AboutMe/>
+            </SwiperSlide>
+            <SwiperSlide data-hash="skills">
+                <Skills/>
             </SwiperSlide>
             <SwiperSlide data-hash="projects" >
                 <ProjectList errorView={false}/>
