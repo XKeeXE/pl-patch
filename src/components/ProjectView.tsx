@@ -171,7 +171,6 @@ const ProjectView = (props: {
                                     </Slide>
                                 </SwiperSlide>
                             ))}
-
                         </Swiper>
                     </div>
                 </SwiperSlide>

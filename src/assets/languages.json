@@ -14,10 +14,7 @@
         "endPenname": " ",
         
         "aboutHeader": "About Me",
-        "aboutIntro": "I am a dedicated student currently enrolled at the University of Puerto Rico Bayamon, with a concentration in Computer Science.",
-        "aboutExp1": "With a foundation established since high school, I have approximately",
-        "aboutExp2": "years of experience in this field.",
-        "aboutEnd": "I am committed to continuously learning and honing my skills in my spare time, as I am determined to learn as much as possible from every experience. Through engaging in a variety of passion projects, I have gained invaluable experience and insight on the development process of software development.",
+        "about": "Dedicated Computer Science student at the University of Puerto Rico Bayamon, with approximately <years> years of experience. My journey began in high school, and I have actively participated in a video game research team, where we developed various games using different engines, which challenged us to learn new tools and adapt to diverse environments. Additionally, I have engaged in several passion projects that have provided me with invaluable insights and hands-on experience in the software development process. I am committed to continuous learning and skill enhancement in my spare time, striving to maximize every opportunity for growth.",
  
         "skillsIntro": "Technical Skills",
         

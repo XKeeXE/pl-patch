@@ -218,7 +218,7 @@ const slides: slide[] = [
 
 export const SlidesContext = createContext({
     isHomePage: true,
-    getTranslatedText: (langKey: string) => langKey, 
+    getTranslatedText: (langKey: string, params?: { [key: string]: string|number }) => langKey, 
     slides: slides
 });
 
@@ -240,11 +240,19 @@ const AppView = () => {
 
     const currentColor = useRef<string>('');
 
-    function getTranslatedText(key: string): string {
+    function getTranslatedText(key: string, params?: { [key: string]: string|number }): string {
         const languageTranslations: LanguageTranslations | undefined = data[language];
         
         if (languageTranslations) {
-            return languageTranslations[key] || 'Text not found';
+            let translation = languageTranslations[key] || 'Text not found';
+
+            if (params) {
+                Object.keys(params).forEach(paramKey => {
+                    const regex = new RegExp(`<${paramKey}>`, 'g'); // Create a regex for the placeholder
+                    translation = translation.replace(regex, params[paramKey].toString()); // Replace with the value
+                });
+            }
+            return translation;
         }
         return 'Language not found';
     }

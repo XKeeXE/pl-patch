@@ -28,6 +28,11 @@ export type link = {
     url: string
 }
 
+export type skill = {
+    img: string,
+    link: link
+}
+
 export type language = {
     key: string
     lang: string
