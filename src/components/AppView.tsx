@@ -156,7 +156,7 @@ const slides: slide[] = [
     icon: <SvgAssets icon='nekomata' />,
     name: 'NEKOMATA',
     images: imagesNEKOMATA,
-    video: 'Videos/SYMBIOMATA.mp4',
+    video: 'Videos/NEKOMATA.mp4',
     demoComponent: undefined,
     links: [{
         text: 'Website',
@@ -237,7 +237,9 @@ export const SlidesContext = createContext<{
 });
 
 const AppView = () => {
-    const [language, setLanguage] = useState<string>(GetCurrentLanguage() as string);
+    // const [language, setLanguage] = useState<string>(GetCurrentLanguage() as string);
+    const [language, setLanguage] = useState<string>('en');
+
     const [isHomePage, setIsHomePage] = useState<boolean>(true);
 
     const swiper = useRef<SwiperRef>(null);

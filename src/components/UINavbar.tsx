@@ -187,7 +187,7 @@ const UINavbar = (props: {
                         }}>
                         {darkMode ? <DarkModeIcon htmlColor={darkMode ? "white" : "black"}/> : <BrightnessIcon htmlColor={darkMode ? "white" : "black"}/>}
                     </button>
-                    <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={<SvgAssets icon={language}/>} 
+                    {/* <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={<SvgAssets icon={language}/>} 
                         activeIcon={
                         <div className="hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]">
                             <SvgAssets icon={language}/>
@@ -206,7 +206,7 @@ const UINavbar = (props: {
                             </button>
                         ))}
                     </UIDropdown>
-                    <div className="pb-1"/>
+                    <div className="pb-1"/> */}
                 </UIDropdown>
                 <NavbarItem isActive={MarkActive(hashHome)}>
                     {NavbarStatus('home')}
