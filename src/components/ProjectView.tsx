@@ -8,14 +8,17 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 
 import { Pagination, Mousewheel, EffectCoverflow, Navigation } from 'swiper/modules';
-import { ReactNode, useContext, useEffect, useMemo, useRef } from 'react';
+import { ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import LinksCard from './LinksCard';
-import { Card, CardBody, CardHeader } from '@nextui-org/react';
 import CustomSwiper from './CustomSwiper';
 import React from 'react';
 import { SlidesContext } from './AppView';
+import UIButton from './UIButton';
 
 const validKeys: string[] = ['w', 's', 'a', 'd', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
+
+const OnProjectEnter = new CustomEvent('OnProjectEnter', {});
+const OnWindChanged = new CustomEvent('OnWindChanged', {});
 
 const ProjectView = (props: { 
     setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, 
@@ -23,12 +26,9 @@ const ProjectView = (props: {
 }) => {
     const { setIsHomePage, currentColor } = props;
 
-    const { getTranslatedText, slides } = useContext(SlidesContext);
+    const { slides, swiper, getTranslatedText, getTranslatedParagraph} = useContext(SlidesContext);
 
-    const swiper = useRef<SwiperRef>(null);
     const swiperImageRef = useRef<SwiperRef>(null);
-
-    const OnProjectEnter = new CustomEvent('OnProjectEnter', {});
 
     const { projectName } = useParams();
     const project = useMemo(() => {
@@ -38,6 +38,7 @@ const ProjectView = (props: {
     // Activates only when starting in the project or (home --> projects) (If switching from project to another project will not activate)
     useEffect(() => {
         // console.log("Im on project view");
+        // window.dispatchEvent(OnWindChanged);
         setIsHomePage(false);
     }, [])
 
@@ -47,9 +48,9 @@ const ProjectView = (props: {
             return;
         }
         if (e.key === 'w' || e.key === 'ArrowUp') { // Move up in main swiper
-            swiper.current?.swiper.slidePrev();
+            swiper?.current?.swiper.slidePrev();
         } else if (e.key === 's' || e.key === 'ArrowDown') { // Move down in main swiper
-            swiper.current?.swiper.slideNext();
+            swiper?.current?.swiper.slideNext();
         } else if (e.key === 'a' || e.key === 'ArrowLeft') { // Move to the left image in image swiper
             swiperImageRef.current?.swiper.slidePrev();
         } else { // Move to the right image in image swiper
@@ -81,59 +82,65 @@ const ProjectView = (props: {
         );
     };
 
+    const ProjectDemoView = () => {
+        const [demoActive, setDemoActive] = useState<boolean>(false);
+    
+        const DemoButton = (props: any) => {
+            const { text, dashed, onClick } = props;
+            return (
+                <UIButton card={false} color={project!.color} dashed={dashed} onClick={onClick}>
+                    <span>{text}</span>
+                </UIButton>
+            )
+        }
+        
+        const DemoComponent = (): JSX.Element => {
+            if (!project?.demoComponent) {
+                return <DemoButton text={getTranslatedText('demoAvailable')} dashed={false} onClick={() => {setDemoActive(true)}}/>
+            }
+            return <DemoButton text={getTranslatedText('demoError')} dashed={true}/>
+        }
+    
+        return (
+            <>
+                {demoActive ? project?.demoComponent
+                :
+                <div className='w-[50vw] sm:w-[25vw] lg:w-[20vw] xl:w-[10vw] flex justify-center'>
+                    {DemoComponent()}
+                </div>
+                }
+            </>
+        )
+    }
+
     const ViewPage = (): JSX.Element => {
         if (!project) { 
             return <ErrorView setIsHomePage={setIsHomePage}/>
         }
         currentColor.current = project.color;
         window.dispatchEvent(OnProjectEnter);
+        window.dispatchEvent(OnWindChanged);
         return (
-            <CustomSwiper className={'max-h-[95.5vh]'} swiper={swiper} swiperProps={{
+            <CustomSwiper className={'max-h-[95.5vh]'} swiperProps={{
                 modules: [Mousewheel, Pagination],
                 spaceBetween: 10,
             }} OnKeyDown={OnKeyDown}>
                 <SwiperSlide>
-                    <div className='flex justify-center h-full'>
-                        <Card className="self-center sm:w-[100vw] md:w-[80vw] lg:w-[60vw] xl:w-[35vw] bg-[#f0f0f0] dark:bg-[#181919]/40" shadow="none" style={{
-                        }}>
-                            <CardHeader className="flex flex-col justify-center gap-1">
-                                <Header headerText={project.name}/>
-                                <span className={`text-sm md:text-lg font-text bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{getTranslatedText(`title${project.name}`)}</span>
-                                <span className="font-text text-xs">{getTranslatedText(`summary${project.name}`).toUpperCase()}</span>
-                            </CardHeader>
-                            <CardBody className="flex flex-col gap-2 items-center">
-                                <div className="flex flex-col gap-4 justify-start font-text text-xs md:text-sm">
-                                    <span>{getTranslatedText(`extraDetails${project.name}1`)}</span>
-                                    <span>{getTranslatedText(`extraDetails${project.name}2`)}</span>
-                                    <span>{getTranslatedText(`extraDetails${project.name}3`)}</span>
-                                    <span>{getTranslatedText(`extraDetails${project.name}4`)}</span>
-                                </div>
-                            </CardBody>
-                        </Card>
-                    </div>
-                    {/* <div className='grid grid-cols-2 gap-2 justify-center h-full'>
-                        <Card className=''>
-                            <CardHeader>
-                                test
-                            </CardHeader>
-                        </Card>
-                        <Card className=' row-span-2'>
-                            <CardHeader>
-                                Summary
-                            </CardHeader>
-                        </Card>
-                        <Card>
-                            <CardHeader>
-                                Why
-                            </CardHeader>
-                        </Card>
-                    </div> */}
+                     <div className='flex flex-col h-full font-text items-center justify-center '>
+                        <div className='flex flex-col w-[80vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[20vw] items-center font-text '>
+                            <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{project.name}</span>
+                            <span className={`text-sm md:text-lg bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{getTranslatedText(`title${project.name}`)}</span>
+                            <span className="font-text text-xs md:text-sm pb-2">{getTranslatedText(`summary${project.name}`).toUpperCase()}</span>
+                            {project.icon}
+                            {getTranslatedParagraph(`details${project.name}`, 'pt-5 flex flex-col gap-2')}
+                        </div>
+                     </div>
                 </SwiperSlide>
 
                 {/* <SwiperSlide>
                     <Slide>
                         <Header headerText={getTranslatedText('demoHeader')}/>
-                        <ProjectDemoView getTranslatedText={getTranslatedText} project={project}/>
+                        <ProjectDemoView/>
                     </Slide>
                 </SwiperSlide> */}
 

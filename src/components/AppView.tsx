@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from 'react';
+import { createContext, RefObject, useEffect, useRef, useState } from 'react';
 import WindView from './WindView';
 import UINavbar from './UINavbar';
 
@@ -14,6 +14,7 @@ import L2DWP from './demo/L2DWP';
 import ErrorView from './ErrorView';
 import { NextUIProvider } from '@nextui-org/react';
 import SvgAssets from './SvgAssets';
+import { SwiperRef } from 'swiper/react';
 
 const data: { [key: string]: LanguageTranslations } = require('../assets/languages.json');
 
@@ -21,7 +22,7 @@ function GetCurrentLanguage(): string {
     if (localStorage.getItem('Language')) { // get saved language
         return localStorage.getItem('Language') as string;
     }
-    if (navigator.language !== 'es' || 'en' || 'ja') { // To check website usable languages
+    if (!['es', 'en', 'ja'].includes(navigator.language)) { // To check website usable languages
         return 'en';
     }
     return navigator.language;
@@ -63,20 +64,20 @@ const imagesL2DWP: image[] = [{
 },
 ]
 
-const imagesPCVR: image[] = [{
-    url: 'Imgs/PCVR/Slash.png',
+const imagesSYMBIOMATA: image[] = [{
+    url: 'Imgs/SYMBIOMATA/Slash.png',
     title: 'Slash',
 },
 {
-    url: 'Imgs/PCVR/VRPov.png',
+    url: 'Imgs/SYMBIOMATA/VRPov.png',
     title: 'VRPov'
 },
 {
-    url: 'Imgs/PCVR/Zipline.png',
+    url: 'Imgs/SYMBIOMATA/Zipline.png',
     title: 'Zipline',
 },
 {
-    url: 'Imgs/PCVR/2D.png',
+    url: 'Imgs/SYMBIOMATA/2D.png',
     title: '2D',
 },
 ]
@@ -122,14 +123,57 @@ const imagesNEKOMATA: image[] = [{
 ]
 
 const slides: slide[] = [
+
+{
+    color: '#0030e7',
+    gradient: 'from-[#0009ff] from-0% to-[#006ae7] to-40%',
+    icon: <SvgAssets icon='symbiomata' />,
+    name: 'SYMBIOMATA',
+    images: imagesSYMBIOMATA,
+    video: 't',
+    demoComponent: undefined,
+    links: [{
+        text: 'Download',
+        url: ''
+    }]
+},
+{
+    color: '#d33636',
+    gradient: 'from-[#d53030] from-0% via-[#cb3b3b] via-50% to-[#910a0a] to-100%',
+    icon: <SvgAssets icon='onigiri' />,
+    name: 'ONIGIRI',
+    images: imagesONIGIRI,
+    video: 't',
+    demoComponent: undefined,
+    links: [{
+        text: 'Download',
+        url: ''
+    }]
+},
+{
+    color: '#5e9cff',
+    gradient: 'from-[#9181ff] from-10% to-[#00d6ff] to-90%',
+    icon: <SvgAssets icon='nekomata' />,
+    name: 'NEKOMATA',
+    images: imagesNEKOMATA,
+    video: 'Videos/SYMBIOMATA.mp4',
+    demoComponent: undefined,
+    links: [{
+        text: 'Website',
+        url: 'https://sneorino.itch.io/nekomata'
+    },
+    {
+        text: 'Download',
+        url: ''
+    }]
+},
 {
     color: '#7a0a9c',
     gradient: 'from-[#8208de] from-0% to-[#6d0c6e] to-100%',
     icon: <LibraryMusic/>,
-    logo: 'Icons/Oni.png',
     name: 'BGMAPP',
     images: imagesBGM,
-    video: 'Videos/BGM-APPDemoVid.mp4',
+    video: 'Videos/BGMAPP.mp4',
     demoComponent: <BGMApp />,
     links: [{
         text: 'GitHub',
@@ -145,37 +189,21 @@ const slides: slide[] = [
     color: '#1e65c9',
     gradient: 'from-[#373ba6] from-0% via-[#0290f2] via-50% to-[#373ba6] to-100%',
     icon: <WallpaperIcon />,
-    logo: 'Icons/L2DWP.png',
     name: 'L2DWP',
     images: imagesL2DWP,
-    video: 'Videos/L2DWPDemoVid.mp4',
+    video: 'Videos/L2DWP.mp4',
     demoComponent: <L2DWP/>,
     links: [{
         text: 'GitHub',
         url: 'https://github.com/XKeeXE/Live2DWallpaper'
     }]
 },
-{
-    color: '#d33636',
-    gradient: 'from-[#d53030] from-0% via-[#cb3b3b] via-50% to-[#910a0a] to-100%',
-    icon: <SvgAssets icon='onigiri' />,
-    logo: '',
-    name: 'ONIGIRI',
-    images: imagesONIGIRI,
-    video: 't',
-    demoComponent: undefined,
-    links: [{
-        text: 'Download',
-        url: ''
-    }]
-},
 // {
 //     color: '',
 //     gradient: '',
 //     icon: <OnigiriIcon />,
-//     logo: '',
 //     name: 'BURROUGHS',
-//     images: imagesPCVR,
+//     images: imagesSYMBIOMATA,
 //     video: 't',
 //     demoComponent: undefined,
 //     links: [{
@@ -183,78 +211,82 @@ const slides: slide[] = [
 //     url: ''
 // }]
 // },
-{
-    color: '#0030e7',
-    gradient: 'from-[#0009ff] from-0% to-[#006ae7] to-40%',
-    icon: <ViewInArIcon />,
-    logo: 'Icons/PCVR.png',
-    name: 'PCVR',
-    images: imagesPCVR,
-    video: 't',
-    demoComponent: undefined,
-    links: [{
-        text: '',
-        url: ''
-    }]
-},
-{
-    color: '#5e9cff',
-    gradient: 'from-[#9181ff] from-10% to-[#00d6ff] to-90%',
-    icon: <PetsIcon />,
-    logo: '',
-    name: 'NEKOMATA',
-    images: imagesNEKOMATA,
-    video: 't',
-    demoComponent: undefined,
-    links: [{
-        text: 'Website',
-        url: 'https://sneorino.itch.io/nekomata'
-    },
-    {
-        text: 'Download',
-        url: ''
-    }]
-}];
 
-export const SlidesContext = createContext({
+];
+
+// export const SlidesContext = createContext({
+//     slides: slides,
+//     swiper: null,
+//     isHomePage: true,
+//     getTranslatedText: (langKey: string, _params?: { [key: string]: string|number }) => langKey, 
+//     getTranslatedParagraph: (_langKey: string, _className?: string, _params?: { [key: string]: string|number }) => <></>,
+// });
+
+export const SlidesContext = createContext<{
+    isHomePage: boolean,
+    swiper: RefObject<SwiperRef> | null,
+    getTranslatedText: (_langKey: string, _params?: { [key: string]: string|number }) => string, 
+    getTranslatedParagraph: (_langKey: string, _className?: string, _params?: { [key: string]: string|number }) => JSX.Element,
+    slides: slide[]
+}>({
     isHomePage: true,
-    getTranslatedText: (langKey: string, params?: { [key: string]: string|number }) => langKey, 
+    swiper: null,
+    getTranslatedText: (_langKey: string, _params?: { [key: string]: string|number }) => '', 
+    getTranslatedParagraph: (_langKey: string, _className?: string, _params?: { [key: string]: string|number }) => <></>,
     slides: slides
 });
-
-// export const SlidesContext = createContext<{
-//     isHomePage: boolean,
-//     getTranslatedText: (langKey: string) => string,
-//     slides: slide[]
-// }>({
-//     isHomePage: true,
-//     getTranslatedText: () => {return '';},
-//     slides: []
-// });
 
 const AppView = () => {
     const [language, setLanguage] = useState<string>(GetCurrentLanguage() as string);
     const [isHomePage, setIsHomePage] = useState<boolean>(true);
 
+    const swiper = useRef<SwiperRef>(null);
+
     const navigate = useNavigate();
 
     const currentColor = useRef<string>('');
 
+    /**
+     * The file languages.json contains keys of languages which contained text in their corresponding language.
+     * @param key The key of the translated text.
+     * @param params In the language.json file the translated text can accept text surrounded by '<>' to replace with a dynamic value.
+     * @returns The translated string.
+     */
     function getTranslatedText(key: string, params?: { [key: string]: string|number }): string {
-        const languageTranslations: LanguageTranslations | undefined = data[language];
-        
-        if (languageTranslations) {
-            let translation = languageTranslations[key] || 'Text not found';
+        const languageTranslations: LanguageTranslations = data[language];
 
-            if (params) {
-                Object.keys(params).forEach(paramKey => {
-                    const regex = new RegExp(`<${paramKey}>`, 'g'); // Create a regex for the placeholder
-                    translation = translation.replace(regex, params[paramKey].toString()); // Replace with the value
-                });
-            }
-            return translation;
+        let translation = languageTranslations[key] || 'Text not found'; // The corresponding translated text or 'Text not found' if the key is incorrect or missing in the JSON
+        if (params) {
+            Object.keys(params).forEach(paramKey => {
+                const regex = new RegExp(`<${paramKey}>`, 'g'); // Create a regex for the placeholder
+                translation = translation.replace(regex, params[paramKey].toString()); // Replace with the value
+            });
         }
-        return 'Language not found';
+        return translation;
+    }
+
+    /**
+     * Similar to getTranslatedText() except that instead of returning a string returns a JSX element 
+     * with a paragraph element containing span elements.
+     * @param key The key of the translated text.
+     * @param className The optimal CSS tailwind styling.
+     * @param params In the language.json file the translated text can accept text surrounded by '<>' to replace with a dynamic value.
+     * @returns An HTML paragraph element containing HTML span elements.
+     */
+    function getTranslatedParagraph(key: string, className?: string, params?: { [key: string]: string | number }): JSX.Element {
+        const translatedText = getTranslatedText(key, params);
+    
+        // Split the translated text by newline characters and map to JSX elements
+        return (
+            <p className={className}>
+                {translatedText.split('\n').map((line, index) => (
+                    <span key={index}>
+                        {line}
+                        {index < translatedText.split('\n').length - 1 && <br />}
+                    </span>
+                ))}
+            </p>
+        );
     }
 
     // No Direct File System Access: You cannot read files from the file system directly in a React app running in the browser. You can only access files that are served by your web server.
@@ -262,14 +294,29 @@ const AppView = () => {
         
     // }
 
-    // Only activate once when first entering
+    function getDarkMode() {
+        const darkMode = localStorage.getItem('DarkMode');
+        if (!darkMode) {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        return darkMode === "true";
+    }
+
+    // Only activates one time only when first opening the website
     useEffect(() => {
         // console.log("everywhere")
         const OnProjectEnter = () => {
             document.documentElement.style.setProperty('--swiper-button-color', currentColor.current);
             document.documentElement.style.setProperty('--swiper-pagination-color', currentColor.current);
         }
+
+        const OnHomePage = () => {
+            currentColor.current = getDarkMode() ? "#f0f0f0" : "#0f0f0f";
+            document.documentElement.style.setProperty('--swiper-pagination-color', currentColor.current);
+        }
+
         window.addEventListener('OnProjectEnter', OnProjectEnter);
+        window.addEventListener('OnHomePage', OnHomePage);
 
         // slides.current = [
         //     {
@@ -325,7 +372,7 @@ const AppView = () => {
         //     //     icon: <OnigiriIcon />,
         //     //     logo: '',
         //     //     name: 'BURROUGHS',
-        //     //     images: imagesPCVR,
+        //     //     images: imagesSYMBIOMATA,
         //     //     video: 't',
         //     //     demoComponent: undefined,
         //     //     links: [{
@@ -337,9 +384,9 @@ const AppView = () => {
         //         color: '#0030e7',
         //         gradient: 'from-[#0009ff] from-0% to-[#006ae7] to-40%',
         //         icon: <ViewInArIcon />,
-        //         logo: 'Icons/PCVR.png',
-        //         name: 'PCVR',
-        //         images: imagesPCVR,
+        //         logo: 'Icons/SYMBIOMATA.png',
+        //         name: 'SYMBIOMATA',
+        //         images: imagesSYMBIOMATA,
         //         video: 't',
         //         demoComponent: undefined,
         //         links: [{
@@ -368,11 +415,12 @@ const AppView = () => {
 
         return () => {
             window.removeEventListener('OnProjectEnter', OnProjectEnter);
+            window.removeEventListener('OnHomePage', OnHomePage);
             };
     }, []);
 
     return (
-        <SlidesContext.Provider value={{isHomePage, getTranslatedText, slides}}>
+        <SlidesContext.Provider value={{slides, swiper, isHomePage, getTranslatedText, getTranslatedParagraph}}>
             <NextUIProvider navigate={navigate}>
                 <UINavbar language={language} setLanguage={setLanguage} isHomePage={isHomePage} currentColor={currentColor}/> 
                 <Routes>

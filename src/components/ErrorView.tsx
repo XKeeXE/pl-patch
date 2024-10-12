@@ -1,16 +1,14 @@
-import { useContext, useEffect } from "react";
-import { TranslatedText } from "../Types/types";
-import UIButton from "./UIButton";
-import { Link } from "react-router-dom";
-import { SlidesContext } from "./AppView";
+import { useEffect } from "react";
 import ProjectList from "./ProjectList";
 
+const OnWindChanged = new CustomEvent('OnWindChanged', {});
 
 const ErrorView = (props: {setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>}) => {
     const { setIsHomePage } = props;
 
     // Activates when the error page is entered
     useEffect(() => {
+        window.dispatchEvent(OnWindChanged);
         setIsHomePage(false);
     }, [])
 

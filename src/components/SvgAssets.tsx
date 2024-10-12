@@ -1,5 +1,8 @@
 import { SvgIcon } from "@mui/material";
-import { svg } from '../Types/types';
+
+const Portfolio = () => {
+    return <img src={`${process.env.PUBLIC_URL}/patchfavicon.png`} className="object-contain" height={22} width={22} alt="Portfolio"/>
+}
 
 const JapanFlag = () => {
     return (
@@ -19,7 +22,7 @@ const JapanFlag = () => {
     );
 }
 
-const OnigiriIcon = () => {
+const Onigiri = () => {
     return (
         <SvgIcon viewBox="0 0 173.04 174.48">
             <path fill="#ffffff" fillRule="evenodd" stroke="#000000" strokeWidth="9.6" strokeLinecap="square" strokeLinejoin="bevel" d="M81.725 164.826C146.445 164.826 172.725 145.066 160.565 112.266C142.325 63.0661 119.885 16.0261 100.925 5.70607C88.045 -1.65393 75.285 -1.89393 62.645 4.98607C43.685 15.3061 21.125 63.0661 2.88499 112.266C-9.275 145.066 17.005 164.826 81.725 164.826Z" />
@@ -28,11 +31,16 @@ const OnigiriIcon = () => {
     )
 }
 
-const PCVRIcon = () => {
+const Symbiomata = () => {
     return (
-        <></>
+        <img src={`${process.env.PUBLIC_URL}/Icons/Symbiomata.png`} className="object-contain" height={22} width={22} alt="Symbiomata"/>
     )
+}
 
+const Nekomata = () => {
+    return (
+        <img src={`${process.env.PUBLIC_URL}/Icons/Nekomata.ico`} className="object-contain" height={22} width={22} alt="Nekomata"/>
+    )
 }
 
 const PuertoRicoFlag = () => {
@@ -71,15 +79,18 @@ const UnitedStatesFlag = () => {
     );
 }
 
-const SvgAssets = (props: {icon: svg}): JSX.Element => {
+const SvgAssets = (props: {icon: string}): JSX.Element => {
     const { icon } = props;
 
     switch (icon) {
+        case 'portfolio': return <Portfolio/>
         case 'en': return <UnitedStatesFlag/>
         case 'es': return <PuertoRicoFlag/>
         case 'ja': return <JapanFlag/>
-        case 'onigiri': return <OnigiriIcon/>
-        case 'pcvr': return <PCVRIcon/>
+        case 'onigiri': return <Onigiri/>
+        case 'symbiomata': return <Symbiomata/>
+        case 'nekomata': return <Nekomata/>
+        default: return <></>
     }
 }
 

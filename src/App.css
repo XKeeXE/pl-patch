@@ -27,12 +27,12 @@
     padding-top: 0px !important; 
     padding-bottom: 0px !important; */
 }
-
+/* 
 .swiper-pagination {
     
     color: red !important;
     opacity: 1 !important;
-}
+} */
 
 .swiper {
     width: 100%;
@@ -40,8 +40,7 @@
 }
 
 
-
-*{
+/* *{
     margin: 0;
     padding: 0;
   }
@@ -107,4 +106,4 @@
   }
   
   
-  
+   */

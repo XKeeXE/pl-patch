@@ -14,14 +14,11 @@
         "endPenname": " ",
         
         "aboutHeader": "About Me",
-        "about": "Dedicated Computer Science student at the University of Puerto Rico Bayamon, with approximately <years> years of experience. My journey began in high school, and I have actively participated in a video game research team, where we developed various games using different engines, which challenged us to learn new tools and adapt to diverse environments. Additionally, I have engaged in several passion projects that have provided me with invaluable insights and hands-on experience in the software development process. I am committed to continuous learning and skill enhancement in my spare time, striving to maximize every opportunity for growth.",
+        "about": "Dedicated Computer Science student at the University of Puerto Rico Bayamon, with approximately <years> years of experience. \n My journey began in high school, and I have actively participated in a video game research team, where we developed various games using different engines, which challenged us to learn new tools and adapt to diverse environments. \n Additionally, I have engaged in several passion projects that have provided me with invaluable insights and hands-on experience in the software development process. I am committed to continuous learning and skill enhancement in my spare time, striving to maximize every opportunity for growth.",
  
         "skills": "Technical Skills",
         
-        "projectListOld": "EXPLORE THE IMPRESSIVE PROJECTS THAT I WORKED ON",
-        "projectList": "Awesome Projects",
-        "errorList": "Available Projects",
-        "summaryProjectList": "I made",
+        "projectList": "Projects",
 
         "viewPage": "View Page",
 
@@ -36,14 +33,7 @@
         "titleBGMAPP": "Background Music Application",
         "miniSummaryBGMAPP": "Track Player",
         "summaryBGMAPP": "Desktop Track Player",
-        "detailsBGMAPP1": "Track player made using Electron and Vite, offers the functionality to play music tracks sourced from either a local directory containing downloaded tracks or directly from online sources.",
-        "detailsBGMAPP2": "The track player is thoughtfully crafted with an intuitive user interface that has been strategically placed to effectively control and manage the player's state. These design elements contribute to a seamless user experience, allowing for effortless control and smooth navigation throughout the application.",
-        "detailsBGMAPP3": "",
-
-        "extraDetailsBGMAPP1": "Robust Track Player application built using Electron and Vite, designed to provide users with versatile music playback experience. It allows users to play music tracks from two primary sources: a local directory filled with downloaded tracks and online source.",
-        "extraDetailsBGMAPP2": "The player features a thoughtfully designed user interface that prioritizes ease of use. Key controls for play, pause, skip, and volume adjustment are intuitively positioned, ensuring that users can manage their listening experience with minimal effort. The layout is clean and responsive, enhancing navigation and making it easy for users to browse through their music library or search for tracks online.",
-        "extraDetailsBGMAPP3": "Overall, the Track Player combines functionality with a user-friendly design, making it an ideal choice for a seamless way to enjoy favorite music tracks.",
-        "extraDetailsBGMAPP4": " ",
+        "detailsBGMAPP": "Track player made using Electron and Vite, offers the functionality to play music tracks sourced from either a local directory or directly from online sources. \n The track player is thoughtfully crafted with an intuitive user interface that has been strategically placed to effectively control and manage the player's state. While also containing various optimizations tricks thanks to virtualization and lazy loading. \n These design were thoroughly crafted especially to contribute to a seamless user experience, allowing for effortless control and smooth navigation throughout the application.",
 
         "titleViewBGMAPP": "Listen to music without distractions",
         "descViewBGMAPP": "BGMAPP allows the use of local music tracks by allowing the user to insert their own music track via any format the music track comes in.",
@@ -57,14 +47,7 @@
         "titleL2DWP": "Live 2D Wallpaper",
         "miniSummaryL2DWP": "Live Wallpaper",
         "summaryL2DWP": "Interactive Live 2D Wallpaper",
-        "detailsL2DWP1": "Interactable Live2D wallpaper made in Unity and Android Studio, which can contain various Live2D characters to interact with.",
-        "detailsL2DWP2": "The game functions as a wallpaper that allow users to interact with these characters by clicking on them, triggering various emotions and voice lines. While primarily designed for use as an Android wallpaper, it is also compatible with desktops and WebGL platforms. Additionally, the Android version supports plugins that enable the utilization of native Android functions.",
-        "detailsL2DWP3": "All footage included on this page was taken from the desktop build.",
-
-        "extraDetailsL2DWP1": "Interactable Live2D Wallpaper application developed using Unity and Android Studio, designed to transform static backgrounds into dynamic, engaging experiences. This game disguised as a wallpaper features the ability to interact with a Live2D character directly on their devices on the homepage.",
-        "extraDetailsL2DWP2": "The interactive nature of the wallpaper allows users to click on these characters, triggering a range of responses that include animated emotional expressions and corresponding voice lines. This feature not only enhances the visual appeal of the normal boring wallpaper but also creates a more personalized user experience.",
-        "extraDetailsL2DWP3": "While the primary focus of the Interactable Live2D Wallpaper is to serve as a lively backdrop for Android devices, it is also designed to be compatible with desktop environments and WebGL platforms. This cross-platform functionality ensures that users can enjoy the interactive wallpaper on a variety of devices, maintaining a consistent experience regardless of the platform.",
-        "extraDetailsL2DWP4": " ",
+        "detailsL2DWP": "Interactable Live2D wallpaper made in Unity & Android Studio, which can contain various Live2D characters to interact with. \n The game functions as a live wallpaper that allows users to interact with these characters by clicking on them, triggering various emotions and voice lines. While primarily designed to be used as an Android wallpaper, it is also compatible with desktops and WebGL platforms. Additionally, the Android version supports plugins that enable the utilization of native Android functions.",
 
         "titleCharacterIdleL2DWP": "Don’t ever feel alone",
         "descCharacterIdleL2DWP": "Can be integrated as an Android wallpaper that can be used as a customized live wallpaper.",
@@ -75,38 +58,24 @@
         "titleNextCharacterTalkL2DWP": "Personalize your experience",
         "descNextCharacterTalkL2DWP": "With the L2DWP any character that supports Live2D can be inserted into the wallpaper.",
 
-        "titlePCVR": "Project Coop Virtual Reality",
-        "miniSummaryPCVR": "VR Coop Game",
-        "summaryPCVR": "Asymmetrical VR Coop Game",
-        "detailsPCVR1": "An asymmetrical VR coop platformer made in Unity, where the VR player is in charge of hand actions and the PC player is in charge of platforming.",
-        "detailsPCVR2": "The game features both local and online game modes. The latter of which is designed with a server-authoritative architecture using standard industry practices and features, such as client-side prediction for VR hand movement and projectile lag compensation, along with relay and lobbies for easy matchmaking.",
-        "detailsPCVR3": "All footage included on this page was taken from real online gameplay.",
+        "titleSYMBIOMATA": "Project Coop Virtual Reality (PCVR)",
+        "miniSummarySYMBIOMATA": "VR Coop Game",
+        "summarySYMBIOMATA": "Asymmetrical VR Coop Game",
+        "detailsSYMBIOMATA": "Asymmetrical VR coop platformer made in Unity, where the VR player is in charge of hand actions and the PC player is in charge of platforming. \n The game features both local and online game modes. The latter of which is designed with a server-authoritative architecture using standard industry practices and features, such as client-side prediction for VR hand movement and projectile lag compensation, along with relay and lobbies for easy matchmaking. \n Footage included was taken from real online gameplay.",
 
-        "extraDetailsPCVR1": "The asymmetrical VR co-op platformer is a gaming experience developed in Unity, designed to foster collaboration between players using different platforms. In this video game, one player immerses themselves in a virtual reality (VR) environment, taking on the role of a UFO, while the other player engages from a PC setup, to control a broken robot. This unique setup creates a dynamic gameplay experience where each player has distinct responsibilities and gameplay mechanics.",
-        "extraDetailsPCVR2": "The VR player is tasked with executing hand actions, utilizing motion controls to interact with the environment, manipulate objects, and assist the PC player in navigating through various challenges. This player can perform actions such as grabbing, throwing, or activating switches, all of which are crucial for progressing through the game’s levels. ",
-        "extraDetailsPCVR3": "On the other hand, the PC player focuses on platforming elements, controlling a character that must jump, run, and navigate through intricate levels filled with obstacles. This player relies on keyboard and mouse controls, requiring precise timing and coordination to overcome challenges. The synergy between the two players is essential, as the VR player’s actions can directly impact the PC player’s ability to progress, and vice versa, creating a cooperative gameplay dynamic that emphasizes teamwork and communication.",
-        "extraDetailsPCVR4": "The game supports both local and online multiplayer modes, allowing players to team up in the same physical space or connect remotely. The online mode is built with a server-authoritative architecture, ensuring a stable and fair gaming experience. This architecture employs standard industry practices, such as client-side prediction for VR hand movements, which minimizes latency and enhances the responsiveness of the VR player’s actions. Additionally, projectile lag compensation is implemented to ensure that any projectiles fired by the VR player behave accurately, regardless of network delays.",
-
-        "titleSlashPCVR": "Transcend realities regardless of your physical distance",
-        "descSlashPCVR": "PCVR can be played locally or online, giving you the ability to choose to play with someone on the same machine or with someone far away over the internet.",
-        "title2DPCVR": "Coordination is the key to success",
-        "desc2DPCVR": "Without the PC player, the VR player cannot avoid danger and without the VR player, the PC player cannot be protected from danger.",
-        "titleZiplinePCVR": "Find your way across various different stages",
-        "descZiplinePCVR": "PCVR contains various stages with obstacles especially designed for PC and VR cooperation.",
-        "titleVRPovPCVR": "Different perspectives, shared body",
-        "descVRPovPCVR": "PCVR combines the ability to platform by allowing the PC player to control the movement of the character, and enabling the VR player to have full precision control over the virtual 3D space with the XR controllers.",
+        "titleSlashSYMBIOMATA": "Transcend realities regardless of your physical distance",
+        "descSlashSYMBIOMATA": "SYMBIOMATA can be played locally or online, giving you the ability to choose to play with someone on the same machine or with someone far away over the internet.",
+        "title2DSYMBIOMATA": "Coordination is the key to success",
+        "desc2DSYMBIOMATA": "Without the PC player, the VR player cannot avoid danger and without the VR player, the PC player cannot be protected from danger.",
+        "titleZiplineSYMBIOMATA": "Find your way across various different stages",
+        "descZiplineSYMBIOMATA": "SYMBIOMATA contains various stages with obstacles especially designed for PC and VR cooperation.",
+        "titleVRPovSYMBIOMATA": "Different perspectives, shared body",
+        "descVRPovSYMBIOMATA": "SYMBIOMATA combines the ability to platform by allowing the PC player to control the movement of the character, and enabling the VR player to have full precision control over the virtual 3D space with the XR controllers.",
 
         "titleONIGIRI": "Slasher Demon",
         "miniSummaryONIGIRI": "Souls-like Game",
         "summaryONIGIRI": "Unity 3D Souls-like Game",
-        "detailsONIGIRI1": "A Souls-like singleplayer game made in Unity, where the player must defeat enemies by parrying and dodging.",
-        "detailsONIGIRI2": "The game features the ability to roll and parry, which is essential to the core gameplay of the game. To be available to attack, the player must parry the incoming attack of the enemy if it’s a close-range attack, else the player must dodge the projectile if it’s a long-range attack which if dodged at the correct timing the player is rewarded.",
-        "detailsONIGIRI3": "All footage included on this page was taken from real gameplay.",
-
-        "extraDetailsONIGIRI1": "Souls-like single-player game, developed in Unity, immerses players in a challenging and atmospheric world where combat and strategic timing are paramount. Drawing inspiration from the renowned Souls series, the game emphasizes a methodical approach to combat, requiring players to parry and dodge to overcome formidable enemies.",
-        "extraDetailsONIGIRI2": "At the heart of the gameplay mechanics is the parry and dodge system, which serves as the foundation for the combat encounters. Close-range attacks from enemies can be countered through precise parrying timing. When timed perfectly, a parry not only negates the incoming damage but also creates an opening for the player to launch a counterattack, rewarding skillful play with opportunities for aggressive retaliation.",
-        "extraDetailsONIGIRI3": "For long-range attacks, players must rely on their dodging abilities. The game features a fluid rolling mechanic that allows players to evade projectiles. Timing is crucial; if players successfully dodge an incoming projectile at the right moment, they are rewarded with a brief window of invulnerability, allowing them to reposition themselves or prepare for a counterattack. This rewarding timing mechanic encourages players to develop a keen sense of rhythm and anticipation, enhancing the overall combat experience.",
-        "extraDetailsONIGIRI4": " ",
+        "detailsONIGIRI": "Souls-like singleplayer game made in Unity, where the player must defeat formidable bosses by parrying while also simultaneously evading their attacks. \n The core mechanic revolves around precise timing, players must parry in sync with the rhythm of the enemy’s attacks. By correctly anticipating the attack, the player can successfully counter and retaliate against the enemy.",
 
         "titleBossONIGIRI": "Defeat the almighty Gashadokuro",
         "descBossONIGIRI": "The attack pattern of the final boss, Gashadokuro’s AI, was designed to enhance the overall challenge and engagement of the game. Depending on if the player is either at long range or close range it will try to outmaneuver the player.",
@@ -121,22 +90,13 @@
 
         "titleBURROUGHS": "BURROUGHS",
         "miniSummaryBURROUGHS": "WebRTC Player",
-        "SummaryBURROUGHS": "Unity 3D Game",
-        "detailsBURROUGHS1": "b1lah blah blah",
-        "detailsBURROUGHS2": "blah blah blah",
-        "detailsBURROUGHS3": "blah blah blah",
+        "SummaryBURROUGHS": "WebRTC Player",
+        "detailsBURROUGHS": "b1lah blah blah",
 
         "titleNEKOMATA": "P.U.R.R (Programmable Unit for Rewinding Reality)",
         "miniSummaryNEKOMATA": "BulletHell Game",
         "summaryNEKOMATA": "Bullet Hell Game",
-        "detailsNEKOMATA1": "A boss rush single-player bullet hell game made in Unreal Engine 5, taking inspiration from the Touhou series, the player must destroy enemies by shooting while simultaneously dodging the enemy projectiles.",
-        "detailsNEKOMATA2": "The game focuses on a rewind ability that enables the player to dodge projectiles that are normally not avoidable. However, activating the rewind will turn all active enemy projectiles into a stronger variant depending on the boss.",
-        "detailsNEKOMATA3": "All footage included on this page was taken from real gameplay.",
-
-        "extraDetailsNEKOMATA1": "Boss rush single-player bullet hell game, developed in Unreal Engine 5, draws inspiration from the iconic Touhou series, known for its intricate patterns and fast-paced gameplay. Players are thrust into a world filled with formidable space-rats bosses, each presenting unique challenges and requiring quick reflexes and strategic thinking to overcome.",
-        "extraDetailsNEKOMATA2": "The game forces the player to make skillful and quick decision-making when dodging projectiles, as the player has the ability to rewind back to a previous position, although not without a consequence depending on the boss. The consequence is part of the core gameplay as rewinding will turn every enemy projectile that is present on the screen into a more powerful variant of itself. The gameplay is designed to be exhilarating, with a focus on precision and timing.",
-        "extraDetailsNEKOMATA3": "Since the game is a boss rush, it features a roster of various bosses, each designed with intricate visual aesthetics and unique attack patterns that challenge players in different ways. The art style is vibrant and dynamic, with beautifully composed music that enhances the immersive experience.",
-        "extraDetailsNEKOMATA4": " ",
+        "detailsNEKOMATA": "Boss rush bullet hell game made in Unreal Engine 5, taking inspiration from the iconic top-down bullet hell Touhou series. \n The core mechanic of the game is the rewind ability, which gives the player an ability to dodge enemies’ incoming projectiles, consequently returning the player to a previous probable vulnerable position. \n The game features bosses with unavoidable projectiles to incentive constant use, while also maintaining an aspect of high risk/high reward.",
 
         "titleTutorialNEKOMATA": "New or Old",
         "descTutorialNEKOMATA": "Nekomata features a simple basic tutorial that can teach players how to use the rewind ability and even teach the most basic techniques of classic games like Touhou.",
@@ -150,15 +110,12 @@
         "titlePORTFOLIO": "PORTFOLIO",
         "miniSummaryPORTFOLIO": "React Website",
         "summaryPORTFOLIO": "React Website",
-        "detailsPORTFOLIO1": "Portfolio website created entirely using React, Typescript, and Tailwind CSS. The site serves as a showcase of various projects that I have passionately developed, presenting a significant milestone in my journey as a developer. I selected these projects to highlight my skills and creativity, ensuring that they are polished and ready for presentation.",
-        "detailsPORTFOLIO2": "Using the principles of UI theory, every UI elements is thoughtfully placed to ensure the most minimum information required to be understandable and a layout that not only is pleasing but also enhances usability. No spectrum leaves untouched as the core of the portfolio are the projects, which every project specifically highlights their functionality, design, and objective. ",
-        "detailsPORTFOLIO3": "Thank you very much for taking the time to explore my portfolio. Your interest in my work means a great deal to me, as I am excited to share my skills and projects.",
+        "detailsPORTFOLIO": "Portfolio website created entirely using React, Typescript, and Tailwind CSS, which serves as a showcase for a selection of projects that I have passionately created and worked on, marking a significant milestone in my development journey. \n Each project presented reflects my skills and creativity, demonstrating a commitment to quality and usability. \n Thank you for taking the time to explore my portfolio. Interest in my work is greatly appreciated, and I am eager to share my skills and projects. THANK YOU VERY MUCH!",
 
         "demoAvailable": "Try Demo",
         "demoError": "No Demo Available",
 
         "error": "The page you are looking for does not seem to exist. Please check the URL or navigate to the homepage."
-        
     },
 
     "es": {
@@ -166,14 +123,27 @@
         "english": "Inglés",
         "japanese": "Japonés",
 
+        "home": "Hogar",
+        "projects": "Proyectos",
+        "contacts":"Contactos",
+
+        "greetings": "¡Bienvenidos!",
+        "introName": "Me llamo ",
+        "introPenname": "También me puedes llamar ",
+        "endPenname": " ",
+
         "aboutHeader": "Sobre mí",
+        "about": "",
+
+        "skills": "Destrezas",
 
 
         "titleBGM": "BGM-App (Aplicación de Música)",
 
 
         "resume": "Resume",
-        "email": "Correo Electrónico"
+        "email": "Email",
+        "sourceCode": "Source Code"
     },
 
     "ja": {
@@ -185,21 +155,17 @@
         "projects": "プロジェクト",
         "contacts":"連絡",
 
-        "greetings": "ようこそいらっしゃいませ！",
+        "greetings": "どうも！",
         "introName": "僕のフルネームは",
         "introPenname": " ",
         "endPenname": "と呼んでいただいてもいいです",
 
         "aboutHeader": "僕のこと",
-        "aboutIntro": "",
-        "aboutExp1": "",
-        "aboutExp2": "",
-        "aboutEnd": "",
+        "about": "",
 
         "skills": "スキル一覧",
                 
         "projectList": "プロジェクト一覧",
-        "summaryProjectList": "　",
 
         "viewPage": "ページを見る",
 
@@ -217,14 +183,6 @@
         "titleBGMAPP": "Background Music Application",
         "miniSummaryBGMAPP": "音楽プレイヤー",
         "summaryBGMAPP": "Desktop Track Player",
-        "detailsBGMAPP1": "Track player made using Electron and Vite, offers the functionality to play music tracks sourced from either a local directory containing downloaded tracks or directly from online sources.",
-        "detailsBGMAPP2": "The track player is thoughtfully crafted with an intuitive user interface that has been strategically placed to effectively control and manage the player's state. These design elements contribute to a seamless user experience, allowing for effortless control and smooth navigation throughout the application.",
-        "detailsBGMAPP3": "",
-
-        "extraDetailsBGMAPP1": "Robust Track Player application built using Electron and Vite, designed to provide users with versatile music playback experience. It allows users to play music tracks from two primary sources: a local directory filled with downloaded tracks and online source.",
-        "extraDetailsBGMAPP2": "The player features a thoughtfully designed user interface that prioritizes ease of use. Key controls for play, pause, skip, and volume adjustment are intuitively positioned, ensuring that users can manage their listening experience with minimal effort. The layout is clean and responsive, enhancing navigation and making it easy for users to browse through their music library or search for tracks online.",
-        "extraDetailsBGMAPP3": "Overall, the Track Player combines functionality with a user-friendly design, making it an ideal choice for a seamless way to enjoy favorite music tracks.",
-        "extraDetailsBGMAPP4": " ",
 
         "titleViewBGMAPP": "Listen to music without distractions",
         "descViewBGMAPP": "BGMAPP allows the use of local music tracks by allowing the user to insert their own music track via any format the music track comes in.",
@@ -238,14 +196,7 @@
         "titleL2DWP": "Live 2D Wallpaper",
         "miniSummaryL2DWP": "Live Wallpaper",
         "summaryL2DWP": "Interactive Live 2D Wallpaper",
-        "detailsL2DWP1": "Interactable Live2D wallpaper made in Unity and Android Studio, which can contain various Live2D characters to interact with.",
-        "detailsL2DWP2": "The game functions as a wallpaper that allow users to interact with these characters by clicking on them, triggering various emotions and voice lines. While primarily designed for use as an Android wallpaper, it is also compatible with desktops and WebGL platforms. Additionally, the Android version supports plugins that enable the utilization of native Android functions.",
-        "detailsL2DWP3": "All footage included on this page was taken from the desktop build.",
-
-        "extraDetailsL2DWP1": "Interactable Live2D Wallpaper application developed using Unity and Android Studio, designed to transform static backgrounds into dynamic, engaging experiences. This game disguised as a wallpaper features the ability to interact with a Live2D character directly on their devices on the homepage.",
-        "extraDetailsL2DWP2": "The interactive nature of the wallpaper allows users to click on these characters, triggering a range of responses that include animated emotional expressions and corresponding voice lines. This feature not only enhances the visual appeal of the normal boring wallpaper but also creates a more personalized user experience.",
-        "extraDetailsL2DWP3": "While the primary focus of the Interactable Live2D Wallpaper is to serve as a lively backdrop for Android devices, it is also designed to be compatible with desktop environments and WebGL platforms. This cross-platform functionality ensures that users can enjoy the interactive wallpaper on a variety of devices, maintaining a consistent experience regardless of the platform.",
-        "extraDetailsL2DWP4": " ",
+        "detailsL2DWP": "Interactable Live2D wallpaper made in Unity and Android Studio, which can contain various Live2D characters to interact with.",
 
         "titleCharacterIdleL2DWP": "Don’t ever feel alone",
         "descCharacterIdleL2DWP": "Can be integrated as an Android wallpaper that can be used as a customized live wallpaper.",
@@ -256,38 +207,24 @@
         "titleNextCharacterTalkL2DWP": "Personalize your experience",
         "descNextCharacterTalkL2DWP": "With the L2DWP any character that supports Live2D can be inserted into the wallpaper.",
 
-        "titlePCVR": "シンビオマタ",
-        "miniSummaryPCVR": "協力プレイVRゲーム",
-        "summaryPCVR": "Asymmetrical VR Coop Game",
-        "detailsPCVR1": "An asymmetrical VR coop platformer made in Unity, where the VR player is in charge of hand actions and the PC player is in charge of platforming.",
-        "detailsPCVR2": "The game features both local and online game modes. The latter of which is designed with a server-authoritative architecture using standard industry practices and features, such as client-side prediction for VR hand movement and projectile lag compensation, along with relay and lobbies for easy matchmaking.",
-        "detailsPCVR3": "All footage included on this page was taken from real online gameplay.",
+        "titleSYMBIOMATA": "シンビオマタ",
+        "miniSummarySYMBIOMATA": "協力プレイVRゲーム",
+        "summarySYMBIOMATA": "Asymmetrical VR Coop Game",
+        "detailsSYMBIOMATA": "An asymmetrical VR coop platformer made in Unity, where the VR player is in charge of hand actions and the PC player is in charge of platforming.",
 
-        "extraDetailsPCVR1": "The asymmetrical VR co-op platformer is a gaming experience developed in Unity, designed to foster collaboration between players using different platforms. In this video game, one player immerses themselves in a virtual reality (VR) environment, taking on the role of a UFO, while the other player engages from a PC setup, to control a broken robot. This unique setup creates a dynamic gameplay experience where each player has distinct responsibilities and gameplay mechanics.",
-        "extraDetailsPCVR2": "The VR player is tasked with executing hand actions, utilizing motion controls to interact with the environment, manipulate objects, and assist the PC player in navigating through various challenges. This player can perform actions such as grabbing, throwing, or activating switches, all of which are crucial for progressing through the game’s levels. ",
-        "extraDetailsPCVR3": "On the other hand, the PC player focuses on platforming elements, controlling a character that must jump, run, and navigate through intricate levels filled with obstacles. This player relies on keyboard and mouse controls, requiring precise timing and coordination to overcome challenges. The synergy between the two players is essential, as the VR player’s actions can directly impact the PC player’s ability to progress, and vice versa, creating a cooperative gameplay dynamic that emphasizes teamwork and communication.",
-        "extraDetailsPCVR4": "The game supports both local and online multiplayer modes, allowing players to team up in the same physical space or connect remotely. The online mode is built with a server-authoritative architecture, ensuring a stable and fair gaming experience. This architecture employs standard industry practices, such as client-side prediction for VR hand movements, which minimizes latency and enhances the responsiveness of the VR player’s actions. Additionally, projectile lag compensation is implemented to ensure that any projectiles fired by the VR player behave accurately, regardless of network delays.",
-
-        "titleSlashPCVR": "Transcend realities regardless of your physical distance",
-        "descSlashPCVR": "PCVR can be played locally or online, giving you the ability to choose to play with someone on the same machine or with someone far away over the internet.",
-        "title2DPCVR": "Coordination is the key to success",
-        "desc2DPCVR": "Without the PC player, the VR player cannot avoid danger and without the VR player, the PC player cannot be protected from danger.",
-        "titleZiplinePCVR": "Find your way across various different stages",
-        "descZiplinePCVR": "PCVR contains various stages with obstacles especially designed for PC and VR cooperation.",
-        "titleVRPovPCVR": "Different perspectives, shared body",
-        "descVRPovPCVR": "PCVR combines the ability to platform by allowing the PC player to control the movement of the character, and enabling the VR player to have full precision control over the virtual 3D space with the XR controllers.",
+        "titleSlashSYMBIOMATA": "Transcend realities regardless of your physical distance",
+        "descSlashSYMBIOMATA": "SYMBIOMATA can be played locally or online, giving you the ability to choose to play with someone on the same machine or with someone far away over the internet.",
+        "title2DSYMBIOMATA": "Coordination is the key to success",
+        "desc2DSYMBIOMATA": "Without the PC player, the VR player cannot avoid danger and without the VR player, the PC player cannot be protected from danger.",
+        "titleZiplineSYMBIOMATA": "Find your way across various different stages",
+        "descZiplineSYMBIOMATA": "SYMBIOMATA contains various stages with obstacles especially designed for PC and VR cooperation.",
+        "titleVRPovSYMBIOMATA": "Different perspectives, shared body",
+        "descVRPovSYMBIOMATA": "SYMBIOMATA combines the ability to platform by allowing the PC player to control the movement of the character, and enabling the VR player to have full precision control over the virtual 3D space with the XR controllers.",
 
         "titleONIGIRI": "オニギリ",
         "miniSummaryONIGIRI": "ソウルライクゲーム",
         "summaryONIGIRI": "Unity 3D Souls-like Game",
-        "detailsONIGIRI1": "A Souls-like singleplayer game made in Unity, where the player must defeat enemies by parrying and dodging.",
-        "detailsONIGIRI2": "The game features the ability to roll and parry, which is essential to the core gameplay of the game. To be available to attack, the player must parry the incoming attack of the enemy if it’s a close-range attack, else the player must dodge the projectile if it’s a long-range attack which if dodged at the correct timing the player is rewarded.",
-        "detailsONIGIRI3": "All footage included on this page was taken from real gameplay.",
-
-        "extraDetailsONIGIRI1": "Souls-like single-player game, developed in Unity, immerses players in a challenging and atmospheric world where combat and strategic timing are paramount. Drawing inspiration from the renowned Souls series, the game emphasizes a methodical approach to combat, requiring players to parry and dodge to overcome formidable enemies.",
-        "extraDetailsONIGIRI2": "At the heart of the gameplay mechanics is the parry and dodge system, which serves as the foundation for the combat encounters. Close-range attacks from enemies can be countered through precise parrying timing. When timed perfectly, a parry not only negates the incoming damage but also creates an opening for the player to launch a counterattack, rewarding skillful play with opportunities for aggressive retaliation.",
-        "extraDetailsONIGIRI3": "For long-range attacks, players must rely on their dodging abilities. The game features a fluid rolling mechanic that allows players to evade projectiles. Timing is crucial; if players successfully dodge an incoming projectile at the right moment, they are rewarded with a brief window of invulnerability, allowing them to reposition themselves or prepare for a counterattack. This rewarding timing mechanic encourages players to develop a keen sense of rhythm and anticipation, enhancing the overall combat experience.",
-        "extraDetailsONIGIRI4": " ",
+        "detailsONIGIRI": "A Souls-like singleplayer game made in Unity, where the player must defeat enemies by parrying and dodging.",
 
         "titleBossONIGIRI": "Defeat the almighty Gashadokuro",
         "descBossONIGIRI": "The attack pattern of the final boss, Gashadokuro’s AI, was designed to enhance the overall challenge and engagement of the game. Depending on if the player is either at long range or close range it will try to outmaneuver the player.",
@@ -302,22 +239,13 @@
 
         "titleBURROUGHS": "BURROUGHS",
         "miniSummaryBURROUGHS": "WebRTC Player",
-        "SummaryBURROUGHS": "Unity 3D Game",
-        "detailsBURROUGHS1": "b1lah blah blah",
-        "detailsBURROUGHS2": "blah blah blah",
-        "detailsBURROUGHS3": "blah blah blah",
+        "SummaryBURROUGHS": "WebRTC Player",
+        "detailsBURROUGHS": "blah blah blah",
 
         "titleNEKOMATA": "ネコマタ",
         "miniSummaryNEKOMATA": "弾幕シューティング",
         "summaryNEKOMATA": "弾幕シューティング",
-        "detailsNEKOMATA1": "A boss rush single-player bullet hell game made in Unreal Engine 5, taking inspiration from the Touhou series, the player must destroy enemies by shooting while simultaneously dodging the enemy projectiles.",
-        "detailsNEKOMATA2": "The game focuses on a rewind ability that enables the player to dodge projectiles that are normally not avoidable. However, activating the rewind will turn all active enemy projectiles into a stronger variant depending on the boss.",
-        "detailsNEKOMATA3": "All footage included on this page was taken from real gameplay.",
-
-        "extraDetailsNEKOMATA1": "Boss rush single-player bullet hell game, developed in Unreal Engine 5, draws inspiration from the iconic Touhou series, known for its intricate patterns and fast-paced gameplay. Players are thrust into a world filled with formidable space-rats bosses, each presenting unique challenges and requiring quick reflexes and strategic thinking to overcome.",
-        "extraDetailsNEKOMATA2": "The game forces the player to make skillful and quick decision-making when dodging projectiles, as the player has the ability to rewind back to a previous position, although not without a consequence depending on the boss. The consequence is part of the core gameplay as rewinding will turn every enemy projectile that is present on the screen into a more powerful variant of itself. The gameplay is designed to be exhilarating, with a focus on precision and timing.",
-        "extraDetailsNEKOMATA3": "Since the game is a boss rush, it features a roster of various bosses, each designed with intricate visual aesthetics and unique attack patterns that challenge players in different ways. The art style is vibrant and dynamic, with beautifully composed music that enhances the immersive experience.",
-        "extraDetailsNEKOMATA4": " ",
+        "detailsNEKOMATA": "A boss rush single-player bullet hell game made in Unreal Engine 5, taking inspiration from the Touhou series, the player must destroy enemies by shooting while simultaneously dodging the enemy projectiles.",
 
         "titleTutorialNEKOMATA": "New or Old",
         "descTutorialNEKOMATA": "Nekomata features a simple basic tutorial that can teach players how to use the rewind ability and even teach the most basic techniques of classic games like Touhou.",
@@ -331,9 +259,7 @@
         "titlePORTFOLIO": "PORTFOLIO",
         "miniSummaryPORTFOLIO": "React ウェブサイト",
         "summaryPORTFOLIO": "React ウェブサイト",
-        "detailsPORTFOLIO1": "Portfolio website created entirely using React, Typescript, and Tailwind CSS. The site serves as a showcase of various projects that I have passionately developed, presenting a significant milestone in my journey as a developer. I selected these projects to highlight my skills and creativity, ensuring that they are polished and ready for presentation.",
-        "detailsPORTFOLIO2": "Using the principles of UI theory, every UI elements is thoughtfully placed to ensure the most minimum information required to be understandable and a layout that not only is pleasing but also enhances usability. No spectrum leaves untouched as the core of the portfolio are the projects, which every project specifically highlights their functionality, design, and objective. ",
-        "detailsPORTFOLIO3": "Thank you very much for taking the time to explore my portfolio. Your interest in my work means a great deal to me, as I am excited to share my skills and projects.",
+        "detailsPORTFOLIO": "Portfolio website created entirely using React, Typescript, and Tailwind CSS. The site serves as a showcase of various projects that I have passionately developed, presenting a significant milestone in my journey as a developer. I selected these projects to highlight my skills and creativity, ensuring that they are polished and ready for presentation.",
 
         "demoAvailable": "デモを試する",
         "demoError": "No Demo Available",

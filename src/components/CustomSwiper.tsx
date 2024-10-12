@@ -1,15 +1,17 @@
-import { LegacyRef, ReactNode, useEffect} from 'react';
-import { Swiper, SwiperProps, SwiperRef } from 'swiper/react';
+import { ReactNode, useContext, useEffect} from 'react';
+import { Swiper, SwiperProps } from 'swiper/react';
+import { SlidesContext } from './AppView';
 
 const CustomSwiper = (props: {
     children: ReactNode; 
     className: string, 
-    swiper?: LegacyRef<SwiperRef>,
     swiperProps: React.PropsWithChildren<SwiperProps>
     OnKeyDown?: (e: KeyboardEvent) => void, 
 }) => {
-    const {children, className, swiper, swiperProps, OnKeyDown} = props;
+    const {children, className, swiperProps, OnKeyDown} = props;
 
+    const {swiper} = useContext(SlidesContext)
+    
     const OnSlideChanged = new CustomEvent('OnSlideChanged', {});
 
     useEffect(() => {

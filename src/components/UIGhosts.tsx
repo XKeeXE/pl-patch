@@ -1,22 +1,20 @@
-import React from "react";
+const UIGhosts = (props: {children: React.ReactNode, itemsLength: number}) => {
+    const { children, itemsLength } = props;
 
-const UIGhosts = (children: React.ReactNode, remainingSlots: number) => {
-    let ghosts = []; // Empty projects
-    for (let index = 0; index < remainingSlots; index++) {
+    const gridSize = Math.ceil(Math.sqrt(itemsLength));
+    const remainingSlots = Math.abs((itemsLength) - gridSize * gridSize);
+    
+    let ghosts = [];
+    while (ghosts.length < remainingSlots) {
         ghosts.push('')
     }
     return (
         <>
-        {ghosts.map((ghost, index) => {
-            if (React.isValidElement(React.Children) && React.Children.type === 'ProjectButton') {
-                return React.cloneElement(React.Children, { key: index});
-            }
-            return (
-                <>
-                {children}
-                </>
-            )
-        })}
+        {ghosts.map((_ghost, index) => (
+            <div key={index}>
+                { children }
+            </div>
+        ))}
         </>
     )
 }

@@ -10,7 +10,6 @@ export type slide = {
     color: string, 
     gradient: string,
     icon: JSX.Element | undefined,
-    logo: string,
     name: string,
     images: image[],
     video: string,
@@ -37,5 +36,3 @@ export type language = {
     key: string
     lang: string
 }
-
-export type svg = 'onigiri' | 'pcvr' | 'es' | 'en' | 'ja'

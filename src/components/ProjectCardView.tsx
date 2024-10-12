@@ -1,43 +1,39 @@
-import { Button, Card, CardBody, CardFooter, CardHeader, Image } from "@nextui-org/react";
-import { image, slide, TranslatedText } from "../Types/types";
+import { Card, CardBody, CardFooter, CardHeader, Image } from "@nextui-org/react";
+import { image } from "../Types/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import { Link } from "react-router-dom";
 import UIButton from "./UIButton";
+import { useContext } from "react";
+import { SlidesContext } from "./AppView";
+import SvgAssets from "./SvgAssets";
 
 const ProjectCardView = (props: {
-    getTranslatedText: TranslatedText, 
     slide: boolean, 
     color: string, 
+    icon: JSX.Element | undefined,
     gradient: string, 
-    name: string, logo?: string, 
+    name: string 
     images?: image[]}
 ) => {
-	const { getTranslatedText, slide, color, gradient, name, logo, images, } = props;
+	const { slide, color, icon, gradient, name, images, } = props;
 
-    const CheckValidText = (text: string): JSX.Element => {
-        if (text !== 'Text not found') {
-            return <span>{text}</span>;
-        } 
-        return <></>
-    }
+    const {getTranslatedText, getTranslatedParagraph} = useContext(SlidesContext)
     
     return (
         <div className='flex justify-center h-full'>
-            <Card className="self-center sm:w-[100vw] md:w-[80vw] lg:w-[60vw] xl:w-[35vw] bg-[#f0f0f0] dark:bg-[#181919]/40 border-3 dark:border-[#0f0f0f]" shadow="none" style={{
+            <Card className="self-center sm:w-[100vw] md:w-[80vw] lg:w-[60vw] xl:w-[35vw] 2xl:w-[25vw] border-2 border-[#f0f0f0] dark:border-[#0f0f0f]" shadow="none" style={{
                 // borderColor: color
             }}>
                 <CardHeader className="flex flex-col justify-center gap-1">
                     <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${gradient}`}>{name.toUpperCase()}</span>
                     <span className="font-text text-xs">{getTranslatedText(`summary${name}`).toUpperCase()}</span>
+                    {icon}
+
                 </CardHeader>
                 <CardBody className="flex flex-col gap-2 items-center">
-                    <div className="flex flex-col gap-4 justify-start font-text text-xs md:text-sm">
-                        {CheckValidText(getTranslatedText(`details${name}1`))}
-                        {CheckValidText(getTranslatedText(`details${name}2`))}
-                        {CheckValidText(getTranslatedText(`details${name}3`))}
-                    </div>
+                    {getTranslatedParagraph(`details${name}`, 'flex flex-col gap-2 font-text text-xs md:text-sm')}
                     {images && (
                         <Swiper
                             className=""
@@ -45,7 +41,7 @@ const ProjectCardView = (props: {
                             allowTouchMove={false}
                             mousewheel={false}
                             slidesPerView={3}
-                            spaceBetween={10}
+                            spaceBetween={6}
                             autoplay={{
                                 delay: 5000,
                                 disableOnInteraction: false,
