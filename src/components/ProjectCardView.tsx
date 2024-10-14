@@ -22,7 +22,11 @@ const ProjectCardView = (props: {
                 // borderColor: color
             }}>
                 <CardHeader className="flex flex-col justify-center gap-1">
+                    {viewable ? 
                     <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${currentSlide.gradient}`}>{currentSlide.name.toUpperCase()}</span>
+                    :
+                    <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${currentSlide.gradient}`}>{getTranslatedText(`title${currentSlide.name}`).toUpperCase()}</span>
+                    }
                     <span className="font-text text-xs">{getTranslatedText(`summary${currentSlide.name}`).toUpperCase()}</span>
                     {currentSlide.icon}
 

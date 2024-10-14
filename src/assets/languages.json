@@ -105,7 +105,7 @@
         "titlePlagueRatBossNEKOMATA": "Unforgiving gameplay",
         "descPlagueRatBossNEKOMATA": "Challenging gameplay where the player must engage in a battle of wits, where knowledge and skill become the key to overcome formidable adversaries.",
         
-        "titlePORTFOLIO": "PORTFOLIO",
+        "titlePORTFOLIO": "Portfolio",
         "miniSummaryPORTFOLIO": "React Website",
         "summaryPORTFOLIO": "React Website",
         "detailsPORTFOLIO": "Portfolio website created entirely using React, Typescript, and Tailwind CSS, which serves as a showcase for a selection of projects that I have passionately created and worked on, marking a significant milestone in my development journey. \n Each project presented reflects my skills and creativity, demonstrating a commitment to quality and usability. \n Thank you for taking the time to explore my portfolio. Interest in my work is greatly appreciated, as I am eager to share my skills and projects. \n THANK YOU VERY MUCH!",
@@ -188,8 +188,8 @@
         "descVRPovSYMBIOMATA": "Una experiencia de juego única que el jugador de PC controla el movimiento del personaje, mientras que el jugador de RV disfruta de un control preciso sobre el entorno 3D inmersivo utilizando los controladores XR.",
 
         "titleONIGIRI": "Corte de Demonions",
-        "miniSummaryONIGIRI": "Juego tipo Souls",
-        "summaryONIGIRI": "Juego Unity 3D tipo Souls",
+        "miniSummaryONIGIRI": "Juego Tipo Souls",
+        "summaryONIGIRI": "Juego Unity 3D Tipo Souls",
         "detailsONIGIRI": "Juego de un solo jugador estilo Souls creado en Unity, donde el jugador debe derrotar a jefes enemigos haciéndole parry a sus ataques mientras evade simultáneamente sus proyectiles. \n La mecánica principal gira en torno al tiempo preciso, donde el jugador debe parry en sincronía con el ritmo de los ataques del enemigo. Al anticipar correctamente el ataque, el jugador puede contraatacar y desquitarse contra el enemigo.",
 
         "titleBossONIGIRI": "Retaliación contra adversarios formidables",
@@ -222,8 +222,8 @@
         "SummaryBURROUGHS": "WebRTC Player",
         "detailsBURROUGHS": "b1lah blah blah",
         
-        "titlePORTFOLIO": "PORTFOLIO",
-        "miniSummaryPORTFOLIO": "Pagina Web",
+        "titlePORTFOLIO": "Portafolio",
+        "miniSummaryPORTFOLIO": "React Web",
         "summaryPORTFOLIO": "Pagina Web React",
         "detailsPORTFOLIO": "Portafolio creado enteramente usando React, TypeScript y Tailwind CSS, que sirve como una ventana para una selección de proyectos que he creado y trabajado con pasión, marcando una época significativa en mi trayectoria de desarrollo. \n Cada proyecto presentado refleja mis habilidades y creatividad, demostrando un compromiso con la calidad y la usabilidad. \n Gracias por tomarte el tiempo de explorar mi portafolio. Aprecio mucho el interés en mi trabajo, ya que estoy apasionado por compartir mis habilidades y proyectos. \n ¡MUCHAS GRACIAS!",
 
@@ -256,7 +256,7 @@
         "viewPage": "ページを見る",
 
         "demoHeader": "デモ",
-        "videoHeader": "Preview",
+        "videoHeader": "ビデオ",
         "linksHeader": "リンク",
 
         "resume": "レジュメ",
@@ -343,7 +343,7 @@
         "SummaryBURROUGHS": "WebRTC Player",
         "detailsBURROUGHS": "b1lah blah blah",
         
-        "titlePORTFOLIO": "PORTFOLIO",
+        "titlePORTFOLIO": "ポートフォリオ",
         "miniSummaryPORTFOLIO": "React ウェブサイト",
         "summaryPORTFOLIO": "React ウェブサイト",
         "detailsPORTFOLIO": "React、Typescript、Tailwind CSSを使用して制作されたポートフォリオウェブサイトは、僕が情熱を持って制作に取り組んだプロジェクトの数々を紹介するショーケースの役割を果たし、僕の開発人生の重要なマイルストーンとなりました。\n 各プロジェクトは、僕のスキルと創造性を反映し、品質とユーザビリティへのコミットメントを示しています。\n 僕のポートフォリオをご覧いただき、ありがとうございます。僕のスキルやプロジェクトを分かち合いたいので、僕の作品に関心を持っていただき、とても感謝しています。\n 本当にありがとうございました！",

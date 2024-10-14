@@ -127,10 +127,10 @@ const slides: slide[] = [
     icon: <SvgAssets icon='symbiomata' />,
     name: 'SYMBIOMATA',
     images: imagesSYMBIOMATA,
-    video: 't',
+    video: 'https://www.youtube.com/watch?v=XeHJk2QApac',
     links: [{
         text: 'Download',
-        url: ''
+        url: 'https://drive.google.com/file/d/16Z4LDvYdeoUD-FA3us8k2M9qOYqUZUCO/view?usp=drive_link'
     }]
 },
 {
@@ -139,10 +139,10 @@ const slides: slide[] = [
     icon: <SvgAssets icon='onigiri' />,
     name: 'ONIGIRI',
     images: imagesONIGIRI,
-    video: 't',
+    video: 'https://www.youtube.com/watch?v=Y9xsck9kelo',
     links: [{
         text: 'Download',
-        url: ''
+        url: 'https://drive.google.com/file/d/1-ZuUA72Iqf5Hyf0OQYJZvxxtHo6QNsAZ/view?usp=drive_link'
     }]
 },
 {
@@ -151,14 +151,14 @@ const slides: slide[] = [
     icon: <SvgAssets icon='nekomata' />,
     name: 'NEKOMATA',
     images: imagesNEKOMATA,
-    video: 'Videos/NEKOMATA.mp4',
+    video: `${process.env.PUBLIC_URL}/Videos/NEKOMATA.mp4`,
     links: [{
         text: 'Website',
         url: 'https://sneorino.itch.io/nekomata'
     },
     {
         text: 'Download',
-        url: ''
+        url: 'https://drive.google.com/file/d/1K6vL-DLXzOLSPFHdqZSOA3TR8JXo5VJl/view?usp=drive_link'
     }]
 },
 {
@@ -167,15 +167,15 @@ const slides: slide[] = [
     icon: <LibraryMusic/>,
     name: 'BGMAPP',
     images: imagesBGM,
-    video: 'Videos/BGMAPP.mp4',
+    video: `${process.env.PUBLIC_URL}/'Videos/BGMAPP.mp4`,
     links: [{
         text: 'GitHub',
         url: 'https://github.com/XKeeXE/bgm-app'
     },
-    {
-        text: 'Download',
-        url: ''
-    }
+    // {
+    //     text: 'Download',
+    //     url: ''
+    // }
     ]
 },
 {
@@ -184,7 +184,7 @@ const slides: slide[] = [
     icon: <WallpaperIcon />,
     name: 'L2DWP',
     images: imagesL2DWP,
-    video: 'Videos/L2DWP.mp4',
+    video: `${process.env.PUBLIC_URL}/Videos/L2DWP.mp4`,
     links: [{
         text: 'GitHub',
         url: 'https://github.com/XKeeXE/Live2DWallpaper'

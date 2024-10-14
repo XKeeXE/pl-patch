@@ -14,6 +14,7 @@ import CustomSwiper from './CustomSwiper';
 import React from 'react';
 import { SlidesContext } from './AppView';
 import UIButton from './UIButton';
+import ReactPlayer from 'react-player';
 
 const validKeys: string[] = ['w', 's', 'a', 'd', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
 
@@ -91,16 +92,6 @@ const ProjectView = (props: {
         )
     }
 
-    const Video = (props: {projectVideo: string}): JSX.Element => {
-        const { projectVideo } = props;
-        // console.log('video rerendered');
-        return (
-            <video tabIndex={-1} controls className='md:w-[80vw] xl:w-[50vw] rounded-lg' src={`${process.env.PUBLIC_URL}/${projectVideo}`}><source type="video/mp4"/></video>
-            // <video tabIndex={-1} controls className='md:w-[80vw] xl:w-[50vw] rounded-lg' src={``}><source type="video/mp4"/></video>
-
-        );
-    };
-
     const ProjectDemoView = () => {
         const [demoActive, setDemoActive] = useState<boolean>(false);
 
@@ -175,7 +166,7 @@ const ProjectView = (props: {
                 <SwiperSlide>
                     <Slide>
                         <Header headerText={getTranslatedText('videoHeader')}/>
-                        <Video projectVideo={project.video}/>
+                        <ReactPlayer url={project?.video} controls/>
                     </Slide>
                 </SwiperSlide>
 

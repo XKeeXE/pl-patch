@@ -162,6 +162,16 @@ const UINavbar = (props: {
         )
     }
 
+    const SwiperBar = () => {
+        return (
+            <div className="flex flex-col items-center">
+            <div className="w-full h-[2px] bg-[#808080] rounded-full">
+                <div className="h-full rounded-full transition-all duration-300" style={{ width: `${barWidth * 100}%`, background: currentColor.current}}/>
+            </div>
+        </div>
+        )
+    }
+
     return (
         <>
         <Navbar
@@ -231,11 +241,7 @@ const UINavbar = (props: {
             </NavbarContent>
 
         </Navbar>
-        <div className="flex flex-col items-center">
-            <div className="w-full h-[2px] bg-[#808080] rounded-full">
-                <div className="h-full rounded-full transition-all duration-300" style={{ width: `${barWidth * 100}%`, background: currentColor.current}}/>
-            </div>
-        </div>
+        <SwiperBar/>
         </>
     );
 }
