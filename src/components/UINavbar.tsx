@@ -57,10 +57,6 @@ const UINavbar = (props: {
     const [barWidth, setBarWidth] = useState<number>(((swiper?.current?.swiper.activeIndex != null) ? swiper?.current?.swiper.activeIndex+1 : 1) / (swiper?.current?.swiper.slides.length ? (swiper?.current?.swiper.slides.length) : 1));
 
     function closeAll() {
-        // isClicked.current = false;
-        // if (isHovering.current) {
-        //     return;
-        // }
         setShowMenuDropdown(false); 
         setShowProjectDropdown(false);
         setShowLangDropdown(false); 
@@ -152,9 +148,7 @@ const UINavbar = (props: {
                     {showDropdown ? activeIcon : mainIcon}
                 </button>
                 {showDropdown && (
-                    <div className={`${className} absolute flex flex-col left-0 top-[32px] rounded-lg border-2 bg-[#ffffff] border-[#f0f0f0] dark:bg-[#000000] dark:border-[#0f0f0f] `}
-                    // onMouseEnter={() => isHovering.current = true} onMouseLeave={() => isHovering.current = false}
-                    >
+                    <div className={`${className} absolute flex flex-col left-0 top-[32px] rounded-lg border-2 bg-[#ffffff] border-[#f0f0f0] dark:bg-[#000000] dark:border-[#0f0f0f] `}>
                         { children }
                     </div>
                 )}

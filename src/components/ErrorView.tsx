@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import ProjectList from "./ProjectList";
 
-const OnWindChanged = new CustomEvent('OnWindChanged', {});
+const OnWindChanged = new CustomEvent('OnWindChanged', {}); // Located at UINavbar
 
 const ErrorView = (props: {setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>}) => {
     const { setIsHomePage } = props;
