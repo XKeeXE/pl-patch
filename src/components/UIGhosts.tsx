@@ -1,8 +1,8 @@
-const UIGhosts = (props: {children: React.ReactNode, itemsLength: number}) => {
-    const { children, itemsLength } = props;
+const UIGhosts = (props: {children: React.ReactNode, itemsLength: number, custom?: number}) => {
+    const { children, itemsLength, custom } = props;
 
     const gridSize = Math.ceil(Math.sqrt(itemsLength));
-    const remainingSlots = Math.abs((itemsLength) - gridSize * gridSize);
+    const remainingSlots = custom ? custom : Math.abs((itemsLength) - gridSize * gridSize);
     
     let ghosts = [];
     while (ghosts.length < remainingSlots) {

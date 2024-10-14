@@ -15,6 +15,10 @@
         "about": "Dedicated Computer Science student at the University of Puerto Rico Bayamon, with approximately <years> years of experience. \n My journey began in high school, and I have actively participated in a video game research team, where we developed various games using different engines, which challenged us to learn new tools and adapt to diverse environments. \n Additionally, I have engaged in several passion projects that have provided me with invaluable insights and hands-on experience in the software development process. I am committed to continuous learning and skill enhancement in my spare time, striving to maximize every opportunity for growth.",
         
         "skills": "Technical Skills",
+        "skillsLang": "Language",
+        "skillsTools": "Tools",
+        "skillsGame": "Game",
+        "skillsWeb": "Web",
         
         "projectList": "Projects",
 
@@ -132,6 +136,10 @@
         "about": "Estudiante apasionado a las Ciencias de Computadoras en la Universidad de Puerto Rico Bayamón, con aproximadamente 7 años de experiencia. \n Mi viaje a esta ciencia empezó en escuela superior, y activamente he estado participando en un equipo de investigación de video juegos, en donde desarrollamos varios juegos con distintos engines de video juegos. \n Adicionalmente, he hecho varios proyectos que me han apasionado y que me han aportado valiosa perspectiva y experiencia práctica en el proceso de desarrollo de software. Estoy comprometido con el aprendizaje continuo y la mejora de habilidades en mi tiempo libre, esforzándome por maximizar cada oportunidad de crecimiento.",
 
         "skills": "Destrezas",
+        "skillsLang": "Lenguajes",
+        "skillsTools": "Tools",
+        "skillsGame": "Juego",
+        "skillsWeb": "Web",
 
         "projectList": "Proyectos",
 
@@ -250,6 +258,10 @@
         "about": "プエルトリコ大学バヤモン校のコンピュータサイエンス専攻の学生、現在の経験年は<years>年ぐらいです 。\n 僕の旅は高校時代から始まったし、ビデオゲームの研究チームに積極的に参加したころ、さまざまなエンジンを使ってさまざまなゲームを開発しました。\n また、いくつかの情熱的なプロジェクトに参加したことで、ソフトウェア開発プロセスにおける貴重な洞察と実践的な経験を得ることができました。余暇を利用した継続的な学習とスキルアップに努め、あらゆる成長機会を最大限に生かせるよう努力しています。",
 
         "skills": "スキル一覧",
+        "skillsLang": "プログラミング言語",
+        "skillsTools": "ツール",
+        "skillsGame": "ゲーム",
+        "skillsWeb": "ウェブ",
                 
         "projectList": "プロジェクト一覧",
 
