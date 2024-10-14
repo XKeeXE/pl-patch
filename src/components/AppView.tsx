@@ -61,7 +61,8 @@ const imagesL2DWP: image[] = [{
 },
 ]
 
-const imagesSYMBIOMATA: image[] = [{
+const imagesSYMBIOMATA: image[] = [
+    {
     url: 'Imgs/SYMBIOMATA/Slash.png',
     title: 'Slash',
 },
