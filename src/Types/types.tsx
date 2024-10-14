@@ -11,10 +11,9 @@ export type slide = {
     gradient: string,
     icon: JSX.Element | undefined,
     name: string,
-    images: image[],
     video: string,
-    demoComponent: JSX.Element | undefined,
     links: link[]
+    images?: image[],
 }
 
 export type image = {

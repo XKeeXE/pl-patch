@@ -13,6 +13,22 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { SlidesContext } from "./AppView";
 import SvgAssets from "./SvgAssets";
 
+const languages: language[] = [{
+    key: 'en',
+    lang: 'english',
+},
+{
+    key: 'es',
+    lang: 'spanish'
+},
+{
+    key: 'ja',
+    lang: 'japanese'
+}]
+
+const hashHome = ['home', 'about', 'skills'];
+const hashContacts = ['contacts'];
+
 const UINavbar = (props: {
     isHomePage: boolean, 
     language: string, 
@@ -23,7 +39,6 @@ const UINavbar = (props: {
 
     const { slides, swiper, getTranslatedText } = useContext(SlidesContext);
 
-    const wrapper = useRef<HTMLDivElement>(null);
     const [hash, setHash] = useState<string>(window.location.hash);
     const [darkMode, setDarkMode] = useState<boolean>(() => {
         const savedDarkMode = localStorage.getItem('DarkMode');
@@ -37,26 +52,9 @@ const UINavbar = (props: {
     const [showMenuDropdown, setShowMenuDropdown] = useState<boolean>(false);
     const isHovering = useRef<boolean>(false);
 
+    const hashProjects = useRef<string[]>(slides.map(item => item.name.toLowerCase()));
+
     const [barWidth, setBarWidth] = useState<number>(((swiper?.current?.swiper.activeIndex != null) ? swiper?.current?.swiper.activeIndex+1 : 1) / (swiper?.current?.swiper.slides.length ? (swiper?.current?.swiper.slides.length) : 1));
-
-    const hashHome = ['home', 'about', 'skills'];
-    const hashProjects = slides.map(item => item.name); // To mark active when viewing the project cards
-    hashProjects.push('projects', 'portfolio');
-    const hashContacts = ['contacts'];
-
-    const languages: language[] = [{
-            key: 'en',
-            lang: 'english',
-        },
-        {
-            key: 'es',
-            lang: 'spanish'
-        },
-        {
-            key: 'ja',
-            lang: 'japanese'
-        },
-    ]
 
     function closeAll() {
         // isClicked.current = false;
@@ -89,10 +87,10 @@ const UINavbar = (props: {
             </Link>)
     }
 
-
     // Activates on every page once
     useEffect(() => {
-        if (hashProjects.find(project => project === window.location.pathname.substring(10)) !== undefined) { // Check if undefined project path: ex. /projects/BGMAPP !== undefined
+        hashProjects.current.push('projects', 'portfolio');
+        if (hashProjects.current.find(project => project === window.location.pathname.substring(10)) !== undefined) { // Check if undefined project path: ex. /projects/BGMAPP !== undefined
             setHash('#projects');
         }
 
@@ -103,7 +101,7 @@ const UINavbar = (props: {
         const OnSlideChanged = () => {
             // console.log(((swiper?.current?.swiper.activeIndex != null)  ? swiper?.current?.swiper.activeIndex+1 : 1) / (swiper?.current?.swiper.slides.length ? (swiper?.current?.swiper.slides.length) : 1))
             setBarWidth(((swiper?.current?.swiper.activeIndex != null) ? swiper?.current?.swiper.activeIndex+1 : 1) / (swiper?.current?.swiper.slides.length ? (swiper?.current?.swiper.slides.length) : 1))
-            closeAll();
+            // closeAll();
         };
 
         const handleClickOutside = () => {
@@ -119,7 +117,7 @@ const UINavbar = (props: {
 
         window.addEventListener('hashchange', handleHashChange);
         window.addEventListener('OnWindChanged', OnWindChanged);
-        document.addEventListener('OnSlideChanged', OnSlideChanged)
+        document.addEventListener('OnSlideChanged', OnSlideChanged);
         document.addEventListener('click', handleClickOutside);
         return () => {
             window.removeEventListener('hashchange', handleHashChange);
@@ -154,7 +152,7 @@ const UINavbar = (props: {
                     {showDropdown ? activeIcon : mainIcon}
                 </button>
                 {showDropdown && (
-                    <div ref={wrapper} className={`${className} absolute flex flex-col left-0 top-[32px] rounded-lg border-2 bg-[#ffffff] border-[#f0f0f0] dark:bg-[#000000] dark:border-[#0f0f0f] `}
+                    <div className={`${className} absolute flex flex-col left-0 top-[32px] rounded-lg border-2 bg-[#ffffff] border-[#f0f0f0] dark:bg-[#000000] dark:border-[#0f0f0f] `}
                     // onMouseEnter={() => isHovering.current = true} onMouseLeave={() => isHovering.current = false}
                     >
                         { children }
@@ -167,16 +165,9 @@ const UINavbar = (props: {
     return (
         <>
         <Navbar
-        // isBordered
         height={2}
         position="sticky"
         isBlurred={false}
-        // className="border-b-1"
-        classNames={{
-            // item: [
-            //     "data-[active=true]:after:text-bold",
-            // ]
-        }}
         >
             <NavbarContent justify="start">
                 <UIDropdown showDropdown={showMenuDropdown} setShowDropdown={setShowMenuDropdown} mainIcon={<MenuIcon/>} activeIcon={<MenuIcon/>}>
@@ -187,7 +178,7 @@ const UINavbar = (props: {
                         }}>
                         {darkMode ? <DarkModeIcon htmlColor={darkMode ? "white" : "black"}/> : <BrightnessIcon htmlColor={darkMode ? "white" : "black"}/>}
                     </button>
-                    {/* <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={<SvgAssets icon={language}/>} 
+                    <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={<SvgAssets icon={language}/>} 
                         activeIcon={
                         <div className="hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]">
                             <SvgAssets icon={language}/>
@@ -206,7 +197,7 @@ const UINavbar = (props: {
                             </button>
                         ))}
                     </UIDropdown>
-                    <div className="pb-1"/> */}
+                    <div className="pb-1"/>
                 </UIDropdown>
                 <NavbarItem isActive={MarkActive(hashHome)}>
                     {NavbarStatus('home')}
@@ -214,11 +205,11 @@ const UINavbar = (props: {
             </NavbarContent>
 
             <NavbarContent justify="center">
-                <NavbarItem className="flex flex-row gap-1" isActive={MarkActive(hashProjects)}>
+                <NavbarItem className="flex flex-row gap-1" isActive={MarkActive(hashProjects.current)}>
                     {NavbarStatus('projects')}
                     <UIDropdown showDropdown={showProjectDropdown} setShowDropdown={setShowProjectDropdown} mainIcon={<ArrowDropDownIcon/>} activeIcon={<ArrowDropUpIcon/>} className="w-[162px]">
                         {slides.map(project => (
-                            <Link key={project.name} to={`/projects/${project.name}`}>
+                            <Link key={project.name} to={`/projects/${project.name.toLowerCase()}`}>
                                 <button className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
                                     setHash(`#${project.name}`);
                                     }}>

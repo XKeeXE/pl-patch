@@ -17,8 +17,24 @@ import UIButton from './UIButton';
 
 const validKeys: string[] = ['w', 's', 'a', 'd', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
 
-const OnProjectEnter = new CustomEvent('OnProjectEnter', {});
-const OnWindChanged = new CustomEvent('OnWindChanged', {});
+const OnProjectEnter = new CustomEvent('OnProjectEnter', {}); // Located at AppView
+const OnWindChanged = new CustomEvent('OnWindChanged', {}); // Located at UINavbar
+
+const L2DWP = () => {
+    return (
+        <iframe
+            className=" overflow-hidden h-full md:w-[44%] md:h-[70%]"
+            title={'L2DWP'}
+            src={`${process.env.PUBLIC_URL}/L2DWP/index.html`}
+        />
+    )
+}
+
+const BGMApp = () => {
+    return (
+        <></>
+    )
+}
 
 const ProjectView = (props: { 
     setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, 
@@ -32,14 +48,17 @@ const ProjectView = (props: {
 
     const { projectName } = useParams();
     const project = useMemo(() => {
-        return slides.find(project => project.name === projectName);
+        return slides.find(project => project.name.toLowerCase() === projectName);
     }, [projectName])
 
     // Activates only when starting in the project or (home --> projects) (If switching from project to another project will not activate)
     useEffect(() => {
         // console.log("Im on project view");
-        // window.dispatchEvent(OnWindChanged);
         setIsHomePage(false);
+
+        // v CANNOT BE USED HERE AS IT DOES NOT UPDATE currentColor!!! v (OTHER SIDE SAYS: WARNING CANNOT UPDATE A COMPONENT WHILE RENDERING ANOTHER)
+        // window.dispatchEvent(OnProjectEnter);
+        // window.dispatchEvent(OnWindChanged);
     }, [])
 
     // Defines the available way to navigate through Swiper using keyboard keys
@@ -74,7 +93,7 @@ const ProjectView = (props: {
 
     const Video = (props: {projectVideo: string}): JSX.Element => {
         const { projectVideo } = props;
-        console.log('video rerendered');
+        // console.log('video rerendered');
         return (
             <video tabIndex={-1} controls className='md:w-[80vw] xl:w-[50vw] rounded-lg' src={`${process.env.PUBLIC_URL}/${projectVideo}`}><source type="video/mp4"/></video>
             // <video tabIndex={-1} controls className='md:w-[80vw] xl:w-[50vw] rounded-lg' src={``}><source type="video/mp4"/></video>
@@ -84,29 +103,38 @@ const ProjectView = (props: {
 
     const ProjectDemoView = () => {
         const [demoActive, setDemoActive] = useState<boolean>(false);
-    
-        const DemoButton = (props: any) => {
-            const { text, dashed, onClick } = props;
-            return (
-                <UIButton card={false} color={project!.color} dashed={dashed} onClick={onClick}>
-                    <span>{text}</span>
-                </UIButton>
-            )
+
+        function DemoAssets(demokey: string): [JSX.Element, boolean] {
+            switch (demokey) {
+                case 'L2DWP': return [<L2DWP/>, true]
+                case 'BGMAPP': return [<BGMApp/>, false]
+                default: return [<></>, false]
+            }
         }
+
+        const [element, condition] = DemoAssets(project?.name!);
         
         const DemoComponent = (): JSX.Element => {
-            if (!project?.demoComponent) {
-                return <DemoButton text={getTranslatedText('demoAvailable')} dashed={false} onClick={() => {setDemoActive(true)}}/>
+            if (condition) {
+                return (
+                    <UIButton card={false} color={project!.color} dashed={false} onClick={() => {setDemoActive(true)}}>
+                        {getTranslatedText('demo')}
+                    </UIButton>
+                )
             }
-            return <DemoButton text={getTranslatedText('demoError')} dashed={true}/>
+            return (
+                <UIButton card={false} color={project!.color} dashed={true}>
+                    {getTranslatedText('demoError')}
+                </UIButton>
+            )
         }
     
         return (
             <>
-                {demoActive ? project?.demoComponent
+                {demoActive ? element
                 :
                 <div className='w-[50vw] sm:w-[25vw] lg:w-[20vw] xl:w-[10vw] flex justify-center'>
-                    {DemoComponent()}
+                    <DemoComponent/>
                 </div>
                 }
             </>
@@ -137,12 +165,12 @@ const ProjectView = (props: {
                      </div>
                 </SwiperSlide>
 
-                {/* <SwiperSlide>
+                <SwiperSlide>
                     <Slide>
                         <Header headerText={getTranslatedText('demoHeader')}/>
                         <ProjectDemoView/>
                     </Slide>
-                </SwiperSlide> */}
+                </SwiperSlide>
 
                 <SwiperSlide>
                     <Slide>
@@ -165,7 +193,7 @@ const ProjectView = (props: {
                             navigation={true}
                             modules={[EffectCoverflow, Navigation]}
                         >
-                            {project.images.map(image => (
+                            {project.images?.map(image => (
                                 <SwiperSlide key={image.title}>
                                     <Slide>
                                         <img

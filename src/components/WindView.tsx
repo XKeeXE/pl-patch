@@ -6,14 +6,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Pagination, Mousewheel, HashNavigation } from 'swiper/modules';
 
-import { link, skill } from '../Types/types';
+import { link, skill, slide } from '../Types/types';
 import LinksCard from './LinksCard';
 import ProjectList from './ProjectList';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import CustomSwiper from './CustomSwiper';
 import { SlidesContext } from './AppView';
 import UIGhosts from './UIGhosts';
 import SvgAssets from './SvgAssets';
+import { Tooltip } from '@nextui-org/react';
 
 const validKeys: string[] = ['w', 's', 'ArrowUp', 'ArrowDown'];
 
@@ -64,6 +65,19 @@ const skills: skill[] = [
     { img: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Extensible_Markup_Language_%28XML%29_logo.svg', link: { text: 'XML', url: 'https://wpdean.com/what-is-xml/' } },
 ];
 
+const gradient = ' bg-clip-text text-transparent bg-gradient-to-br from-[#0089fe] from-0% to-[#15c31e] to-100%'
+
+const currentYear = new Date().getFullYear();
+
+const portfolio: slide = {
+    color: '#2E8B57',
+    gradient: gradient,
+    icon: <SvgAssets icon='portfolio'/>,
+    name: 'PORTFOLIO',
+    video: '',
+    links: []
+}
+
 const gridSize = Math.ceil(Math.sqrt(skills.length+1));
 
 const OnWindChanged = new CustomEvent('OnWindChanged', {});
@@ -76,10 +90,6 @@ const WindView = (props: {
     const { language, setIsHomePage } = props;
 
     const {slides, swiper, getTranslatedText, getTranslatedParagraph} = useContext(SlidesContext)
-
-    const currentYear = new Date().getFullYear();
-
-    const gradient = ' bg-clip-text text-transparent bg-gradient-to-br from-[#0089fe] from-0% to-[#15c31e] to-100%'
 
     const contactsItems: link[] = [
         {text: getTranslatedText('resume'), url: '/ResumePatch.pdf'},
@@ -120,36 +130,44 @@ const WindView = (props: {
 
     const Home = () => {
         return (
-             <div className='flex flex-col justify-center items-center h-full'>
+            <div className='flex flex-col justify-center items-center h-full'>
                 <div className='font-text'>
                     <span className={`text-4xl font-title font-bold`}>{getTranslatedText('greetings')}</span>
-                    <div className={'flex flex-row gap-1 items-center'}>
-                        <span className={language === 'ja' ? 'pt-3' : 'text-base md:text-xl'}>{getTranslatedText('introName')}</span>
-                        <GetJP className='text-sm md:text-xl font-bold font-title' text='Sebastian' furigana='セバスチャン'/>
-                        <GetJP className='text-sm md:text-xl font-bold font-title' text='Rodriguez' furigana='ロドリゲス'/>
-                        <GetJP className='text-sm md:text-xl font-bold font-title' text='Medina' furigana='メディナ'/>
-                    </div>
-                    <div className='flex flex-row gap-1 items-center'>
-                        <span className='pt-1 text-base md:text-xl'>{getTranslatedText('introPenname')}</span>
-                        <GetJP className={`text-2xl font-bold font-title`} text='Patch' furigana='パッチ'/>
-                        <span className='pt-5'>{getTranslatedText('endPenname')}</span>
-                    </div>
+                    {getTranslatedParagraph('intro', '', 
+                        {fn: <GetJP className='text-sm md:text-xl font-bold font-title' text='Sebastian' furigana='セバスチャン'/>, 
+                        ln1: <GetJP className='text-sm md:text-xl font-bold font-title' text='Rodriguez' furigana='ロドリゲス'/>,
+                        ln2: <GetJP className='text-sm md:text-xl font-bold font-title' text='Medina' furigana='メディナ'/>, 
+                        pn: <GetJP className={`text-2xl font-bold font-title`} text='Patch' furigana='パッチ'/>
+                    })}
                 </div>
             </div>
         )
     }
 
     const AboutMe = () => {
-        //<div className='flex flex-col h-full font-text gap-4 justify-center md:items-center '>
         return (
             <div className='flex flex-col h-full font-text gap-4 items-center justify-center '>
                 <div className='flex flex-col w-[80vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[20vw] gap-2'>
                     <span className={`font-title text-4xl self-center`}>{getTranslatedText('aboutHeader')}</span>
-                    <div className='flex flex-col gap-1 text-sm md:text-base '>
-                        {getTranslatedParagraph('about', 'flex flex-col gap-2', {years: currentYear - 2017})}
-                    </div>
+                    {getTranslatedParagraph('about', 'flex flex-col gap-1', {years: currentYear - 2017})}
                 </div>
             </div>
+        )
+    }
+
+    const SkillButton = (props: {sk: skill}) => {
+        const { sk } = props;
+        const [open, setOpen] = useState<boolean>(false);
+
+        return (
+            <Tooltip content={sk.link.text} className='select-none' showArrow isOpen={open} disableAnimation>
+                <span className='inline-flex border-2 p-1 cursor-pointer rounded-lg text-xs items-center dark:bg-[#181a1b] border-[#f0f0f0] hover:bg-[#f2f2f288] dark:border-[#0f0f0f] dark:hover:bg-[#353535a2]' 
+                onClick={() => {window.open(sk.link.url, '_blank')}} 
+                onMouseEnter={() => setOpen(true)}
+                onMouseLeave={() => setOpen(false)}>
+                    <img src={sk.img} className='w-5 h-5 lg:w-8 lg:h-8 xl:w-11 xl:h-11 mx-1' alt={sk.link.text}/>
+                </span>
+            </Tooltip>
         )
     }
 
@@ -161,9 +179,7 @@ const WindView = (props: {
                     gridTemplateColumns: `repeat(${gridSize}, 1fr)`
                 }}>
                     {skills.map(skill => (
-                        <span key={skill.link.text} className='inline-flex border-2 p-1 cursor-pointer rounded-lg text-xs items-center dark:bg-[#181a1b] border-[#f0f0f0] hover:bg-[#f2f2f288] dark:border-[#0f0f0f] dark:hover:bg-[#353535a2]' onClick={() => {window.open(skill.link.url, '_blank');}}>
-                            <img src={skill.img} className='w-5 h-5 lg:w-8 lg:h-8 xl:w-11 xl:h-11 mx-1' alt={skill.link.text}/>
-                        </span>
+                        <SkillButton sk={skill} key={skill.link.text} />
                     ))}
                     <UIGhosts itemsLength={skills.length}>
                         <div className='border-2 p-1 cursor-pointer rounded-lg text-xs items-center border-dashed border-[#f0f0f0] hover:bg-[#f2f2f231] dark:border-[#181a1b] dark:hover:bg-[#35353525] h-full'/>
@@ -194,25 +210,17 @@ const WindView = (props: {
                 <ProjectList errorView={false}/>
             </SwiperSlide>
             {slides.map(project => (
-                <SwiperSlide data-hash={project.name} key={project.name}>
+                <SwiperSlide data-hash={project.name.toLowerCase()} key={project.name}>
                     <ProjectCardView
-                        slide={true}
-                        color={project.color}
-                        icon={project.icon}
-                        gradient={project.gradient}
-                        name={project.name}
-                        images={project.images}
+                        viewable={true}
+                        currentSlide={project}
                         />
                 </SwiperSlide>
             ))}
             <SwiperSlide data-hash="portfolio">
                 <ProjectCardView
-                    slide={false}
-                    color={'#2E8B57'}
-                    gradient={gradient}
-                    name={"PORTFOLIO"}
-                    icon={<SvgAssets icon='portfolio'/>}
-                    images={undefined}
+                    viewable={false}
+                    currentSlide={portfolio}
                     />
             </SwiperSlide>
 

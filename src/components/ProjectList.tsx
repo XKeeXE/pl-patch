@@ -57,7 +57,7 @@ const ProjectList = (props: {errorView: boolean}) => {
     }) => {
         const { dashed, icon, name, gradient } = props;
         return (
-            <button className={"w-[150px] h-[60px] p-2 rounded-lg border-2  border-[#f0f0f0] dark:border-[#0f0f0f] " + (dashed ? ' border-dashed hover:bg-[#f2f2f231] dark:hover:bg-[#35353525]' : 'hover:bg-[#f2f2f288] dark:bg-[#181a1b] dark:hover:bg-[#353535a2]')}>
+            <button className={"w-[160px] h-[60px] p-2 rounded-lg border-2  border-[#f0f0f0] dark:border-[#0f0f0f] " + (dashed ? ' border-dashed hover:bg-[#f2f2f231] dark:hover:bg-[#35353525]' : 'hover:bg-[#f2f2f288] dark:bg-[#181a1b] dark:hover:bg-[#353535a2]')}>
                 {!dashed && (
                     <div className="flex flex-row items-center gap-2">
                         { icon }
@@ -78,7 +78,7 @@ const ProjectList = (props: {errorView: boolean}) => {
             </div>
             <div className={`grid self-center gap-2`} style={gridStyle}>
                 {slides.map(project => (
-                    <Link tabIndex={-1} key={project.name} to={`/projects/${project.name}`}>
+                    <Link tabIndex={-1} key={project.name} to={`/projects/${project.name.toLowerCase()}`}>
                         <ProjectButton dashed={false} icon={project.icon} name={project.name} gradient={project.gradient} />
                     </Link>
                 ))}
@@ -90,7 +90,6 @@ const ProjectList = (props: {errorView: boolean}) => {
                 </UIGhosts>
             </div>
             {errorView ? <span>{getTranslatedText('error')}</span> : null}
-
         </div>
     )
 }

@@ -1,20 +1,17 @@
-import { createContext, RefObject, useEffect, useRef, useState } from 'react';
+import { createContext, RefObject, useEffect, useMemo, useRef, useState } from 'react';
 import WindView from './WindView';
 import UINavbar from './UINavbar';
 
 import { image, LanguageTranslations, slide } from '../Types/types';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
-import PetsIcon from '@mui/icons-material/Pets';
-import ViewInArIcon from '@mui/icons-material/ViewInAr';
 import LibraryMusic from '@mui/icons-material/LibraryMusicOutlined';
 import ProjectView from './ProjectView';
-import BGMApp from './demo/BGMApp';
-import L2DWP from './demo/L2DWP';
 import ErrorView from './ErrorView';
 import { NextUIProvider } from '@nextui-org/react';
 import SvgAssets from './SvgAssets';
 import { SwiperRef } from 'swiper/react';
+import React from 'react';
 
 const data: { [key: string]: LanguageTranslations } = require('../assets/languages.json');
 
@@ -131,7 +128,6 @@ const slides: slide[] = [
     name: 'SYMBIOMATA',
     images: imagesSYMBIOMATA,
     video: 't',
-    demoComponent: undefined,
     links: [{
         text: 'Download',
         url: ''
@@ -144,7 +140,6 @@ const slides: slide[] = [
     name: 'ONIGIRI',
     images: imagesONIGIRI,
     video: 't',
-    demoComponent: undefined,
     links: [{
         text: 'Download',
         url: ''
@@ -157,7 +152,6 @@ const slides: slide[] = [
     name: 'NEKOMATA',
     images: imagesNEKOMATA,
     video: 'Videos/NEKOMATA.mp4',
-    demoComponent: undefined,
     links: [{
         text: 'Website',
         url: 'https://sneorino.itch.io/nekomata'
@@ -174,7 +168,6 @@ const slides: slide[] = [
     name: 'BGMAPP',
     images: imagesBGM,
     video: 'Videos/BGMAPP.mp4',
-    demoComponent: <BGMApp />,
     links: [{
         text: 'GitHub',
         url: 'https://github.com/XKeeXE/bgm-app'
@@ -192,7 +185,6 @@ const slides: slide[] = [
     name: 'L2DWP',
     images: imagesL2DWP,
     video: 'Videos/L2DWP.mp4',
-    demoComponent: <L2DWP/>,
     links: [{
         text: 'GitHub',
         url: 'https://github.com/XKeeXE/Live2DWallpaper'
@@ -225,36 +217,36 @@ const slides: slide[] = [
 export const SlidesContext = createContext<{
     isHomePage: boolean,
     swiper: RefObject<SwiperRef> | null,
-    getTranslatedText: (_langKey: string, _params?: { [key: string]: string|number }) => string, 
-    getTranslatedParagraph: (_langKey: string, _className?: string, _params?: { [key: string]: string|number }) => JSX.Element,
+    getTranslatedText: (_langKey: string, _params?: { [key: string]: string|number|boolean }) => string, 
+    getTranslatedParagraph: (_langKey: string, _className: string, _params?: { [key: string]: string|number|boolean|JSX.Element }) => JSX.Element,
     slides: slide[]
 }>({
     isHomePage: true,
     swiper: null,
-    getTranslatedText: (_langKey: string, _params?: { [key: string]: string|number }) => '', 
-    getTranslatedParagraph: (_langKey: string, _className?: string, _params?: { [key: string]: string|number }) => <></>,
+    getTranslatedText: (_langKey: string, _params?: { [key: string]: string|number|boolean }) => '', 
+    getTranslatedParagraph: (_langKey: string, _className: string, _params?: { [key: string]: string|number|boolean|JSX.Element }) => <></>,
     slides: slides
 });
 
 const AppView = () => {
-    // const [language, setLanguage] = useState<string>(GetCurrentLanguage() as string);
-    const [language, setLanguage] = useState<string>('en');
-
+    const [language, setLanguage] = useState<string>(GetCurrentLanguage() as string);
+    // const [language, setLanguage] = useState<string>('en');
+    
     const [isHomePage, setIsHomePage] = useState<boolean>(true);
 
     const swiper = useRef<SwiperRef>(null);
-
-    const navigate = useNavigate();
-
     const currentColor = useRef<string>('');
+
+    // const navigate = useNavigate();
 
     /**
      * The file languages.json contains keys of languages which contained text in their corresponding language.
      * @param key The key of the translated text.
-     * @param params In the language.json file the translated text can accept text surrounded by '<>' to replace with a dynamic value.
+     * @param params In the language.json file the translated text can accept text surrounded by '<>' to replace with a dynamic value
+     * (Can be strings, number, booleans, or JSX.Elements).
      * @returns The translated string.
      */
-    function getTranslatedText(key: string, params?: { [key: string]: string|number }): string {
+    function getTranslatedText(key: string, params?: { [key: string]: string|number|boolean }): string {
         const languageTranslations: LanguageTranslations = data[language];
 
         let translation = languageTranslations[key] || 'Text not found'; // The corresponding translated text or 'Text not found' if the key is incorrect or missing in the JSON
@@ -272,29 +264,58 @@ const AppView = () => {
      * with a paragraph element containing span elements.
      * @param key The key of the translated text.
      * @param className The optimal CSS tailwind styling.
-     * @param params In the language.json file the translated text can accept text surrounded by '<>' to replace with a dynamic value.
+     * @param params In the language.json file the translated text can accept text surrounded by '<>' to replace with a dynamic value
+     * (Can be strings, number, booleans, or JSX.Elements).
      * @returns An HTML paragraph element containing HTML span elements.
      */
-    function getTranslatedParagraph(key: string, className?: string, params?: { [key: string]: string | number }): JSX.Element {
-        const translatedText = getTranslatedText(key, params);
-    
-        // Split the translated text by newline characters and map to JSX elements
-        return (
+    function getTranslatedParagraph(key: string, className: string, params?: { [key: string]: string|number|boolean|JSX.Element }): JSX.Element {
+        const languageTranslations: LanguageTranslations = data[language];
+
+        let translation = languageTranslations[key] || 'Text not found';
+
+        let nodes: React.ReactNode[] = []
+        let nodeParams: string[] = []
+
+        if (params) {
+            Object.keys(params).forEach(paramKey => {
+                const regex = new RegExp(`<${paramKey}>`, 'g');
+                if (React.isValidElement(params[paramKey])) {
+                    nodes.push(params[paramKey]); // Add the react nodes to the array
+                    nodeParams.push(`<${paramKey}>`); // Add the regex of the param key
+                } else {
+                    translation = translation.replace(regex, params[paramKey].toString());
+                }
+            });
+            let regex = /(<[^>]+>|[^<]+)/g;
+            if (nodes.length > 0) {
+                let resultArray = translation.match(regex)?.map(str => str).filter(str => str) as string[]; // Cut the paragraph in pieces between the <paramKeys>
+                return (
+                    <p className={className}>
+                        {resultArray.map((splitLine, index) => (
+                            <span key={`paragraphLine_${index}`}>
+                                {nodeParams.includes(splitLine) ? nodes[nodeParams.indexOf(splitLine)] : splitLine.split('\n').map((line, indexLine2) => (
+                                    <span key={`splitLine_${index}_${indexLine2}`}>
+                                        {line}
+                                        {indexLine2 < splitLine.split('\n').length - 1 && <br />}
+                                    </span>
+                                ))}
+                            </span>
+                        ))}
+                    </p>
+                );
+            }
+        }
+        return ( // No JSX node was detected therefore we just paragraph the text
             <p className={className}>
-                {translatedText.split('\n').map((line, index) => (
+                {translation.split('\n').map((line, index) => (
                     <span key={index}>
                         {line}
-                        {index < translatedText.split('\n').length - 1 && <br />}
+                        {index < translation.split('\n').length - 1 && <br />}
                     </span>
                 ))}
             </p>
-        );
+        )
     }
-
-    // No Direct File System Access: You cannot read files from the file system directly in a React app running in the browser. You can only access files that are served by your web server.
-    // function GetScreenshots(project: string, title: string): image[] {
-        
-    // }
 
     function getDarkMode() {
         const darkMode = localStorage.getItem('DarkMode');
@@ -423,14 +444,14 @@ const AppView = () => {
 
     return (
         <SlidesContext.Provider value={{slides, swiper, isHomePage, getTranslatedText, getTranslatedParagraph}}>
-            <NextUIProvider navigate={navigate}>
+            {/* <NextUIProvider navigate={navigate}> */}
                 <UINavbar language={language} setLanguage={setLanguage} isHomePage={isHomePage} currentColor={currentColor}/> 
                 <Routes>
                     <Route path='/' element={<WindView language={language} setIsHomePage={setIsHomePage} />}/>
                     <Route path='/projects/:projectName' element={<ProjectView setIsHomePage={setIsHomePage} currentColor={currentColor}/>}/>
                     <Route path='*' element={<ErrorView setIsHomePage={setIsHomePage} />}/>
                 </Routes>
-            </NextUIProvider>
+            {/* </NextUIProvider> */}
         </SlidesContext.Provider>
     )
 }
