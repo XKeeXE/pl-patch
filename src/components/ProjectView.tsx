@@ -146,12 +146,12 @@ const ProjectView = (props: {
             }} OnKeyDown={OnKeyDown}>
                 <SwiperSlide>
                      <div className='flex flex-col h-full font-text items-center justify-center '>
-                        <div className='flex flex-col w-[80vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[20vw] items-center font-text '>
+                        <div className='flex flex-col w-[80vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[30vw] items-center font-text '>
                             <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{project.name}</span>
                             <span className={`text-sm md:text-lg bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{getTranslatedText(`title${project.name}`)}</span>
                             <span className="font-text text-xs md:text-sm pb-2">{getTranslatedText(`summary${project.name}`).toUpperCase()}</span>
                             {project.icon}
-                            {getTranslatedParagraph(`details${project.name}`, 'pt-5 flex flex-col gap-2')}
+                            {getTranslatedParagraph(`details${project.name}`, 'pt-5 flex flex-col text-sm md:text-base gap-2')}
                         </div>
                      </div>
                 </SwiperSlide>
@@ -166,7 +166,7 @@ const ProjectView = (props: {
                 <SwiperSlide>
                     <Slide>
                         <Header headerText={getTranslatedText('videoHeader')}/>
-                        <ReactPlayer url={project?.video} controls/>
+                            <ReactPlayer url={project?.video} controls height={300} width={300}/>
                     </Slide>
                 </SwiperSlide>
 

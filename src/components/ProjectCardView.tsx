@@ -18,7 +18,7 @@ const ProjectCardView = (props: {
     
     return (
         <div className='flex justify-center h-full'>
-            <Card className="self-center sm:w-[100vw] md:w-[80vw] lg:w-[60vw] xl:w-[35vw] 2xl:w-[25vw] border-2 border-[#f0f0f0] dark:border-[#0f0f0f]" shadow="none" style={{
+            <Card className="self-center sm:w-[100vw] md:w-[80vw] lg:w-[60vw] xl:w-[35vw] 2xl:w-[30vw] border-2 border-[#f0f0f0] dark:border-[#0f0f0f]" shadow="none" style={{
                 // borderColor: color
             }}>
                 <CardHeader className="flex flex-col justify-center gap-1">

@@ -18,11 +18,6 @@ import { Tooltip } from '@nextui-org/react';
 
 const validKeys: string[] = ['w', 's', 'ArrowUp', 'ArrowDown'];
 
-const test: skill[] = [
-    // { img: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg', link: { text: 'Apache Spark', url: 'https://spark.apache.org/' } },
-    
-];
-
 const tools: skill[] = [
     { img: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg', link: { text: 'Blender', url: 'https://www.blender.org/' } },
     { img: 'https://wasimaster.gallerycdn.vsassets.io/extensions/wasimaster/discord-py-snippets/1.2.1/1604309045628/Microsoft.VisualStudio.Services.Icons.Default', link: { text: 'Discord.py', url: 'https://discordpy.readthedocs.io' } },
@@ -96,14 +91,12 @@ const portfolio: slide = {
 }
 
 
-const OnWindChanged = new CustomEvent('OnWindChanged', {});
-const OnHomePage = new CustomEvent('OnHomePage', {});
+const OnWindChanged = new CustomEvent('OnWindChanged', {}); // Located at UINavbar
+const OnHomePage = new CustomEvent('OnHomePage', {}); // Located at UINavbar
 
 const SkillSection = (props: {text: string, skill: skill[], ghosts?: boolean, custom?: number, ghostsNum?: number}) => {
     const { text, ghosts, skill, custom, ghostsNum } = props;
     const gridSize = custom ? custom : Math.ceil(Math.sqrt(skill.length+1));
-    // <div className='flex flex-col h-full font-title gap-4 items-center justify-center '>
-    //         <span className='font-title text-4xl'>{getTranslatedText('skills')}</span>
     return (
         <div className='flex flex-col gap-2 items-center'>
             <span className=' text-sm xl:text-2xl'>{text}</span>
@@ -207,9 +200,9 @@ const WindView = (props: {
     const AboutMe = () => {
         return (
             <div className='flex flex-col h-full font-text gap-4 items-center justify-center '>
-                <div className='flex flex-col w-[80vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[20vw] gap-2'>
+                <div className='flex flex-col w-[80vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[30vw] gap-2'>
                     <span className={`font-title text-4xl self-center`}>{getTranslatedText('aboutHeader')}</span>
-                    {getTranslatedParagraph('about', 'flex flex-col gap-1', {years: currentYear - 2017})}
+                    {getTranslatedParagraph('about', 'flex flex-col gap-1 text-sm md:text-base', {years: currentYear - 2017})}
                 </div>
             </div>
         )

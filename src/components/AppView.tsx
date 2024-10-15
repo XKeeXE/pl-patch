@@ -8,7 +8,6 @@ import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import LibraryMusic from '@mui/icons-material/LibraryMusicOutlined';
 import ProjectView from './ProjectView';
 import ErrorView from './ErrorView';
-import { NextUIProvider } from '@nextui-org/react';
 import SvgAssets from './SvgAssets';
 import { SwiperRef } from 'swiper/react';
 import React from 'react';
@@ -169,7 +168,7 @@ const slides: slide[] = [
     icon: <LibraryMusic/>,
     name: 'BGMAPP',
     images: imagesBGM,
-    video: `${process.env.PUBLIC_URL}/'Videos/BGMAPP.mp4`,
+    video: `${process.env.PUBLIC_URL}/Videos/BGMAPP.mp4`,
     links: [{
         text: 'GitHub',
         url: 'https://github.com/XKeeXE/bgm-app'

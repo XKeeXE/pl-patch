@@ -33,13 +33,15 @@ const Onigiri = () => {
 
 const Symbiomata = () => {
     return (
-        <img src={`${process.env.PUBLIC_URL}/Icons/Symbiomata.png`} className="object-contain" height={22} width={22} alt="Symbiomata"/>
+        // <></>
+        <img src={`${process.env.PUBLIC_URL}/Icons/Symbiomata.png`} className="object-fit" height={26} width={26} alt="Symbiomata"/>
     )
 }
 
 const Nekomata = () => {
     return (
-        <img src={`${process.env.PUBLIC_URL}/Icons/Nekomata.ico`} className="object-contain" height={22} width={22} alt="Nekomata"/>
+        // <></>
+        <img src={`${process.env.PUBLIC_URL}/Icons/Nekomata.ico`} className=" object-fit" height={26} width={26} alt="Nekomata"/>
     )
 }
 
