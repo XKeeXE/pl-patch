@@ -9,7 +9,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { language } from "../Types/types";
 
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, ReactNode, useContext, useEffect, useRef, useState } from "react";
 import { SlidesContext } from "./AppView";
 import SvgAssets from "./SvgAssets";
 
@@ -28,6 +28,47 @@ const languages: language[] = [{
 
 const hashHome = ['home', 'about', 'skills'];
 const hashContacts = ['contacts'];
+
+const UIDropdown = forwardRef((props: { 
+    icon: ReactNode, 
+    altIcon?: ReactNode, 
+    children?: ReactNode, 
+    className?: string,
+}) => {
+    const { children, icon, altIcon, className } = props;
+
+    const dropdownRef = useRef<HTMLDivElement>(null);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    const handleClickOutside = (e: any) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+            setIsOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside);
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [])
+
+    return (
+        <div ref={dropdownRef} className="relative flex flex-col">
+            <button onClick={() => {
+                setIsOpen(!isOpen);
+            }} 
+            onMouseEnter={() => {setIsOpen(true)}}>
+                {isOpen ? icon : (altIcon ? altIcon : icon)}
+            </button>
+            {isOpen && (
+                <div className={`${className} absolute flex flex-col left-0 top-[32px] text-sm md:text-base rounded-lg border-2 bg-[#ffffff] border-[#f0f0f0] dark:bg-[#000000] dark:border-[#0f0f0f] `}>
+                    { children }
+                </div>
+            )}
+        </div>
+    )
+})
 
 const UINavbar = (props: {
     isHomePage: boolean, 
@@ -48,46 +89,23 @@ const UINavbar = (props: {
         return savedDarkMode ? JSON.parse(savedDarkMode) : false;
     });
     
-    const [showProjectDropdown, setShowProjectDropdown] = useState<boolean>(false);
-    const [showLangDropdown, setShowLangDropdown] = useState<boolean>(false);
-    const [showMenuDropdown, setShowMenuDropdown] = useState<boolean>(false);
-    const projectDropdownRef = useRef<any>();
-    const menuDropdownRef = useRef<any>();
-
-
     const hashProjects = useRef<string[]>(slides.map(item => item.name.toLowerCase()));
 
     const [barWidth, setBarWidth] = useState<number>(((swiper?.current?.swiper.activeIndex != null) ? swiper?.current?.swiper.activeIndex+1 : 1) / (swiper?.current?.swiper.slides.length ? (swiper?.current?.swiper.slides.length) : 1));
-
-    function closeAll() {
-        // console.log(projectDropdownRef.current.getValue());
-        // console.log(showProjectDropdown);        
-        if (showMenuDropdown || showProjectDropdown || showLangDropdown) {
-            setShowMenuDropdown(false); 
-            setShowProjectDropdown(false);
-            setShowLangDropdown(false); 
-        }
-    }
 
     const MarkActive = (items: string[]): boolean => {
         return items.find(hashes => hashes === hash.substring(1)) !== undefined // Get #about => about
     }
     
     const NavbarStatus = (item: string): JSX.Element => {
-        if (isHomePage) {
-            return (
-            <a href={`/#${item}`} className={"font-text pt-[2px] select-none"} onClick={() => {
-                closeAll();
-                }}>
-                    {getTranslatedText(item)}
-            </a>)
-        }
-        return (
-            <Link to={`/#${item}`} className={"font-text pt-[2px] select-none"} onClick={() => {
-                setHash(`#${item}`);
-                }}>
-                    {getTranslatedText(item)}
-            </Link>)
+        return isHomePage ? 
+            <a href={`/#${item}`} className={"font-text pt-[2px] select-none"}>
+                {getTranslatedText(item)}
+            </a>
+            :
+            <Link to={`/#${item}`} className={"font-text pt-[2px] select-none"} onClick={() => {setHash(`#${item}`)}}>
+                {getTranslatedText(item)}
+            </Link>
     }
 
     // Activates on every page once
@@ -104,12 +122,6 @@ const UINavbar = (props: {
         const OnSlideChanged = () => {
             // console.log(((swiper?.current?.swiper.activeIndex != null)  ? swiper?.current?.swiper.activeIndex+1 : 1) / (swiper?.current?.swiper.slides.length ? (swiper?.current?.swiper.slides.length) : 1))
             setBarWidth(((swiper?.current?.swiper.activeIndex != null) ? swiper?.current?.swiper.activeIndex+1 : 1) / (swiper?.current?.swiper.slides.length ? (swiper?.current?.swiper.slides.length) : 1))
-            // closeAll();
-        };
-
-        const handleClickOutside = () => {
-            // console.log('clicked outside');
-            closeAll();
         };
 
         const OnProjectEnter = () => {
@@ -119,20 +131,17 @@ const UINavbar = (props: {
         // Runs everytime a switch to a new window is changed
         const OnWindChanged = () => {
             setBarWidth(((swiper?.current?.swiper.activeIndex != null) ? swiper?.current?.swiper.activeIndex+1 : 1) / (swiper?.current?.swiper.slides.length ? (swiper?.current?.swiper.slides.length) : 1))
-
         };
 
         window.addEventListener('hashchange', handleHashChange);
         window.addEventListener('OnWindChanged', OnWindChanged);
         window.addEventListener('OnProjectEnter', OnProjectEnter)
         document.addEventListener('OnSlideChanged', OnSlideChanged);
-        document.addEventListener('click', handleClickOutside);
         return () => {
             window.removeEventListener('hashchange', handleHashChange);
             window.removeEventListener('OnWindChanged', OnWindChanged);
             window.removeEventListener('OnProjectEnter', OnProjectEnter)
             document.removeEventListener('OnSlideChanged', OnSlideChanged)
-            document.removeEventListener('click', handleClickOutside);
         };
     }, []);
 
@@ -140,46 +149,8 @@ const UINavbar = (props: {
         document.documentElement.className = darkMode ? 'dark' : 'light';
         if (isHomePage) {
             document.documentElement.style.setProperty('--swiper-pagination-color', darkMode ? "#f0f0f0" : "#0f0f0f");
-            currentColor.current = darkMode ? "#f0f0f0" : "#0f0f0f";
         }
     }, [darkMode])
-
-    const UIDropdown = (props: { 
-        children: React.ReactNode, 
-        showDropdown: boolean, 
-        setShowDropdown: React.Dispatch<React.SetStateAction<boolean>>,
-        activeIcon: JSX.Element, 
-        mainIcon: JSX.Element
-        // ref?: any,
-        className?: string,
-    }) => {
-        const { children, showDropdown, setShowDropdown, activeIcon, mainIcon, className } = props;
-
-        const isClicked = useRef<boolean>(false);
-
-        // useImperativeHandle(ref, () => ({
-        //     getValue: () => isClicked.current,
-        //     setValue: (newValue: boolean) => isClicked.current = newValue,
-        // }));
-    
-    
-        return (
-            <div className="relative flex flex-col">
-                <button onClick={() => {
-                    // isClicked.current = true;
-                    setShowDropdown(!showDropdown);
-                }} 
-                onMouseEnter={() => {setShowDropdown(true) }}>
-                    {showDropdown ? activeIcon : mainIcon}
-                </button>
-                {showDropdown && (
-                    <div className={`${className} absolute flex flex-col left-0 top-[32px] text-sm md:text-base rounded-lg border-2 bg-[#ffffff] border-[#f0f0f0] dark:bg-[#000000] dark:border-[#0f0f0f] `}>
-                        { children }
-                    </div>
-                )}
-            </div>
-        )
-    }
 
     const SwiperBar = () => {
         return (
@@ -199,62 +170,59 @@ const UINavbar = (props: {
         isBlurred={false}
         >
             <NavbarContent justify="start">
-                <UIDropdown showDropdown={showMenuDropdown} setShowDropdown={setShowMenuDropdown} mainIcon={<MenuIcon/>} activeIcon={<MenuIcon/>}>
-                    <button className={"rounded-lg p-1 hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} 
-                    onClick={() => {
-                        setDarkMode(!darkMode);
-                        localStorage.setItem('DarkMode', JSON.stringify(!darkMode));
-                        }}>
-                        {darkMode ? <DarkModeIcon htmlColor={darkMode ? "white" : "black"}/> : <BrightnessIcon htmlColor={darkMode ? "white" : "black"}/>}
-                    </button>
-                    <UIDropdown showDropdown={showLangDropdown} setShowDropdown={setShowLangDropdown} mainIcon={<SvgAssets icon={language}/>} 
-                        activeIcon={
-                        <div className="hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]">
-                            <SvgAssets icon={language}/>
-                        </div>
-                        }>
-                        {languages.map(language => (
-                            <button key={language.key} className={"w-full p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
-                                localStorage.setItem('Language', language.key);
-                                setShowLangDropdown(false); 
-                                setLanguage(language.key);
-                                }}>
-                                <div className={"flex flex-row p-[2px] gap-1 font-text " + (language.key === 'ja' ? ' w-[130px] ' : '') }>
-                                    <SvgAssets icon={language.key}/>
-                                    <span>{getTranslatedText(language.lang)}</span>
-                                </div>
-                            </button>
-                        ))}
-                    </UIDropdown>
-                    <div className="pb-1"/>
-                </UIDropdown>
                 <NavbarItem isActive={MarkActive(hashHome)}>
-                    {NavbarStatus('home')}
+                    <div className="flex gap-2">
+                        <UIDropdown icon={<MenuIcon/>}>
+                            <button className={"rounded-t-lg p-1 hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} 
+                            onClick={() => {
+                                if (isHomePage) {
+                                    currentColor.current = !darkMode ? "#f0f0f0" : "#0f0f0f";
+                                }
+                                setDarkMode(!darkMode);
+                                localStorage.setItem('DarkMode', JSON.stringify(!darkMode));
+                                }}>
+                                {darkMode ? <DarkModeIcon htmlColor={darkMode ? "white" : "black"}/> : <BrightnessIcon htmlColor={darkMode ? "white" : "black"}/>}
+                            </button>
+                            <UIDropdown icon={
+                                <div className="hover:bg-[#e9e9e95d] rounded-b-lg pb-1 dark:hover:bg-[#353535a2]">
+                                    <SvgAssets icon={language}/>
+                                </div>
+                            }>
+                                {languages.map(language => (
+                                    <button key={language.key} className={"p-1 first:rounded-t-lg last:rounded-b-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
+                                        localStorage.setItem('Language', language.key);
+                                        setLanguage(language.key);
+                                        }}>
+                                        <div className={"flex flex-row p-[2px] gap-1 font-text " + (language.key === 'ja' ? ' w-[130px] ' : '') }>
+                                            <SvgAssets icon={language.key}/>
+                                            <span>{getTranslatedText(language.lang)}</span>
+                                        </div>
+                                    </button>
+                                ))}
+                            </UIDropdown>
+                        </UIDropdown>
+                        {NavbarStatus('home')}
+                    </div>
                 </NavbarItem>
             </NavbarContent>
 
             <NavbarContent justify="center">
-                <NavbarItem className="flex flex-row gap-1" isActive={MarkActive(hashProjects.current)}>
+                <NavbarItem className="flex flex-row gap-2" isActive={MarkActive(hashProjects.current)}>
                     {NavbarStatus('projects')}
-                    <UIDropdown showDropdown={showProjectDropdown} setShowDropdown={setShowProjectDropdown} mainIcon={<ArrowDropDownIcon/>} activeIcon={<ArrowDropUpIcon/>} >
+                    <UIDropdown icon={<ArrowDropUpIcon/>} altIcon={<ArrowDropDownIcon/>}>
                         {slides.map(project => (
                             <Link key={project.name} to={`/projects/${project.name.toLowerCase()}`}>
-                                <button className={"w-full text-start p-1 rounded-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
+                                <button className={"w-full text-start p-1 hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
                                     setHash(`#${project.name}`);
                                     }}>
                                         <span className="inline-flex gap-1 p-[2px] font-title ">
                                             <div className="min-w-[28px]">
                                                 {project.icon}
-
                                             </div>
                                             <span className={`bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>
                                             {project.name}
                                             </span>
                                         </span>
-                                        {/* <span className="inline-flex flex-row p-[2px] gap-1 font-title"> */}
-                                            {/* <img src={project.icon}/> */}
-                                            {/* <span className={`bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{project.name}</span> */}
-                                        {/* </span> */}
                                 </button>
                             </Link>
                         ))}

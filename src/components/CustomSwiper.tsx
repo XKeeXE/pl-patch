@@ -12,7 +12,7 @@ const CustomSwiper = (props: {
 
     const {swiper} = useContext(SlidesContext)
     
-    const OnSlideChanged = new CustomEvent('OnSlideChanged', {}); // Located on UINavbar
+    const OnSlideChanged = new CustomEvent('OnSlideChanged', {}); // Located at UINavbar
 
     useEffect(() => {
         if (!OnKeyDown) {

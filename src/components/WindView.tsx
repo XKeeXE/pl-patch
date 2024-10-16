@@ -1,20 +1,22 @@
-import { SwiperSlide } from 'swiper/react';
-import ProjectCardView from './ProjectCardView';
+import { useContext, useEffect, useState } from 'react';
 
+import { SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Pagination, Mousewheel, HashNavigation } from 'swiper/modules';
 
-import { link, skill, slide } from '../Types/types';
+import ProjectCardView from './ProjectCardView';
 import LinksCard from './LinksCard';
 import ProjectList from './ProjectList';
-import { useContext, useEffect, useState } from 'react';
 import CustomSwiper from './CustomSwiper';
-import { SlidesContext } from './AppView';
 import UIGhosts from './UIGhosts';
 import SvgAssets from './SvgAssets';
 import { Tooltip } from '@nextui-org/react';
+
+import { link, skill, slide } from '../Types/types';
+
+import { SlidesContext } from './AppView';
 
 const validKeys: string[] = ['w', 's', 'ArrowUp', 'ArrowDown'];
 
@@ -54,7 +56,6 @@ const lang: skill[] = [
     { img: 'https://www.svgrepo.com/show/473725/microsoftsqlserver.svg', link: { text: 'T-SQL', url: 'https://learn.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver16' } },
     { img: 'https://www.svgrepo.com/show/349540/typescript.svg', link: { text: 'Typescript', url: 'https://www.typescriptlang.org/' } },
     { img: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Extensible_Markup_Language_%28XML%29_logo.svg', link: { text: 'XML', url: 'https://wpdean.com/what-is-xml/' } },
-
 ]
 
 const game: skill[] = [
@@ -73,8 +74,6 @@ const web: skill[] = [
     { img: 'https://upload.wikimedia.org/wikipedia/commons/3/30/React_Logo_SVG.svg', link: { text: 'React', url: 'https://react.dev/' } },
     { img: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg', link: { text: 'TailwindCSS', url: 'https://tailwindcss.com/' } },
     { img: 'https://tauri-apps.gallerycdn.vsassets.io/extensions/tauri-apps/tauri-vscode/0.2.1/1666710948930/Microsoft.VisualStudio.Services.Icons.Default', link: { text: 'Tauri', url: 'https://tauri.app/' } },
-
-
 ]
 
 const gradient = ' bg-clip-text text-transparent bg-gradient-to-br from-[#0089fe] from-0% to-[#15c31e] to-100%'
@@ -89,7 +88,6 @@ const portfolio: slide = {
     video: '',
     links: []
 }
-
 
 const OnWindChanged = new CustomEvent('OnWindChanged', {}); // Located at UINavbar
 const OnHomePage = new CustomEvent('OnHomePage', {}); // Located at UINavbar
@@ -106,15 +104,15 @@ const SkillSection = (props: {text: string, skill: skill[], ghosts?: boolean, cu
                 {skill.map(item => (
                     <SkillButton skill={item} key={item.link.text} />
                 ))}
-                {ghosts ?
-                <UIGhosts itemsLength={skill.length} custom={ghostsNum}>
-                    <div className='border-2 p-1 cursor-pointer rounded-lg text-xs border-dashed border-[#f0f0f0] hover:bg-[#f2f2f231] dark:border-[#181a1b] dark:hover:bg-[#35353525] min-h-full'>
-                        <img src={'./Icons/Empty.svg'} className='w-5 h-5 lg:w-8 lg:h-8 xl:w-11 xl:h-11 mx-1'/>
-                        
-                        </div>
-                </UIGhosts>
-                :
-                null
+                    {ghosts ?
+                    <UIGhosts itemsLength={skill.length} custom={ghostsNum}>
+                        <div className='border-2 p-1 cursor-pointer rounded-lg text-xs border-dashed border-[#f0f0f0] hover:bg-[#f2f2f231] dark:border-[#181a1b] dark:hover:bg-[#35353525] min-h-full'>
+                            <img src={'./Icons/Empty.svg'} className='w-5 h-5 lg:w-8 lg:h-8 xl:w-11 xl:h-11 mx-1'/>
+                            
+                            </div>
+                    </UIGhosts>
+                    :
+                    null
                 }
             </div>
         </div>

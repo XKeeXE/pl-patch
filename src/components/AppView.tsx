@@ -223,8 +223,6 @@ export const SlidesContext = createContext<{
 
 const AppView = () => {
     const [language, setLanguage] = useState<string>(GetCurrentLanguage() as string);
-    // const [language, setLanguage] = useState<string>('en');
-    
     const [isHomePage, setIsHomePage] = useState<boolean>(true);
 
     const swiper = useRef<SwiperRef>(null);
@@ -261,11 +259,10 @@ const AppView = () => {
      */
     function getTranslatedParagraph(key: string, className: string, params?: { [key: string]: string|number|boolean|JSX.Element }): JSX.Element {
         const languageTranslations: LanguageTranslations = data[language];
+        const nodes: React.ReactNode[] = []
+        const nodeParams: string[] = []
 
         let translation = languageTranslations[key] || 'Text not found';
-
-        let nodes: React.ReactNode[] = []
-        let nodeParams: string[] = []
 
         if (params) {
             Object.keys(params).forEach(paramKey => {
@@ -277,9 +274,9 @@ const AppView = () => {
                     translation = translation.replace(regex, params[paramKey].toString());
                 }
             });
-            let regex = /(<[^>]+>|[^<]+)/g;
+            const regex = new RegExp("(<[^>]+>|[^<]+)", "g");
             if (nodes.length > 0) { // If there are JSX elements in the params
-                let resultArray = translation.match(regex)?.map(str => str).filter(str => str) as string[]; // Cut the paragraph in pieces between the <paramKeys>
+                const resultArray = translation.match(regex)?.map(str => str).filter(str => str) as string[]; // Cut the paragraph in pieces between the <paramKeys>
                 return (
                     <p className={className}>
                         {resultArray.map((splitLine, index) => (
