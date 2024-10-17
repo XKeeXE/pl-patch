@@ -9,7 +9,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { language } from "../Types/types";
 
 import { Link } from "react-router-dom";
-import { forwardRef, ReactNode, useContext, useEffect, useRef, useState } from "react";
+import { ReactNode, useContext, useEffect, useRef, useState } from "react";
 import { SlidesContext } from "./AppView";
 import SvgAssets from "./SvgAssets";
 
@@ -29,7 +29,7 @@ const languages: language[] = [{
 const hashHome = ['home', 'about', 'skills'];
 const hashContacts = ['contacts'];
 
-const UIDropdown = forwardRef((props: { 
+const UIDropdown = (props: { 
     icon: ReactNode, 
     altIcon?: ReactNode, 
     children?: ReactNode, 
@@ -58,17 +58,21 @@ const UIDropdown = forwardRef((props: {
             <button onClick={() => {
                 setIsOpen(!isOpen);
             }} 
-            onMouseEnter={() => {setIsOpen(true)}}>
-                {isOpen ? icon : (altIcon ? altIcon : icon)}
+            onMouseEnter={() => {setIsOpen(true)}}
+            >
+                {/* {isOpen ? icon : (altIcon ? altIcon : icon)} */}
+                { icon }
             </button>
             {isOpen && (
+                
                 <div className={`${className} absolute flex flex-col left-0 top-[32px] text-sm md:text-base rounded-lg border-2 bg-[#ffffff] border-[#f0f0f0] dark:bg-[#000000] dark:border-[#0f0f0f] `}>
+                    
                     { children }
                 </div>
             )}
         </div>
     )
-})
+}
 
 const UINavbar = (props: {
     isHomePage: boolean, 
@@ -209,22 +213,25 @@ const UINavbar = (props: {
             <NavbarContent justify="center">
                 <NavbarItem className="flex flex-row gap-2" isActive={MarkActive(hashProjects.current)}>
                     {NavbarStatus('projects')}
-                    <UIDropdown icon={<ArrowDropUpIcon/>} altIcon={<ArrowDropDownIcon/>}>
+                    <UIDropdown icon={<ArrowDropDownIcon/>}>
                         {slides.map(project => (
-                            <Link key={project.name} to={`/projects/${project.name.toLowerCase()}`}>
-                                <button className={"w-full text-start p-1 hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"} onClick={() => {
-                                    setHash(`#${project.name}`);
-                                    }}>
-                                        <span className="inline-flex gap-1 p-[2px] font-title ">
-                                            <div className="min-w-[28px]">
-                                                {project.icon}
-                                            </div>
-                                            <span className={`bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>
-                                            {project.name}
+                            <div className="first:rounded-t-lg last:rounded-b-lg hover:bg-[#e9e9e95d] dark:hover:bg-[#353535a2]"> 
+                                <Link key={project.name} to={`/projects/${project.name.toLowerCase()}`}>
+                                    <button className={"w-full text-start p-1"} onClick={() => {
+                                        setHash(`#${project.name}`);
+                                        }}>
+                                            <span className="inline-flex gap-1 p-[2px] font-title ">
+                                                <div className="min-w-[28px]">
+                                                    {project.icon}
+                                                </div>
+                                                <span className={`bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>
+                                                {project.name}
+                                                </span>
                                             </span>
-                                        </span>
-                                </button>
-                            </Link>
+                                    </button>
+                                </Link>
+
+                            </div>
                         ))}
                     </UIDropdown>
                 </NavbarItem>

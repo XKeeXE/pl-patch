@@ -107,7 +107,7 @@ const SkillSection = (props: {text: string, skill: skill[], ghosts?: boolean, cu
                     {ghosts ?
                     <UIGhosts itemsLength={skill.length} custom={ghostsNum}>
                         <div className='border-2 p-1 cursor-pointer rounded-lg text-xs border-dashed border-[#f0f0f0] hover:bg-[#f2f2f231] dark:border-[#181a1b] dark:hover:bg-[#35353525] min-h-full'>
-                            <img src={'./Icons/Empty.svg'} className='w-5 h-5 lg:w-8 lg:h-8 xl:w-11 xl:h-11 mx-1'/>
+                            <img src={'./Icons/Empty.svg'} className='w-5 h-5 lg:w-8 lg:h-8 xl:w-11 xl:h-11 mx-1 object-'/>
                             
                             </div>
                     </UIGhosts>
@@ -129,7 +129,7 @@ const SkillButton = (props: {skill: skill}) => {
             onClick={() => {window.open(skill.link.url, '_blank')}} 
             onMouseEnter={() => setOpen(true)}
             onMouseLeave={() => setOpen(false)}>
-                <img src={skill.img} className='w-5 h-5 lg:w-8 lg:h-8 xl:w-11 xl:h-11 mx-1' alt={skill.link.text}/>
+                <img src={skill.img} className='w-5 h-5 lg:w-8 lg:h-8 xl:w-11 xl:h-11 object-fit md:mx-1' alt={skill.link.text}/>
             </span>
         </Tooltip>
     )
