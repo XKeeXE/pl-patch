@@ -25,20 +25,24 @@ function GetCurrentLanguage(): string {
 }
 
 const imagesBGM: image[] = [{
-    url: 'Imgs/BGMApp/View.jpg',
+    url: 'Imgs/BGMApp/View.png',
     title: 'View',
 },
 {
-    url: 'Imgs/BGMApp/InputSearch.jpg',
-    title: 'InputSearch',
+    url: 'Imgs/BGMApp/Action.png',
+    title: 'Action',
 },
 {
-    url: 'Imgs/BGMApp/ContextMenu.jpg',
-    title: 'ContextMenu',
+    url: 'Imgs/BGMApp/LightTheme.png',
+    title: 'LightTheme',
 },
 {
-    url: 'Imgs/BGMApp/Shuffle.jpg',
-    title: 'Shuffle',
+    url: 'Imgs/BGMApp/Search.png',
+    title: 'Search',
+},
+{
+    url: 'Imgs/BGMApp/Responsive.png',
+    title: 'Responsive',
 },
 ]
 
@@ -168,15 +172,15 @@ const slides: slide[] = [
     icon: <LibraryMusic/>,
     name: 'BGMAPP',
     images: imagesBGM,
-    video: `${process.env.PUBLIC_URL}/Videos/BGMAPP.mp4`,
+    video: `https://www.youtube.com/watch?v=-4IF0_3_BQM`,
     links: [{
         text: 'GitHub',
         url: 'https://github.com/XKeeXE/bgm-app'
     },
-    // {
-    //     text: 'Download',
-    //     url: ''
-    // }
+    {
+        text: 'Download',
+        url: ''
+    }
     ]
 },
 {
@@ -192,16 +196,28 @@ const slides: slide[] = [
     }]
 },
 // {
+//     color: '#bebee8ff',
+//     gradient: 'from-[#363379ff] from-0% to-[#4c47a4ff] to-100%',
+//     icon: undefined,
+//     name: 'TSUKUMO',
+//     images: imagesSYMBIOMATA,
+//     video: 't',
+//     links: [{
+//         text: 'Website',
+//         url: 'https://sneorino.itch.io/tsukumo-tempo'
+// }]
+// },
+
+// {
 //     color: '',
 //     gradient: '',
-//     icon: <OnigiriIcon />,
+//     icon: undefined,
 //     name: 'BURROUGHS',
 //     images: imagesSYMBIOMATA,
 //     video: 't',
-//     demoComponent: undefined,
 //     links: [{
-//     title: '',
-//     url: ''
+//         text: '',
+//         url: ''
 // }]
 // },
 
