@@ -8,6 +8,6 @@ Each project presented reflects my skills and creativity, demonstrating a commit
 Thank you for taking the time to explore my portfolio. Interest in my work is greatly appreciated, as I am eager to share my skills and projects.
 
 # Contacts
-### Resume https://drive.google.com/file/d/17C6Hz3vBIGZarfYIzuXSQHDL3Qy9nRVh/view?usp=drive_link
+### Resume https://drive.google.com/file/d/1IKTdZRnKsdtTNOl_JG9Z-wMzrxzrMU7N/view?usp=drive_link
 ### Email Patch.rodriguez.medina@gmail.com
 ### LinkedIn https://www.linkedin.com/in/lnpatchrodriguezmedina/
