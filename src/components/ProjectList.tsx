@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-
-import WebIcon from '@mui/icons-material/Web';
 import { CSSProperties, useContext, useEffect, useState } from "react";
 import { SlidesContext } from "./AppView";
 import UIGhosts from "./UIGhosts";

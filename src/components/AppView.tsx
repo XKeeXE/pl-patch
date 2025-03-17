@@ -1,9 +1,9 @@
-import { createContext, RefObject, useEffect, useMemo, useRef, useState } from 'react';
+import { createContext, RefObject, useEffect, useRef, useState } from 'react';
 import WindView from './WindView';
 import UINavbar from './UINavbar';
 
 import { image, LanguageTranslations, slide } from '../Types/types';
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import LibraryMusic from '@mui/icons-material/LibraryMusicOutlined';
 import ProjectView from './ProjectView';
@@ -195,18 +195,18 @@ const slides: slide[] = [
         url: 'https://github.com/XKeeXE/Live2DWallpaper'
     }]
 },
-// {
-//     color: '#bebee8ff',
-//     gradient: 'from-[#363379ff] from-0% to-[#4c47a4ff] to-100%',
-//     icon: undefined,
-//     name: 'TSUKUMO',
-//     images: imagesSYMBIOMATA,
-//     video: 't',
-//     links: [{
-//         text: 'Website',
-//         url: 'https://sneorino.itch.io/tsukumo-tempo'
-// }]
-// },
+{
+    color: '#bebee8ff',
+    gradient: 'from-[#363379ff] from-0% to-[#4c47a4ff] to-100%',
+    icon: undefined,
+    name: 'TSUKUMO',
+    images: undefined,
+    video: 'https://vimeo.com/1053277652',
+    links: [{
+        text: 'Website',
+        url: 'https://sneorino.itch.io/tsukumo-tempo'
+}]
+},
 
 // {
 //     color: '',

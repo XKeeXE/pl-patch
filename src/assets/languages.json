@@ -12,7 +12,7 @@
         "intro": "My name is <fn> <ln1> <ln2> \n I also go by the pen name <pn>",
         
         "aboutHeader": "About Me",
-        "about": "Dedicated Computer Science student at the University of Puerto Rico Bayamon, with approximately <years> years of experience. \n My journey began in high school, and I have actively participated in a video game research team, where we developed various games using different engines, which challenged us to learn new tools and adapt to diverse environments. \n Additionally, I have engaged in several passion projects that have provided me with invaluable insights and hands-on experience in the software development process. I am committed to continuous learning and skill enhancement in my spare time, striving to maximize every opportunity for growth.",
+        "about": "Graduate student from the University of Puerto Rico Bayamon and dedicated Software Engineer with approximately <years> years of experience in UI/UX design, game development, and web development. \nActively participated in a video game research team, where we developed various games using different engines, tools, and technologies for competitive game development events. \nAdditionally, engaged in several passion projects that provided invaluable insights and hands-on experience in the software development process, demonstrating my commitment to continuous learning and skill enhancement in my spare time while striving to maximize every opportunity for growth.",
         
         "skills": "Technical Skills",
         "skillsLang": "Languages",
@@ -42,11 +42,11 @@
         "titleActionBGMAPP": "Preserving essential features",
         "descActionBGMAPP": "Basic functionality of any typical track player, so that there is no need to reinvent the wheel, and unnecessarily force change.",
         "titleSearchBGMAPP": "Big library? No problem",
-        "descSearchBGMAPP": "Fundamentally set in consideration the large quantities of tracks, it is optimized for extensive libraries thanks to its lazy loading and virtualization.",
+        "descSearchBGMAPP": "Fundamentally set into consideration the large quantities of tracks, it is optimized for extensive libraries thanks to its lazy loading and virtualization.",
         "titleLightThemeBGMAPP": "Essential Utilities",
-        "descLightThemeBGMAPP": "Equipped with essential utilities to enhance the user experience, such as changing the theme, selecting the desired language, download an online track, or to select a home directory to play its tracks.",
+        "descLightThemeBGMAPP": "Equipped with essential utilities to enhance the user experience, such as changing the theme, selecting the desired language, downloading an online track, or selecting a home directory to play its tracks.",
         "titleResponsiveBGMAPP": "UI that you won’t remember",
-        "descResponsiveBGMAPP": "Various UI techniques integrated to minimize user interference and simplify interaction.",
+        "descResponsiveBGMAPP": "Various UI techniques are integrated to minimize user interference and simplify interaction.",
 
         "titleL2DWP": "Live 2D Wallpaper",
         "miniSummaryL2DWP": "Live Wallpaper",
@@ -149,7 +149,7 @@
         "intro": "Me llamo <fn> <ln1> <ln2> \n También uso el pen name <pn>",
 
         "aboutHeader": "Sobre mí",
-        "about": "Estudiante apasionado a las Ciencias de Computadoras en la Universidad de Puerto Rico Bayamón, con aproximadamente 7 años de experiencia. \n Mi viaje a esta ciencia empezó en escuela superior, y activamente he estado participando en un equipo de investigación de video juegos, en donde desarrollamos varios juegos con distintos engines de video juegos. \n Adicionalmente, he hecho varios proyectos que me han apasionado y que me han aportado valiosa perspectiva y experiencia práctica en el proceso de desarrollo de software. Estoy comprometido con el aprendizaje continuo y la mejora de habilidades en mi tiempo libre, esforzándome por maximizar cada oportunidad de crecimiento.",
+        "about": "Estudiante graduado de la Universidad de Puerto Rico Bayamón y dedicado Software Engineer con aproximadamente <years> años de experiencia en diseño UI/UX, desarrollador de video juegos, y desarrollador de web. \nParticipé activamente en un equipo de investigación de videojuegos, donde se desarrollaron varios juegos utilizando diferentes engines, herramientas y tecnologías. \nAdemás, me involucré en varios proyectos personales que proporcionaron valiosas perspectivas y experiencia práctica en el proceso de desarrollo de software, demostrando mi compromiso con el aprendizaje continuo y la mejora de habilidades en mi tiempo libre, mientras me esfuerzo por maximizar cada oportunidad de crecimiento.",
 
         "skills": "Destrezas",
         "skillsLang": "Lenguajes",
@@ -273,7 +273,7 @@
         "intro": "僕のフルネームは <fn> <ln1> <ln2> \n <pn>と呼んでいただいてもいいです",
 
         "aboutHeader": "僕のこと",
-        "about": "プエルトリコ大学バヤモン校のコンピュータサイエンス専攻の学生、現在の経験年は<years>年ぐらいです 。\n 僕の旅は高校時代から始まったし、ビデオゲームの研究チームに積極的に参加したころ、さまざまなエンジンを使ってさまざまなゲームを開発しました。\n また、いくつかの情熱的なプロジェクトに参加したことで、ソフトウェア開発プロセスにおける貴重な洞察と実践的な経験を得ることができました。余暇を利用した継続的な学習とスキルアップに努め、あらゆる成長機会を最大限に生かせるよう努力しています。",
+        "about": "プエルトリコ・バヤモン大学の大学院生であり、UI/UXデザイン、ゲーム開発、ウェブ開発において約<years>年の経験を持つ専念したソフトウェアエンジニアです。\nゲームジャムのために、さまざまなエンジン、ツール、技術を使用してゲームを開発するビデオゲーム研究チームに積極的に参加しました、さらに、いくつかの情熱プロジェクトに取り組み、ソフトウェア開発プロセスにおける貴重な洞察と実践的な経験を得ることができました。\nこれにより、僕の継続的な学習とスキル向上へのコミットメントを示し、余暇の時間を活用して成長の機会を最大限に活かすよう努めています。",
 
         "skills": "スキル一覧",
         "skillsLang": "プログラミング言語",

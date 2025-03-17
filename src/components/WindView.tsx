@@ -28,6 +28,7 @@ const tools: skill[] = [
     { img: './Icons/ffmpeg.svg', link: { text: 'FFmpeg', url: 'https://ffmpeg.org/' } },
     { img: 'https://www.svgrepo.com/show/439171/github.svg', link: { text: 'GitHub', url: 'https://github.com/' } },
     { img: 'https://upload.wikimedia.org/wikipedia/commons/7/73/Calligrakrita-base.svg', link: { text: 'Krita', url: 'https://krita.org/' } },
+    // { img: 'https://www.perforce.com/themes/custom/p4base/assets/images/logo.svg', link: { text: 'Perforce', url: 'https://www.perforce.com' } },
     { img: 'https://www.svgrepo.com/show/354250/rabbitmq-icon.svg', link: { text: 'Rabbit MQ', url: 'https://www.rabbitmq.com/' } },
     { img: 'https://upload.wikimedia.org/wikipedia/en/5/5a/MongoDB_Fores-Green.svg', link: { text: 'MongoDB', url: 'https://www.mongodb.com/' } },
     { img: 'https://www.svgrepo.com/show/448245/oracle.svg', link: { text: 'Oracle', url: 'https://www.oracle.com/database/' } },
@@ -62,7 +63,6 @@ const game: skill[] = [
     { img: 'https://www.svgrepo.com/show/373641/godot.svg', link: { text: 'Godot 4', url: 'https://godotengine.org/' } },
     { img: './Icons/unreal.svg', link: { text: 'Unreal Engine 5', url: 'https://www.unrealengine.com/' } },
     { img: 'https://www.svgrepo.com/show/331626/unity.svg', link: { text: 'Unity', url: 'https://unity.com/' } },
-
 ]
 
 const web: skill[] = [
@@ -200,7 +200,7 @@ const WindView = (props: {
             <div className='flex flex-col h-full font-text gap-4 items-center justify-center '>
                 <div className='flex flex-col w-[80vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[30vw] gap-2'>
                     <span className={`font-title text-4xl self-center`}>{getTranslatedText('aboutHeader')}</span>
-                    {getTranslatedParagraph('about', 'flex flex-col gap-1 text-sm md:text-base', {years: currentYear - 2017})}
+                    {getTranslatedParagraph('about', 'flex flex-col gap-1 text-sm md:text-base', {years: currentYear - 2019})}
                 </div>
             </div>
         )
@@ -225,7 +225,7 @@ const WindView = (props: {
                     <span className='text-4xl'>{getTranslatedText('skills')}</span>
                     <div className='flex justify-center gap-4'>
                         <SkillSection text={getTranslatedText('skillsLang')} skill={lang} ghosts ghostsNum={16}/>
-                        <SkillSection text={getTranslatedText('skillsTools')} skill={tools} ghosts custom={2} ghostsNum={1}/>
+                        <SkillSection text={getTranslatedText('skillsTools')} skill={tools} ghosts custom={2} ghostsNum={0}/>
                         <div className='flex flex-col gap-[20px] lg:gap-[30px]'>
                             <SkillSection text={getTranslatedText('skillsGame')} skill={game} ghosts/>
                             <SkillSection text={getTranslatedText('skillsWeb')} skill={web} custom={2} />
