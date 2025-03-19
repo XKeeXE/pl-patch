@@ -2,15 +2,117 @@ import { createContext, RefObject, useEffect, useRef, useState } from 'react';
 import WindView from './WindView';
 import UINavbar from './UINavbar';
 
-import { image, LanguageTranslations, slide } from '../Types/types';
-import { Routes, Route } from "react-router-dom";
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
-import LibraryMusic from '@mui/icons-material/LibraryMusicOutlined';
+import { LanguageTranslations, slide } from '../util/types';
+import { Routes, Route } from "react-router-dom";
 import ProjectView from './ProjectView';
 import ErrorView from './ErrorView';
 import SvgAssets from './SvgAssets';
 import { SwiperRef } from 'swiper/react';
 import React from 'react';
+import * as images from '../util/images';
+
+const slides: slide[] = [
+    {
+        color: '#0030e7',
+        gradient: 'from-[#0009ff] from-0% to-[#006ae7] to-40%',
+        icon: <SvgAssets icon='symbiomata' />,
+        header: 'Imgs/SYMBIOMATA/Symbiomata_Header.png',
+        name: 'SYMBIOMATA',
+        images: images.SYMBIOMATA,
+        video: 'https://www.youtube.com/watch?v=XeHJk2QApac',
+        links: [{
+            text: 'Download',
+            url: 'https://drive.google.com/file/d/16Z4LDvYdeoUD-FA3us8k2M9qOYqUZUCO/view?usp=drive_link'
+        }]
+    },
+    {
+        color: '#bebee8ff',
+        gradient: 'from-[#363379ff] from-0% to-[#4c47a4ff] to-100%',
+        icon: <SvgAssets icon='tsukumo' />,
+        // header: 'Tsukumo_Header.png',
+        name: 'TSUKUMO',
+        images: images.TSUKUMO,
+        video: 'https://vimeo.com/1053277652',
+        links: [{
+            text: 'Website',
+            url: 'https://sneorino.itch.io/tsukumo-tempo'
+    }]
+    },
+    {
+        color: '#7a0a9c',
+        gradient: 'from-[#8208de] from-0% to-[#6d0c6e] to-100%',
+        icon: <SvgAssets icon='bgmapp'/>,
+        name: 'BGMAPP',
+        images: images.BGMAPP,
+        video: `https://www.youtube.com/watch?v=-4IF0_3_BQM`,
+        links: [{
+            text: 'GitHub',
+            url: 'https://github.com/XKeeXE/bgm-app'
+        },
+        {
+            text: 'Download',
+            url: ''
+        }
+        ]
+    },
+    {
+        color: '#5e9cff',
+        gradient: 'from-[#9181ff] from-10% to-[#00d6ff] to-90%',
+        icon: <SvgAssets icon='nekomata' />,
+        name: 'NEKOMATA',
+        images: images.NEKOMATA,
+        video: `${process.env.PUBLIC_URL}/Videos/NEKOMATA.mp4`,
+        links: [{
+            text: 'Website',
+            url: 'https://sneorino.itch.io/nekomata'
+        },
+        {
+            text: 'Download',
+            url: 'https://drive.google.com/file/d/1K6vL-DLXzOLSPFHdqZSOA3TR8JXo5VJl/view?usp=drive_link'
+        }]
+    },
+    {
+        color: '#d33636',
+        gradient: 'from-[#d53030] from-0% via-[#cb3b3b] via-50% to-[#910a0a] to-100%',
+        icon: <SvgAssets icon='onigiri' />,
+        header: 'Imgs/ONIGIRI/Onigiri_Header.png',
+        name: 'ONIGIRI',
+        images: images.ONIGIRI,
+        video: 'https://www.youtube.com/watch?v=Y9xsck9kelo',
+        links: [{
+            text: 'Download',
+            url: 'https://drive.google.com/file/d/1-ZuUA72Iqf5Hyf0OQYJZvxxtHo6QNsAZ/view?usp=drive_link'
+        }]
+    },
+    {
+        color: '#1e65c9',
+        gradient: 'from-[#373ba6] from-0% via-[#0290f2] via-50% to-[#373ba6] to-100%',
+        icon: <WallpaperIcon />,
+        name: 'L2DWP',
+        images: images.L2DWP,
+        video: `${process.env.PUBLIC_URL}/Videos/L2DWP.mp4`,
+        links: [{
+            text: 'GitHub',
+            url: 'https://github.com/XKeeXE/Live2DWallpaper'
+        }]
+    },
+    
+    
+    // {
+    //     color: '',
+    //     gradient: '',
+    //     icon: undefined,
+    //     name: 'BURROUGHS',
+    //     images: imagesSYMBIOMATA,
+    //     video: 't',
+    //     links: [{
+    //         text: '',
+    //         url: ''
+    // }]
+    // },
+    
+    ];
 
 const data: { [key: string]: LanguageTranslations } = require('../assets/languages.json');
 
@@ -23,205 +125,6 @@ function GetCurrentLanguage(): string {
     }
     return navigator.language;
 }
-
-const imagesBGM: image[] = [{
-    url: 'Imgs/BGMApp/View.png',
-    title: 'View',
-},
-{
-    url: 'Imgs/BGMApp/Action.png',
-    title: 'Action',
-},
-{
-    url: 'Imgs/BGMApp/LightTheme.png',
-    title: 'LightTheme',
-},
-{
-    url: 'Imgs/BGMApp/Search.png',
-    title: 'Search',
-},
-{
-    url: 'Imgs/BGMApp/Responsive.png',
-    title: 'Responsive',
-},
-]
-
-const imagesL2DWP: image[] = [{
-    url: 'Imgs/L2DWP/CharacterIdle.png',
-    title: 'CharacterIdle'
-},
-{
-    url: 'Imgs/L2DWP/CharacterTalk.png',
-    title: 'CharacterTalk',
-},
-{
-    url: 'Imgs/L2DWP/CharacterUI.png',
-    title: 'CharacterUI',
-},
-{
-    url: 'Imgs/L2DWP/NextCharacterTalk.png',
-    title: 'NextCharacterTalk',
-},
-]
-
-const imagesSYMBIOMATA: image[] = [
-    {
-    url: 'Imgs/SYMBIOMATA/Slash.png',
-    title: 'Slash',
-},
-{
-    url: 'Imgs/SYMBIOMATA/VRPov.png',
-    title: 'VRPov'
-},
-{
-    url: 'Imgs/SYMBIOMATA/Zipline.png',
-    title: 'Zipline',
-},
-{
-    url: 'Imgs/SYMBIOMATA/2D.png',
-    title: '2D',
-},
-]
-
-const imagesONIGIRI: image[] = [
-{
-    url: 'Imgs/ONIGIRI/BossParry.png',
-    title: 'BossParry',
-},
-{
-    url: 'Imgs/ONIGIRI/Mage.png',
-    title: 'Mage',
-},
-{
-    url: 'Imgs/ONIGIRI/BossEntrance.png',
-    title: 'BossEntrance',
-},
-{
-    url: 'Imgs/ONIGIRI/Unblockable.png',
-    title: 'Unblockable',
-},
-{
-    url: 'Imgs/ONIGIRI/Boss.png',
-    title: 'Boss',
-},
-]
-
-const imagesNEKOMATA: image[] = [{
-    url: 'Imgs/NEKOMATA/Tutorial.png',
-    title: 'Tutorial',
-},
-{
-    url: 'Imgs/NEKOMATA/BossFight.png',
-    title: 'BossFight',
-},
-{
-    url: 'Imgs/NEKOMATA/MinionFight.png',
-    title: 'MinionFight',
-},
-{
-    url: 'Imgs/NEKOMATA/PlagueRatBoss.png',
-    title: 'PlagueRatBoss',
-}
-]
-
-const slides: slide[] = [
-
-{
-    color: '#0030e7',
-    gradient: 'from-[#0009ff] from-0% to-[#006ae7] to-40%',
-    icon: <SvgAssets icon='symbiomata' />,
-    name: 'SYMBIOMATA',
-    images: imagesSYMBIOMATA,
-    video: 'https://www.youtube.com/watch?v=XeHJk2QApac',
-    links: [{
-        text: 'Download',
-        url: 'https://drive.google.com/file/d/16Z4LDvYdeoUD-FA3us8k2M9qOYqUZUCO/view?usp=drive_link'
-    }]
-},
-{
-    color: '#d33636',
-    gradient: 'from-[#d53030] from-0% via-[#cb3b3b] via-50% to-[#910a0a] to-100%',
-    icon: <SvgAssets icon='onigiri' />,
-    name: 'ONIGIRI',
-    images: imagesONIGIRI,
-    video: 'https://www.youtube.com/watch?v=Y9xsck9kelo',
-    links: [{
-        text: 'Download',
-        url: 'https://drive.google.com/file/d/1-ZuUA72Iqf5Hyf0OQYJZvxxtHo6QNsAZ/view?usp=drive_link'
-    }]
-},
-{
-    color: '#5e9cff',
-    gradient: 'from-[#9181ff] from-10% to-[#00d6ff] to-90%',
-    icon: <SvgAssets icon='nekomata' />,
-    name: 'NEKOMATA',
-    images: imagesNEKOMATA,
-    video: `${process.env.PUBLIC_URL}/Videos/NEKOMATA.mp4`,
-    links: [{
-        text: 'Website',
-        url: 'https://sneorino.itch.io/nekomata'
-    },
-    {
-        text: 'Download',
-        url: 'https://drive.google.com/file/d/1K6vL-DLXzOLSPFHdqZSOA3TR8JXo5VJl/view?usp=drive_link'
-    }]
-},
-{
-    color: '#7a0a9c',
-    gradient: 'from-[#8208de] from-0% to-[#6d0c6e] to-100%',
-    icon: <LibraryMusic/>,
-    name: 'BGMAPP',
-    images: imagesBGM,
-    video: `https://www.youtube.com/watch?v=-4IF0_3_BQM`,
-    links: [{
-        text: 'GitHub',
-        url: 'https://github.com/XKeeXE/bgm-app'
-    },
-    {
-        text: 'Download',
-        url: ''
-    }
-    ]
-},
-{
-    color: '#1e65c9',
-    gradient: 'from-[#373ba6] from-0% via-[#0290f2] via-50% to-[#373ba6] to-100%',
-    icon: <WallpaperIcon />,
-    name: 'L2DWP',
-    images: imagesL2DWP,
-    video: `${process.env.PUBLIC_URL}/Videos/L2DWP.mp4`,
-    links: [{
-        text: 'GitHub',
-        url: 'https://github.com/XKeeXE/Live2DWallpaper'
-    }]
-},
-{
-    color: '#bebee8ff',
-    gradient: 'from-[#363379ff] from-0% to-[#4c47a4ff] to-100%',
-    icon: undefined,
-    name: 'TSUKUMO',
-    images: undefined,
-    video: 'https://vimeo.com/1053277652',
-    links: [{
-        text: 'Website',
-        url: 'https://sneorino.itch.io/tsukumo-tempo'
-}]
-},
-
-// {
-//     color: '',
-//     gradient: '',
-//     icon: undefined,
-//     name: 'BURROUGHS',
-//     images: imagesSYMBIOMATA,
-//     video: 't',
-//     links: [{
-//         text: '',
-//         url: ''
-// }]
-// },
-
-];
 
 export const SlidesContext = createContext<{
     isHomePage: boolean,

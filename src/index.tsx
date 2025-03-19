@@ -10,7 +10,6 @@ root.render(
   <React.StrictMode>
     <main className="">
       <App />
-
     </main>
   </React.StrictMode>
 );

@@ -10,6 +10,7 @@ export type slide = {
     color: string, 
     gradient: string,
     icon: JSX.Element | undefined,
+    header?: string | undefined,
     name: string,
     video: string,
     links: link[]

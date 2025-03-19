@@ -33,14 +33,14 @@
         "sourceCode": "Source Code",
 
         "titleBGMAPP": "Background Music Application",
-        "miniSummaryBGMAPP": "Track Player",
-        "summaryBGMAPP": "Electron Track Player",
-        "detailsBGMAPP": "Track player made using Electron and Vite, offers the functionality to play music tracks sourced from either a local directory or directly from online sources. \n The track player is thoughtfully crafted with an intuitive user interface that has been strategically placed to effectively control and manage the player's state. While also containing various optimizations tricks thanks to virtualization and lazy loading. \n These design were thoroughly crafted especially to contribute to a seamless user experience, allowing for effortless control and smooth navigation throughout the application.",
+        "miniSummaryBGMAPP": "Music Player",
+        "summaryBGMAPP": "Electron Music Player",
+        "detailsBGMAPP": "Music application developed using Electron and Vite, designed to play music tracks sourced from both local directories and online platforms. \nThe app features an intuitive user interface, strategically designed to provide effective control and management of the player's state. \nWith optimizations such as virtualization and lazy loading, it ensures a seamless user experience, allowing for effortless control and smooth navigation throughout the application.",
 
         "titleViewBGMAPP": "Listen to music without distractions",
-        "descViewBGMAPP": "An audio player designed to play tracks, no matter the format, nor the source, allowing users to enjoy their music.",
+        "descViewBGMAPP": "A music player designed to play music, no matter the format, nor the source, allowing users to enjoy their music.",
         "titleActionBGMAPP": "Preserving essential features",
-        "descActionBGMAPP": "Basic functionality of any typical track player, so that there is no need to reinvent the wheel, and unnecessarily force change.",
+        "descActionBGMAPP": "Basic functionality of any typical music player, so that there is no need to reinvent the wheel, and unnecessarily force change.",
         "titleSearchBGMAPP": "Big library? No problem",
         "descSearchBGMAPP": "Fundamentally set into consideration the large quantities of tracks, it is optimized for extensive libraries thanks to its lazy loading and virtualization.",
         "titleLightThemeBGMAPP": "Essential Utilities",
@@ -51,7 +51,7 @@
         "titleL2DWP": "Live 2D Wallpaper",
         "miniSummaryL2DWP": "Live Wallpaper",
         "summaryL2DWP": "Interactive Live 2D Wallpaper",
-        "detailsL2DWP": "Interactable Live2D wallpaper made in Unity & Android Studio, which can contain various Live2D characters to interact with. \n The game functions as a live wallpaper that allows users to interact with these characters by clicking on them, triggering various emotions and voice lines. While primarily designed to be used as an Android wallpaper, it is also compatible with PC and WebGL platforms. \n Additionally, the Android version supports plugins that enable the utilization of native Android functions.",
+        "detailsL2DWP": "Interactable Live2D wallpaper developed using Unity and Android Studio, featuring Live2D characters that users can interact with. \nThis game functions as a live wallpaper that allows engagement with the characters through gestures and touch motions, triggering a range of emotions and functionalities. \nDesigned primarily for Android, the app enables native interactions with Android features. It is also compatible with PC and WebGL platforms, broadening its accessibility.",
 
         "titleCharacterIdleL2DWP": "Stay connected",
         "descCharacterIdleL2DWP": "Enables integration as an Android wallpaper, providing the opportunity to enjoy a fully customized live wallpaper.",
@@ -62,7 +62,7 @@
         "titleNextCharacterTalkL2DWP": "Personalized experience",
         "descNextCharacterTalkL2DWP": "Effortlessly integrate any character that supports Live2D Cubism to the wallpaper, creating a truly personal experience",
 
-        "titleSYMBIOMATA": "Project Coop Virtual Reality (PCVR)",
+        "titleSYMBIOMATA": "SYMBIOMATA",
         "miniSummarySYMBIOMATA": "VR Coop Game",
         "summarySYMBIOMATA": "Asymmetrical VR Coop Game",
         "detailsSYMBIOMATA": "Asymmetrical VR coop platformer made in Unity, where the VR player is in charge of hand actions and the PC player is in charge of platforming. \n The game features both local and online game modes. The latter of which is designed with a server-authoritative architecture using standard industry practices and features, such as client-side prediction for VR hand movement and projectile lag compensation, along with relay and lobbies for easy matchmaking. \n Footage included was taken from real online gameplay.",
@@ -76,10 +76,10 @@
         "titleVRPovSYMBIOMATA": "Different perspectives, one shared journey",
         "descVRPovSYMBIOMATA": "Unique gameplay experience by allowing the PC player to control the character's movement while the VR player enjoys precise control over the immersive 3D environment using the XR controllers.",
 
-        "titleONIGIRI": "Demon Slayer",
+        "titleONIGIRI": "ONIGIRI",
         "miniSummaryONIGIRI": "Souls-like Game",
         "summaryONIGIRI": "Unity 3D Souls-like Game",
-        "detailsONIGIRI": "Souls-like singleplayer game made in Unity, where the player must defeat formidable bosses by parrying while also simultaneously evading their attacks. \n The core mechanic revolves around precise timing, players must parry in sync with the rhythm of the enemy’s attacks. By correctly anticipating the attack, the player can successfully counter and retaliate against the enemy.",
+        "detailsONIGIRI": "Souls-like single-player game developed in Unity, where players face formidable bosses in intense combat. The gameplay centers around a precise parrying mechanic, requiring players to time their parries perfectly to counter enemy attacks and create opportunities for retaliation. \nMastering the timing of both parries and evasion is essential for survival, as quick reactions are necessary to turn the tide of battle. \nEach encounter demands skill and strategy, challenging players to navigate the balance between evasion and counterattacking.",
 
         "titleBossONIGIRI": "Retaliate against formidable adversaries",
         "descBossONIGIRI": "Enemy AI designed to enhance the overall challenge and engagement of the game, to incentivize decision making based on the situation.",
@@ -97,10 +97,10 @@
         "SummaryBURROUGHS": "WebRTC Player",
         "detailsBURROUGHS": "b1lah blah blah",
 
-        "titleNEKOMATA": "P.U.R.R (Programmable Unit for Rewinding Reality)",
+        "titleNEKOMATA": "NEKOMATA",
         "miniSummaryNEKOMATA": "BulletHell Game",
         "summaryNEKOMATA": "Bullet Hell Game",
-        "detailsNEKOMATA": "Boss rush bullet hell game made in Unreal Engine 5, taking inspiration from the iconic top-down bullet hell Touhou series. \n The core mechanic of the game is the rewind ability, which gives the player an ability to dodge enemies’ incoming projectiles, consequently returning the player to a previous probable vulnerable position. \n The game features bosses with unavoidable projectiles to incentive constant use, while also maintaining an aspect of high risk/high reward. \n The game is also built with an advanced audio system to sync various scenarios based on the actions of both the enemies and the player.",
+        "detailsNEKOMATA": "Boss rush bullet hell game developed in Unreal Engine 5, drawing inspiration from the iconic Touhou series. Players will face a series of challenging bosses, each designed with unique patterns and unavoidable projectiles that encourage the strategic use of the core rewind mechanic. \nThis rewind ability allows to dodge incoming attacks by rewinding to a previous position, creating a high-stakes environment where every movement and decision counts. \nWith a focus on high risk/high reward gameplay, the challenge arrives in mastering reflexes and timing to navigate intricate bullet patterns.",
 
         "titleTutorialNEKOMATA": "Protocol Rewind",
         "descTutorialNEKOMATA": "Core mechanic of the game, where rewinding can be used to become invulnerable at the cost of going to a previous location, encouraging strategic use to maximize its benefits.",
@@ -112,18 +112,16 @@
         "descPlagueRatBossNEKOMATA": "Challenging gameplay where the player must engage in a battle of wits, where knowledge and skill become the key to overcome formidable adversaries.",
         
         "titleTSUKUMO": "TSUKUMO TEMPO",
-        "miniSummaryTSUKUMO": "Rhythm Action Game",
+        "miniSummaryTSUKUMO": "Rhythm-Action",
         "summaryTSUKUMO": "Rhythm Action Game",
-        "detailsTSUKUMO": "",
+        "detailsTSUKUMO": "Rhythm-action game developed in Unreal Engine 5, where players must synchronize their actions with the pulsating musical beat. \nThe gameplay introduces a unique cassette tape mechanic, where each action performed either depletes or replenishes the tape of the cassette, adding a strategic layer to the rhythm experience. \nEvaluation of the risk and reward is key, as managing the cassette tape becomes crucial to success. Every animation and action are intricately tied to the rhythm, creating a seamless blend of music and gameplay that immerses in a dynamic audio-visual action experience.",
 
-        "titleTutorialTSUKUMO": "TSUKUMO TEMPO",
-        "descTutorialTSUKUMO": "Core mechanic of the game, where rewinding can be used to become invulnerable at the cost of going to a previous location, encouraging strategic use to maximize its benefits.",
-        "titleBossFightTSUKUMO": "Challenging adversaries",
-        "descBossFightTSUKUMO": "Every boss contains a unique bullet pattern, with multiple phases that as the stage progresses becomes more challenging and engaging.",
-        "titleMinionFightTSUKUMO": "Immersive synchronized music",
-        "descMinionFightTSUKUMO": "Extensive audio system built around synchronizing various scenarios with the music, providing a fully immersive gameplay experience. ",
-        "titlePlagueRatBossTSUKUMO": "Unforgiving gameplay",
-        "descPlagueRatBossTSUKUMO": "Challenging gameplay where the player must engage in a battle of wits, where knowledge and skill become the key to overcome formidable adversaries.",
+        "titleAmanoTSUKUMO": "",
+        "descAmanoTSUKUMO": "",
+        "titleRinTSUKUMO": "",
+        "descRinTSUKUMO": "",
+        "titleKurikoTSUKUMO": "",
+        "descKurikoTSUKUMO": "",
         
         "titlePORTFOLIO": "Portfolio",
         "miniSummaryPORTFOLIO": "React Website",
@@ -169,10 +167,10 @@
         "email": "Email",
         "sourceCode": "Source Code",
 
-        "titleBGMAPP": "Aplicación de música ambiental",
+        "titleBGMAPP": "Aplicación de Música Ambiental",
         "miniSummaryBGMAPP": "Jugador Musico",
         "summaryBGMAPP": "Jugador Musico Electron",
-        "detailsBGMAPP": "Jugador musico hecho usando Electron y Vite, ofrece la posibilidad de escuchar música de un directorio local o directamente de una fuente en línea. \n El jugador musico está diseñado con una interfaz de usuario intuitiva que se colocó estratégicamente para controlar el estado del jugador musico. Además, contiene varios trucos de optimización gracias a la virtualización y a lazy loading. \n Estos diseños se han elaborado especialmente para contribuir a una experiencia de usuario fluida, que permita un control sin esfuerzo y una navegación fluida por la aplicación.",
+        "detailsBGMAPP": "Aplicación de música creado utilizando Electron y Vite, diseñada para escuchar músicas provenientes tanto de directorios locales como de plataformas en línea. \nLa aplicación cuenta con una interfaz de usuario intuitiva, diseñada estratégicamente para proporcionar un control y gestión efectivos del estado del reproductor. \nCon optimizaciones como la virtualización y lazy loading, garantiza una experiencia de usuario fluida, permitiendo un control sin esfuerzo y una navegación suave a lo largo de la aplicación.",
 
         "titleViewBGMAPP": "Escucha música sin distracciones",
         "descViewBGMAPP": "Una aplicación de música diseñado para escuchar música no importa el formato, ni de donde es, dejando a los usuarios disfrutar de su música.",
@@ -186,9 +184,9 @@
         "descResponsiveBGMAPP": "Varias técnicas de interfaz integradas para minimizar la interferencia del usuario y simplificar la interacción.",
 
         "titleL2DWP": "Fondo de Pantalla Live 2D",
-        "miniSummaryL2DWP": "Pantalla Live 2D",
-        "summaryL2DWP": "Fondo de pantalla vivo",
-        "detailsL2DWP": "Fondo de pantalla interactivo de Live2D creado usando Unity y Android Studio, que puede contener varios personajes de Live2D con los que se pueden interactuar. \n El juego funciona como un fondo de pantalla en vivo que permite a los usuarios interactuar con estos personajes al hacer clic en ellos, activando diversas emociones y líneas de voz. Aunque está diseñado principalmente para usarse como un fondo de pantalla de Android, también es compatible con versión PC y plataformas WebGL. \n Además, en la versión de Android hay unos plugins que permiten la utilización de funciones nativas de Android.",
+        "miniSummaryL2DWP": "Wallpaper Live 2D",
+        "summaryL2DWP": "Wallpaper vivo interactivo",
+        "detailsL2DWP": "Wallpaper interactivo creado utilizando Unity y Android Studio, que presenta personajes Live2D con los que los usuarios pueden interactuar. \nEste juego funciona como un wallpaper vivo que permite la interacción con los personajes a través de gestos y movimientos touch, en cual activa una variedad de emociones y funcionalidades. \nDiseñada principalmente para Android, la aplicación permite interacciones nativas de Android. También es compatible con plataformas de PC y WebGL, ampliando su accesibilidad.",
 
         "titleCharacterIdleL2DWP": "Mantente conectado",
         "descCharacterIdleL2DWP": "Permite la integración como un fondo de pantalla de Android, brindando la oportunidad de disfrutar de un fondo de pantalla en vivo completamente personalizado.",
@@ -199,7 +197,7 @@
         "titleNextCharacterTalkL2DWP": "Experiencia personalizada",
         "descNextCharacterTalkL2DWP": "Integra sin esfuerzo cualquier personaje que soporte Live2D Cubism en el fondo de pantalla, creando una experiencia verdaderamente personal.",
 
-        "titleSYMBIOMATA": "Proyecto Coop Realidad Virtual (PCVR)",
+        "titleSYMBIOMATA": "SYMBIOMATA",
         "miniSummarySYMBIOMATA": "Juego Coop RV",
         "summarySYMBIOMATA": "Juego cooperativo RV asimétrico",
         "detailsSYMBIOMATA": "Juego de plataformas asimétrico en RV creado en Unity, donde el jugador de RV se encarga de las acciones con las manos y el jugador de PC se encarga de las plataformas. \n El juego cuenta con modos de juego local y en online. Esta diseñado con una arquitectura de servidor autoritativa utilizando prácticas y características estándar de la industria, como la predicción del lado del cliente para el movimiento de las manos en RV y la compensación de retraso de proyectiles, junto con relés y salas de espera para facilitar la búsqueda de partidas. \n Las imágenes incluidas fueron tomadas de partidas en online.",
@@ -213,10 +211,10 @@
         "titleVRPovSYMBIOMATA": "Diferentes perspectivas, un viaje compartido",
         "descVRPovSYMBIOMATA": "Una experiencia de juego única que el jugador de PC controla el movimiento del personaje, mientras que el jugador de RV disfruta de un control preciso sobre el entorno 3D inmersivo utilizando los controladores XR.",
 
-        "titleONIGIRI": "Corte de Demonions",
+        "titleONIGIRI": "ONIGIRI",
         "miniSummaryONIGIRI": "Juego Tipo Souls",
         "summaryONIGIRI": "Juego Unity 3D Tipo Souls",
-        "detailsONIGIRI": "Juego de un solo jugador estilo Souls creado en Unity, donde el jugador debe derrotar a jefes enemigos haciéndole parry a sus ataques mientras evade simultáneamente sus proyectiles. \n La mecánica principal gira en torno al tiempo preciso, donde el jugador debe parry en sincronía con el ritmo de los ataques del enemigo. Al anticipar correctamente el ataque, el jugador puede contraatacar y desquitarse contra el enemigo.",
+        "detailsONIGIRI": "Juego estilo “souls-like” creado en Unity, donde los jugadores se enfrentan a boses formidables en combates intensos. \nLa jugabilidad se centra en una mecánica de parry precisa, que requiere que los jugadores cronometran sus parries a la perfección para contrarrestar los ataques enemigos y crear oportunidades para retaliación. Dominar los parries y evasión es esencial para la supervivencia, ya que se necesitan reacciones rápidas para cambiar el rumbo de la batalla. \nCada encuentro exige habilidad y estrategia, desafiando a los jugadores a navegar el equilibrio entre la evasión y el contraataque.",
 
         "titleBossONIGIRI": "Retaliación contra adversarios formidables",
         "descBossONIGIRI": "El AI enemigo está diseñado para mejorar el desafío general y el compromiso del juego, para enfatizar una toma de decisiones instintiva basada en la situación.",
@@ -229,12 +227,12 @@
         "titleUnblockableONIGIRI": "Sigue el ritmo de la batalla",
         "descUnblockableONIGIRI": "Los enemigos exhiben patrones de ataque únicos, lo que requiere un enfoque adaptativo, reflexivo y estratégico para superarlos de manera efectiva.",
 
-        "titleNEKOMATA": "Nekomata",
+        "titleNEKOMATA": "NEKOMATA",
         "miniSummaryNEKOMATA": "Juego Bullet Hell",
         "summaryNEKOMATA": "Juego Bullet Hell",
-        "detailsNEKOMATA": "Juego estilo boss rush bullet hell creado en Unreal Engine 5, inspirado en la serie icónica de bullet hell, Touhou. \n La mecánica central del juego es la habilidad de rewind, que permite al jugador esquivar los proyectiles de los enemigos, pero a consecuencia obliga a volver hacia una posición anterior que podría ser vulnerable. \n El juego presenta jefes con proyectiles inevitables para incentivar el uso constante, manteniendo al mismo tiempo un aspecto de alto riesgo/alta recompensa.",
+        "detailsNEKOMATA": "Juego de estilo boss rush de bullet hell creado en Unreal Engine 5, inspirado en la serie icónica de “Touhou”. Los jugadores se enfrentarán a una serie de boses desafiantes, cada uno diseñado con patrones únicos y proyectiles inevitables que fomentan el uso estratégico de la mecánica central del “Rewind”. \nEsta habilidad de rewind permite esquivar ataques entrantes rebobinando a una posición anterior, creando un entorno de alto riesgo donde cada movimiento y decisión cuenta. Con un enfoque en la jugabilidad de alto riesgo/alta recompensa, el desafío consiste en dominar los reflejos para sortear intrincados patrones de balas.",
 
-        "titleTutorialNEKOMATA": "Protocolo rewind",
+        "titleTutorialNEKOMATA": "Protocolo Rewind",
         "descTutorialNEKOMATA": "Mecánica central del juego, donde el rewind se puede utilizar para volverse invulnerable a costa de regresar a una ubicación anterior, el uso estratégico es necesario para maximizar su beneficio.",
         "titleBossFightNEKOMATA": "Adversarios desafiantes",
         "descBossFightNEKOMATA": "Cada jefe presenta un patrón de proyectiles único, con múltiples fases que se vuelven más desafiantes y atractivas a medida que avanza el nivel.",
@@ -242,6 +240,18 @@
         "descMinionFightNEKOMATA": "Sistema de audio extenso diseñado para sincronizar varios escenarios con la música, proporcionando una experiencia de juego completamente inmersiva.",
         "titlePlagueRatBossNEKOMATA": "Juego implacable",
         "descPlagueRatBossNEKOMATA": "Modo de juego desafiante en el que el jugador debe participar en una batalla de estrategia, en la cual el conocimiento y la habilidad se convierten en la clave para vencer a formidables adversarios.",
+
+        "titleTSUKUMO": "TSUKUMO TEMPO",
+        "miniSummaryTSUKUMO": "Acción Rítmica",
+        "summaryTSUKUMO": "Juego de Acción Rítmica",
+        "detailsTSUKUMO": "Juego de acción rítmica creado en Unreal Engine 5, donde los jugadores deben sincronizar sus acciones con el pulso musical. \nEl juego introduce una mecánica única de un casete, donde cada acción realizada hace que la cinta del casete se agote o se rellene, añadiendo una capa estratégica a la experiencia rítmica. \nLa evaluación del riesgo y la recompensa es clave, ya que gastar la cinta del casete se vuelve crucial para el éxito. Cada animación y acción está intrínsecamente ligada al ritmo, creando una fusión fluida de música y jugabilidad que sumerge al jugador en una experiencia dinámica de acción audiovisual.",
+
+        "titleAmanoTSUKUMO": "",
+        "descAmanoTSUKUMO": "",
+        "titleRinTSUKUMO": "",
+        "descRinTSUKUMO": "",
+        "titleKurikoTSUKUMO": "",
+        "descKurikoTSUKUMO": "",
 
         "titleBURROUGHS": "BURROUGHS",
         "miniSummaryBURROUGHS": "WebRTC Player",
@@ -299,7 +309,7 @@
         "titleBGMAPP": "ビージーエムアプリ",
         "miniSummaryBGMAPP": "音楽プレイヤー",
         "summaryBGMAPP": "背景音楽プレイヤー",
-        "detailsBGMAPP": "ElectronとViteを使用して作られたトラックプレーヤー、ローカルディレクトリまたはオンラインソースから直接取得した音楽トラックを再生する機能を持ちあげております。\nトラックプレーヤーは、プレーヤーの状態を効果的に制御・管理するために戦略的に配置された直感的なユーザーインターフェイスを備えています。また、仮想化やレイジーローディングによる様々な最適化のトリックも含まれています。\nデザインは、特にシームレスなユーザーエクスペリエンスに貢献するために徹底的に作り込まれ、アプリケーション全体を通して楽なコントロールとスムーズなナビゲーションを可能にしています。",
+        "detailsBGMAPP": "ElectronとViteを使用して開発された音楽アプリケーションで、ローカルディレクトリとオンラインプラットフォームの両方から音楽トラックを再生することができます。\nこのアプリは、プレーヤーの状態を効果的に制御・管理するために戦略的に設計された直感的なユーザーインターフェースを備えています。\n仮想化やレイジーローディングなどの最適化により、シームレスなユーザー体験を提供し、アプリケーション全体でスムーズな操作とナビゲーションを可能にしています。",
 
         "titleViewBGMAPP": "音楽を気軽に聴く",
         "descViewBGMAPP": "フォーマットやソースに関わらず、あらゆるトラックを再生できるよう設計されたオーディオプレーヤーにより、ユーザーは音楽を楽しむことができます。",
@@ -314,8 +324,8 @@
 
         "titleL2DWP": "Live2Dウォールペーパー",
         "miniSummaryL2DWP": "ライブ壁紙",
-        "summaryL2DWP": "インタラクティブLive2D壁紙",
-        "detailsL2DWP": "UnityとAndroid Studioで作成されたインタラクティブなLive2D壁紙で、さまざまなLive2Dキャラクターとインタラクトすることができます。このゲームはライブ壁紙として機能し、ユーザーがキャラクターをクリックすることで、さまざまな感情やボイスラインを引き出すことができます。主にAndroidの壁紙として使用するように設計されていますが、PCやWebGLプラットフォームにも対応しています。さらに、Android版はネイティブAndroid機能を利用するためのプラグインをサポートしています。",
+        "summaryL2DWP": "インタラクティブLive2Dウォールペーパー",
+        "detailsL2DWP": "UnityとAndroid Studioを使用して開発されたインタラクティブなLive2D壁紙で、ユーザーがキャラクターをクリックすることで、さまざまな感情やボイスラインを引き出すことができます。\nこのゲームはライブ壁紙として機能し、ジェスチャーやタッチ動作を通じてキャラクターと対話することができ、さまざまな感情や機能を引き出します。\n主にAndroid向けに設計されており、Androidの機能とのネイティブなインタラクションを可能にします。また、PCやWebGLプラットフォームにも対応しており、アクセス性を広げています。",
 
         "titleCharacterIdleL2DWP": "つながりを保つ",
         "descCharacterIdleL2DWP": "Androidの壁紙としての統合を可能にし、完全にカスタマイズされたライブ壁紙を楽しむことができます。",
@@ -343,7 +353,7 @@
         "titleONIGIRI": "鬼切り",
         "miniSummaryONIGIRI": "ソウルライクゲーム",
         "summaryONIGIRI": "ソウルライクゲーム",
-        "detailsONIGIRI": "Unityで作成されたソウルライクのシングルプレイヤーゲームは、プレイヤーは強力なボスを攻撃をかわしながらパリィして倒さなければなりません。\n 基本的なメカニクスは正確なタイミングに基づいており、プレイヤーは敵の攻撃のリズムに合わせてパリィを行う必要があります。攻撃を正しく予測することで、プレイヤーは敵に対して成功裏に反撃することができます。",
+        "detailsONIGIRI": "Unityで開発されたソウルライクのシングルプレイヤーゲームで、プレイヤーは強力なボスと激しい戦闘を繰り広げます。\nゲームプレイは、正確なパリィに焦点を当てており、プレイヤーは敵の攻撃を反撃するためにパリィのタイミングを完璧に合わせる必要があります。\nパリィと回避のタイミングをマスターすることは生存に不可欠であり、戦闘の流れを変えるためには素早い反応が求められます。\n各遭遇はスキルと戦略を要求し、プレイヤーは回避と反撃のバランスを取ることに挑戦されます。",
 
         "titleBossONIGIRI": "強力な敵に対して反撃する",
         "descBossONIGIRI": "敵のAIは、状況に基づいた本能的な意思決定を用いて、ゲーム全体の挑戦と没入感を高めるように設計されています。",
@@ -359,7 +369,7 @@
         "titleNEKOMATA": "ネコマタ",
         "miniSummaryNEKOMATA": "弾幕シューティング",
         "summaryNEKOMATA": "弾幕シューティング",
-        "detailsNEKOMATA": "Unreal Engine 5で作成されたボスラッシュの弾幕シューティングゲームで、アイコニックなトップダウン弾幕シューティング「東方Project」にインスパイアされています。\n ゲームのコアメカニクスはリワインド能力で、これによりプレイヤーは敵の攻撃してくる弾を回避することができ、結果として以前の脆弱な位置に戻ることになります。\n このゲームは、常に使用を促すために避けられない弾を持つボスを特徴としており、高リスク・高リターンの要素も維持しています。",
+        "detailsNEKOMATA": "Unreal Engine 5で開発されたボスラッシュの弾幕シューティングゲームで、東方シリーズからインスパイアを受けています。\nプレイヤーは、一連の挑戦的なボスと対峙し、それぞれがユニークなパターンと避けられない弾を持っており、コアのリワインドメカニクスを戦略的に使用することを促します。\nこのリワインド能力により、前の位置に戻ることで攻撃を回避でき、高リスクな環境を生み出し、すべての動きと決定が重要になります。\n高リスク・高リターンのゲームプレイに焦点を当て、複雑な弾幕パターンをナビゲートするためには、反射神経とタイミングをマスターすることが求められます。",
 
         "titleTutorialNEKOMATA": "プロトコル・リワインド",
         "descTutorialNEKOMATA": "ゲームのコアメカニクスで、リワインドを使用することで以前の位置に戻りながら無敵になることができ、その利点を最大限に活かすために戦略的な使用が促されます。",
@@ -369,6 +379,18 @@
         "descMinionFightNEKOMATA": "さまざまなシナリオを音楽と同期させるために構築された広範なオーディオシステムにより、完全に没入できるゲームプレイです。",
         "titlePlagueRatBossNEKOMATA": "挑戦的なゲームプレイ",
         "descPlagueRatBossNEKOMATA": "プレイヤーは知識とスキルを駆使して強力な敵を克服するための知恵比べに挑む、挑戦的なゲームプレイです。",
+
+        "titleTSUKUMO": "付喪神テンポ",
+        "miniSummaryTSUKUMO": "リズムアクション",
+        "summaryTSUKUMO": "リズムアクションゲーム",
+        "detailsTSUKUMO": "Unreal Engine 5で開発されたリズムアクションゲームで、プレイヤーはリズムのビートに合わせて行動を同期させる必要があります。\nゲームプレイにはユニークなカセットメカニクスが導入されており、行ったアクションはカセットのテープを消耗させたり補充したりします。これにより、リズム体験に戦略的な要素が加わります。\nリスクとリターンの評価が重要であり、カセットテープの管理が成功の鍵となります。すべてのアニメーションとアクションはリズムに緻密に結びついており、音楽とゲームプレイがシームレスに融合し、ダイナミックなオーディオビジュアルアクション体験に没入させます。",
+
+        "titleAmanoTSUKUMO": "",
+        "descAmanoTSUKUMO": "",
+        "titleRinTSUKUMO": "",
+        "descRinTSUKUMO": "",
+        "titleKurikoTSUKUMO": "",
+        "descKurikoTSUKUMO": "",
 
         "titleBURROUGHS": "BURROUGHS",
         "miniSummaryBURROUGHS": "WebRTC Player",

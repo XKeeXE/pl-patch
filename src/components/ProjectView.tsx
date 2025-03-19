@@ -98,7 +98,7 @@ const ProjectView = (props: {
         function DemoAssets(demokey: string): [JSX.Element, boolean] {
             switch (demokey) {
                 case 'L2DWP': return [<L2DWP/>, true]
-                case 'BGMAPP': return [<BGMApp/>, false]
+                // case 'BGMAPP': return [<BGMApp/>, false]
                 default: return [<></>, false]
             }
         }
@@ -147,7 +147,11 @@ const ProjectView = (props: {
                 <SwiperSlide>
                      <div className='flex flex-col h-full font-text items-center justify-center '>
                         <div className='flex flex-col w-[80vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[30vw] items-center font-text '>
-                            <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{project.name}</span>
+                            {(project.header ?
+                                <img className="w-[50%]" src={`${process.env.PUBLIC_URL}/${project.header}`}/>
+                                :
+                                <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{project.name}</span>
+                            )}
                             <span className={`text-sm md:text-lg bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{getTranslatedText(`title${project.name}`)}</span>
                             <span className="font-text text-xs md:text-sm pb-2">{getTranslatedText(`summary${project.name}`).toUpperCase()}</span>
                             {project.icon}
@@ -166,7 +170,7 @@ const ProjectView = (props: {
                 <SwiperSlide>
                     <Slide>
                         <Header headerText={getTranslatedText('videoHeader')}/>
-                            <ReactPlayer url={project?.video} controls height={300} width={300}/>
+                            <ReactPlayer url={project?.video} controls height={"50vh"} width={"50vw"}/>
                     </Slide>
                 </SwiperSlide>
 

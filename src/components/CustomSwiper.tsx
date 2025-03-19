@@ -25,7 +25,7 @@ const CustomSwiper = (props: {
     }, [])
 
     return (
-        <Swiper className={className} {...swiperProps}
+        <Swiper className={`startup ${className}`} {...swiperProps}
             ref={swiper}
             onSlideChange={() => {
                 document.dispatchEvent(OnSlideChanged);

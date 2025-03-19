@@ -1,4 +1,4 @@
-import { link } from "../Types/types";
+import { link } from "../util/types";
 import UIButton from "./UIButton";
 
 const LinksCard = (props: { 

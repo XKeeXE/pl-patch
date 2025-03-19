@@ -14,27 +14,29 @@ import UIGhosts from './UIGhosts';
 import SvgAssets from './SvgAssets';
 import { Tooltip } from '@nextui-org/react';
 
-import { link, skill, slide } from '../Types/types';
+import { link, skill, slide } from '../util/types';
 
 import { SlidesContext } from './AppView';
 
 const validKeys: string[] = ['w', 's', 'ArrowUp', 'ArrowDown'];
 
 const tools: skill[] = [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg', link: { text: 'Blender', url: 'https://www.blender.org/' } },
+    // { img: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg', link: { text: 'Blender', url: 'https://www.blender.org/' } },
     { img: 'https://wasimaster.gallerycdn.vsassets.io/extensions/wasimaster/discord-py-snippets/1.2.1/1604309045628/Microsoft.VisualStudio.Services.Icons.Default', link: { text: 'Discord.py', url: 'https://discordpy.readthedocs.io' } },
     { img: 'https://www.svgrepo.com/show/448221/docker.svg', link: { text: 'Docker', url: 'https://www.docker.com/' } },
     { img: 'https://www.svgrepo.com/show/452202/figma.svg', link: { text: 'Figma', url: 'https://www.figma.com/' } },
     { img: './Icons/ffmpeg.svg', link: { text: 'FFmpeg', url: 'https://ffmpeg.org/' } },
     { img: 'https://www.svgrepo.com/show/439171/github.svg', link: { text: 'GitHub', url: 'https://github.com/' } },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/7/73/Calligrakrita-base.svg', link: { text: 'Krita', url: 'https://krita.org/' } },
-    // { img: 'https://www.perforce.com/themes/custom/p4base/assets/images/logo.svg', link: { text: 'Perforce', url: 'https://www.perforce.com' } },
+    // { img: 'https://upload.wikimedia.org/wikipedia/commons/7/73/Calligrakrita-base.svg', link: { text: 'Krita', url: 'https://krita.org/' } },
+    { img: 'https://www.perforce.com/themes/custom/p4base/assets/images/logo.svg', link: { text: 'Perforce', url: 'https://www.perforce.com' } },
     { img: 'https://www.svgrepo.com/show/354250/rabbitmq-icon.svg', link: { text: 'Rabbit MQ', url: 'https://www.rabbitmq.com/' } },
     { img: 'https://upload.wikimedia.org/wikipedia/en/5/5a/MongoDB_Fores-Green.svg', link: { text: 'MongoDB', url: 'https://www.mongodb.com/' } },
     { img: 'https://www.svgrepo.com/show/448245/oracle.svg', link: { text: 'Oracle', url: 'https://www.oracle.com/database/' } },
     { img: 'https://www.svgrepo.com/show/372946/scrum.svg', link: { text: 'Scrum', url: 'https://www.scrum.org/learning-series/what-is-scrum/' } },
     { img: 'https://www.svgrepo.com/show/354463/trello.svg', link: { text: 'Trello', url: 'https://trello.com/' } },
     { img: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg', link: { text: 'Vite', url: 'https://vite.dev/' } },
+    { img: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Microsoft_.NET_logo.svg', link: { text: '.NET', url: 'https://dotnet.microsoft.com' } },
+
 ]
 
 const lang: skill[] = [
@@ -225,7 +227,7 @@ const WindView = (props: {
                     <span className='text-4xl'>{getTranslatedText('skills')}</span>
                     <div className='flex justify-center gap-4'>
                         <SkillSection text={getTranslatedText('skillsLang')} skill={lang} ghosts ghostsNum={16}/>
-                        <SkillSection text={getTranslatedText('skillsTools')} skill={tools} ghosts custom={2} ghostsNum={0}/>
+                        <SkillSection text={getTranslatedText('skillsTools')} skill={tools} ghosts ghostsNum={15}/>
                         <div className='flex flex-col gap-[20px] lg:gap-[30px]'>
                             <SkillSection text={getTranslatedText('skillsGame')} skill={game} ghosts/>
                             <SkillSection text={getTranslatedText('skillsWeb')} skill={web} custom={2} />

@@ -1,5 +1,5 @@
 import { Card, CardBody, CardFooter, CardHeader, Image } from "@nextui-org/react";
-import { slide } from "../Types/types";
+import { slide } from "../util/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Autoplay } from 'swiper/modules';
@@ -23,7 +23,11 @@ const ProjectCardView = (props: {
             }}>
                 <CardHeader className="flex flex-col justify-center gap-1">
                     {viewable ? 
+                    (currentSlide.header ?
+                        <img className="w-[50%]" src={`${process.env.PUBLIC_URL}/${currentSlide.header}`}/>
+                        :
                     <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${currentSlide.gradient}`}>{currentSlide.name.toUpperCase()}</span>
+                    )
                     :
                     <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${currentSlide.gradient}`}>{getTranslatedText(`title${currentSlide.name}`).toUpperCase()}</span>
                     }
