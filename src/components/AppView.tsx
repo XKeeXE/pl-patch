@@ -52,7 +52,7 @@ const slides: slide[] = [
         },
         {
             text: 'Download',
-            url: ''
+            url: 'https://drive.google.com/file/d/1ipaUW8aSPM68mBA_ge3d9jJzDfo2DKKo/view?usp=sharing'
         }
         ]
     },
