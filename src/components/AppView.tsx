@@ -45,7 +45,7 @@ const slides: slide[] = [
         icon: <SvgAssets icon='bgmapp'/>,
         name: 'BGMAPP',
         images: images.BGMAPP,
-        video: `https://www.youtube.com/watch?v=-4IF0_3_BQM`,
+        video: `https://www.youtube.com/watch?v=X1pwlqSlpTc`,
         links: [{
             text: 'GitHub',
             url: 'https://github.com/XKeeXE/bgm-app'
@@ -82,7 +82,7 @@ const slides: slide[] = [
         video: 'https://www.youtube.com/watch?v=Y9xsck9kelo',
         links: [{
             text: 'Download',
-            url: 'https://drive.google.com/file/d/1-ZuUA72Iqf5Hyf0OQYJZvxxtHo6QNsAZ/view?usp=drive_link'
+            url: 'https://drive.google.com/file/d/1-ZuUA72Iqf5Hyf0OQYJZvxxtHo6QNsAZ/view?usp=sharing'
         }]
     },
     {
@@ -91,7 +91,7 @@ const slides: slide[] = [
         icon: <WallpaperIcon />,
         name: 'L2DWP',
         images: images.L2DWP,
-        video: `${process.env.PUBLIC_URL}/Videos/L2DWP.mp4`,
+        video: `https://www.youtube.com/watch?v=1iJIBD7xCi8`,
         links: [{
             text: 'GitHub',
             url: 'https://github.com/XKeeXE/Live2DWallpaper'
