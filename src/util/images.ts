@@ -101,15 +101,15 @@ export const NEKOMATA: image[] = [{
 ]
 
 export const TSUKUMO: image[] = [{
-    url: 'Imgs/Tsukumo/Amano.png',
+    url: 'Imgs/TSUKUMO/Amano.png',
     title: 'Amano',
 },
 {
-    url: 'Imgs/Tsukumo/Rin.png',
+    url: 'Imgs/TSUKUMO/Rin.png',
     title: 'Rin',
 },
 {
-    url: 'Imgs/Tsukumo/Kuriko.png',
+    url: 'Imgs/TSUKUMO/Kuriko.png',
     title: 'Kuriko',
 },
 ]

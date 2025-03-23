@@ -92,11 +92,6 @@
         "titleUnblockableONIGIRI": "Ride the rhythm of battle",
         "descUnblockableONIGIRI": "Enemies exhibit unique attack patterns, necessitating an adaptive, thoughtful, and strategic approach to effectively overcome.",
 
-        "titleBURROUGHS": "BURROUGHS",
-        "miniSummaryBURROUGHS": "WebRTC Player",
-        "SummaryBURROUGHS": "WebRTC Player",
-        "detailsBURROUGHS": "b1lah blah blah",
-
         "titleNEKOMATA": "NEKOMATA",
         "miniSummaryNEKOMATA": "BulletHell Game",
         "summaryNEKOMATA": "Bullet Hell Game",
@@ -122,6 +117,11 @@
         "descRinTSUKUMO": "",
         "titleKurikoTSUKUMO": "",
         "descKurikoTSUKUMO": "",
+
+        "titleBURROUGHS": "BURROUGHS",
+        "miniSummaryBURROUGHS": "WebRTC Player",
+        "SummaryBURROUGHS": "WebRTC Player",
+        "detailsBURROUGHS": "",
         
         "titlePORTFOLIO": "Portfolio",
         "miniSummaryPORTFOLIO": "React Website",
@@ -256,7 +256,7 @@
         "titleBURROUGHS": "BURROUGHS",
         "miniSummaryBURROUGHS": "WebRTC Player",
         "SummaryBURROUGHS": "WebRTC Player",
-        "detailsBURROUGHS": "b1lah blah blah",
+        "detailsBURROUGHS": "",
         
         "titlePORTFOLIO": "Portafolio",
         "miniSummaryPORTFOLIO": "React Web",
@@ -395,7 +395,7 @@
         "titleBURROUGHS": "BURROUGHS",
         "miniSummaryBURROUGHS": "WebRTC Player",
         "SummaryBURROUGHS": "WebRTC Player",
-        "detailsBURROUGHS": "b1lah blah blah",
+        "detailsBURROUGHS": "",
         
         "titlePORTFOLIO": "ポートフォリオ",
         "miniSummaryPORTFOLIO": "React ウェブサイト",
