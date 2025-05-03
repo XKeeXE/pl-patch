@@ -113,3 +113,21 @@ export const TSUKUMO: image[] = [{
     title: 'Kuriko',
 },
 ]
+
+export const REMU: image[] = [{
+    url: 'Imgs/REMU/Play.png',
+    title: 'Play',
+},
+{
+    url: 'Imgs/REMU/Skip.png',
+    title: 'Skip',
+},
+{
+    url: 'Imgs/REMU/Queue.png',
+    title: 'Queue',
+},
+{
+    url: 'Imgs/REMU/Shuffle.png',
+    title: 'Shuffle',
+},
+]

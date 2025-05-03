@@ -31,27 +31,9 @@ const Onigiri = () => {
     )
 }
 
-const Symbiomata = () => {
+const Image = (fileName: string) => {
     return (
-        <img src={`${process.env.PUBLIC_URL}/Icons/Symbiomata.png`} className="object-fit" height={26} width={26} alt="Symbiomata"/>
-    )
-}
-
-const Bgmapp = () => {
-    return (
-        <img src={`${process.env.PUBLIC_URL}/Icons/BGMAPP.ico`} className="object-fit" height={26} width={26} alt="Symbiomata"/>
-    )
-}
-
-const Nekomata = () => {
-    return (
-        <img src={`${process.env.PUBLIC_URL}/Icons/Nekomata.ico`} className=" object-fit" height={26} width={26} alt="Nekomata"/>
-    )
-}
-
-const Tsukumo = () => {
-    return (
-        <img src={`${process.env.PUBLIC_URL}/Icons/Tsukumo.png`} className="object-fit" height={26} width={26} alt="Tsukumo"/>
+        <img src={`${process.env.PUBLIC_URL}/Icons/${fileName}`} className="object-fit" height={26} width={26} alt={fileName}/>
     )
 }
 
@@ -100,12 +82,8 @@ const SvgAssets = (props: {icon: string}): JSX.Element => {
         case 'es': return <PuertoRicoFlag/>
         case 'ja': return <JapanFlag/>
         case 'onigiri': return <Onigiri/>
-        case 'bgmapp': return <Bgmapp/>
+        default: return Image(icon)
 
-        case 'symbiomata': return <Symbiomata/>
-        case 'nekomata': return <Nekomata/>
-        case 'tsukumo': return <Tsukumo/>
-        default: return <></>
     }
 }
 

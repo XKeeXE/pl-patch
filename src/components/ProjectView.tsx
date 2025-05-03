@@ -31,12 +31,6 @@ const L2DWP = () => {
     )
 }
 
-const BGMApp = () => {
-    return (
-        <></>
-    )
-}
-
 const ProjectView = (props: { 
     setIsHomePage: React.Dispatch<React.SetStateAction<boolean>>, 
     currentColor: React.MutableRefObject<string>
@@ -148,7 +142,7 @@ const ProjectView = (props: {
                      <div className='flex flex-col h-full font-text items-center justify-center '>
                         <div className='flex flex-col w-[80vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[30vw] items-center font-text '>
                             {(project.header ?
-                                <img className="w-[50%]" src={`${process.env.PUBLIC_URL}/${project.header}`}/>
+                                <img alt={project.name} className="w-[50%]" src={`${process.env.PUBLIC_URL}/${project.header}`}/>
                                 :
                                 <span className={`text-4xl font-title bg-clip-text text-transparent bg-gradient-to-b ${project.gradient}`}>{project.name}</span>
                             )}
@@ -170,7 +164,7 @@ const ProjectView = (props: {
                 <SwiperSlide>
                     <Slide>
                         <Header headerText={getTranslatedText('videoHeader')}/>
-                            <ReactPlayer url={project?.video} controls height={"50vh"} width={"50vw"}/>
+                        <ReactPlayer url={project?.video} controls height={"50vh"} width={"50vw"}/>
                     </Slide>
                 </SwiperSlide>
 

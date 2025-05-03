@@ -3,6 +3,7 @@ import WindView from './WindView';
 import UINavbar from './UINavbar';
 
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
+import GroupIcon from '@mui/icons-material/Group';
 import { LanguageTranslations, slide } from '../util/types';
 import { Routes, Route } from "react-router-dom";
 import ProjectView from './ProjectView';
@@ -16,7 +17,7 @@ const slides: slide[] = [
     {
         color: '#0030e7',
         gradient: 'from-[#0009ff] from-0% to-[#006ae7] to-40%',
-        icon: <SvgAssets icon='symbiomata' />,
+        icon: <SvgAssets icon='Symbiomata.png' />,
         header: 'Imgs/SYMBIOMATA/Symbiomata_Header.png',
         name: 'SYMBIOMATA',
         images: images.SYMBIOMATA,
@@ -28,8 +29,8 @@ const slides: slide[] = [
     },
     {
         color: '#bebee8ff',
-        gradient: 'from-[#363379ff] from-0% to-[#4c47a4ff] to-100%',
-        icon: <SvgAssets icon='tsukumo' />,
+        gradient: 'from-[#363379ff] from-0%  to-[#4c47a4ff] to-100%',
+        icon: <SvgAssets icon='Tsukumo.png' />,
         // header: 'Tsukumo_Header.png',
         name: 'TSUKUMO',
         images: images.TSUKUMO,
@@ -41,8 +42,8 @@ const slides: slide[] = [
     },
     {
         color: '#7a0a9c',
-        gradient: 'from-[#8208de] from-0% to-[#6d0c6e] to-100%',
-        icon: <SvgAssets icon='bgmapp'/>,
+        gradient: 'from-[#8208de] from-20%  to-[#6d0c6e] to-100%',
+        icon: <SvgAssets icon='BGMAPP.ico'/>,
         name: 'BGMAPP',
         images: images.BGMAPP,
         video: `https://www.youtube.com/watch?v=X1pwlqSlpTc`,
@@ -58,8 +59,8 @@ const slides: slide[] = [
     },
     {
         color: '#5e9cff',
-        gradient: 'from-[#9181ff] from-10% to-[#00d6ff] to-90%',
-        icon: <SvgAssets icon='nekomata' />,
+        gradient: 'from-[#9181ff] from-10% to-[#00d6ff] to-50%',
+        icon: <SvgAssets icon='Nekomata.ico' />,
         name: 'NEKOMATA',
         images: images.NEKOMATA,
         video: `${process.env.PUBLIC_URL}/Videos/NEKOMATA.mp4`,
@@ -86,8 +87,20 @@ const slides: slide[] = [
         }]
     },
     {
+        color: '#4caee4',
+        gradient: 'from-[#3b87c5] from-0% to-[#59a6e0] to-60%',
+        icon: <SvgAssets icon='Remu.png'/>,
+        name: 'REMU',
+        images: images.REMU,
+        video: 't',
+        links: [{
+            text: 'Discord',
+            url: 'https://discord.com/oauth2/authorize?client_id=1085660593672953957'
+        }]
+    },
+    {
         color: '#1e65c9',
-        gradient: 'from-[#373ba6] from-0% via-[#0290f2] via-50% to-[#373ba6] to-100%',
+        gradient: 'from-[#373ba6] from-0% via-[#0290f2] via-20% to-[#373ba6] to-100%',
         icon: <WallpaperIcon />,
         name: 'L2DWP',
         images: images.L2DWP,
@@ -97,21 +110,15 @@ const slides: slide[] = [
             url: 'https://github.com/XKeeXE/Live2DWallpaper'
         }]
     },
-    
-    
-    // {
-    //     color: '',
-    //     gradient: '',
-    //     icon: undefined,
-    //     name: 'BURROUGHS',
-    //     images: imagesSYMBIOMATA,
-    //     video: 't',
-    //     links: [{
-    //         text: '',
-    //         url: ''
-    // }]
-    // },
-    
+    {
+        color: '#b6b6b6',
+        gradient: 'from-[#a1a1a1] from-40% to-[#6c6c6c] to-100%',
+        icon: <GroupIcon/>,
+        name: 'BURROUGHS',
+        images: undefined,
+        video: 't',
+        links: []
+    },
     ];
 
 const data: { [key: string]: LanguageTranslations } = require('../assets/languages.json');
@@ -157,7 +164,7 @@ const AppView = () => {
     function getTranslatedText(key: string, params?: { [key: string]: string|number|boolean }): string {
         const languageTranslations: LanguageTranslations = data[language];
 
-        let translation = languageTranslations[key] || 'Text not found'; // The corresponding translated text or 'Text not found' if the key is incorrect or missing in the JSON
+        let translation = languageTranslations[key] || 'null'; // The corresponding translated text or 'Text not found' if the key is incorrect or missing in the JSON
         if (params) {
             Object.keys(params).forEach(paramKey => {
                 const regex = new RegExp(`<${paramKey}>`, 'g'); // Create a regex for the placeholder
@@ -181,7 +188,7 @@ const AppView = () => {
         const nodes: React.ReactNode[] = []
         const nodeParams: string[] = []
 
-        let translation = languageTranslations[key] || 'Text not found';
+        let translation = languageTranslations[key] || 'null';
 
         if (params) {
             Object.keys(params).forEach(paramKey => {
