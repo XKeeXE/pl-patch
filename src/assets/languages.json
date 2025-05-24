@@ -158,7 +158,7 @@
         "contacts":"Contactos",
 
         "greetings": "¡Bienvenidos!",
-        "intro": "Me llamo <fn> <ln1> <ln2> \n También uso el pen name <pn>",
+        "intro": "Me llamo <fn> <ln1> <ln2> \n También uso <pn>",
 
         "aboutHeader": "Sobre mí",
         "about": "Estudiante graduado de la Universidad de Puerto Rico Bayamón y dedicado Software Engineer con aproximadamente <years> años de experiencia en diseño UI/UX, desarrollador de video juegos, y desarrollador de web. \nParticipé activamente en un equipo de investigación de videojuegos, donde se desarrollaron varios juegos utilizando diferentes engines, herramientas y tecnologías. \nAdemás, me involucré en varios proyectos personales que proporcionaron valiosas perspectivas y experiencia práctica en el proceso de desarrollo de software, demostrando mi compromiso con el aprendizaje continuo y la mejora de habilidades en mi tiempo libre, mientras me esfuerzo por maximizar cada oportunidad de crecimiento.",
